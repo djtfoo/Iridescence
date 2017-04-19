@@ -5,22 +5,28 @@ public class TopdownCamera : MonoBehaviour {
 
     public GameObject player;
 
-    float viewDist;     // scroll amount that determines how zoomed in camera is
+    float viewSize;     // current scroll amount that determines how zoomed in camera is
+    float newViewSize;  // new desired view size
 
-    const float maxScroll = 12f;
-    const float minScroll = 6f;
+    const float maxScroll = 5f; // zoom out
+    const float minScroll = 2f;  // zoom in
 
     // Use this for initialization
     void Start () {
-        viewDist = 10f;
+        viewSize = this.gameObject.GetComponent<Camera>().orthographicSize;
+        newViewSize = viewSize;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateViewDist();
-
-        this.transform.position = player.transform.position - new Vector3(0f, 0f, viewDist);
+        if (viewSize != newViewSize) {
+            viewSize += (newViewSize - viewSize) * 5f * Time.deltaTime;
+            if (Mathf.Abs(newViewSize - viewSize) < 0.001f)
+                viewSize = newViewSize;
+            this.gameObject.GetComponent<Camera>().orthographicSize = viewSize;
+        }
     }
 
     void UpdateViewDist()
@@ -28,11 +34,13 @@ public class TopdownCamera : MonoBehaviour {
         float scrollVal = Input.GetAxis("Mouse ScrollWheel");
         if (scrollVal > 0f)
         {
-            viewDist = Mathf.Max(viewDist - 1f, minScroll);
+            newViewSize = Mathf.Max(viewSize - 0.5f, minScroll);
+            //this.gameObject.GetComponent<Camera>().orthographicSize = viewSize;
         }
         else if (scrollVal < 0f)
         {
-            viewDist = Mathf.Min(viewDist + 1f, maxScroll);
+            newViewSize = Mathf.Min(viewSize + 0.5f, maxScroll);
+            //this.gameObject.GetComponent<Camera>().orthographicSize = viewSize;
         }
 
         //viewDist = Mathf.Clamp(viewDist + scrollVal, 5f, 15f);
