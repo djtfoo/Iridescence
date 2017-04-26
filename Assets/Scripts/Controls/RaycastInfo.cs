@@ -5,6 +5,7 @@ public enum RaycastTargetType
 {
     Raycast_Terrain,
     Raycast_Enemy,
+    Raycast_NPC,
     Raycast_NIL
 }
 
@@ -28,6 +29,11 @@ public static class RaycastInfo {
             else if (hit2D.transform.gameObject.tag == "Enemy")
             {
                 raycastType = RaycastTargetType.Raycast_Enemy;
+                return hit2D.transform.gameObject;
+            }
+            else if (hit2D.transform.gameObject.tag == "NPC")
+            {
+                raycastType = RaycastTargetType.Raycast_NPC;
                 return hit2D.transform.gameObject;
             }
         }

@@ -27,6 +27,8 @@ public class TopdownCamera : MonoBehaviour {
                 viewSize = newViewSize;
             this.gameObject.GetComponent<Camera>().orthographicSize = viewSize;
         }
+
+        this.transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, -10);
     }
 
     void UpdateViewDist()

@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
                 // remove previous highlight
                 if (raycastTarget)  // != null
                 {
-                    if (raycastTarget.tag == "Enemy")
+                    if (raycastTarget.tag == "Enemy" || raycastTarget.tag == "NPC")
                     {
                         SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
                         sr.color = new Color(1, 1, 1);
@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour {
                 switch (RaycastInfo.raycastType)
                 {
                     case RaycastTargetType.Raycast_Enemy:
+                    case RaycastTargetType.Raycast_NPC:
                         {
                             SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
                             sr.color = new Color(1, 0.5f, 0.5f);
@@ -63,7 +64,9 @@ public class PlayerMovement : MonoBehaviour {
             }
             getMouse0InputTimer = 0f;
         }
-        if (Input.GetMouseButton(0))    // Left mouse click
+
+        // Left mouse click
+        if (Input.GetMouseButton(0))
         {
             clickTarget = RaycastInfo.GetRaycastTarget2D();
             
@@ -78,6 +81,11 @@ public class PlayerMovement : MonoBehaviour {
                         Vector2 enemyPos = RaycastInfo.hit2D.transform.position;
                         destination = new Vector3(enemyPos.x, enemyPos.y, this.transform.position.z);
                         velocity = (destination - this.transform.position).normalized;
+                    }
+                    break;
+                case RaycastTargetType.Raycast_NPC:
+                    {
+                        // walk to NPC first
                     }
                     break;
                 case RaycastTargetType.Raycast_NIL:
@@ -98,6 +106,7 @@ public class PlayerMovement : MonoBehaviour {
         //    }
         //}
 
+        // Movement
         if (!velocity.Equals(Vector3.zero))
         {
             if (clickTarget)    // != null
