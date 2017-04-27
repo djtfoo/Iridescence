@@ -1,0 +1,20 @@
+{
+"firstGreeting": "Nice to meet you!",
+"greetings": [
+"Hello! I shall test with a way much longer line. Blah blah blah.",
+"What's up? I shall test with a way much longer line. Blah blah blah."
+],
+"goodbye": "See you!",
+"replies": [
+{
+"selection": "Who are you?",
+"dependency": -1,
+"dialogue": "I am the mayor of this town."
+},
+{
+"selection": "Thank you.",
+"dependency": -1,
+"dialogue": "You're welcome!"
+}
+]
+}

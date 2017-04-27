@@ -29,6 +29,13 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // in conversation; cannot move
+        if (DialogueManager.inDialogue)
+        {
+            DialogueManager.dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
+            return;
+        }
+
         // put all this mouse stuff into a different script
         if (getMouse0InputTimer < mouse0InputTimer)
             getMouse0InputTimer += Time.deltaTime;
@@ -78,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
                     break;
                 case RaycastTargetType.Raycast_Enemy:
                     {
-                        Vector2 enemyPos = RaycastInfo.hit2D.transform.position;
+                        Vector2 enemyPos = clickTarget.transform.position;
                         destination = new Vector3(enemyPos.x, enemyPos.y, this.transform.position.z);
                         velocity = (destination - this.transform.position).normalized;
                     }
@@ -86,6 +93,10 @@ public class PlayerMovement : MonoBehaviour {
                 case RaycastTargetType.Raycast_NPC:
                     {
                         // walk to NPC first
+                        DialogueManager.dManager = GameObject.Find("Dialogue Manager").GetComponent<DialogueManager>();
+                        DialogueManager.dManager.InitDialogue(clickTarget);
+                        //dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
+                        //dManager.CloseDialogue();
                     }
                     break;
                 case RaycastTargetType.Raycast_NIL:
