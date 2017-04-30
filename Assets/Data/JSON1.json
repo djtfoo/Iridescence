@@ -1,20 +1,24 @@
 {
 "firstGreeting": "Nice to meet you!",
 "greetings": [
-"Hello! I shall test with a way much longer line. Blah blah blah.",
-"What's up? I shall test with a way much longer line. Blah blah blah."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lectus augue, eu ornare dui pulvinar eu. Fusce ultrices laoreet orci vel tempor. Proin vestibulum ante at lacinia consectetur. Praesent ut libero at tellus pulvinar congue ac ac turpis.",
+"Sed quis nisl ac dui hendrerit tempor nec a dolor. Morbi bibendum est vitae nunc faucibus, euismod accumsan orci vehicula. Pellentesque sagittis ligula magna, at placerat diam semper quis."
 ],
 "goodbye": "See you!",
 "replies": [
 {
 "selection": "Who are you?",
+"index": 0,
 "dependency": -1,
-"dialogue": "I am the mayor of this town."
+"dialogue": "I am the mayor of this town.",
+"haveReply": false
 },
 {
 "selection": "Thank you.",
+"index": 1,
 "dependency": -1,
-"dialogue": "You're welcome!"
+"dialogue": "You're welcome!",
+"haveReply": false
 }
 ]
 }

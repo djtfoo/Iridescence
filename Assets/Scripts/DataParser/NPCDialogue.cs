@@ -16,14 +16,18 @@ public class Dialogue
 public class DialogueReply
 {
     public string selection;    // what player chooses to start this topic
-    public int dependency;  // -1 for greeting, 0 onwards for response to a reply
+    public int index;       // index of this message
+    public int dependency;  // -1 for greeting, 0 onwards representing the index of the msg it's replying
     public string dialogue; // the NPC's reply
+    public bool haveReply;  // the convo has more than 1 reply
 }
 
 public class NPCDialogue : MonoBehaviour {
 
     public TextAsset dialogueFile;
     Dialogue thisNPCDialogue;
+
+    bool firstTimeGreetingPlayer;   // whether it's first time player talking to this NPC
 
 	// Use this for initialization
 	void Start () {
