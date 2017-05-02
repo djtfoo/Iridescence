@@ -56,6 +56,8 @@ public class DialogueManager : MonoBehaviour {
                 selections = child.transform;
         }
 
+        selections.gameObject.SetActive(false);
+
         NPCName.text = NPC.name;
         currNPCdialogue = NPC.GetComponent<NPCDialogue>().GetDialogue();
         Random.seed = (int)System.DateTime.Now.Ticks;
@@ -103,6 +105,8 @@ public class DialogueManager : MonoBehaviour {
                 return;
         }
 
+        selections.gameObject.SetActive(true);
+
         // selections need to know the index of each message
         selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, 40f);
 
@@ -113,6 +117,7 @@ public class DialogueManager : MonoBehaviour {
                 newSelection.SetParent(selections);
                 newSelection.GetChild(0).GetComponent<Text>().text = currNPCdialogue.replies[i].selection;
                 selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+                selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
             }
         }
 
@@ -121,6 +126,24 @@ public class DialogueManager : MonoBehaviour {
             Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             newSelection.SetParent(selections);
             newSelection.GetChild(0).GetComponent<Text>().text = "Bye";
+            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+            selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
+        }
+
+        if (idx == -1)
+        {
+            Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            newSelection.SetParent(selections);
+            newSelection.GetChild(0).GetComponent<Text>().text = "Bye2";
+            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+            selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
+        }
+
+        if (idx == -1)
+        {
+            Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            newSelection.SetParent(selections);
+            newSelection.GetChild(0).GetComponent<Text>().text = "Bye3";
             selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
         }
     }
