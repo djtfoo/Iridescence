@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour {
     public Transform dialogueBoxPrefab;
     // dialogue selection prefab
     public Transform selectionPrefab;
+    public Transform closeSelectionPrefab;
+
     // real-time created dialogue box
     Transform dialogueBox;
     Text NPCName;
@@ -37,6 +39,9 @@ public class DialogueManager : MonoBehaviour {
         Random.seed = (int)System.DateTime.Now.Ticks;
     }
 
+    //===================================
+    // Initialise & Run
+    //===================================
     public void InitDialogue(GameObject NPC)
     {
         // create the prefab
@@ -56,6 +61,9 @@ public class DialogueManager : MonoBehaviour {
                 selections = child.transform;
         }
 
+        inDialogue = true;
+        closeConvo = false;
+
         selections.gameObject.SetActive(false);
 
         NPCName.text = NPC.name;
@@ -65,8 +73,6 @@ public class DialogueManager : MonoBehaviour {
         lineToOutput = currNPCdialogue.greetings[rand];
         dialogueIdx = -1;
 
-        inDialogue = true;
-        closeConvo = false;
         message.text = "";
         toMessageText = "";
         lineComplete = false;
@@ -77,7 +83,8 @@ public class DialogueManager : MonoBehaviour {
         // hold to wait for player to choose response/press "space" to continue
         if (!lineComplete)
         {
-            if (!Input.GetKey(KeyCode.Space) && outputTimer < outputBuffer) {
+            if (!Input.GetKey(KeyCode.Space) && outputTimer < outputBuffer)
+            {
                 outputTimer += Time.deltaTime;
                 return;
             }
@@ -85,27 +92,93 @@ public class DialogueManager : MonoBehaviour {
             message.text = toMessageText;
             ++lineIndex;
             outputTimer = 0f;
-            if (lineIndex == lineToOutput.Length) {
+            if (lineIndex == lineToOutput.Length)
+            {
                 lineComplete = true;
                 CreateSelections(dialogueIdx);
             }
         }
 
-        if (closeConvo)
+        else if (closeConvo)
         {
             inDialogue = false;
             CloseDialogue();
         }
     }
 
-    private void CreateSelections(int idx)
+
+    //===================================
+    // called by Dialogue Option Buttons
+    //===================================
+    public void SetNextMessage(int idx)
     {
-        if (idx != -1) {
-            if (!currNPCdialogue.replies[idx].haveReply)
-                return;
+        // clear off selections
+        selections.gameObject.SetActive(false);
+        foreach (Transform child in selections)
+        {
+            Destroy(child.gameObject);
+            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y - 20f);
+            selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y - 10f, selections.localPosition.z);
         }
 
+        // set dialogue box's message
+        if (idx == -2) {
+            lineToOutput = currNPCdialogue.goodbye;
+        }
+        else if (idx == -1) {
+            int rand = Random.Range(0, currNPCdialogue.greetings.Length);
+            lineToOutput = currNPCdialogue.greetings[rand];
+        }
+        else {
+            lineToOutput = currNPCdialogue.replies[idx].dialogue;
+        }
+
+        dialogueIdx = idx;
+
+        message.text = "";
+        toMessageText = "";
+        lineComplete = false;
+        lineIndex = 0;
+    }
+
+    public void SetCloseDialogue()
+    {
+        closeConvo = true;
+    }
+
+
+    //===================================
+    // Wrapper functions
+    //===================================
+    private void CreateSelections(int idx)
+    {
         selections.gameObject.SetActive(true);
+
+        if (idx == -2)
+        {
+            // create <Close> button
+            Transform newSelection = (Transform)Instantiate(closeSelectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            newSelection.SetParent(selections);
+            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+            selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
+
+            return;
+        }
+        else if (idx != -1) {
+            if (!currNPCdialogue.replies[idx].haveReply)
+            {
+                // create <Continue> button
+                Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                newSelection.SetParent(selections);
+                newSelection.GetChild(0).GetComponent<Text>().text = "<Continue>";
+                selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+                selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
+
+                newSelection.GetComponent<DialogueOption>().SetIndex(-1);   // greetings messages are -1
+
+                return;
+            }
+        }
 
         // selections need to know the index of each message
         selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, 40f);
@@ -118,6 +191,8 @@ public class DialogueManager : MonoBehaviour {
                 newSelection.GetChild(0).GetComponent<Text>().text = currNPCdialogue.replies[i].selection;
                 selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
                 selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
+
+                newSelection.GetComponent<DialogueOption>().SetIndex(currNPCdialogue.replies[i].index);
             }
         }
 
@@ -128,30 +203,15 @@ public class DialogueManager : MonoBehaviour {
             newSelection.GetChild(0).GetComponent<Text>().text = "Bye";
             selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
             selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
-        }
 
-        if (idx == -1)
-        {
-            Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            newSelection.SetParent(selections);
-            newSelection.GetChild(0).GetComponent<Text>().text = "Bye2";
-            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
-            selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y + 10f, selections.localPosition.z);
-        }
-
-        if (idx == -1)
-        {
-            Transform newSelection = (Transform)Instantiate(selectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            newSelection.SetParent(selections);
-            newSelection.GetChild(0).GetComponent<Text>().text = "Bye3";
-            selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y + 20f);
+            newSelection.GetComponent<DialogueOption>().SetIndex(-2);   // goodbye message is -2
         }
     }
 
-    public void CloseDialogue()
+    private void CloseDialogue()
     {
         // delete the dialogue box prefab
-        Destroy(dialogueBox);
+        Destroy(dialogueBox.gameObject);
     }
 
 }

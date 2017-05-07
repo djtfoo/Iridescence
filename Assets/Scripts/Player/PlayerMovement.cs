@@ -13,17 +13,11 @@ public class PlayerMovement : MonoBehaviour {
     GameObject raycastTarget;   // target of mouseover before clicking
     GameObject clickTarget; // for knowing what object type the target is, e.g. can check if target enemy is within attack range
 
-    // each weapon and/or attack skill will have its attack range.
-    // Weapon objects shld be in PlayerInfo class
-    // shld have a "pointer" to the current skill - the one that was clicked to do the attack
-    float attackRange;  // temp variable to represent weapon
-
     // Use this for initialization
     void Start () {
         RaycastInfo.raycastType = RaycastTargetType.Raycast_NIL;
         raycastTarget = null;
         clickTarget = null;
-        attackRange = 2f;
     }
 	
 	// Update is called once per frame
@@ -123,7 +117,7 @@ public class PlayerMovement : MonoBehaviour {
             if (clickTarget)    // != null
             {
                 float distSquared = (destination - this.transform.position).sqrMagnitude;
-                if (distSquared < attackRange * attackRange)
+                if (distSquared < PlayerData.attackRange * PlayerData.attackRange)
                 {
                     velocity = Vector3.zero;
                     //clickTarget = null;   // don't null so you can attack that target?
