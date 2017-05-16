@@ -1,17 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class GenerateLevel : MonoBehaviour {
 
+    // level data
     public TextAsset csvFile;
     int[,] levelGrid;
 
+    // tiles for generating world
+    public float width;    // width in pixels divided by 2, then divide by 100
+    public float height;   // height in pixels divided by 2, then divide by 100
     public Transform genericTile;
-    public Sprite[] sprites;
+    public Sprite[] tileSprites;
 
     // Use this for initialization
     void Start()
+    {
+        GenerateWorld();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // test only
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            this.csvFile = Resources.Load("Level/level2") as TextAsset;
+            // remove/reset scene here
+            DeleteWorld();
+            GenerateWorld();
+        }
+    }
+
+    void DeleteWorld()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    void GenerateWorld()
     {
         // get level grid data
         levelGrid = CSVReader.GetCSVGridInt(csvFile.text);
@@ -29,39 +58,28 @@ public class GenerateLevel : MonoBehaviour {
                 if (levelGrid[y, x] == 0)
                     continue;
 
-                float posX = (0.62f * y) + (0.62f * x);
-                float posY = (-0.36f * y) + (0.36f * x);
+                float posX = (width * y) + (width * x);
+                float posY = (-height * y) + (height * x);
 
                 Transform newTile = (Transform)Instantiate(genericTile, new Vector3(0, 0, 0), Quaternion.identity);
                 newTile.SetParent(this.transform);
                 newTile.position = new Vector3(posX, posY, 1f);
-                switch (levelGrid[y,x])
+                switch (levelGrid[y, x])
                 {
                     case 1:
-                        newTile.GetComponent<SpriteRenderer>().sprite = sprites[0];
+                        newTile.GetComponent<SpriteRenderer>().sprite = tileSprites[0];
                         break;
                     case 2:
-                        newTile.GetComponent<SpriteRenderer>().sprite = sprites[1];
+                        newTile.GetComponent<SpriteRenderer>().sprite = tileSprites[1];
                         break;
                     case 3:
-                        newTile.GetComponent<SpriteRenderer>().sprite = sprites[2];
+                        newTile.GetComponent<SpriteRenderer>().sprite = tileSprites[2];
                         break;
                     case 4:
-                        newTile.GetComponent<SpriteRenderer>().sprite = sprites[3];
+                        newTile.GetComponent<SpriteRenderer>().sprite = tileSprites[3];
                         break;
                 }
             }
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // test only
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //this.csvFile = Resources.Load("Data/Level/level2.csv") as TextAsset;
-            //SceneManager.LoadScene("2ndTest2D");
         }
     }
 }
