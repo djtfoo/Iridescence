@@ -83,7 +83,7 @@ public class DialogueManager : MonoBehaviour {
         // hold to wait for player to choose response/press "space" to continue
         if (!lineComplete)
         {
-            if (!Input.GetKey(KeyCode.Space) && outputTimer < outputBuffer)
+            if (!(Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && outputTimer < outputBuffer)
             {
                 outputTimer += Time.deltaTime;
                 return;

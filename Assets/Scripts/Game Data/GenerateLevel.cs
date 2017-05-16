@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GenerateLevel : MonoBehaviour {
 
@@ -56,6 +57,11 @@ public class GenerateLevel : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        // test only
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //this.csvFile = Resources.Load("Data/Level/level2.csv") as TextAsset;
+            //SceneManager.LoadScene("2ndTest2D");
+        }
     }
 }
