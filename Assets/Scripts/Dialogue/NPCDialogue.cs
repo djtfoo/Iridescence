@@ -19,7 +19,7 @@ public class DialogueReply
     public int index;       // index of this message
     public int dependency;  // -1 for greeting, 0 onwards representing the index of the msg it's replying
     public string dialogue; // the NPC's reply
-    public bool haveReply;  // the convo has more than 1 reply
+    public bool haveReply;  // this message has at least 1 reply
 }
 
 public class NPCDialogue : MonoBehaviour {

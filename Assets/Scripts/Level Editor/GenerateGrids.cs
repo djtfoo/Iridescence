@@ -36,7 +36,7 @@ public class GenerateGrids : MonoBehaviour {
                 newTile.position = new Vector3(posX, posY, 1f);
 
                 SpriteRenderer sr = newTile.GetComponent<SpriteRenderer>();
-                sr.color = new Color(0.7f, 0.7f, 0.7f);
+                sr.color = new Color(0.8f, 0.8f, 0.8f);
             }
         }
     }

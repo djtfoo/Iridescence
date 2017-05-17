@@ -1,8 +1,8 @@
 {
 "firstGreeting": "Nice to meet you!",
 "greetings": [
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lectus augue, eu ornare dui pulvinar eu. Fusce ultrices laoreet orci vel tempor. Proin vestibulum ante at lacinia consectetur. Praesent ut libero at tellus pulvinar congue ac ac turpis.",
-"Sed quis nisl ac dui hendrerit tempor nec a dolor. Morbi bibendum est vitae nunc faucibus, euismod accumsan orci vehicula. Pellentesque sagittis ligula magna, at placerat diam semper quis."
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lectus augue, eu ornare dui pulvinar eu.",
+"Sed quis nisl ac dui hendrerit tempor nec a dolor. Morbi bibendum est vitae nunc faucibus."
 ],
 "goodbye": "See you!",
 "replies": [
@@ -11,13 +11,34 @@
 "index": 0,
 "dependency": -1,
 "dialogue": "I am the mayor of this town.",
-"haveReply": false
+"haveReply": true
 },
 {
 "selection": "Thank you.",
 "index": 1,
 "dependency": -1,
 "dialogue": "You're welcome!",
+"haveReply": false
+},
+{
+"selection": "Nice to meet you",
+"index": 2,
+"dependency": 0,
+"dialogue": "Nice to meet you too.",
+"haveReply": false
+},
+{
+"selection": "Hi",
+"index": 3,
+"dependency": 0,
+"dialogue": "Hi...?",
+"haveReply": true
+},
+{
+"selection": "Bye",
+"index": 4,
+"dependency": 3,
+"dialogue": "K",
 "haveReply": false
 }
 ]

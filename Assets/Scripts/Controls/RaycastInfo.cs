@@ -83,7 +83,7 @@ public static class RaycastInfo {
                         if (raycastTarget.tag == "Terrain")
                         {
                             SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
-                            sr.color = new Color(0.7f, 0.7f, 0.7f);
+                            sr.color = new Color(0.8f, 0.8f, 0.8f);
                         }
                     }
                 }
