@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum RaycastTargetType
 {
@@ -9,12 +10,20 @@ public enum RaycastTargetType
     Raycast_NIL
 }
 
+// use in both game & level editor
 public static class RaycastInfo {
 
     //public static RaycastHit hit;
     public static RaycastHit2D hit2D;
     public static RaycastTargetType raycastType;
     //public static GameObject clickTarget;   // for knowing what object type the target is, e.g. can check if target enemy is within attack range
+
+    static float getMouse0InputTimer = 0f;
+    const float mouse0InputTimer = 0.05f;
+
+    public static GameObject raycastTarget;   // target of mouseover before clicking
+    public static GameObject clickTarget; // for knowing what object type the target is, e.g. can check if target enemy is within attack range
+
 
     public static GameObject GetRaycastTarget2D()
     {
@@ -24,7 +33,10 @@ public static class RaycastInfo {
             if (hit2D.transform.gameObject.tag == "Terrain")
             {
                 raycastType = RaycastTargetType.Raycast_Terrain;
-                return null;
+                if (SceneManager.GetActiveScene().name == "GameScene")
+                    return null;
+                else if (SceneManager.GetActiveScene().name == "LevelEditor")
+                    return hit2D.transform.gameObject;
             }
             else if (hit2D.transform.gameObject.tag == "Enemy")
             {
@@ -41,6 +53,75 @@ public static class RaycastInfo {
         raycastType = RaycastTargetType.Raycast_NIL;
         //clickTarget = null;   // remove this bc previous click is stil valid
         return null;
+    }
+
+    public static void MouseUpdate()
+    {
+        // put all this mouse stuff into a different script
+        if (getMouse0InputTimer < mouse0InputTimer)
+            getMouse0InputTimer += Time.deltaTime;
+        else
+        {
+            GameObject tempTarget = GetRaycastTarget2D();
+
+            // if mouse is on a different target
+            if (raycastTarget != tempTarget)
+            {
+                // remove previous highlight
+                if (raycastTarget)  // != null
+                {
+                    if (SceneManager.GetActiveScene().name == "GameScene")
+                    {
+                        if (raycastTarget.tag == "Enemy" || raycastTarget.tag == "NPC")
+                        {
+                            SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
+                            sr.color = new Color(1, 1, 1);
+                        }
+                    }
+                    else if (SceneManager.GetActiveScene().name == "LevelEditor")
+                    {
+                        if (raycastTarget.tag == "Terrain")
+                        {
+                            SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
+                            sr.color = new Color(0.7f, 0.7f, 0.7f);
+                        }
+                    }
+                }
+
+                // highlight new target IF necessary
+                if (SceneManager.GetActiveScene().name == "GameScene")
+                {
+                    switch (raycastType)
+                    {
+                        case RaycastTargetType.Raycast_Enemy:
+                        case RaycastTargetType.Raycast_NPC:
+                            {
+                                SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
+                                sr.color = new Color(1, 0.5f, 0.5f);
+                            }
+                            break;
+                    }
+                }
+                else if (SceneManager.GetActiveScene().name == "LevelEditor")
+                {
+                    switch (raycastType)
+                    {
+                        case RaycastTargetType.Raycast_Terrain:
+                            {
+                                SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
+                                sr.color = new Color(1, 1, 1);
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                raycastTarget = tempTarget;
+            }
+            getMouse0InputTimer = 0f;
+        }
     }
 
     // FOR 3D, NOT IN USE

@@ -23,11 +23,12 @@ public class GenerateLevel : MonoBehaviour {
     void Update()
     {
         // test only
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))  // change level
         {
-            this.csvFile = Resources.Load("Level/level2") as TextAsset;
             // remove/reset scene here
             DeleteWorld();
+            // set new level data
+            this.csvFile = Resources.Load("Level/level2") as TextAsset;
             GenerateWorld();
         }
     }
@@ -49,8 +50,6 @@ public class GenerateLevel : MonoBehaviour {
         int columns = levelGrid.GetUpperBound(1);
 
         // create terrain
-        // increase X by 0.62, increase Y by 0.36
-        Vector3 startingPos = Vector3.zero;
         for (int y = 0; y <= rows; ++y)
         {
             for (int x = 0; x <= columns; ++x)
@@ -82,4 +81,5 @@ public class GenerateLevel : MonoBehaviour {
             }
         }
     }
+
 }

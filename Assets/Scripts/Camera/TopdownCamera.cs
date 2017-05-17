@@ -3,17 +3,18 @@ using System.Collections;
 
 public class TopdownCamera : MonoBehaviour {
 
+    public bool hasPlayer;
     public GameObject player;
 
     float viewSize;     // current scroll amount that determines how zoomed in camera is
     float newViewSize;  // new desired view size
 
-    const float maxScroll = 5f; // zoom out
-    const float minScroll = 2f;  // zoom in
+    public float maxScroll = 5f; // zoom out
+    public float minScroll = 2f;  // zoom in
 
     // Use this for initialization
     void Start () {
-        viewSize = this.gameObject.GetComponent<Camera>().orthographicSize;
+        viewSize = gameObject.GetComponent<Camera>().orthographicSize;
         newViewSize = viewSize;
     }
 
@@ -25,10 +26,11 @@ public class TopdownCamera : MonoBehaviour {
             viewSize += (newViewSize - viewSize) * 5f * Time.deltaTime;
             if (Mathf.Abs(newViewSize - viewSize) < 0.001f)
                 viewSize = newViewSize;
-            this.gameObject.GetComponent<Camera>().orthographicSize = viewSize;
+            gameObject.GetComponent<Camera>().orthographicSize = viewSize;
         }
 
-        this.transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        if (hasPlayer)
+            transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, -10);
     }
 
     void UpdateViewDist()

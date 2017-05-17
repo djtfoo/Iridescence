@@ -5,19 +5,19 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector3 velocity;
     Vector3 destination;
-    float getMouse0InputTimer = 0f;
-    const float mouse0InputTimer = 0.05f;
+    //float getMouse0InputTimer = 0f;
+    //const float mouse0InputTimer = 0.05f;
 
     //RaycastHit hit;
     //RaycastTargetType raycastType;
-    GameObject raycastTarget;   // target of mouseover before clicking
-    GameObject clickTarget; // for knowing what object type the target is, e.g. can check if target enemy is within attack range
+    //GameObject raycastTarget;   // target of mouseover before clicking
+    //GameObject clickTarget; // for knowing what object type the target is, e.g. can check if target enemy is within attack range
 
     // Use this for initialization
     void Start () {
         RaycastInfo.raycastType = RaycastTargetType.Raycast_NIL;
-        raycastTarget = null;
-        clickTarget = null;
+        RaycastInfo.raycastTarget = null;
+        RaycastInfo.clickTarget = null;
     }
 	
 	// Update is called once per frame
@@ -26,50 +26,17 @@ public class PlayerMovement : MonoBehaviour {
         // in conversation; cannot move
         if (DialogueManager.inDialogue)
         {
-            DialogueManager.dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
+            DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
             return;
         }
 
         // put all this mouse stuff into a different script
-        if (getMouse0InputTimer < mouse0InputTimer)
-            getMouse0InputTimer += Time.deltaTime;
-        else
-        {
-            GameObject tempTarget = RaycastInfo.GetRaycastTarget2D();
-            // if mouse is on a different target
-            if (raycastTarget != tempTarget)
-            {
-                // remove previous highlight
-                if (raycastTarget)  // != null
-                {
-                    if (raycastTarget.tag == "Enemy" || raycastTarget.tag == "NPC")
-                    {
-                        SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
-                        sr.color = new Color(1, 1, 1);
-                    }
-                }
-
-                // highlight new target IF necessary
-                switch (RaycastInfo.raycastType)
-                {
-                    case RaycastTargetType.Raycast_Enemy:
-                    case RaycastTargetType.Raycast_NPC:
-                        {
-                            SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
-                            sr.color = new Color(1, 0.5f, 0.5f);
-                        }
-                        break;
-                }
-
-                raycastTarget = tempTarget;
-            }
-            getMouse0InputTimer = 0f;
-        }
+        RaycastInfo.MouseUpdate();
 
         // Left mouse click
         if (Input.GetMouseButton(0))
         {
-            clickTarget = RaycastInfo.GetRaycastTarget2D();
+            RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
             
             switch (RaycastInfo.raycastType)
             {
@@ -79,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
                     break;
                 case RaycastTargetType.Raycast_Enemy:
                     {
-                        Vector2 enemyPos = clickTarget.transform.position;
+                        Vector2 enemyPos = RaycastInfo.clickTarget.transform.position;
                         destination = new Vector3(enemyPos.x, enemyPos.y, this.transform.position.z);
                         velocity = (destination - this.transform.position).normalized;
                     }
@@ -88,12 +55,13 @@ public class PlayerMovement : MonoBehaviour {
                     {
                         // walk to NPC first
                         DialogueManager.dManager = GameObject.Find("Dialogue Manager").GetComponent<DialogueManager>();
-                        DialogueManager.dManager.InitDialogue(clickTarget);
+                        DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
                         //dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
                         //dManager.CloseDialogue();
                     }
                     break;
                 case RaycastTargetType.Raycast_NIL:
+                default:
                     break;
             }
         }
@@ -114,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
         // Movement
         if (!velocity.Equals(Vector3.zero))
         {
-            if (clickTarget)    // != null
+            if (RaycastInfo.clickTarget)    // != null
             {
                 float distSquared = (destination - this.transform.position).sqrMagnitude;
                 if (distSquared < PlayerData.attackRange * PlayerData.attackRange)
