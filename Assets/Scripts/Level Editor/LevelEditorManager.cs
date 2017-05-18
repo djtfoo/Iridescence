@@ -48,12 +48,16 @@ public class LevelEditorManager : MonoBehaviour {
         // move ghost tile
         if (RaycastInfo.raycastTarget)
         {
+            if (!selectedObject.gameObject.activeSelf)
+                selectedObject.gameObject.SetActive(true);
             selectedObject.localPosition = RaycastInfo.raycastTarget.transform.position;
         }
         else
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            selectedObject.localPosition = new Vector3(mousePos.x, mousePos.y, -1f);
+            if (selectedObject.gameObject.activeSelf)
+                selectedObject.gameObject.SetActive(false);
+            //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //selectedObject.localPosition = new Vector3(mousePos.x, mousePos.y, -1f);
         }
 
         // Left mouse click
@@ -71,7 +75,7 @@ public class LevelEditorManager : MonoBehaviour {
                     if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Terrain) {
                         RaycastInfo.clickTarget.GetComponent<SpriteRenderer>().sprite = objectGhostPrefab.GetComponent<SpriteRenderer>().sprite;
                         // transfer tile ID
-                        RaycastInfo.clickTarget.GetComponent<GridInfo>().ChangeTileID(0);
+                        RaycastInfo.clickTarget.GetComponent<GridInfo>().SetTileID(0);
                     }
 
                     break;
@@ -101,7 +105,7 @@ public class LevelEditorManager : MonoBehaviour {
                     {
                         RaycastInfo.clickTarget.GetComponent<SpriteRenderer>().sprite = grid;
                         // transfer tile ID
-                        RaycastInfo.clickTarget.GetComponent<GridInfo>().ChangeTileID(objectGhostID);
+                        RaycastInfo.clickTarget.GetComponent<GridInfo>().SetTileID(objectGhostID);
                     }
 
                     break;
