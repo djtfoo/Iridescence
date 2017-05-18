@@ -28,7 +28,7 @@ public class GenerateLevel : MonoBehaviour {
             // remove/reset scene here
             DeleteWorld();
             // set new level data
-            this.csvFile = Resources.Load("Level/level2") as TextAsset;
+            this.csvFile = Resources.Load("LevelData/level2") as TextAsset;
             GenerateWorld();
         }
     }

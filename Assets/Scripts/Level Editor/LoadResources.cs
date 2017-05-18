@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LoadResources : MonoBehaviour {
 
-    public Transform[] resources;
+    Transform[] resources;
     public string path; // directory in the Resources folder to load
 
 	// Use this for initialization
@@ -25,6 +25,11 @@ public class LoadResources : MonoBehaviour {
         // set the listener to call function
 
         // when press button close, unload all resources
+    }
+
+    public void UnloadResources()
+    {
+
     }
 
 }
