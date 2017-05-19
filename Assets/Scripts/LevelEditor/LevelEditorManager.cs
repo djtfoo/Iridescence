@@ -2,14 +2,6 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-enum GO_TYPE
-{
-    GO_TERRAIN,
-    GO_NPC,
-    GO_PROP,
-    GO_NIL
-}
-
 // class to handle GameObjects placed in the editor
 public class LevelEditorManager : MonoBehaviour {
 
@@ -17,11 +9,11 @@ public class LevelEditorManager : MonoBehaviour {
 
     // ghost tile/GameObject
     public Transform objectGhostPrefab;
-    Transform selectedObject;
+    Transform ghostObject;
 
     // ghost tile/GameObject info
-    GO_TYPE objectGhostType;
-    int objectGhostID;
+    GO_TYPE ghostObjectType;
+    int ghostObjectID;
 
     // Use this for initialization
     void Start () {
@@ -29,33 +21,51 @@ public class LevelEditorManager : MonoBehaviour {
         RaycastInfo.raycastTarget = null;
         RaycastInfo.clickTarget = null;
 
-        //objectGhostType = GO_TYPE.GO_NIL;
-        objectGhostType = GO_TYPE.GO_TERRAIN;
-        //objectGhostID = 0;
-        objectGhostID = 1;
+        ghostObjectType = GO_TYPE.GO_NIL;
+        ghostObjectID = 0;
 
-        selectedObject = (Transform)Instantiate(objectGhostPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        SpriteRenderer sr = selectedObject.GetComponent<SpriteRenderer>();
+        ghostObject = (Transform)Instantiate(objectGhostPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        SpriteRenderer sr = ghostObject.GetComponent<SpriteRenderer>();
         sr.color = new Color(1, 1, 1, 0.5f);
     }
-	
+
+    // Get Transform of ghost object
+    public Transform GetGhostObject()
+    {
+        return ghostObject;
+    }
+    // Set when selecting tile from dropdown list
+    public void SetGhostObject(Sprite sprite, GO_TYPE type, int id)
+    {
+        ghostObject.GetComponent<SpriteRenderer>().sprite = sprite;
+        ghostObjectType = type;
+        ghostObjectID = id;
+    }
+
 	// Update is called once per frame
 	void Update () {
 
         // mouse matters
         RaycastInfo.MouseUpdate();
 
+        // if no ghost object selected
+        if (ghostObjectID == 0) {
+            if (ghostObject.gameObject.activeSelf)
+                ghostObject.gameObject.SetActive(false);
+            goto finishLeftClick;
+        }
+
         // move ghost tile
         if (RaycastInfo.raycastTarget)
         {
-            if (!selectedObject.gameObject.activeSelf)
-                selectedObject.gameObject.SetActive(true);
-            selectedObject.localPosition = RaycastInfo.raycastTarget.transform.position;
+            if (!ghostObject.gameObject.activeSelf)
+                ghostObject.gameObject.SetActive(true);
+            ghostObject.localPosition = RaycastInfo.raycastTarget.transform.position;
         }
         else
         {
-            if (selectedObject.gameObject.activeSelf)
-                selectedObject.gameObject.SetActive(false);
+            if (ghostObject.gameObject.activeSelf)
+                ghostObject.gameObject.SetActive(false);
             //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //selectedObject.localPosition = new Vector3(mousePos.x, mousePos.y, -1f);
         }
@@ -69,15 +79,14 @@ public class LevelEditorManager : MonoBehaviour {
             // see whether you're clicking on an object, or terrain
             RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
-            switch (objectGhostType)
+            switch (ghostObjectType)
             {
                 case GO_TYPE.GO_TERRAIN:
                     if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Terrain) {
-                        RaycastInfo.clickTarget.GetComponent<SpriteRenderer>().sprite = objectGhostPrefab.GetComponent<SpriteRenderer>().sprite;
+                        RaycastInfo.clickTarget.GetComponent<SpriteRenderer>().sprite = ghostObject.GetComponent<SpriteRenderer>().sprite;
                         // transfer tile ID
-                        RaycastInfo.clickTarget.GetComponent<GridInfo>().SetTileID(0);
+                        RaycastInfo.clickTarget.GetComponent<AssetInfo>().SetID(0);
                     }
-
                     break;
                 case GO_TYPE.GO_NPC:
                     break;
@@ -98,14 +107,14 @@ public class LevelEditorManager : MonoBehaviour {
             // see whether you're clicking on an object, or terrain
             RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
-            switch (objectGhostType)
+            switch (ghostObjectType)
             {
                 case GO_TYPE.GO_TERRAIN:
                     if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Terrain)
                     {
                         RaycastInfo.clickTarget.GetComponent<SpriteRenderer>().sprite = grid;
                         // transfer tile ID
-                        RaycastInfo.clickTarget.GetComponent<GridInfo>().SetTileID(objectGhostID);
+                        RaycastInfo.clickTarget.GetComponent<AssetInfo>().SetID(ghostObjectID);
                     }
 
                     break;
@@ -122,4 +131,5 @@ public class LevelEditorManager : MonoBehaviour {
         finishRightClick: ;
 
     }
+
 }

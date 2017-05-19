@@ -10,7 +10,7 @@ public class GenerateLevel : MonoBehaviour {
     // tiles for generating world
     public float width;    // width in pixels divided by 2, then divide by 100
     public float height;   // height in pixels divided by 2, then divide by 100
-    public Transform genericTile;
+    public Transform genericTile;   // to instantiate
     public Sprite[] tileSprites;
 
     // Use this for initialization
