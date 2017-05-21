@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+// NOT IN USE
+
 public enum RaycastTargetType
 {
     Raycast_Terrain,
@@ -55,6 +57,7 @@ public static class RaycastInfo {
         return null;
     }
 
+    // CHANGE THIS TO EVENT ONMOUSEOVER()
     public static void MouseUpdate()
     {
         // put all this mouse stuff into a different script

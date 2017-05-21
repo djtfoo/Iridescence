@@ -1,10 +1,10 @@
 {
 "firstGreeting": "Nice to meet you!",
 "greetings": [
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lectus augue, eu ornare dui pulvinar eu.",
-"Sed quis nisl ac dui hendrerit tempor nec a dolor. Morbi bibendum est vitae nunc faucibus."
+"Hello! How's your day been?",
+"Hey there, what's up my man?"
 ],
-"goodbye": "See you!",
+"goodbye": "See you next time!",
 "replies": [
 {
 "selection": "Who are you?",

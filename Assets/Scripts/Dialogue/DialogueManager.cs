@@ -30,13 +30,26 @@ public class DialogueManager : MonoBehaviour {
     string toMessageText;   // what is shown in the dialogue box at the moment
     int lineIndex = 0;  // which char of the string the pointer is at
     float outputTimer = 0f;
-    float outputBuffer = 0.05f;
+    float outputBuffer = 0.01f;
     bool lineComplete = false;
     bool closeConvo = false;
+
+    private bool firstClick = true; // starting click that started dialogue; will trigger skipping of text
 
     void Start()
     {
         Random.seed = (int)System.DateTime.Now.Ticks;
+
+        dManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+    }
+
+    private void Update()
+    {
+        if (inDialogue)
+        {
+            dManager.RunDialogue();
+            //DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
+        }
     }
 
     //===================================
@@ -68,30 +81,50 @@ public class DialogueManager : MonoBehaviour {
 
         NPCName.text = NPC.name;
         currNPCdialogue = NPC.GetComponent<NPCDialogue>().GetDialogue();
-        Random.seed = (int)System.DateTime.Now.Ticks;
-        int rand = Random.Range(0, currNPCdialogue.greetings.Length);
-        lineToOutput = currNPCdialogue.greetings[rand];
-        dialogueIdx = -1;
 
-        message.text = "";
-        toMessageText = "";
-        lineComplete = false;
+        SetNextMessage(-1);
+        firstClick = true;
+
+        //dialogueIdx = -1;
+        //Random.seed = (int)System.DateTime.Now.Ticks;
+        //int rand = Random.Range(0, currNPCdialogue.greetings.Length);
+        //lineToOutput = currNPCdialogue.greetings[rand];
+        //
+        //message.text = "";
+        //toMessageText = "";
+        //lineComplete = false;
+        //lineIndex = 0;
     }
 
-    public void RunDialogue(Dialogue NPCDialogue)
+    public void RunDialogue(/*Dialogue NPCDialogue*/)
     {
         // hold to wait for player to choose response/press "space" to continue
         if (!lineComplete)
         {
-            if (!(Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && outputTimer < outputBuffer)
+            if (firstClick)
+            {
+                firstClick = false;
+                return;
+            }
+
+            if (!(Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0)) && outputTimer < outputBuffer)
             {
                 outputTimer += Time.deltaTime;
                 return;
             }
-            toMessageText += lineToOutput[lineIndex].ToString();
+            if (Input.GetMouseButtonDown(0))
+            {
+                toMessageText = lineToOutput;
+                lineIndex = lineToOutput.Length - 1;
+            }
+            else
+            {
+                toMessageText += lineToOutput[lineIndex].ToString();
+            }
             message.text = toMessageText;
             ++lineIndex;
             outputTimer = 0f;
+
             if (lineIndex == lineToOutput.Length)
             {
                 lineComplete = true;
@@ -110,7 +143,7 @@ public class DialogueManager : MonoBehaviour {
     //===================================
     // called by Dialogue Option Buttons
     //===================================
-    public void SetNextMessage(int idx)
+    public void ClearSelections()
     {
         // clear off selections
         selections.gameObject.SetActive(false);
@@ -120,19 +153,24 @@ public class DialogueManager : MonoBehaviour {
             selections.GetComponent<RectTransform>().sizeDelta = new Vector2(selections.GetComponent<RectTransform>().sizeDelta.x, selections.GetComponent<RectTransform>().sizeDelta.y - 20f);
             selections.localPosition = new Vector3(selections.localPosition.x, selections.localPosition.y - 10f, selections.localPosition.z);
         }
-
+    }
+        
+    public void SetNextMessage(int idx)
+    {
         // set dialogue box's message
-        if (idx == -2) {
-            lineToOutput = currNPCdialogue.goodbye;
-        }
-        else if (idx == -1) {
+        if (idx == -1) {
             int rand = Random.Range(0, currNPCdialogue.greetings.Length);
             lineToOutput = currNPCdialogue.greetings[rand];
+        }
+        else if (idx == -2)
+        {
+            lineToOutput = currNPCdialogue.goodbye;
         }
         else {
             lineToOutput = currNPCdialogue.replies[idx].dialogue;
         }
 
+        // reset variables
         dialogueIdx = idx;
 
         message.text = "";

@@ -7,6 +7,7 @@ public class DialogueOption : MonoBehaviour {
 
     public void SetDialogue()
     {
+        DialogueManager.dManager.ClearSelections();
         DialogueManager.dManager.SetNextMessage(index);
     }
 
