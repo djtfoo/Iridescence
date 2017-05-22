@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour {
 
     // real-time created dialogue box
     Transform dialogueBox;
+    GameObject NPC;
     Text NPCName;
     Text message;
     Transform selections;
@@ -55,21 +56,21 @@ public class DialogueManager : MonoBehaviour {
     //===================================
     // Initialise & Run
     //===================================
-    public void InitDialogue(GameObject NPC)
+    public void InitDialogue(GameObject npc)
     {
         // create the prefab
-        // get the NPC name
 
         dialogueBox = (Transform)Instantiate(dialogueBoxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         dialogueBox.SetParent(GameObject.Find("Canvas").transform);
         dialogueBox.localPosition = dialogueBoxPrefab.localPosition;
 
+        // get references to GameObjects
         foreach (Transform child in dialogueBox.transform)
         {
             if (child.name == "NPC Name")
-                NPCName = child.GetComponent<Text>();
+                NPCName = child.GetComponent<Text>();   // get the Text object for NPC name
             else if (child.name == "Message")
-                message = child.GetComponent<Text>();
+                message = child.GetComponent<Text>();   // get the Text object for message
             else
                 selections = child.transform;
         }
@@ -79,10 +80,13 @@ public class DialogueManager : MonoBehaviour {
 
         selections.gameObject.SetActive(false);
 
-        NPCName.text = NPC.name;
-        currNPCdialogue = NPC.GetComponent<NPCDialogue>().GetDialogue();
+        // set NPC and current dialogue
+        this.NPC = npc;
+        NPCName.text = npc.name;
+        currNPCdialogue = npc.GetComponent<NPCDialogue>().GetDialogue();
 
         SetNextMessage(-1);
+
         firstClick = true;
 
         //dialogueIdx = -1;
@@ -107,15 +111,15 @@ public class DialogueManager : MonoBehaviour {
                 return;
             }
 
-            if (!(Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0)) && outputTimer < outputBuffer)
-            {
-                outputTimer += Time.deltaTime;
-                return;
-            }
             if (Input.GetMouseButtonDown(0))
             {
                 toMessageText = lineToOutput;
                 lineIndex = lineToOutput.Length - 1;
+            }
+            else if (outputTimer < outputBuffer)
+            {
+                outputTimer += Time.deltaTime;
+                return;
             }
             else
             {
@@ -250,6 +254,9 @@ public class DialogueManager : MonoBehaviour {
     {
         // delete the dialogue box prefab
         Destroy(dialogueBox.gameObject);
+
+        // reset highlight colour
+        NPC.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
     }
 
 }

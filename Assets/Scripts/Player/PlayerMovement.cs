@@ -27,12 +27,12 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
         // in conversation; cannot move
-        //if (DialogueManager.inDialogue)
-        //{
-        //    DialogueManager.dManager.RunDialogue();
-        //    //DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
-        //    return;
-        //}
+        if (DialogueManager.inDialogue)
+        {
+            //DialogueManager.dManager.RunDialogue();
+            //DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
+            return;
+        }
 
         // put all this mouse stuff into a different script
         //RaycastInfo.MouseUpdate();

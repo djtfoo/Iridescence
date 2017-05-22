@@ -2,7 +2,7 @@
 "firstGreeting": "Nice to meet you!",
 "greetings": [
 "Hello! How's your day been?",
-"Hey there, what's up my man?"
+"Hey there, what's up?"
 ],
 "goodbye": "See you next time!",
 "replies": [
@@ -10,7 +10,7 @@
 "selection": "Who are you?",
 "index": 0,
 "dependency": -1,
-"dialogue": "I am the mayor of this town.",
+"dialogue": "I am Jason, a random villager.",
 "haveReply": true
 },
 {

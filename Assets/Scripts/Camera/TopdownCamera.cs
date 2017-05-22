@@ -9,7 +9,9 @@ public class TopdownCamera : MonoBehaviour {
     float viewSize;     // current scroll amount that determines how zoomed in camera is
     float newViewSize;  // new desired view size
 
-    public float maxScroll = 5f; // zoom out
+    // 1 scroll is about 0.5f change
+
+    public float maxScroll = 4f; // zoom out
     public float minScroll = 2f;  // zoom in
 
     // Use this for initialization

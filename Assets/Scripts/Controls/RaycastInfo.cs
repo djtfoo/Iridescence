@@ -77,16 +77,16 @@ public static class RaycastInfo {
                     {
                         if (raycastTarget.tag == "Enemy" || raycastTarget.tag == "NPC")
                         {
-                            SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
-                            sr.color = new Color(1, 1, 1);
+                            //SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
+                            //sr.color = new Color(1, 1, 1);
                         }
                     }
                     else if (SceneManager.GetActiveScene().name == "LevelEditor")
                     {
                         if (raycastTarget.tag == "Terrain")
                         {
-                            SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
-                            sr.color = new Color(0.8f, 0.8f, 0.8f);
+                            //SpriteRenderer sr = raycastTarget.GetComponent<SpriteRenderer>();
+                            //sr.color = new Color(0.8f, 0.8f, 0.8f);
                         }
                     }
                 }
@@ -99,8 +99,8 @@ public static class RaycastInfo {
                         case RaycastTargetType.Raycast_Enemy:
                         case RaycastTargetType.Raycast_NPC:
                             {
-                                SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
-                                sr.color = new Color(1, 0.5f, 0.5f);
+                                //SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
+                                //sr.color = new Color(1, 0.5f, 0.5f);
                             }
                             break;
                     }
@@ -111,8 +111,8 @@ public static class RaycastInfo {
                     {
                         case RaycastTargetType.Raycast_Terrain:
                             {
-                                SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
-                                sr.color = new Color(1, 1, 1);
+                                //SpriteRenderer sr = tempTarget.GetComponent<SpriteRenderer>();
+                                //sr.color = new Color(1, 1, 1);
                             }
                             break;
 
