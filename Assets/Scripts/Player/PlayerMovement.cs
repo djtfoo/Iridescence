@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     //float getMouse0InputTimer = 0f;
     //const float mouse0InputTimer = 0.05f;
 
+    bool doAttack = false;
+
     public static PlayerMovement instance;
     //RaycastHit hit;
     //RaycastTargetType raycastType;
@@ -22,9 +24,10 @@ public class PlayerMovement : MonoBehaviour {
 
         instance = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // in conversation; cannot move
         if (DialogueManager.inDialogue)
@@ -33,65 +36,34 @@ public class PlayerMovement : MonoBehaviour {
             //DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
             return;
         }
-
-        // put all this mouse stuff into a different script
-        //RaycastInfo.MouseUpdate();
-
-        // Left mouse click -- CHANGE TO EVENT HANDLER
-        //if (Input.GetMouseButton(0))
-        //{
-        //    RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
-        //    
-        //    switch (RaycastInfo.raycastType)
-        //    {
-        //        case RaycastTargetType.Raycast_Terrain:
-        //            //destination = new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, this.transform.position.z);
-        //            //velocity = (destination - this.transform.position).normalized;
-        //            break;
-        //        case RaycastTargetType.Raycast_Enemy:
-        //            {
-        //                //Vector2 enemyPos = RaycastInfo.clickTarget.transform.position;
-        //                //destination = new Vector3(enemyPos.x, enemyPos.y, this.transform.position.z);
-        //                //velocity = (destination - this.transform.position).normalized;
-        //            }
-        //            break;
-        //        case RaycastTargetType.Raycast_NPC:
-        //            {
-        //                // walk to NPC first
-        //                //DialogueManager.dManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
-        //
-        //                //DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
-        //                
-        //                //dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
-        //                //dManager.CloseDialogue();
-        //            }
-        //            break;
-        //        case RaycastTargetType.Raycast_NIL:
-        //        default:
-        //            break;
-        //    }
-        //}
+        if (doAttack)
+        {
+            // cast skill when "ready"/have buffer time/is animation
+            // check for collision
+            RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
+            doAttack = false;
+        }
 
         // Movement
         if (!velocity.Equals(Vector3.zero))
         {
             // STORING OF CLICK TARGET - MEANING NPC/ENEMY, WHICH IS THE "END-GOAL" OF THE MOVEMENT
-            //if (RaycastInfo.clickTarget)    // != null
-            //{
-            //    float distSquared = (destination - this.transform.position).sqrMagnitude;
-            //    if (distSquared < PlayerData.attackRange * PlayerData.attackRange)
-            //    {
-            //        velocity = Vector3.zero;
-            //        //clickTarget = null;   // don't null so you can attack that target?
-            //    }
-            //    else
-            //    {
-            //        this.transform.position += velocity * Time.deltaTime;
-            //
-            //    }
-            //}
-            //else
-            //{
+            if (RaycastInfo.clickTarget)    // != null
+            {
+                float distSquared = (destination - this.transform.position).sqrMagnitude;
+                if (distSquared < PlayerData.attackRangeSquared)
+                {
+                    velocity = Vector3.zero;
+                    doAttack = true;
+                    //clickTarget = null;   // don't null so you can attack that target?
+                }
+                else
+                {
+                    this.transform.position += velocity * Time.deltaTime;
+                }
+            }
+            else
+            {
                 this.transform.position += velocity * Time.deltaTime;
 
                 Vector3 dirCheck = destination - this.transform.position;
@@ -100,11 +72,8 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     velocity = Vector3.zero;
                 }
-            //}
-
-
-        }   // end of movement codes
-
+            }
+        }
     }   // end of Update()
 
 }   // end of class

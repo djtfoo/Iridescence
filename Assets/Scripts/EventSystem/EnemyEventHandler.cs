@@ -12,10 +12,8 @@ public class EnemyEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
-        // to save the click target
-        //RaycastInfo.clickTarget = this;   // to store it
-        // also store the type into RaycastInfo via getting tag/name
-        //RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
+        // store the type into RaycastInfo via getting tag/name
+        RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
         // walk to enemy
         Vector2 enemyPos = this.transform.parent.position;
