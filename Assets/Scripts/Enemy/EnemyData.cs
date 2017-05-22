@@ -35,6 +35,7 @@ public class EnemyData : MonoBehaviour {
     {
         SetHP(HP - dmg);
 
+        // edit HP bar
         if (!HPBar) {
             HPBar = (Transform)Instantiate(HPBarPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             HPBar.parent = this.transform.parent;
@@ -46,6 +47,8 @@ public class EnemyData : MonoBehaviour {
 
     void SetHP(float newHP)
     {
-        HP = Mathf.Max(newHP, 0f);
+        HP = newHP;
+        if (newHP <= 0)
+            Destroy(this.transform.parent.gameObject);
     }
 }

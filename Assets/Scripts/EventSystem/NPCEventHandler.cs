@@ -12,6 +12,13 @@ public class NPCEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
+        RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
+
+        // walk to NPC
+        Vector2 NPCPos = this.transform.parent.position;
+        PlayerAction.instance.SetDestination(new Vector3(NPCPos.x, NPCPos.y, PlayerAction.instance.transform.position.z));
+        PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
+
         // to save the click target
         //RaycastInfo.clickTarget = this;   // to store it
         // also store the type into RaycastInfo via getting tag/name
@@ -21,11 +28,13 @@ public class NPCEventHandler : MonoBehaviour {
 
         // activate Dialogue Manager
         //DialogueManager.dManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
-        DialogueManager.dManager.InitDialogue(this.gameObject);
 
-        PlayerMovement.instance.velocity = Vector3.zero;
         //dManager.RunDialogue(clickTarget.GetComponent<NPCDialogue>().GetDialogue());
         //dManager.CloseDialogue();
+
+        //DialogueManager.dManager.InitDialogue(this.gameObject);
+        //
+        //PlayerAction.instance.SetVelocityZero();
 #endif
     }
 

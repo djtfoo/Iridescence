@@ -15,8 +15,8 @@ public class TerrainEventHandler : MonoBehaviour {
         // Player Movement stuff
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
-        PlayerMovement.instance.destination = new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerMovement.instance.transform.position.z);
-        PlayerMovement.instance.velocity = (PlayerMovement.instance.destination - PlayerMovement.instance.transform.position).normalized;
+        PlayerAction.instance.SetDestination(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
+        PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
 #endif
     }
 

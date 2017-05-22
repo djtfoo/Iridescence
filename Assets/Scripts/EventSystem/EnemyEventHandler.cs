@@ -17,10 +17,8 @@ public class EnemyEventHandler : MonoBehaviour {
 
         // walk to enemy
         Vector2 enemyPos = this.transform.parent.position;
-        PlayerMovement.instance.destination = new Vector3(enemyPos.x, enemyPos.y, PlayerMovement.instance.transform.position.z);
-        PlayerMovement.instance.velocity = (PlayerMovement.instance.destination - PlayerMovement.instance.transform.position).normalized;
-
-        // attack enemy
+        PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+        PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
 #endif
     }
 
