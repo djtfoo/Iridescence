@@ -12,7 +12,13 @@ public class SaveLevelData : MonoBehaviour {
     public void SaveTerrainData()
     {
         //savedTerrain = terrain;
+        DeleteGridZero();   // delete grids that were not filled up
+        GenerateEdgeData(); // generate edge data for pathfinding
+        SavePrefab();   // save Terrain into a prefab
+    }
 
+    void DeleteGridZero()
+    {
         //foreach (Transform child in terrain.transform)
         for (int i = terrain.transform.childCount - 1; i >= 0; --i)
         {
@@ -27,9 +33,23 @@ public class SaveLevelData : MonoBehaviour {
                 DestroyImmediate(gridInfo);
             }
         }
+    }
 
-        SavePrefab();
-        GenerateEdgeData(); // generate edge data for pathfinding
+    void GenerateEdgeData()
+    {
+        OutlineEdgeData edgeData = terrain.GetComponent<OutlineEdgeData>();
+        foreach (Transform child in terrain.transform)  // each grid
+        {
+            // create the 4 outlines of the grid
+
+            // check if these outlines are the same as existing outlines
+
+        }
+
+        // add together outlines along the same line
+
+        // DEBUG: draw out the lines one by one
+        
     }
 
     void SavePrefab()
@@ -45,11 +65,6 @@ public class SaveLevelData : MonoBehaviour {
         }
 
         //prefab.name = 
-    }
-
-    void GenerateEdgeData()
-    {
-
     }
 
 }
