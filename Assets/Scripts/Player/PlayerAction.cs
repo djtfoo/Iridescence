@@ -86,6 +86,24 @@ public class PlayerAction : MonoBehaviour {
         }
     }   // end of Update()
 
+    public void SetMoveTo(Vector3 destination)
+    {
+        SetDestination(destination);
+        SetVelocity((destination - transform.position).normalized);
+
+        // get direction
+        Vector2 playerVel = new Vector2(velocity.x, velocity.y);
+        float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(playerVel, Vector2.down) / velocity.magnitude);  // Vector3.down is Vector3(0, -1, 0)
+        if (velocity.x > 0f)
+            angle = 360f - angle;
+        angle += 22.5f;
+        if (angle >= 360f)
+            angle -= 360f;
+        this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeDirection((int)(angle) / 45);
+    }
+
+    // public void SetMoveBy(Vector3 velocity, float duration)
+
     // Getters
     public Vector3 GetVelocity()
     {

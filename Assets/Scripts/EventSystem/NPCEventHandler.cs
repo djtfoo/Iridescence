@@ -16,8 +16,9 @@ public class NPCEventHandler : MonoBehaviour {
 
         // walk to NPC
         Vector2 NPCPos = this.transform.parent.position;
-        PlayerAction.instance.SetDestination(new Vector3(NPCPos.x, NPCPos.y, PlayerAction.instance.transform.position.z));
-        PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
+        PlayerAction.instance.SetMoveTo(new Vector3(NPCPos.x, NPCPos.y, PlayerAction.instance.transform.position.z));
+        //PlayerAction.instance.SetDestination(new Vector3(NPCPos.x, NPCPos.y, PlayerAction.instance.transform.position.z));
+        //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
 
         // to save the click target
         //RaycastInfo.clickTarget = this;   // to store it

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class TerrainEventHandler : MonoBehaviour {
 
@@ -15,8 +16,9 @@ public class TerrainEventHandler : MonoBehaviour {
         // Player Movement stuff
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
-        PlayerAction.instance.SetDestination(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
-        PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
+        PlayerAction.instance.SetMoveTo(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
+        //PlayerAction.instance.SetDestination(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
+        //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
 #endif
     }
 
@@ -24,8 +26,13 @@ public class TerrainEventHandler : MonoBehaviour {
     private void OnMouseOver()
     {
 #if LEVELEDITOR
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            goto rightClick;
+        }
+
         // highlight tile
-        this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+            this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
 
         // set ghost object
         if (LevelEditorManager.leManager.GetGhostID() == 0) {

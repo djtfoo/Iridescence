@@ -2,6 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum SPRITE_DIRECTION
+{
+    DIR_DOWN = 0,
+    DIR_DOWNLEFT,
+    DIR_LEFT,
+    DIR_UPLEFT,
+    DIR_UP,
+    DIR_UPRIGHT,
+    DIR_RIGHT,
+    DIR_DOWNRIGHT,
+
+    DIR_TOTAL
+}
+
 [System.Serializable]
 public struct SerialiseSpriteAnimation
 {
@@ -30,7 +44,7 @@ public class SpriteAnimator : MonoBehaviour {
     private SpriteAnimation currSprAnimation;   // current sprite animation
     private SpriteRenderer sr;  // a handle to this GameObject's SpriteRenderer
     private int frame = 0;  // this frame
-    private int currDirection = 0;  // which direction currently facing
+    private int currDirection = (int)SPRITE_DIRECTION.DIR_DOWN;  // which direction currently facing
     private float timeElapsed = 0f;
 
 	// Use this for initialization
@@ -58,7 +72,7 @@ public class SpriteAnimator : MonoBehaviour {
 	void Update () {
         timeElapsed += Time.deltaTime;
 
-        while (timeElapsed >= frameTime)
+        if (timeElapsed >= frameTime)
         {
             timeElapsed -= frameTime;
             ++frame;
@@ -67,12 +81,22 @@ public class SpriteAnimator : MonoBehaviour {
 
             sr.sprite = currSprAnimation.sprites[frame];
         }
-
     }
 
     public void ChangeAnimation(string animationName)
     {
 
+    }
+
+    public void ChangeDirection(int dir)
+    {
+        frame = dir * currSprAnimation.framesPerStrip + frame % currSprAnimation.framesPerStrip;
+        currDirection = dir;
+        sr.sprite = currSprAnimation.sprites[frame];
+    }
+    public void ChangeDirection(SPRITE_DIRECTION dir)
+    {
+        ChangeDirection((int)dir);
     }
 
 }
