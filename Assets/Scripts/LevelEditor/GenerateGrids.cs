@@ -24,12 +24,15 @@ public class GenerateGrids : MonoBehaviour {
 
     void GenerateEmptyGrid()
     {
+        float posX, posY;
         for (int y = 0; y <= rows; ++y)
         {
-            for (int x = 0; x <= columns; ++x)
+            posX = gridWidth * y;
+            posY = -gridHeight * y;
+            for (int x = 0; x <= columns; ++x, posX += gridWidth, posY += gridHeight)
             {
-                float posX = (gridWidth * y) + (gridWidth * x);
-                float posY = (-gridHeight * y) + (gridHeight * x);
+                //float posX = (gridWidth * y) + (gridWidth * x);
+                //float posY = (-gridHeight * y) + (gridHeight * x);
 
                 Transform newTile = (Transform)Instantiate(gridPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                 newTile.SetParent(this.transform);

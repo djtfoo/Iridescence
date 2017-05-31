@@ -8,14 +8,26 @@ struct OutlineEdge
     public float gradient;
     public float c_intersection;
 
+    public void SetOutline(Vector2 pt1, Vector2 pt2)
+    {
+        this.pt1 = pt1;
+        this.pt2 = pt2;
+        CalculateGradient();
+        CalculateCIntersection();
+    }
+
     private void CalculateGradient()
     {
+        // can only be used when 2 points are defined
+
         // gradient = (y1 - y0) / (x1 - x0)
         gradient = (pt1.y - pt2.y) / (pt1.x - pt2.x);
     }
 
     private void CalculateCIntersection()
     {
+        // can only be used when gradient & 2 points are defined
+
         // derived from y0 = m(x0) + C; gradient = (y1 - y0) / (x1 - x0)
         // where x0 and y0 are values of x and y when x = 0
         // and x1 and y1 are values of x and y of any coordinate along the line

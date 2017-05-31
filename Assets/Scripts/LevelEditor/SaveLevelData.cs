@@ -38,9 +38,28 @@ public class SaveLevelData : MonoBehaviour {
     void GenerateEdgeData()
     {
         OutlineEdgeData edgeData = terrain.GetComponent<OutlineEdgeData>();
+        GenerateGrids gridsData = terrain.GetComponent<GenerateGrids>();
+        float halfGridWidth = gridsData.gridWidth * 0.5f;
+        float halfGridHeight = gridsData.gridHeight * 0.5f;
+
         foreach (Transform child in terrain.transform)  // each grid
         {
             // create the 4 outlines of the grid
+            //  first 2 edges are \
+            OutlineEdge edge1 = new OutlineEdge();
+            edge1.SetOutline(new Vector2(child.position.x - halfGridWidth, child.position.y),
+                new Vector2(child.position.x, child.position.y - halfGridHeight));
+            OutlineEdge edge2 = new OutlineEdge();
+            edge2.SetOutline(new Vector2(child.position.x, child.position.y + halfGridHeight),
+                new Vector2(child.position.x + halfGridWidth, child.position.y));
+            // next 2 edges are /
+            OutlineEdge edge3 = new OutlineEdge();
+            edge3.SetOutline(new Vector2(child.position.x - halfGridWidth, child.position.y),
+                new Vector2(child.position.x, child.position.y + halfGridHeight));
+
+            OutlineEdge edge4 = new OutlineEdge();
+            edge4.SetOutline(new Vector2(child.position.x, child.position.y - halfGridHeight),
+                new Vector2(child.position.x + halfGridWidth, child.position.y));
 
             // check if these outlines are the same as existing outlines
 
