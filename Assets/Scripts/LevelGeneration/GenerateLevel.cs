@@ -50,18 +50,18 @@ public class GenerateLevel : MonoBehaviour {
         int columns = levelGrid.GetUpperBound(1);
 
         // create terrain
-        float posX, posY;
+        //float posX, posY;
         for (int y = 0; y <= rows; ++y)
         {
-            posX = width * y;
-            posY = -height * y;
-            for (int x = 0; x <= columns; ++x, posX += width, posY += height)
+            //posX = width * y;
+            //posY = -height * y;
+            for (int x = 0; x <= columns; ++x/*, posX += width, posY += height*/)
             {
                 if (levelGrid[y, x] == 0)
                     continue;
 
-                //float posX = (width * y) + (width * x);
-                //float posY = (-height * y) + (height * x);
+                float posX = (width * y) + (width * x);
+                float posY = (-height * y) + (height * x);
 
                 Transform newTile = (Transform)Instantiate(genericTile, new Vector3(0, 0, 0), Quaternion.identity);
                 newTile.SetParent(this.transform);

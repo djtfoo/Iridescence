@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-struct OutlineEdge
+public struct OutlineEdge
 {
     // Y = mX + c  as variables
     public Vector2 pt1, pt2;   // start & end points that define the line
@@ -33,28 +33,45 @@ struct OutlineEdge
         // and x1 and y1 are values of x and y of any coordinate along the line
         Vector2 ptToUse; // for the calculation
         if (pt1.x == 0)
-            ptToUse = pt1;
-        else
             ptToUse = pt2;
+        else
+            ptToUse = pt1;
 
         c_intersection = ptToUse.y - (gradient * ptToUse.x);
+    }
+
+    static bool CheckTwoFloatValuesAreEqual(float val1, float val2)
+    {
+        if (val1 - val2 <= Mathf.Epsilon || val2 - val1 <= Mathf.Epsilon)
+            return true;
+
+        return false;
+    }
+
+    static bool CheckTwoPointsAreEqual(Vector2 pt1, Vector2 pt2)
+    {
+        if ((pt1.x - pt2.x <= Mathf.Epsilon || pt2.x - pt1.x <= Mathf.Epsilon) &&
+            (pt1.y - pt2.y <= Mathf.Epsilon || pt2.y - pt1.y <= Mathf.Epsilon))
+            return true;
+
+        return false;
     }
 
     // comparison - to check for deleting same edges
     public static bool operator ==(OutlineEdge edge1, OutlineEdge edge2)
     {
-        if ((edge1.pt1 == edge2.pt1) && (edge1.pt2 == edge2.pt2) &&
-            (edge1.gradient == edge2.gradient) &&
-            (edge1.c_intersection == edge2.c_intersection))
+        if (CheckTwoPointsAreEqual(edge1.pt1, edge2.pt1) && CheckTwoPointsAreEqual(edge1.pt2, edge2.pt2)) //&&
+            //(edge1.gradient == edge2.gradient) &&
+            //(edge1.c_intersection == edge2.c_intersection))
             return true;
 
         return false;
     }
     public static bool operator !=(OutlineEdge edge1, OutlineEdge edge2)
     {
-        if ((edge1.pt1 != edge2.pt1) || (edge1.pt2 != edge2.pt2) ||
-            (edge1.gradient != edge2.gradient) ||
-            (edge1.c_intersection != edge2.c_intersection))
+        if (!CheckTwoPointsAreEqual(edge1.pt1, edge2.pt1) || !CheckTwoPointsAreEqual(edge1.pt2, edge2.pt2)) //||
+            //(edge1.gradient != edge2.gradient) ||
+            //(edge1.c_intersection != edge2.c_intersection))
             return false;
 
         return true;
@@ -69,7 +86,10 @@ struct OutlineEdge
         //    return true;
 
         // if same c_intersection, they lie on the same line
-        if (edge1.c_intersection == edge2.c_intersection)
+        if (CheckTwoFloatValuesAreEqual(edge1.c_intersection, edge2.c_intersection) &&
+            (CheckTwoPointsAreEqual(edge1.pt1, edge2.pt1) || CheckTwoPointsAreEqual(edge1.pt1, edge2.pt2) ||
+            CheckTwoPointsAreEqual(edge1.pt2, edge2.pt1) || CheckTwoPointsAreEqual(edge1.pt2, edge2.pt2)))
+            // dunnid check again cause the edges are created with the same direction
             return true;
 
         return false;
@@ -79,11 +99,11 @@ struct OutlineEdge
         // assume gradient is the same already and they can be added together.
         // conditions for adding together:
         // gradients are the same; they share 1 common point
-        if (this.pt1 == other.pt1)
+        if (CheckTwoPointsAreEqual(this.pt1, other.pt1))
             this.pt1 = other.pt2;
-        else if (this.pt2 == other.pt1)
+        else if (CheckTwoPointsAreEqual(this.pt2, other.pt1))
             this.pt2 = other.pt2;
-        else if (this.pt1 == other.pt2)
+        else if (CheckTwoPointsAreEqual(this.pt1, other.pt2))
             this.pt1 = other.pt1;
         else //if (this.pt2 == other.pt2)
             this.pt2 = other.pt1;
