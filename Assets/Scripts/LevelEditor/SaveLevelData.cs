@@ -8,14 +8,18 @@ public class SaveLevelData : MonoBehaviour {
     public GameObject terrain;
     public string fileDirectory = "LevelPrefab/";
 
-    //GameObject savedTerrain;
+    GameObject clonedTerrain;
 
     public void SaveTerrainData()
     {
-        //savedTerrain = terrain;
+        clonedTerrain = new GameObject();
+        clonedTerrain.AddComponent<OutlineEdgeData>();
+
         DeleteGridZero();   // delete grids that were not filled up
         GenerateEdgeData(); // generate edge data for pathfinding
+        //DestroyImmediate(clonedTerrain.GetComponent<GenerateGrids>()); // remove this component
         SavePrefab();   // save Terrain into a prefab
+        Destroy(clonedTerrain);
     }
 
     void DeleteGridZero()
@@ -25,13 +29,19 @@ public class SaveLevelData : MonoBehaviour {
         {
             Transform child = terrain.transform.GetChild(i);
             AssetInfo gridInfo = child.GetComponent<AssetInfo>();
-            if (gridInfo.GetID() == 0)
+            //if (gridInfo.GetID() == 0)
+            //{
+            //    DestroyImmediate(child.gameObject);
+            //}
+            //else
+            //{
+            //    DestroyImmediate(gridInfo);
+            //}
+            if (gridInfo.GetID() != 0)
             {
-                DestroyImmediate(child.gameObject);
-            }
-            else
-            {
-                DestroyImmediate(gridInfo);
+                Transform tile = (Transform)Instantiate(child, child.position, Quaternion.identity);
+                tile.parent = clonedTerrain.transform;
+                DestroyImmediate(tile.GetComponent<AssetInfo>());
             }
         }
     }
@@ -64,7 +74,7 @@ public class SaveLevelData : MonoBehaviour {
 
         List<OutlineEdge> edgeBackslash = new List<OutlineEdge>();      // slash \
         List<OutlineEdge> edgeForwardslash = new List<OutlineEdge>();   // slash /
-        foreach (Transform child in terrain.transform)  // each grid
+        foreach (Transform child in clonedTerrain.transform)  // each grid
         {
             // create the 4 outlines of the grid
             //  first 2 edges are \
@@ -113,7 +123,7 @@ public class SaveLevelData : MonoBehaviour {
         }
 
         // add to OutlineEdgeData component
-        OutlineEdgeData edgeData = terrain.GetComponent<OutlineEdgeData>();
+        OutlineEdgeData edgeData = clonedTerrain.GetComponent<OutlineEdgeData>();
         for (int i = 0; i < edgeBackslash.Count; ++i)
         {
             edgeData.AddToList(edgeBackslash[i]);
@@ -122,9 +132,6 @@ public class SaveLevelData : MonoBehaviour {
         {
             edgeData.AddToList(edgeForwardslash[i]);
         }
-
-        // DEBUG: draw out the lines one by one
-
     }
 
     void SavePrefab()
@@ -132,11 +139,11 @@ public class SaveLevelData : MonoBehaviour {
         GameObject prefab = null;
         prefab = Resources.Load<GameObject>(fileDirectory + "testPrefab");
         if (prefab) {
-            PrefabUtility.ReplacePrefab(terrain, prefab, ReplacePrefabOptions.ConnectToPrefab);
+            PrefabUtility.ReplacePrefab(clonedTerrain, prefab, ReplacePrefabOptions.ConnectToPrefab);
         }
         else {
-            prefab = new GameObject();
-            PrefabUtility.CreatePrefab(fileDirectory + "testPrefab" + ".prefab", terrain);
+            //prefab = new GameObject();
+            PrefabUtility.CreatePrefab(fileDirectory + "testPrefab" + ".prefab", clonedTerrain);
         }
 
         //prefab.name = 
