@@ -13,7 +13,6 @@ public class SaveLevelData : MonoBehaviour {
     public void SaveTerrainData()
     {
         clonedTerrain = new GameObject();
-        clonedTerrain.AddComponent<OutlineEdgeData>();
 
         DeleteGridZero();   // delete grids that were not filled up
         GenerateEdgeData(); // generate edge data for pathfinding
@@ -123,14 +122,14 @@ public class SaveLevelData : MonoBehaviour {
         }
 
         // add to OutlineEdgeData component
-        OutlineEdgeData edgeData = clonedTerrain.GetComponent<OutlineEdgeData>();
+        OutlineEdgeData edgeData = clonedTerrain.AddComponent<OutlineEdgeData>() as OutlineEdgeData;
         for (int i = 0; i < edgeBackslash.Count; ++i)
         {
-            edgeData.AddToList(edgeBackslash[i]);
+            edgeData.AddBackslash(edgeBackslash[i]);
         }
         for (int i = 0; i < edgeForwardslash.Count; ++i)
         {
-            edgeData.AddToList(edgeForwardslash[i]);
+            edgeData.AddForwardslash(edgeForwardslash[i]);
         }
     }
 

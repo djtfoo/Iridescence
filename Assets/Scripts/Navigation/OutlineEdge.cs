@@ -88,6 +88,14 @@ public struct OutlineEdge
         return true;
     }
 
+    public static bool IsSameGradient(OutlineEdge edge1, OutlineEdge edge2)
+    {
+        if (CheckTwoFloatValuesAreEqual(edge1.gradient, edge2.gradient))
+            return true;
+
+        return false;
+    }
+
     // add together - when combining to form the outline shape
     public static bool CanAddTogether(OutlineEdge edge1, OutlineEdge edge2)
     {

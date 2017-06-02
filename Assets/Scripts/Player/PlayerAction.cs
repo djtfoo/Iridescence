@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerAction : MonoBehaviour {
 
     Vector3 velocity;
-    Vector3 destination;
+    //Vector3 destination;
+    List<Vector3> pathWaypoints = new List<Vector3>();  // storing the waypoints of a path
     //float getMouse0InputTimer = 0f;
     //const float mouse0InputTimer = 0.05f;
 
@@ -52,44 +54,69 @@ public class PlayerAction : MonoBehaviour {
             // STORING OF CLICK TARGET - MEANING NPC/ENEMY, WHICH IS THE "END-GOAL" OF THE MOVEMENT
             if (RaycastInfo.clickTarget)    // != null
             {
-                float distSquared = (destination - this.transform.position).sqrMagnitude;
+                float distSquared = (pathWaypoints[0] - this.transform.position).sqrMagnitude;
                 // attack
                 if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy && distSquared < PlayerData.attackRangeSquared)
                 {
-                    velocity = Vector3.zero;
                     doAttack = true;
+                    //velocity = Vector3.zero;
+                    SetPathComplete();
                     //clickTarget = null;   // don't null so you can attack that target?
+                    goto endOfVelocityMovement;
                 }
                 // enter dialogue
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC && distSquared < PlayerData.converseRangeSquared)
                 {
                     DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
-                    velocity = Vector3.zero;
-                }
-                // move
-                else
-                {
-                    this.transform.position += velocity * Time.deltaTime;
+                    //velocity = Vector3.zero;
+                    SetPathComplete();
+                    goto endOfVelocityMovement;
                 }
             }
-            else
+
+            // check for reach waypoint destination
+            Vector3 dirCheck = pathWaypoints[0] - this.transform.position;
+            // check by knowing whether "overshot" the path
+            float cosAngle = dirCheck.x * velocity.x + dirCheck.z * velocity.z;
+            if (cosAngle < 0f) {
+                ReachedWaypoint();
+            }
+
+            // move because still got somewhere to move to
+            if (pathWaypoints.Count != 0)
             {
                 this.transform.position += velocity * Time.deltaTime;
-
-                Vector3 dirCheck = destination - this.transform.position;
-                float cosAngle = dirCheck.x * velocity.x + dirCheck.z * velocity.z;
-                if (cosAngle < 0f)
-                {
-                    velocity = Vector3.zero;
-                }
             }
         }
+
+    endOfVelocityMovement:;
     }   // end of Update()
+
+    private void ReachedWaypoint()
+    {
+        pathWaypoints.RemoveAt(0);
+        if (pathWaypoints.Count == 0)
+            SetPathComplete();
+        else
+            SetVelocity((pathWaypoints[0] - transform.position).normalized);
+    }
+    private void SetPathComplete()
+    {
+        velocity = Vector3.zero;
+        pathWaypoints.Clear();
+    }
 
     public void SetMoveTo(Vector3 destination)
     {
-        SetDestination(destination);
-        SetVelocity((destination - transform.position).normalized);
+        // empty path
+        pathWaypoints.Clear();
+        // calculate path
+        this.GetComponent<Pathfinder>().CalculatePath(destination, ref pathWaypoints);
+        //SetDestination(destination);
+        SetVelocity((pathWaypoints[0] - transform.position).normalized);
+
+        //SetDestination(destination);
+        //SetVelocity((destination - transform.position).normalized);
 
         // get direction
         Vector2 playerVel = new Vector2(velocity.x, velocity.y);
@@ -109,10 +136,10 @@ public class PlayerAction : MonoBehaviour {
     {
         return velocity;
     }
-    public Vector3 GetDestination()
-    {
-        return destination;
-    }
+    //public Vector3 GetDestination()
+    //{
+    //    return destination;
+    //}
 
     // Setters
     public void SetVelocity(Vector3 newVel)
@@ -123,9 +150,9 @@ public class PlayerAction : MonoBehaviour {
     {
         SetVelocity(Vector3.zero);
     }
-    public void SetDestination(Vector3 newDest)
-    {
-        destination = newDest;
-    }
+    //public void SetDestination(Vector3 newDest)
+    //{
+    //    destination = newDest;
+    //}
 
 }   // end of class
