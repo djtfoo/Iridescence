@@ -36,17 +36,18 @@ public class SaveLevelData : MonoBehaviour {
         }
     }
 
-    void CheckForDuplicate(OutlineEdge edge, List<OutlineEdge> list, ref int idx)
+    void CheckForDuplicate(OutlineEdge edge, List<OutlineEdge> list)
     {
         bool duplicateFound = false;
-        for (int i = idx; i < list.Count; ++i)
+        for (int i = 0; i < list.Count; ++i)
         {
-            if (edge == list[i])
+            //if (edge == list[i])
+            if (edge.Equals(list[i]))
             {
-                OutlineEdge toShift = list[i];
+                //OutlineEdge toShift = list[i];
                 list.RemoveAt(i);
-                list.Insert(i, toShift);
-                ++idx;
+                //list.Insert(0, toShift);
+                //++idx;
                 duplicateFound = true;
                 break;
             }
@@ -62,9 +63,7 @@ public class SaveLevelData : MonoBehaviour {
         float gridHeight = gridsData.gridHeight;
 
         List<OutlineEdge> edgeBackslash = new List<OutlineEdge>();      // slash \
-        int backslashDoneIdx = 0;   // index for which edges have a duplicate found alr
         List<OutlineEdge> edgeForwardslash = new List<OutlineEdge>();   // slash /
-        int forwardslashDoneIdx = 0;    // index for which edges have a duplicate found alr
         foreach (Transform child in terrain.transform)  // each grid
         {
             // create the 4 outlines of the grid
@@ -85,13 +84,13 @@ public class SaveLevelData : MonoBehaviour {
                 new Vector2(child.position.x + gridWidth, child.position.y));
 
             // check if these outlines are the same as existing outlines
-            CheckForDuplicate(edge1, edgeBackslash, ref backslashDoneIdx);
-            CheckForDuplicate(edge2, edgeBackslash, ref backslashDoneIdx);
-            CheckForDuplicate(edge3, edgeForwardslash, ref forwardslashDoneIdx);
-            CheckForDuplicate(edge4, edgeForwardslash, ref forwardslashDoneIdx);
+            CheckForDuplicate(edge1, edgeBackslash);
+            CheckForDuplicate(edge2, edgeBackslash);
+            CheckForDuplicate(edge3, edgeForwardslash);
+            CheckForDuplicate(edge4, edgeForwardslash);
         }
 
-        // add together outlines along the same line
+        //// add together outlines along the same line
         for (int i = edgeBackslash.Count - 1; i >= 0; --i)
         {
             for (int j = i - 1; j >= 0; --j)

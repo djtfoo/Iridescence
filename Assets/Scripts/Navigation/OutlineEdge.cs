@@ -8,6 +8,8 @@ public struct OutlineEdge
     public float gradient;
     public float c_intersection;
 
+    static float forgivenessValue = 0.01f;
+
     public void SetOutline(Vector2 pt1, Vector2 pt2)
     {
         this.pt1 = pt1;
@@ -42,7 +44,7 @@ public struct OutlineEdge
 
     static bool CheckTwoFloatValuesAreEqual(float val1, float val2)
     {
-        if (val1 - val2 <= Mathf.Epsilon || val2 - val1 <= Mathf.Epsilon)
+        if (Mathf.Abs(val1 - val2) <= forgivenessValue)
             return true;
 
         return false;
@@ -50,8 +52,9 @@ public struct OutlineEdge
 
     static bool CheckTwoPointsAreEqual(Vector2 pt1, Vector2 pt2)
     {
-        if ((pt1.x - pt2.x <= Mathf.Epsilon || pt2.x - pt1.x <= Mathf.Epsilon) &&
-            (pt1.y - pt2.y <= Mathf.Epsilon || pt2.y - pt1.y <= Mathf.Epsilon))
+        //if ((pt1.x - pt2.x <= forgivenessValue || pt2.x - pt1.x <= forgivenessValue) &&
+        //    (pt1.y - pt2.y <= forgivenessValue || pt2.y - pt1.y <= forgivenessValue))
+        if (CheckTwoFloatValuesAreEqual(pt1.x, pt2.x) && CheckTwoFloatValuesAreEqual(pt1.y, pt2.y))
             return true;
 
         return false;
@@ -67,6 +70,14 @@ public struct OutlineEdge
 
         return false;
     }
+    public bool Equals(OutlineEdge other)
+    {
+        if (CheckTwoPointsAreEqual(this.pt1, other.pt1) && CheckTwoPointsAreEqual(this.pt2, other.pt2))
+            return true;
+
+        return false;
+    }
+
     public static bool operator !=(OutlineEdge edge1, OutlineEdge edge2)
     {
         if (!CheckTwoPointsAreEqual(edge1.pt1, edge2.pt1) || !CheckTwoPointsAreEqual(edge1.pt2, edge2.pt2)) //||
@@ -86,7 +97,7 @@ public struct OutlineEdge
         //    return true;
 
         // if same c_intersection, they lie on the same line
-        if (CheckTwoFloatValuesAreEqual(edge1.c_intersection, edge2.c_intersection) &&
+        if (CheckTwoFloatValuesAreEqual(edge1.gradient, edge2.gradient) &&
             (CheckTwoPointsAreEqual(edge1.pt1, edge2.pt1) || CheckTwoPointsAreEqual(edge1.pt1, edge2.pt2) ||
             CheckTwoPointsAreEqual(edge1.pt2, edge2.pt1) || CheckTwoPointsAreEqual(edge1.pt2, edge2.pt2)))
             // dunnid check again cause the edges are created with the same direction
