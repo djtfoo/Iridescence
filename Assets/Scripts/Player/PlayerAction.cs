@@ -4,11 +4,16 @@ using System.Collections.Generic;
 
 public class PlayerAction : MonoBehaviour {
 
+    public GameObject destinationMarkerPrefab;
+    GameObject destinationMarker;
+
     Vector3 velocity;
     //Vector3 destination;
     List<Vector3> pathWaypoints = new List<Vector3>();  // storing the waypoints of a path
     //float getMouse0InputTimer = 0f;
     //const float mouse0InputTimer = 0.05f;
+
+    PlayerAttack attack;
 
     bool doAttack = false;
 
@@ -27,12 +32,16 @@ public class PlayerAction : MonoBehaviour {
         RaycastInfo.clickTarget = null;
 
         instance = GameObject.Find("Player").GetComponent<PlayerAction>();
+
+        attack = this.GetComponent<PlayerAttack>();
+
+        destinationMarker = (GameObject)Instantiate(destinationMarkerPrefab, destinationMarkerPrefab.transform.position, Quaternion.identity);
+        destinationMarker.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         // in conversation; cannot move
         if (DialogueManager.inDialogue)
         {
@@ -44,7 +53,20 @@ public class PlayerAction : MonoBehaviour {
         {
             // cast skill when "ready"/have buffer time/is animation
             // check for collision
-            RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
+            
+            // temp
+            switch (attack.attackType)
+            {
+                case ATK_TYPE.ATK_MELEE:
+                    //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
+                    RaycastInfo.clickTarget.SendMessage("TakeDamage", attack.meleeDmg);
+                    break;
+
+                case ATK_TYPE.ATK_FIREPROJECTILE:
+                    attack.SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
+                    //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
+                    break;
+            }
             doAttack = false;
         }
 
@@ -56,13 +78,30 @@ public class PlayerAction : MonoBehaviour {
             {
                 float distSquared = (pathWaypoints[0] - this.transform.position).sqrMagnitude;
                 // attack
-                if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy && distSquared < PlayerData.attackRangeSquared)
+                if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
                 {
-                    doAttack = true;
-                    //velocity = Vector3.zero;
-                    SetPathComplete();
-                    //clickTarget = null;   // don't null so you can attack that target?
-                    goto endOfVelocityMovement;
+                    bool reachedDest = false;
+                    switch (attack.attackType)
+                    {
+                        case ATK_TYPE.ATK_MELEE:
+                            if (distSquared < attack.meleeRangeSquared)
+                                reachedDest = true;
+                            break;
+
+                        case ATK_TYPE.ATK_FIREPROJECTILE:
+                            if (distSquared < attack.rangedRangeSquared)
+                                reachedDest = true;
+                            break;
+                    }
+
+                    if (reachedDest)
+                    {
+                        doAttack = true;
+                        //velocity = Vector3.zero;
+                        SetPathComplete();
+                        //clickTarget = null;   // don't null so you can attack that target?
+                        goto endOfVelocityMovement;
+                    }
                 }
                 // enter dialogue
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC && distSquared < PlayerData.converseRangeSquared)
@@ -104,6 +143,10 @@ public class PlayerAction : MonoBehaviour {
     {
         velocity = Vector3.zero;
         pathWaypoints.Clear();
+
+        this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Idle");
+
+        destinationMarker.SetActive(false);
     }
 
     private void CalculateDirection()
@@ -126,7 +169,15 @@ public class PlayerAction : MonoBehaviour {
         // calculate path
         this.GetComponent<Pathfinder>().CalculatePath(destination, ref pathWaypoints);
         //SetDestination(destination);
+
+        // change to walk animation
+        if (velocity.Equals(Vector3.zero))
+            this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Walk");
+
         SetVelocity((pathWaypoints[0] - transform.position).normalized);
+
+        destinationMarker.SetActive(true);
+        destinationMarker.transform.position = new Vector3(destination.x, destination.y, 1f);
 
         //SetDestination(destination);
         //SetVelocity((destination - transform.position).normalized);
@@ -138,6 +189,10 @@ public class PlayerAction : MonoBehaviour {
     public Vector3 GetVelocity()
     {
         return velocity;
+    }
+    public PlayerAttack GetAttackScript()
+    {
+        return attack;
     }
     //public Vector3 GetDestination()
     //{

@@ -38,17 +38,24 @@ public class SpriteAnimator : MonoBehaviour {
 
     public SerialiseSpriteAnimation[] initAnimationsList; // FOR INITIALISING ONLY
 
-    public float frameTime = 0.5f;
+    public float frameTime = 0.3f;
 
     private Dictionary<string, SpriteAnimation> animationsList;
     private SpriteAnimation currSprAnimation;   // current sprite animation
     private SpriteRenderer sr;  // a handle to this GameObject's SpriteRenderer
-    private int frame = 0;  // this frame
+    private int currFrame = 0;  // this frame
     private int currDirection = (int)SPRITE_DIRECTION.DIR_DOWN;  // which direction currently facing
     private float timeElapsed = 0f;
 
+    // for idle ONLY
+    private bool isIdleAnimation = true;
+    private bool isBlinking = false;
+    private int direction = 1;
+
 	// Use this for initialization
 	void Start () {
+        Random.seed = 0;
+
         animationsList = new Dictionary<string, SpriteAnimation>();
         sr = this.GetComponent<SpriteRenderer>();
 
@@ -65,34 +72,84 @@ public class SpriteAnimator : MonoBehaviour {
                 currSprAnimation = temp;
         }
         //currSprAnimation = initAnimationsList[0];
-        sr.sprite = currSprAnimation.sprites[frame];    // frame = 0
+        sr.sprite = currSprAnimation.sprites[currFrame];    // frame = 0
     }
 	
 	// Update is called once per frame
 	void Update () {
         timeElapsed += Time.deltaTime;
 
+        if (isIdleAnimation)
+        {
+            if (timeElapsed >= frameTime)
+            {
+                timeElapsed -= frameTime;
+                if (isBlinking)
+                {
+                    currFrame += direction;
+                    if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection) - 1)
+                    {
+                        direction = -1;
+                    }
+                    else if (currFrame <= currSprAnimation.framesPerStrip * currDirection)
+                    {
+                        direction = 1;
+                        isBlinking = false;
+                    }
+                }
+                else
+                {
+                    ++currFrame;
+                    if (currFrame >= currSprAnimation.framesPerStrip * currDirection + 2)
+                    {
+                        int rand = (int)Random.Range(0f, 2f);
+                        if (rand == 0)
+                        {   // normal idle
+                            currFrame -= 2;
+                        }
+                        else
+                        {   // blink loop
+                            isBlinking = true;
+                        }
+                    }
+                }
+
+                sr.sprite = currSprAnimation.sprites[currFrame];
+            }
+
+            return;
+        }
+
         if (timeElapsed >= frameTime)
         {
             timeElapsed -= frameTime;
-            ++frame;
-            if (frame >= currSprAnimation.framesPerStrip * (1 + currDirection))
-                frame -= currSprAnimation.framesPerStrip;
+            ++currFrame;
+            if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection))
+                currFrame -= currSprAnimation.framesPerStrip;
 
-            sr.sprite = currSprAnimation.sprites[frame];
+            sr.sprite = currSprAnimation.sprites[currFrame];
         }
     }
 
     public void ChangeAnimation(string animationName)
     {
+        currSprAnimation = animationsList[animationName];
+        currFrame = currSprAnimation.framesPerStrip * currDirection;
+        sr.sprite = currSprAnimation.sprites[currFrame];    // frame 0 of that strip
 
+        isBlinking = false;
+
+        if (animationName == "Idle")
+            isIdleAnimation = true;
+        else
+            isIdleAnimation = false;
     }
 
     public void ChangeDirection(int dir)
     {
-        frame = dir * currSprAnimation.framesPerStrip + frame % currSprAnimation.framesPerStrip;
+        currFrame = dir * currSprAnimation.framesPerStrip + currFrame % currSprAnimation.framesPerStrip;
         currDirection = dir;
-        sr.sprite = currSprAnimation.sprites[frame];
+        sr.sprite = currSprAnimation.sprites[currFrame];
     }
     public void ChangeDirection(SPRITE_DIRECTION dir)
     {

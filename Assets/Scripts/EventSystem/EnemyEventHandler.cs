@@ -17,6 +17,7 @@ public class EnemyEventHandler : MonoBehaviour {
 
         // walk to enemy
         Vector2 enemyPos = this.transform.parent.position;
+        PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_MELEE;
         PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
@@ -34,6 +35,17 @@ public class EnemyEventHandler : MonoBehaviour {
 
         // for now, just change colour
         this.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
+
+        if (Input.GetMouseButtonDown(1))    // right click
+        {
+            // store the type into RaycastInfo via getting tag/name
+            RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
+
+            // walk to enemy
+            Vector2 enemyPos = this.transform.parent.position;
+            PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_FIREPROJECTILE;
+            PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+        }
 #endif
     }
 
