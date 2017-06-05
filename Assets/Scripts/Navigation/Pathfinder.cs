@@ -8,7 +8,7 @@ public class Pathfinder : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        edgeData = GameObject.Find("Terrain").GetComponent<OutlineEdgeData>();
+        //edgeData = GameObject.Find("Terrain").GetComponent<OutlineEdgeData>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +21,9 @@ public class Pathfinder : MonoBehaviour {
     // the intersection points will usually (but not always) be on opposite types of edges
     public void CalculatePath(Vector3 destination, ref List<Vector3> waypoints)
     {
+        if (edgeData == null)
+            edgeData = GameObject.Find("Terrain").GetComponent<OutlineEdgeData>();
+
         OutlineEdge playerToDest = new OutlineEdge();   // OutlineEdge to be easier to do calculations
         playerToDest.SetOutline(this.transform.position, destination);
 

@@ -22,7 +22,7 @@ public class GenerateLevel : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // test only
+        // TEST ONLY!!
         if (Input.GetKeyDown(KeyCode.Tab))  // change level
         {
             // remove/reset scene here

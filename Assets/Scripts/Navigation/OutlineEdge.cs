@@ -127,5 +127,31 @@ public struct OutlineEdge
         else //if (this.pt2 == other.pt2)
             this.pt2 = other.pt1;
     }
+    public static OutlineEdge operator +(OutlineEdge edge1, OutlineEdge edge2)
+    {
+        OutlineEdge edge = new OutlineEdge();
+        if (CheckTwoPointsAreEqual(edge1.pt1, edge2.pt2))
+            edge.SetOutline(edge2.pt1, edge1.pt2);
+
+        return edge;
+    }
+
+    // save to text file
+    public string ConvertToString(bool isBackslash)
+    {
+        string line = "";
+
+        if (isBackslash)
+            line += "1,";
+        else
+            line += "0,";
+
+        line += pt1.x.ToString() + "," + pt1.y.ToString() + ",";
+        line += pt2.x.ToString() + "," + pt2.y.ToString() + ",";
+        line += gradient.ToString() + ",";
+        line += c_intersection.ToString() + "\n";
+
+        return line;
+    }
 
 }

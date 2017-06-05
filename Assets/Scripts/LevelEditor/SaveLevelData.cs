@@ -16,12 +16,11 @@ public class SaveLevelData : MonoBehaviour {
 
         DeleteGridZero();   // delete grids that were not filled up
         GenerateEdgeData(); // generate edge data for pathfinding
-        //DestroyImmediate(clonedTerrain.GetComponent<GenerateGrids>()); // remove this component
         SavePrefab();   // save Terrain into a prefab
         Destroy(clonedTerrain);
     }
 
-    void DeleteGridZero()
+    private void DeleteGridZero()
     {
         //foreach (Transform child in terrain.transform)
         for (int i = terrain.transform.childCount - 1; i >= 0; --i)
@@ -45,7 +44,7 @@ public class SaveLevelData : MonoBehaviour {
         }
     }
 
-    void CheckForDuplicate(OutlineEdge edge, List<OutlineEdge> list)
+    private void CheckForDuplicate(OutlineEdge edge, List<OutlineEdge> list)
     {
         bool duplicateFound = false;
         for (int i = 0; i < list.Count; ++i)
@@ -65,7 +64,7 @@ public class SaveLevelData : MonoBehaviour {
             list.Add(edge);
     }
 
-    void GenerateEdgeData()
+    private void GenerateEdgeData()
     {
         GenerateGrids gridsData = terrain.GetComponent<GenerateGrids>();
         float gridWidth = gridsData.gridWidth;
@@ -99,13 +98,14 @@ public class SaveLevelData : MonoBehaviour {
             CheckForDuplicate(edge4, edgeForwardslash);
         }
 
-        //// add together outlines along the same line
+        // add together outlines along the same line
         for (int i = edgeBackslash.Count - 1; i >= 0; --i)
         {
             for (int j = i - 1; j >= 0; --j)
                 if (OutlineEdge.CanAddTogether(edgeBackslash[i], edgeBackslash[j]))
                 {
-                    edgeBackslash[j].Add(edgeBackslash[i]);
+                    //edgeBackslash[j].Add(edgeBackslash[i]);
+                    edgeBackslash[j] = edgeBackslash[j] + edgeBackslash[i];
                     edgeBackslash.RemoveAt(i);
                     break;
                 }
@@ -115,25 +115,49 @@ public class SaveLevelData : MonoBehaviour {
             for (int j = i - 1; j >= 0; --j)
                 if (OutlineEdge.CanAddTogether(edgeForwardslash[i], edgeForwardslash[j]))
                 {
-                    edgeForwardslash[j].Add(edgeForwardslash[i]);
+                    //edgeForwardslash[j].Add(edgeForwardslash[i]);
+                    edgeForwardslash[j] = edgeForwardslash[j] + edgeForwardslash[i];
                     edgeForwardslash.RemoveAt(i);
                     break;
                 }
         }
 
+        SaveOutlineData(edgeBackslash, edgeForwardslash);  // save outline data to a txt file
+
         // add to OutlineEdgeData component
-        OutlineEdgeData edgeData = clonedTerrain.AddComponent<OutlineEdgeData>() as OutlineEdgeData;
-        for (int i = 0; i < edgeBackslash.Count; ++i)
-        {
-            edgeData.AddBackslash(edgeBackslash[i]);
-        }
-        for (int i = 0; i < edgeForwardslash.Count; ++i)
-        {
-            edgeData.AddForwardslash(edgeForwardslash[i]);
-        }
+        //OutlineEdgeData edgeData = clonedTerrain.AddComponent<OutlineEdgeData>() as OutlineEdgeData;
+        //for (int i = 0; i < edgeBackslash.Count; ++i)
+        //{
+        //    edgeData.AddBackslash(edgeBackslash[i]);
+        //}
+        //for (int i = 0; i < edgeForwardslash.Count; ++i)
+        //{
+        //    edgeData.AddForwardslash(edgeForwardslash[i]);
+        //}
     }
 
-    void SavePrefab()
+    private void SaveOutlineData(List<OutlineEdge> edgeBackslash, List<OutlineEdge> edgeForwardslash)
+    {
+        // save to txt
+        string outlineTxt = "";
+        for (int i = 0; i < edgeBackslash.Count; ++i)
+        {
+            outlineTxt += edgeBackslash[i].ConvertToString(true);
+        }
+
+        for (int i = 0; i < edgeForwardslash.Count; ++i)
+        {
+            outlineTxt += edgeForwardslash[i].ConvertToString(false);
+        }
+
+        TxtHandler.WriteToTxt(outlineTxt, "Assets/Resources/OutlineData/testOutline.txt");
+
+        // add to OutlineEdgeData component
+        OutlineEdgeData edgeData = clonedTerrain.AddComponent<OutlineEdgeData>() as OutlineEdgeData;
+        edgeData.outlineFile = Resources.Load("OutlineData/testOutline") as TextAsset;
+    }
+
+    private void SavePrefab()
     {
         GameObject prefab = null;
         prefab = Resources.Load<GameObject>(fileDirectory + "testPrefab");
