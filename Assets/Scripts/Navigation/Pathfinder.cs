@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// NO LONGER IN USE
 public class Pathfinder : MonoBehaviour {
 
     OutlineEdgeData edgeData;
@@ -30,6 +31,7 @@ public class Pathfinder : MonoBehaviour {
         // check for intersections - against one type of edge first - in this case, backslash first
         List<OutlineEdge> backslashEdges = edgeData.GetBackslashEdges();
         List<OutlineEdge> intersections = new List<OutlineEdge>();
+        List<Vector2> intersectionPoints = new List<Vector2>();
 
         foreach (OutlineEdge edge in backslashEdges)
         {
@@ -52,6 +54,7 @@ public class Pathfinder : MonoBehaviour {
             if (CheckIntersection(playerToDest, edge)) {
                 // there is intersection with this edge
                 intersections.Add(edge);
+                intersectionPoints.Add(CalculateIntersectionPoint(playerToDest, edge));
             }
         }
         // [TEMPORARY!!] only check against other list if there are intersections
@@ -60,21 +63,29 @@ public class Pathfinder : MonoBehaviour {
         {
             List<OutlineEdge> forwardslashEdges = edgeData.GetForwardslashEdges();
             List<OutlineEdge> intersectionsTwo = new List<OutlineEdge>();
+            List<Vector2> intersectionTwoPoints = new List<Vector2>();
             foreach (OutlineEdge edge in forwardslashEdges)
             {
                 if (CheckIntersection(playerToDest, edge)) {
                     // there is intersection with this edge
                     intersectionsTwo.Add(edge);
+                    intersectionTwoPoints.Add(CalculateIntersectionPoint(playerToDest, edge));
                 }
             }
 
             // sort intersections by distance to player so the entry & exit of an intersection are aligned by index
-            SortListByDistFromStart(ref intersections);
-            SortListByDistFromStart(ref intersectionsTwo);
+            if (intersections.Count > 1) {
+                SortListByDistFromStart(ref intersections, ref intersectionPoints);
+                SortListByDistFromStart(ref intersectionsTwo, ref intersectionTwoPoints);
+            }
 
             // ASSUME ONLY 1 INTERSECTION FOR NOW
-            Vector2 intersectPt = CalculateIntersectionPoint(intersections[0], intersectionsTwo[0]);
-            waypoints.Add(intersectPt);
+            for (int i = 0; i < intersections.Count; ++i)
+            {
+                Vector2 intersectPt = CalculateIntersectionPoint(intersections[i], intersectionsTwo[i]);
+                waypoints.Add(new Vector3(intersectPt.x, intersectPt.y, destination.z));
+            }
+            
 
         }   // end of if intersections.Count == 0
 
@@ -146,9 +157,32 @@ public class Pathfinder : MonoBehaviour {
         return false;
     }
 
-    private void SortListByDistFromStart(ref List<OutlineEdge> edges)
+    private void SortListByDistFromStart(ref List<OutlineEdge> edges, ref List<Vector2> intersectionPts)
     {
-        //float leastDistance = edges[edges.Count - 1];
+        // sort from least to most
+        Vector2 playerPos = new Vector2(transform.position.x, transform.position.y);
+
+        for (int i = 0; i < edges.Count; ++i)
+        {
+            float dist1 = (intersectionPts[i] - playerPos).sqrMagnitude;
+
+            for (int j = 0; j < edges.Count - i; ++j)
+            {
+                float dist2 = (intersectionPts[j] - playerPos).sqrMagnitude;
+
+                if (dist1 < dist2)  // ascending
+                {
+                    // swap
+                    OutlineEdge tempEdge = edges[i];
+                    edges[i] = edges[j];
+                    edges[j] = tempEdge;
+
+                    Vector2 tempPos = intersectionPts[i];
+                    intersectionPts[i] = intersectionPts[j];
+                    intersectionPts[j] = tempPos;
+                }
+            }
+        }
     }
 
 }

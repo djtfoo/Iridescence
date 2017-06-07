@@ -38,7 +38,7 @@ public class SpriteAnimator : MonoBehaviour {
 
     public SerialiseSpriteAnimation[] initAnimationsList; // FOR INITIALISING ONLY
 
-    public float frameTime = 0.3f;
+    public float frameTime;
 
     private Dictionary<string, SpriteAnimation> animationsList;
     private SpriteAnimation currSprAnimation;   // current sprite animation

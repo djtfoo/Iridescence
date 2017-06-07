@@ -8,6 +8,9 @@ public class InstantiateLevel : MonoBehaviour {
 
     Transform terrain;
 
+    // init level variables for other stuff
+    // e.g. player pos
+
     private void Awake()
     {
         levelCount = 0;

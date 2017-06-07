@@ -167,7 +167,7 @@ public class PlayerAction : MonoBehaviour {
         // empty path
         pathWaypoints.Clear();
         // calculate path
-        this.GetComponent<Pathfinder>().CalculatePath(destination, ref pathWaypoints);
+        this.GetComponent<NewPathfinder>().CalculatePath(destination, ref pathWaypoints);
         //SetDestination(destination);
 
         // change to walk animation

@@ -8,6 +8,8 @@ public struct OutlineEdge
     public float gradient;
     public float c_intersection;
 
+    public bool isBackslash;
+
     static float forgivenessValue = 0.01f;
 
     public void SetOutline(Vector2 pt1, Vector2 pt2)
@@ -16,6 +18,10 @@ public struct OutlineEdge
         this.pt2 = pt2;
         CalculateGradient();
         CalculateCIntersection();
+    }
+    public void SetIsBackslash(bool isBackslash)
+    {
+        this.isBackslash = isBackslash;
     }
 
     private void CalculateGradient()
@@ -50,7 +56,7 @@ public struct OutlineEdge
         return false;
     }
 
-    static bool CheckTwoPointsAreEqual(Vector2 pt1, Vector2 pt2)
+    public static bool CheckTwoPointsAreEqual(Vector2 pt1, Vector2 pt2)
     {
         //if ((pt1.x - pt2.x <= forgivenessValue || pt2.x - pt1.x <= forgivenessValue) &&
         //    (pt1.y - pt2.y <= forgivenessValue || pt2.y - pt1.y <= forgivenessValue))
@@ -152,6 +158,34 @@ public struct OutlineEdge
         line += c_intersection.ToString() + "\n";
 
         return line;
+    }
+
+    // check for edges that are joined to another edge
+    public bool IsConnected(Vector3 connectingPt)
+    {
+        if (CheckTwoPointsAreEqual(connectingPt, this.pt1) ||
+            CheckTwoPointsAreEqual(connectingPt, this.pt2))
+            return true;
+
+        return false;
+    }
+    public Vector3 GetContinuousPoint(Vector3 connectingPt)
+    {
+        if (CheckTwoPointsAreEqual(connectingPt, this.pt1))
+            return this.pt1;
+        else if (CheckTwoPointsAreEqual(connectingPt, this.pt2))
+            return this.pt2;
+
+        return Vector3.zero;
+    }
+    public Vector3 GetOtherPointOfThisLine(Vector3 pt)
+    {
+        if (CheckTwoPointsAreEqual(pt, this.pt1))
+            return this.pt2;
+        else if (CheckTwoPointsAreEqual(pt, this.pt2))
+            return this.pt1;
+
+        return Vector3.zero;
     }
 
 }

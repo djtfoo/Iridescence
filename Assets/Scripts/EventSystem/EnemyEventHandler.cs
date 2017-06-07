@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class EnemyEventHandler : MonoBehaviour {
 
@@ -9,6 +10,9 @@ public class EnemyEventHandler : MonoBehaviour {
 #if LEVELEDITOR
 
 #else
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (DialogueManager.inDialogue)
             return;
 

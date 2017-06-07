@@ -95,10 +95,14 @@ public class OutlineEdgeData : MonoBehaviour {
             newEdge.gradient = float.Parse(values[5]);
             newEdge.c_intersection = float.Parse(values[6]);
 
-            if (isBackslash == 1)   // true
+            if (isBackslash == 1) { // true
+                newEdge.SetIsBackslash(true);
                 AddBackslash(newEdge);
-            else
+            }
+            else {
+                newEdge.SetIsBackslash(false);
                 AddForwardslash(newEdge);
+            }
         }
     }
 

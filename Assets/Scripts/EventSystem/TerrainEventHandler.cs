@@ -10,7 +10,10 @@ public class TerrainEventHandler : MonoBehaviour {
 #if LEVELEDITOR
 
 #else
-        if (DialogueManager.inDialogue)
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+            if (DialogueManager.inDialogue)
             return;
 
         // Player Movement stuff

@@ -79,17 +79,21 @@ public class SaveLevelData : MonoBehaviour {
             OutlineEdge edge1 = new OutlineEdge();
             edge1.SetOutline(new Vector2(child.position.x - gridWidth, child.position.y),
                 new Vector2(child.position.x, child.position.y - gridHeight));
+            edge1.SetIsBackslash(true);
             OutlineEdge edge2 = new OutlineEdge();
             edge2.SetOutline(new Vector2(child.position.x, child.position.y + gridHeight),
                 new Vector2(child.position.x + gridWidth, child.position.y));
+            edge2.SetIsBackslash(true);
 
             // next 2 edges are /
             OutlineEdge edge3 = new OutlineEdge();
             edge3.SetOutline(new Vector2(child.position.x - gridWidth, child.position.y),
                 new Vector2(child.position.x, child.position.y + gridHeight));
+            edge3.SetIsBackslash(false);
             OutlineEdge edge4 = new OutlineEdge();
             edge4.SetOutline(new Vector2(child.position.x, child.position.y - gridHeight),
                 new Vector2(child.position.x + gridWidth, child.position.y));
+            edge4.SetIsBackslash(false);
 
             // check if these outlines are the same as existing outlines
             CheckForDuplicate(edge1, edgeBackslash);
