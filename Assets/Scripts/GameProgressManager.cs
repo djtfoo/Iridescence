@@ -5,7 +5,7 @@ using System.Collections;
 public class GameProgressManager : MonoBehaviour {
 
     Cutscene[] cutscenes;
-    QuestManager questManager;
+    //QuestManager questManager;
 
     private void Awake()
     {

@@ -34,6 +34,7 @@ public class PlayerAction : MonoBehaviour {
         instance = GameObject.Find("Player").GetComponent<PlayerAction>();
 
         attack = this.GetComponent<PlayerAttack>();
+        PlayerData.Init();  // init player stats
 
         destinationMarker = (GameObject)Instantiate(destinationMarkerPrefab, destinationMarkerPrefab.transform.position, Quaternion.identity);
         destinationMarker.SetActive(false);
@@ -128,7 +129,12 @@ public class PlayerAction : MonoBehaviour {
             }
         }
 
-    endOfVelocityMovement:;
+        endOfVelocityMovement:;
+
+        if (Input.GetKeyDown(KeyCode.Y))
+            PlayerData.UseMP(100);
+
+
     }   // end of Update()
 
     private void ReachedWaypoint()

@@ -5,6 +5,7 @@ public class EnemyData : MonoBehaviour {
 
     // HP
     [SerializeField]
+    float maxHP;
     float HP;
     Transform HPBarPrefab;
     Transform HPBar;
@@ -14,7 +15,10 @@ public class EnemyData : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        HP = 100;
+        if (maxHP == 0)
+            maxHP = 100;
+
+        HP = maxHP;
         HPBarPrefab = Resources.Load("UserInterface/HPBar", typeof(Transform)) as Transform;
 
         velocity = Vector3.zero;
@@ -42,7 +46,7 @@ public class EnemyData : MonoBehaviour {
             HPBar.position = this.transform.parent.position + HPBarPrefab.localPosition;
         }
 
-        HPBar.GetChild(0).localScale = new Vector3(HP * 0.01f, 1f, 1f);
+        HPBar.GetChild(0).localScale = new Vector3(HP / maxHP, 1f, 1f);
     }
 
     void SetHP(float newHP)
