@@ -44,7 +44,7 @@ public class NPCEventHandler : MonoBehaviour {
     }
 
     // signify able to click for dialogue - dialogue box appears above NPC
-    void OnMouseOver()
+    private void OnMouseEnter()
     {
 #if LEVELEDITOR
 
@@ -60,7 +60,7 @@ public class NPCEventHandler : MonoBehaviour {
 #endif
     }
 
-    void OnMouseExit()
+    private void OnMouseExit()
     {
 #if LEVELEDITOR
         

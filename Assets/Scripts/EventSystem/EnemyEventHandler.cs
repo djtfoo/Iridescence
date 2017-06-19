@@ -28,17 +28,27 @@ public class EnemyEventHandler : MonoBehaviour {
 #endif
     }
 
+    // highlight enemy
+    private void OnMouseEnter()
+    {
+        if (DialogueManager.inDialogue)
+            return;
+
+        // highlight colour
+        this.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
+
+        // set GameHUD highlight information
+        GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
+    }
+
     // signify able to attack enemy
-    void OnMouseOver()
+    private void OnMouseOver()
     {
 #if LEVELEDITOR
 
 #else
         if (DialogueManager.inDialogue)
             return;
-
-        // for now, just change colour
-        this.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
 
         if (Input.GetMouseButtonDown(1))    // right click
         {
@@ -50,13 +60,10 @@ public class EnemyEventHandler : MonoBehaviour {
             PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_FIREPROJECTILE;
             PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         }
-
-        // set GameHUD highlight information
-        GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
 #endif
     }
 
-    void OnMouseExit()
+    private void OnMouseExit()
     {
 #if LEVELEDITOR
         

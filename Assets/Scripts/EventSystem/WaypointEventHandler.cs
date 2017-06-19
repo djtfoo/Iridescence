@@ -28,8 +28,7 @@ public class WaypointEventHandler : MonoBehaviour
 #endif
     }
 
-    // signify able to attack enemy
-    void OnMouseOver()
+    private void OnMouseEnter()
     {
 #if LEVELEDITOR
 
@@ -37,25 +36,38 @@ public class WaypointEventHandler : MonoBehaviour
         if (DialogueManager.inDialogue)
             return;
 
-        // for now, just change colour
+        // highlight colour
         this.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 1f);
-
-        if (Input.GetMouseButtonDown(1))    // right click
-        {
-            // store the type into RaycastInfo via getting tag/name
-            RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
-
-            // walk to enemy
-            Vector2 waypointPos = this.transform.parent.position;
-            PlayerAction.instance.SetMoveTo(new Vector3(waypointPos.x, waypointPos.y, PlayerAction.instance.transform.position.z));
-        }
 
         // set GameHUD highlight information
         GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
 #endif
     }
 
-    void OnMouseExit()
+    // signify able to attack enemy
+    private void OnMouseOver()
+    {
+#if LEVELEDITOR
+
+#else
+        if (DialogueManager.inDialogue)
+            return;
+
+        // do things like right click
+        //if (Input.GetMouseButtonDown(1))    // right click
+        //{
+        //    // store the type into RaycastInfo via getting tag/name
+        //    RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
+        //
+        //    // walk to enemy
+        //    Vector2 waypointPos = this.transform.parent.position;
+        //    PlayerAction.instance.SetMoveTo(new Vector3(waypointPos.x, waypointPos.y, PlayerAction.instance.transform.position.z));
+        //}
+
+#endif
+    }
+
+    private void OnMouseExit()
     {
 #if LEVELEDITOR
         

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Waypoint : MonoBehaviour {
 
-    string locationName;    // show name of linked location when in traversing selection menu
-    string levelPrefabFilename; // name of the prefab of the level this waypoint connects to
+    public string locationName;    // show name of linked location when in traversing selection menu
+    public string levelPrefabFilename; // name of the prefab of the level this waypoint connects to
 
 	// Use this for initialization
 	void Start () {

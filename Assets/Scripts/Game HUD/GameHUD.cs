@@ -13,6 +13,9 @@ public class GameHUD : MonoBehaviour {
     [Tooltip("HUD that shows information of highlighted GameObject")]
     public HUDHighlightInfo highlightInfo;
 
+    [Tooltip("HUD that shows information of highlighted GameObject")]
+    public HUDElementBar elementBar;
+
     public static GameHUD instance;
 
     // Use this for initialization

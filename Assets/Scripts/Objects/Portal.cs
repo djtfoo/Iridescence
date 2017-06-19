@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Portal : MonoBehaviour {
 
-    string nextLevelFilename;   // name of the prefab of the level this portal connects to
+    public string nextLevelFilename;   // name of the prefab of the level this portal connects to
 
     // Use this for initialization
     void Start () {
