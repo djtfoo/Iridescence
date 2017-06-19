@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour {
         // create the prefab
 
         dialogueBox = (Transform)Instantiate(dialogueBoxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        dialogueBox.SetParent(GameObject.Find("Canvas").transform);
+        dialogueBox.SetParent(GameHUD.instance.transform);
         dialogueBox.localPosition = dialogueBoxPrefab.localPosition;
 
         // get references to GameObjects

@@ -131,10 +131,6 @@ public class PlayerAction : MonoBehaviour {
 
         endOfVelocityMovement:;
 
-        if (Input.GetKeyDown(KeyCode.Y))
-            PlayerData.UseMP(100);
-
-
     }   // end of Update()
 
     private void ReachedWaypoint()

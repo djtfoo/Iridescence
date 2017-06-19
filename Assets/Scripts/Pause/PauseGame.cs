@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// script attached to PauseManager object
 public class PauseGame : MonoBehaviour {
 
     static bool isPaused = false;
@@ -12,7 +13,7 @@ public class PauseGame : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //pauseCanvas = (GameObject)Instantiate(pauseCanvasPrefab, Vector3.zero, Quaternion.identity);
-        pauseCanvas = this.transform.GetChild(0).gameObject;
+        pauseCanvas = transform.GetChild(0).gameObject;
         pauseCanvas.SetActive(false);
     }
 	

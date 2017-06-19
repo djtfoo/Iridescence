@@ -1,11 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // singleton information of HUD
 public class GameHUD : MonoBehaviour {
 
+    [Tooltip("Player's HP bar")]
     public Transform HPBar;
+
+    [Tooltip("Player's MP bar")]
     public Transform MPBar;
+
+    [Tooltip("HUD that shows information of highlighted GameObject")]
+    public GameObject highlightInfo;
+
+    [Tooltip("GameObject's name")]
+    public Text gameObjectName;
+
+    [Tooltip("GameObject's object type")]
+    public Text gameObjectType;
 
     public static GameHUD instance;
 
@@ -14,12 +27,26 @@ public class GameHUD : MonoBehaviour {
 
         instance = GameObject.Find("GameHUD").GetComponent<GameHUD>();
 
+        highlightInfo.SetActive(false);
     }
 
     // Update is called once per frame
     void Update () {
 	
 	}
+
+    public void SetHighlightInfo(string name, string tag)
+    {
+        highlightInfo.SetActive(true);
+
+        gameObjectName.text = name;
+        gameObjectType.text = tag;
+    }
+
+    public void DeactivateHighlightInfo()
+    {
+        highlightInfo.SetActive(false);
+    }
 
     public void HPChanged(float newHP, float maxHP)
     {

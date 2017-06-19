@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+// script attached to GameObjects that need to be paused
 public class PauseObject : MonoBehaviour {
 
 	public void SetObjectToPause(bool pause)
     {
         gameObject.SetActive(!pause);
-    }
-
-    public void SetObjectToUnpause()
-    {
-        gameObject.SetActive(true);
     }
 
 }

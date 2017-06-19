@@ -30,7 +30,10 @@ public class TopdownCamera : MonoBehaviour {
                 viewSize = newViewSize;
             gameObject.GetComponent<Camera>().orthographicSize = viewSize;
         }
+    }
 
+    private void LateUpdate()
+    {
         if (hasPlayer)
             transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, -10);
     }

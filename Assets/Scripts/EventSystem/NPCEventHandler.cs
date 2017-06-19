@@ -52,8 +52,11 @@ public class NPCEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
-        // for now, just change colour
+        // for now, just change colour - we want a speech bubble with "..." animation
         this.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+
+        // set GameHUD highlight information
+        GameHUD.instance.SetHighlightInfo(this.name, this.tag);
 #endif
     }
 
@@ -66,6 +69,9 @@ public class NPCEventHandler : MonoBehaviour {
             return;
 
         this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+
+        // remove GameHUD highlight information
+        GameHUD.instance.DeactivateHighlightInfo();
 #endif
     }
 
