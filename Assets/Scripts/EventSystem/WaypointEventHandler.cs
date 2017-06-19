@@ -51,7 +51,7 @@ public class WaypointEventHandler : MonoBehaviour
         }
 
         // set GameHUD highlight information
-        GameHUD.instance.SetHighlightInfo(this.name, this.tag);
+        GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
 #endif
     }
 
@@ -66,7 +66,7 @@ public class WaypointEventHandler : MonoBehaviour
         this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
 
         // remove GameHUD highlight information
-        GameHUD.instance.DeactivateHighlightInfo();
+        GameHUD.instance.highlightInfo.DeactivateHighlightInfo();
 #endif
     }
 
