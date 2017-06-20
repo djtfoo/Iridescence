@@ -6,6 +6,7 @@ public enum GO_TYPE
     GO_TERRAIN,
     GO_NPC,
     GO_PROP,
+    GO_WAYPOINT,
     GO_NIL
 }
 

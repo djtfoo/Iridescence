@@ -7,8 +7,10 @@ public class LevelEditorManager : MonoBehaviour {
 
     public Sprite grid;
 
+    public Transform terrain;   // for other scripts to access the terrain
+
     // ghost tile/GameObject
-    public Transform objectGhostPrefab;
+    public Transform objectGhostPrefab; // just for instantiating ghost that follows cursor
     Transform ghostObject;
 
     public static LevelEditorManager leManager;
@@ -30,7 +32,7 @@ public class LevelEditorManager : MonoBehaviour {
         SpriteRenderer sr = ghostObject.GetComponent<SpriteRenderer>();
         sr.color = new Color(1, 1, 1, 0.5f);
 
-        leManager = GameObject.Find("LevelEditorManager").GetComponent<LevelEditorManager>();
+        leManager = GameObject.FindGameObjectWithTag("OverallManager").GetComponent<LevelEditorManager>();
     }
 
     // Get Transform of ghost object
@@ -61,7 +63,12 @@ public class LevelEditorManager : MonoBehaviour {
     {
         if (!ghostObject.gameObject.activeSelf)
             ghostObject.gameObject.SetActive(true);
+
         ghostObject.localPosition = pos;
+    }
+    public Vector3 GetGhostPosition()
+    {
+        return ghostObject.localPosition;
     }
 
     // Update is called once per frame

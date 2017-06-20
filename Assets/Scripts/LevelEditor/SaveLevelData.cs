@@ -41,7 +41,7 @@ public class SaveLevelData : MonoBehaviour {
             //{
             //    DestroyImmediate(gridInfo);
             //}
-            if (gridInfo.GetID() != 0)
+            if (gridInfo.GetGOType() != GO_TYPE.GO_TERRAIN || gridInfo.GetID() != 0)
             {
                 Transform tile = (Transform)Instantiate(child, child.position, Quaternion.identity);
                 tile.parent = clonedTerrain.transform;

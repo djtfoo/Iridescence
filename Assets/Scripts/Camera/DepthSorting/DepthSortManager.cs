@@ -14,7 +14,7 @@ public class DepthSortManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        instance = GameObject.Find("GameDataManager").GetComponent<DepthSortManager>();
+        instance = GameObject.FindGameObjectWithTag("OverallManager").GetComponent<DepthSortManager>();
 
         zUnitPerY = (maxZ - minZ) / (maxY - minY);
 	}

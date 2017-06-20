@@ -9,6 +9,14 @@ public class WaypointEventHandler : MonoBehaviour
     private void OnMouseDown()
     {
 #if LEVELEDITOR
+        // create menu with options:
+        // key in location name
+        // key in location prefab name
+        // remove this waypoint
+        // only 1 waypoint per scene
+        //
+        // EditWaypoints (WaypointManager) will save to csv, the location name & its corresponding prefab
+        // in Level Editor, user must edit waypoint manager
 
 #else
         if (EventSystem.current.IsPointerOverGameObject())

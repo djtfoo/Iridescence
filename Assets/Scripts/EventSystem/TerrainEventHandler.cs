@@ -41,7 +41,7 @@ public class TerrainEventHandler : MonoBehaviour {
         if (LevelEditorManager.leManager.GetGhostID() == 0) {
             goto rightClick;
         }
-        LevelEditorManager.leManager.SetGhostPosition(this.transform.position);
+        LevelEditorManager.leManager.SetGhostPosition(transform.position);
 
 
         // left click - to add a tile/asset
@@ -58,11 +58,6 @@ public class TerrainEventHandler : MonoBehaviour {
                     // transfer tile ID
                     this.GetComponent<AssetInfo>().SetID(LevelEditorManager.leManager.GetGhostID());
                     break;
-                case GO_TYPE.GO_NPC:
-                    break;
-                case GO_TYPE.GO_PROP:
-                    break;
-                case GO_TYPE.GO_NIL:
                 default:
                     break;
             }
@@ -82,6 +77,32 @@ public class TerrainEventHandler : MonoBehaviour {
 #else
 
 #endif
+    }
+
+    // placement of objects in world
+    private void OnMouseUp()
+    {
+        switch (LevelEditorManager.leManager.GetGhostObjectType())
+        {
+            case GO_TYPE.GO_TERRAIN:
+                break;
+            case GO_TYPE.GO_NPC:
+                break;
+            case GO_TYPE.GO_PROP:
+                break;
+            case GO_TYPE.GO_WAYPOINT:
+                GameObject searchWaypoint = GameObject.FindGameObjectWithTag("Waypoint");
+                if (searchWaypoint == null) // only create a waypoint if none exists
+                {
+                    Transform waypointPrefab = Resources.Load<Transform>("LevelAssets/WaypointObject");
+                    Transform waypoint = (Transform)Instantiate(waypointPrefab, LevelEditorManager.leManager.GetGhostPosition(), Quaternion.identity);
+                    waypoint.parent = LevelEditorManager.leManager.terrain;
+                }
+                break;
+            case GO_TYPE.GO_NIL:
+            default:
+                break;
+        }
     }
 
     private void OnMouseExit()
