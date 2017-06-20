@@ -7,9 +7,10 @@ public class DepthSort : MonoBehaviour {
 	void Update () {
 	    if (transform.hasChanged)
         {
-            transform.position = new Vector3(transform.position.x,
-                transform.position.y,
+            transform.position = new Vector3(transform.position.x, transform.position.y,
                 DepthSortManager.instance.CalculateZCoord(transform.position.y));
+
+            transform.hasChanged = false;
         }
 	}
 }

@@ -2,16 +2,22 @@
 using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class SaveLevelData : MonoBehaviour {
 
     public GameObject terrain;
+
+    public Text fileName;   // retrieve filename from input field text
     public string fileDirectory = "LevelPrefab/";
 
     GameObject clonedTerrain;
 
     public void SaveTerrainData()
     {
+        if (fileName.text == "")
+            return;
+
         clonedTerrain = new GameObject();
 
         DeleteGridZero();   // delete grids that were not filled up
@@ -164,7 +170,9 @@ public class SaveLevelData : MonoBehaviour {
     private void SavePrefab()
     {
         GameObject prefab = null;
-        prefab = Resources.Load<GameObject>(fileDirectory + "testPrefab");
+        //string filename = "testPrefab";
+        string filename = fileName.text;
+        prefab = Resources.Load<GameObject>(fileDirectory);
         if (prefab) {
             PrefabUtility.ReplacePrefab(clonedTerrain, prefab, ReplacePrefabOptions.ConnectToPrefab);
         }

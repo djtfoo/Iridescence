@@ -14,6 +14,8 @@ public class TopdownCamera : MonoBehaviour {
     public float maxScroll = 4f; // zoom out
     public float minScroll = 2f;  // zoom in
 
+    public float zPos = -10f;   // z-coord of this camera
+
     // Use this for initialization
     void Start () {
         viewSize = gameObject.GetComponent<Camera>().orthographicSize;
@@ -34,8 +36,10 @@ public class TopdownCamera : MonoBehaviour {
 
     private void LateUpdate()
     {
-        if (hasPlayer)
-            transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        if (hasPlayer /*&& player.transform.hasChanged*/) {
+            transform.localPosition = new Vector3(player.transform.position.x, player.transform.position.y, zPos);
+            //player.transform.hasChanged = false;
+        }
     }
 
     void UpdateViewDist()
