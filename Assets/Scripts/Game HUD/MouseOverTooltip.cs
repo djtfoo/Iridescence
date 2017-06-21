@@ -9,6 +9,10 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public string tooltip;  // string to be output
     public Text tooltipText;    // text to be rendered; is a "static" object
 
+    // unique tooltips
+    public bool isHP;
+    public bool isMP;
+
     private bool isActive;
     private Vector2 tooltipHalfCoordinates;
 
@@ -37,6 +41,15 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (isActive) {
             // follow user's cursor
             tooltipText.transform.position = Input.mousePosition + new Vector3(tooltipHalfCoordinates.x, tooltipHalfCoordinates.y, 0f);
+
+            if (isHP) {
+                // set the text to be HP / maxHP
+                tooltipText.text = PlayerData.GetHP().ToString() + " / " + PlayerData.GetMaxHP();
+            }
+            else if (isMP) {
+                // set the text to be MP / maxMP
+                tooltipText.text = PlayerData.GetMP().ToString() + " / " + PlayerData.GetMaxMP();
+            }
         }
     }
 

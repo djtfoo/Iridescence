@@ -1,34 +1,55 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Reflection;
+using System;
 
 public class EnemyData : MonoBehaviour {
 
     // HP
     [SerializeField]
-    float maxHP;
-    float HP;
-    Transform HPBarPrefab;
-    Transform HPBar;
+    private float maxHP;
+    private float HP;
+    private Transform HPBarPrefab;
+    private Transform HPBar;
 
-    // behaviour
+    // Enemy behaviour
+    public TextAsset behaviourXML;  // XML file containing behaviour data
+    private EnemyBehaviour behaviour;
+
     Vector3 velocity;
 
 	// Use this for initialization
 	void Start () {
         if (maxHP == 0)
-            maxHP = 100;
+            maxHP = 100;    // default
 
         HP = maxHP;
         HPBarPrefab = Resources.Load("UserInterface/HPBar", typeof(Transform)) as Transform;
 
         velocity = Vector3.zero;
+        behaviour = new EnemyBehaviour();
+        // read enemy behaviour from XML file
+        //XmlSerializer serializer = new XmlSerializer(typeof(EnemyBehaviour));
+        //using (System.IO.StringReader reader = new System.IO.StringReader(behaviourXML.text))
+        //{
+        //    behaviour = serializer.Deserialize(reader) as EnemyBehaviour;
+        //}
+
+        behaviour = XMLSerializer<EnemyBehaviour>.DeserializeXMLFile(behaviourXML);
+        behaviour.methodParams = XMLSerializer<EnemyBehaviour>.ObjectArrayItemToObjectArray(behaviour.parameters);
+        behaviour.AddEnemy(gameObject); // pass this enemy over to enemy behaviour to handle
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+    // Update is called once per frame
+    void Update () {
+
         // movement behaviour here
-	}
+        behaviour.Update();
+
+        //Type type = typeof(EnemyBehaviour);
+        //MethodInfo method = type.GetMethod(behaviour.methodName);
+        //method.Invoke(behaviour, behaviour.methodParams);
+
+    }
 
     public float GetHP()
     {

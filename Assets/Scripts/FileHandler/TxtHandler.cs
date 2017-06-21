@@ -3,17 +3,7 @@ using System.Collections;
 using System.IO;
 using UnityEditor;
 
-public class TxtHandler : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public static class TxtHandler {
 
     public static void WriteToTxt(string text, string filepath)
     {

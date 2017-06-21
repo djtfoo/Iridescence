@@ -1,81 +1,116 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Reflection;
 
-public abstract class Requirement {
+/// <summary>
+/// Requirement Class that objects are initialised as
+/// Requirements will call the override functions of specific requirements
+/// </summary>
+public class Requirement {
 
     //bool isMet;
 
-    public abstract bool IsConditionMet();
-    public abstract string GetRequirementString();
-    public abstract string GetFulfillmentString();
+    private string requirementType; // typeof (name of the derived class)
+    private object[] funcParams;
+
+    /// <summary>
+    /// @desc  Virtual function to be defined by sub-classes
+    /// </summary>
+    /// <param name="funcParams"> Variables unique to the class </param>
+    /// <returns> Whether condition is met or not </returns>
+    public bool IsConditionMet()
+    {
+        switch (requirementType)
+        {
+            case "KillMonster":
+                Type type = typeof(KillMonster);
+                MethodInfo method = type.GetMethod("ConditionMet");
+                KillMonster invoker = new KillMonster();
+                method.Invoke(invoker, funcParams);
+                break;
+
+            default:
+                break;
+        }
+
+        return false;
+    }
+    public string GetRequirementString()
+    {
+        return "Requirement";
+    }
+    public string GetFulfillmentString()
+    {
+        return "Fulfilled";
+    }
 
 }
 
-public class RequirementKillMonster : Requirement {
+public class KillMonster : Requirement {
 
-    string monsterName;
-    int quantity;
+    //string monsterName;
+    //int quantity;
 
-    public override bool IsConditionMet()
+    public bool ConditionMet(object[] funcParams)
     {
         throw new NotImplementedException();
     }
 
-    public override string GetRequirementString()
+    public string GetRequirementString(string monsterName, int quantity)
     {
         string requirement = "Kill " + quantity.ToString() + " " + monsterName;
         if (quantity > 1)
             requirement += "s";
-
+        
         return requirement;
     }
-    public override string GetFulfillmentString()
+    public string GetFulfillmentString(object[] funcParams)
     {
         throw new NotImplementedException();
     }
 
 }
 
-public class RequirementCollectItem : Requirement {
+public class CollectItem : Requirement {
 
-    string itemName;
-    int quantity;
+    //string itemName;
+    //int quantity;
 
-    public override bool IsConditionMet()
+    public bool IsConditionMet(object[] funcParams)
     {
         throw new NotImplementedException();
     }
 
-    public override string GetRequirementString()
+    public string GetRequirementString(string itemName, int quantity)
     {
         string requirement = "Collect " + quantity.ToString() + " " + itemName;
         if (quantity > 1)
             requirement += "s";
-
+        
         return requirement;
     }
-    public override string GetFulfillmentString()
+    public string GetFulfillmentString(object[] funcParams)
     {
         throw new NotImplementedException();
     }
 
 }
 
-public class RequirementReachLocation : Requirement {
+public class ReachLocation : Requirement {
 
-    string locationName;
+    //string locationName;
 
-    public override bool IsConditionMet()
+    public bool IsConditionMet(object[] funcParams)
     {
         throw new NotImplementedException();
     }
 
-    public override string GetRequirementString()
+    public string GetRequirementString(string locationName)
     {
         return "Reach " + locationName;
     }
-    public override string GetFulfillmentString()
+    public string GetFulfillmentString(object[] funcParams)
     {
         throw new NotImplementedException();
     }

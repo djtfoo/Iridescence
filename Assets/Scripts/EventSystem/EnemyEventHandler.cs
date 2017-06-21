@@ -22,6 +22,7 @@ public class EnemyEventHandler : MonoBehaviour {
         // walk to enemy
         Vector2 enemyPos = this.transform.parent.position;
         PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_MELEE;
+        PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.meleeRangeSquared;
         PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
@@ -58,6 +59,7 @@ public class EnemyEventHandler : MonoBehaviour {
             // walk to enemy
             Vector2 enemyPos = this.transform.parent.position;
             PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_FIREPROJECTILE;
+            PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.rangedRangeSquared;
             PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         }
 #endif

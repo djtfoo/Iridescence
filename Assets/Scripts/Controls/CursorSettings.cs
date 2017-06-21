@@ -20,5 +20,4 @@ public class CursorSettings : MonoBehaviour {
         Cursor.lockState = mode;
     }
 
-
 }

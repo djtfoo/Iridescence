@@ -60,7 +60,7 @@ public class PlayerAction : MonoBehaviour {
             {
                 case ATK_TYPE.ATK_MELEE:
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
-                    RaycastInfo.clickTarget.SendMessage("TakeDamage", attack.meleeDmg);
+                    RaycastInfo.clickTarget.SendMessage("TakeDamage", PlayerAttack.meleeDmg);
                     break;
 
                 case ATK_TYPE.ATK_FIREPROJECTILE:
@@ -81,21 +81,7 @@ public class PlayerAction : MonoBehaviour {
                 // attack
                 if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
                 {
-                    bool reachedDest = false;
-                    switch (attack.attackType)
-                    {
-                        case ATK_TYPE.ATK_MELEE:
-                            if (distSquared < attack.meleeRangeSquared)
-                                reachedDest = true;
-                            break;
-
-                        case ATK_TYPE.ATK_FIREPROJECTILE:
-                            if (distSquared < attack.rangedRangeSquared)
-                                reachedDest = true;
-                            break;
-                    }
-
-                    if (reachedDest)
+                    if (distSquared < attack.currRangeSquared)
                     {
                         doAttack = true;
                         //velocity = Vector3.zero;
@@ -105,7 +91,8 @@ public class PlayerAction : MonoBehaviour {
                     }
                 }
                 // enter dialogue
-                else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC && distSquared < PlayerData.converseRangeSquared)
+                else if ((RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC || RaycastInfo.raycastType == RaycastTargetType.Raycast_Waypoint)
+                    && distSquared < PlayerData.converseRangeSquared)
                 {
                     DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
                     //velocity = Vector3.zero;
@@ -178,8 +165,11 @@ public class PlayerAction : MonoBehaviour {
 
         SetVelocity((pathWaypoints[0] - transform.position).normalized);
 
-        destinationMarker.SetActive(true);
-        destinationMarker.transform.position = new Vector3(destination.x, destination.y, 1f);
+        if (RaycastInfo.clickTarget == null)
+        {
+            destinationMarker.SetActive(true);
+            destinationMarker.transform.position = new Vector3(destination.x, destination.y, 1f);
+        }
 
         //SetDestination(destination);
         //SetVelocity((destination - transform.position).normalized);

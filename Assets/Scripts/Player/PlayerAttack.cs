@@ -5,18 +5,22 @@ using System.Collections;
 public enum ATK_TYPE
 {
     ATK_MELEE,
-    ATK_FIREPROJECTILE
+    ATK_FIREPROJECTILE,
+    //ATK_LASER
+    //ATK_AOE   // AoE around player
 }
 
 public class PlayerAttack : MonoBehaviour {
 
-    public float meleeRangeSquared = 0.5f;  // temp variable to represent weapon
-    public float meleeDmg = 10f;    // temp damage variable
-
     public ATK_TYPE attackType = ATK_TYPE.ATK_MELEE;    // current attack type
-    public float rangedRangeSquared = 1.5f;  // temp variable to represent ranged attack range
+    public float currRangeSquared = 0f;     // curr range value where player shld stop moving
 
-    public GameObject fireProjectile;
+    public static float meleeRangeSquared = 0.5f;  // temp variable to represent weapon
+    public static float meleeDmg = 10f;    // temp damage variable
+
+    public static float rangedRangeSquared = 1.5f;  // temp variable to represent ranged attack range
+
+    public GameObject fireProjectile;   // temp projectile to launch
 
     // Use this for initialization
     void Start () {

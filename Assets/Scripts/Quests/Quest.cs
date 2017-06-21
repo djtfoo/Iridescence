@@ -30,7 +30,7 @@ public class MainQuest : Quest {
 
     public override void InitQuestData()
     {
-        // read JSON file
+        // read XML file
     }
 
 }
@@ -40,13 +40,13 @@ public class SideQuest : Quest {
     // pre-requisite
     // NPC that provides the quest
     QuestObjectives objectives; // quest objectives
-    QuestConditions conditions; // quest unlcok conditions
+    QuestConditions conditions; // quest unlock conditions
 
     // add reward
 
     public override void InitQuestData()
     {
-        // read JSON file
+        // read XML file
     }
 
 }

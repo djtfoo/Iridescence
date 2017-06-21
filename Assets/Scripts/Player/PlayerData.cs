@@ -14,11 +14,11 @@ public static class PlayerData {
 
     public static float converseRangeSquared = 0.5f;  // distance between player & NPC to start dialogue
 
-    static float maxHP;
-    static float maxMP;
+    private static float maxHP;
+    private static float maxMP;
 
-    static float HP;
-    static float MP;
+    private static float HP;
+    private static float MP;
 
     public static void Init()
     {
@@ -30,8 +30,12 @@ public static class PlayerData {
 
     }
 
+    // HP
     public static float GetHP() {
         return HP;
+    }
+    public static float GetMaxHP() {
+        return maxHP;
     }
     public static void TakeDamage(float dmg)
     {
@@ -46,10 +50,14 @@ public static class PlayerData {
         //if (newHP <= 0)
             // lose game
     }
-
+    
+    // MP
     public static float GetMP()
     {
         return MP;
+    }
+    public static float GetMaxMP() {
+        return maxMP;
     }
     public static void UseMP(float cost)
     {

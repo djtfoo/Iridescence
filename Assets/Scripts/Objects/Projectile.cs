@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour {
 
     float duration = 0f;
 
+    public float damage;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -25,13 +27,16 @@ public class Projectile : MonoBehaviour {
 
     public void SetVelocity(Vector3 dir)
     {
-        this.velocity = speed * dir;
+        velocity = speed * dir;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // collision
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy") {
             collision.gameObject.SendMessage("TakeDamage", 10);
+            Destroy(this.gameObject);
+        }
     }
 
 }

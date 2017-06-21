@@ -82,6 +82,7 @@ public class TerrainEventHandler : MonoBehaviour {
     // placement of objects in world
     private void OnMouseUp()
     {
+#if LEVELEDITOR
         switch (LevelEditorManager.leManager.GetGhostObjectType())
         {
             case GO_TYPE.GO_TERRAIN:
@@ -103,6 +104,7 @@ public class TerrainEventHandler : MonoBehaviour {
             default:
                 break;
         }
+#endif
     }
 
     private void OnMouseExit()

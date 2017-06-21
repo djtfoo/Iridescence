@@ -9,6 +9,7 @@ public enum RaycastTargetType
     Raycast_Terrain,
     Raycast_Enemy,
     Raycast_NPC,
+    Raycast_Waypoint,
     Raycast_NIL
 }
 
@@ -48,6 +49,11 @@ public static class RaycastInfo {
             else if (hit2D.transform.gameObject.tag == "NPC")
             {
                 raycastType = RaycastTargetType.Raycast_NPC;
+                return hit2D.transform.gameObject;
+            }
+            else if (hit2D.transform.gameObject.tag == "Waypoint")
+            {
+                raycastType = RaycastTargetType.Raycast_Waypoint;
                 return hit2D.transform.gameObject;
             }
         }

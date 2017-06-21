@@ -11,6 +11,7 @@ public class QuestConditions {
     {
         // event trigger to unlock quest
         //QuestManager.instance.SendMessage("UnlockQuest", <pointer to this quest>);
+        // alternatively, use Invoke();
     }
 
 }
