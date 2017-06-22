@@ -6,17 +6,27 @@ using UnityEngine.UI;
 
 public class SaveLevelData : MonoBehaviour {
 
-    public GameObject terrain;
+    public GameObject terrain;  // terrain to be saved
 
-    public Text fileName;   // retrieve filename from input field text
+    [Tooltip("Retrieve filename from input field text")]
+    public Text locationName;
+    [Tooltip("Retrieve background Render from dropdown label")]
+    public Text backgroundRender;
+    [Tooltip("Retrieve filename from input field text")]
+    public Text fileName;
+
     public string fileDirectory = "LevelPrefab/";
 
-    GameObject clonedTerrain;
+    private GameObject clonedTerrain;
 
     public void SaveTerrainData()
     {
         if (fileName.text == "")
             return;
+
+        TerrainInfo terrainInfo = terrain.GetComponent<TerrainInfo>();
+        terrainInfo.SetLocationName(locationName.text);
+        terrainInfo.SetBackground(backgroundRender.text);
 
         clonedTerrain = new GameObject();
 
