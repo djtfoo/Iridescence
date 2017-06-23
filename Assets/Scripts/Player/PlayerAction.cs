@@ -58,12 +58,12 @@ public class PlayerAction : MonoBehaviour {
             // temp
             switch (attack.attackType)
             {
-                case ATK_TYPE.ATK_MELEE:
+                case SKILL_TYPE.SKILL_MELEE:
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
                     RaycastInfo.clickTarget.SendMessage("TakeDamage", PlayerAttack.meleeDmg);
                     break;
 
-                case ATK_TYPE.ATK_FIREPROJECTILE:
+                case SKILL_TYPE.SKILL_FIREPROJECTILE:
                     attack.SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
                     break;

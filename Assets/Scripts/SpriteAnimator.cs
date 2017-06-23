@@ -24,6 +24,7 @@ public struct SerialiseSpriteAnimation
     //public Sprite spritesheet;
     public int framesPerStrip;  // number of frames per animation strip
     public bool multiDirectional;   // whether it's 8-directional or not
+    public float frameTime; // how long each frame of this sprite lasts
 }
 
 public struct SpriteAnimation
@@ -32,15 +33,14 @@ public struct SpriteAnimation
     public Sprite[] sprites;
     public int framesPerStrip;  // number of frames per animation strip
     public bool multiDirectional;   // whether it's 8-directional or not
+    public float frameTime; // how long each frame of this sprite lasts
 }
 
 public class SpriteAnimator : MonoBehaviour {
 
     public SerialiseSpriteAnimation[] initAnimationsList; // FOR INITIALISING ONLY
 
-    public float frameTime;
-
-    private Dictionary<string, SpriteAnimation> animationsList;
+    private Dictionary<string, SpriteAnimation> animationsList; // list of sprite animations
     private SpriteAnimation currSprAnimation;   // current sprite animation
     private SpriteRenderer sr;  // a handle to this GameObject's SpriteRenderer
     private int currFrame = 0;  // this frame
@@ -65,6 +65,7 @@ public class SpriteAnimator : MonoBehaviour {
             temp.sprites = Resources.LoadAll<Sprite>("Sprites/" + initAnimationsList[i].texture.name);
             temp.framesPerStrip = initAnimationsList[i].framesPerStrip;
             temp.multiDirectional = initAnimationsList[i].multiDirectional;
+            temp.frameTime = initAnimationsList[i].frameTime;
 
             animationsList.Add(initAnimationsList[i].name, temp);
 
@@ -81,9 +82,9 @@ public class SpriteAnimator : MonoBehaviour {
 
         if (isIdleAnimation)
         {
-            if (timeElapsed >= frameTime)
+            if (timeElapsed >= currSprAnimation.frameTime)
             {
-                timeElapsed -= frameTime;
+                timeElapsed -= currSprAnimation.frameTime;
                 if (isBlinking)
                 {
                     currFrame += direction;
@@ -118,11 +119,11 @@ public class SpriteAnimator : MonoBehaviour {
             }
 
             return;
-        }
+        }   // end of idle animation
 
-        if (timeElapsed >= frameTime)
+        if (timeElapsed >= currSprAnimation.frameTime)
         {
-            timeElapsed -= frameTime;
+            timeElapsed -= currSprAnimation.frameTime;
             ++currFrame;
             if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection))
                 currFrame -= currSprAnimation.framesPerStrip;

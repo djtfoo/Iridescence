@@ -19,9 +19,13 @@ public class GameHUD : MonoBehaviour {
     public static GameHUD instance;
 
     // Use this for initialization
-    void Start () {
+    private void Awake() {
 
-        instance = GameObject.Find("GameHUD").GetComponent<GameHUD>();
+        instance = GetComponent<GameHUD>(); // this
+    }
+
+    void Start() {
+        
     }
 
     // Update is called once per frame

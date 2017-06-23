@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Element>
+	<name>Earth</name>
+	<iconFilename>earthelement_icon</iconFilename>
+	<Skills>
+		<Skill name="Health Drain">
+			<description>Physically attack an enemy and take their life force.</description>
+			<iconFilename>healthdrain_icon</iconFilename>
+			<MPCost>30</MPCost>
+			<attackType>Melee</attackType>
+			<rangeValue>0.5</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+		</Skill>
+		
+		<Skill name="Rock Spear">
+			<description>Hurl a sharp rock spear.</description>
+			<iconFilename>rockspear_icon</iconFilename>
+			<MPCost>45</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>5.0</rangeValue>
+			<cooldownTime>0.2</cooldownTime>
+		</Skill>
+		
+		<Skill name="Earth Shield">
+			<description>Create a shield that blocks attacks.</description>
+			<iconFilename>earthshield_icon</iconFilename>
+			<MPCost>80</MPCost>
+			<attackType>Self</attackType>
+			<rangeValue>0.0</rangeValue>
+			<cooldownTime>20.0</cooldownTime>
+		</Skill>
+	</Skills>
+</Element> 

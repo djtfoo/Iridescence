@@ -51,9 +51,8 @@ public class WaypointEventHandler : MonoBehaviour
         GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
 #endif
     }
-
-    // signify able to attack enemy
-    private void OnMouseOver()
+    
+    /*private void OnMouseOver()
     {
 #if LEVELEDITOR
 
@@ -73,7 +72,7 @@ public class WaypointEventHandler : MonoBehaviour
         //}
 
 #endif
-    }
+    }*/
 
     private void OnMouseExit()
     {

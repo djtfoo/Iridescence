@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Element>
+	<name>Fire</name>
+	<iconFilename>fireelement_icon</iconFilename>
+	<Skills>
+		<Skill name="Flame Slash">
+			<description>Attack an enemy with a burning slash. High damage.</description>
+			<iconFilename>flameslash_icon</iconFilename>
+			<MPCost>35</MPCost>
+			<attackType>Melee</attackType>
+			<rangeValue>0.5</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+		</Skill>
+		
+		<Skill name="Fireball">
+			<description>Shoot a ball of fire at a target.</description>
+			<iconFilename>fireball_icon</iconFilename>
+			<MPCost>45</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>4.0</rangeValue>
+			<cooldownTime>0.5</cooldownTime>
+		</Skill>
+		
+		<Skill name="Ring of Fire">
+			<description>Unleash a damaging ring of fire around the player.</description>
+			<iconFilename>ringoffire_icon</iconFilename>
+			<MPCost>60</MPCost>
+			<attackType>AoE</attackType>
+			<rangeValue>0.8</rangeValue>
+			<cooldownTime>2.0</cooldownTime>
+		</Skill>
+	</Skills>
+</Element>

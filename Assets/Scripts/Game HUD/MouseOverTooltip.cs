@@ -3,6 +3,13 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
+public enum TooltipType     // denotes whether there is a need for special text
+{
+    TOOLTIP_NORMAL,
+    TOOLTIP_HP,
+    TOOLTIP_MP
+}
+
 // A brief description that follows the cursor when mouse is over a UI element
 public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
@@ -10,8 +17,9 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public Text tooltipText;    // text to be rendered; is a "static" object
 
     // unique tooltips
-    public bool isHP;
-    public bool isMP;
+    public TooltipType tooltipType;
+    //public bool isHP;
+    //public bool isMP;
 
     private bool isActive;
     private Vector2 tooltipHalfCoordinates;
@@ -42,13 +50,18 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
             // follow user's cursor
             tooltipText.transform.position = Input.mousePosition + new Vector3(tooltipHalfCoordinates.x, tooltipHalfCoordinates.y, 0f);
 
-            if (isHP) {
-                // set the text to be HP / maxHP
-                tooltipText.text = PlayerData.GetHP().ToString() + " / " + PlayerData.GetMaxHP();
-            }
-            else if (isMP) {
-                // set the text to be MP / maxMP
-                tooltipText.text = PlayerData.GetMP().ToString() + " / " + PlayerData.GetMaxMP();
+            switch (tooltipType)
+            {
+                case TooltipType.TOOLTIP_HP:
+                    tooltipText.text = PlayerData.GetHP().ToString() + " / " + PlayerData.GetMaxHP();
+                    break;
+                case TooltipType.TOOLTIP_MP:
+                    tooltipText.text = PlayerData.GetMP().ToString() + " / " + PlayerData.GetMaxMP();
+                    break;
+
+                case TooltipType.TOOLTIP_NORMAL:
+                default:
+                    break;
             }
         }
     }

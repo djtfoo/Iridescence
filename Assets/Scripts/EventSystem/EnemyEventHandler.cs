@@ -16,12 +16,15 @@ public class EnemyEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
+        //=================================
+        // generic left click melee attack - transfer to PlayerAttack script
+        //=================================
         // store the type into RaycastInfo via getting tag/name
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
         // walk to enemy
         Vector2 enemyPos = this.transform.parent.position;
-        PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_MELEE;
+        PlayerAction.instance.GetAttackScript().attackType = SKILL_TYPE.SKILL_MELEE;
         PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.meleeRangeSquared;
         PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
@@ -42,7 +45,7 @@ public class EnemyEventHandler : MonoBehaviour {
         GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
     }
 
-    // signify able to attack enemy
+/*    // signify able to attack enemy
     private void OnMouseOver()
     {
 #if LEVELEDITOR
@@ -50,20 +53,21 @@ public class EnemyEventHandler : MonoBehaviour {
 #else
         if (DialogueManager.inDialogue)
             return;
-
-        if (Input.GetMouseButtonDown(1))    // right click
-        {
-            // store the type into RaycastInfo via getting tag/name
-            RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
-
-            // walk to enemy
-            Vector2 enemyPos = this.transform.parent.position;
-            PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_FIREPROJECTILE;
-            PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.rangedRangeSquared;
-            PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
-        }
+        
+        // move this to PlayerAttack script!
+        //if (Input.GetMouseButtonDown(1))    // right click
+        //{
+        //    // store the type into RaycastInfo via getting tag/name
+        //    RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
+        //
+        //    // walk to enemy
+        //    Vector2 enemyPos = this.transform.parent.position;
+        //    PlayerAction.instance.GetAttackScript().attackType = ATK_TYPE.ATK_FIREPROJECTILE;
+        //    PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.rangedRangeSquared;
+        //    PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+        //}
 #endif
-    }
+    }*/
 
     private void OnMouseExit()
     {

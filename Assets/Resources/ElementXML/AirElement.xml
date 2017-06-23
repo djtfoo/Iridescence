@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Element>
+	<name>Air</name>
+	<iconFilename>airelement_icon</iconFilename>
+	<Skills>
+		<Skill name="Wind Cutter">
+			<description>Physically attack the enemy quickly. Increase attack speed when used in succession.</description>
+			<iconFilename>windcutter_icon</iconFilename>
+			<MPCost>20</MPCost>
+			<attackType>Melee</attackType>
+			<rangeValue>0.5</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+		</Skill>
+		
+		<Skill name="Sonic Boom">
+			<description>Fire an ear-piercing quick rush of air. High critical hit rate.</description>
+			<iconFilename>sonicboom_icon</iconFilename>
+			<MPCost>45</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>5.0</rangeValue>
+			<cooldownTime>0.3</cooldownTime>
+		</Skill>
+		
+		<Skill name="Speed Hymn">
+			<description>Temporarily greatly increase attack speed.</description>
+			<iconFilename>speedhymn_icon</iconFilename>
+			<MPCost>55</MPCost>
+			<attackType>Self</attackType>
+			<rangeValue>0.0</rangeValue>
+			<cooldownTime>30.0</cooldownTime>
+		</Skill>
+	</Skills>
+</Element> 

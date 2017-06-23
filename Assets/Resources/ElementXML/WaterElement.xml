@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Element>
+	<name>Water</name>
+	<iconFilename>waterelement_icon</iconFilename>
+	<Skills>
+		<Skill name="Mana Drain">
+			<description>Physically attack an enemy and take their mana force.</description>
+			<iconFilename>manadrain_icon</iconFilename>
+			<MPCost>15</MPCost>
+			<attackType>Melee</attackType>
+			<rangeValue>0.5</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+		</Skill>
+		
+		<Skill name="Water Gun">
+			<description>Shoot a stream of water that damages enemies it hits.</description>
+			<iconFilename>watergun_icon</iconFilename>
+			<MPCost>50</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>5.0</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+		</Skill>
+		
+		<Skill name="Mana Tower">
+			<description>Summon a Mana Tower. Allies in its range regain MP faster.</description>
+			<iconFilename>manatower_icon</iconFilename>
+			<MPCost>100</MPCost>
+			<attackType>Self</attackType>
+			<rangeValue>0.0</rangeValue>
+			<cooldownTime>20.0</cooldownTime>
+		</Skill>
+	</Skills>
+</Element> 
