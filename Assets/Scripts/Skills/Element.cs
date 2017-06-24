@@ -46,6 +46,25 @@ public class Element {
             return null;
     }
 
+    public void Init()
+    {
+        // bool of whether skill is locked or not
+        unlockedSkills = new bool[skills.Length];
+        for (int i = 0; i < unlockedSkills.Length; ++i)
+            unlockedSkills[i] = true;
+
+        // set bool
+
+        // create element icon sprite
+        icon = Resources.Load<Sprite>("ElementIcons/" + iconFilename);
+
+        // create element skills' icons
+        for (int i = 0; i < skills.Length; ++i)
+        {
+            skills[i].icon = Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename);
+        }
+    }
+
 }
 
 [XmlRoot("CombinedElement")]

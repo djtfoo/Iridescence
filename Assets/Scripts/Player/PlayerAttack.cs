@@ -21,8 +21,8 @@ public enum SKILL_TYPE
 public class PlayerAttack : MonoBehaviour {
 
     // attack variables
-    public SKILL_TYPE attackType = SKILL_TYPE.SKILL_MELEE;    // current attack type
-    public float currRangeSquared = 0f;     // current range value where player shld stop moving
+    private SKILL_TYPE attackType = SKILL_TYPE.SKILL_MELEE;    // current attack type
+    private  float currRangeSquared = 0f;     // current range value where player shld stop moving
 
     // TEMP VARIABLES!!!!
     public static float meleeRangeSquared = 0.5f;  // temp variable to represent weapon
@@ -39,6 +39,16 @@ public class PlayerAttack : MonoBehaviour {
     private Element currElementTwo; // currently equipped 2nd element
     private CombinedElement currCombinedElement;    // current combined element
 
+    // Getters
+    public SKILL_TYPE GetCurrentAttackType()
+    {
+        return attackType;
+    }
+    public float GetCurrentRangeSquared()
+    {
+        return currRangeSquared;
+    }
+
     /// <summary>
     ///  Set Element to slot one, slot two, or combined
     /// </summary>
@@ -48,11 +58,14 @@ public class PlayerAttack : MonoBehaviour {
         {
             case "One":
                 currElementOne = elements[elementKey];
-                SkillsHUD.instance.SetElementOneIcon(currElementOne.icon);
+                SkillsHUD.instance.SetElementOneIcons(currElementOne);
+                // set skills icons
+
                 break;
             case "Two":
                 currElementTwo = elements[elementKey];
-                SkillsHUD.instance.SetElementTwoIcon(currElementTwo.icon);
+                SkillsHUD.instance.SetElementTwoIcons(currElementTwo);
+                // set skills icons
                 break;
             case "Combined":
                 //currCombinedElement = elements[elementKey];
@@ -74,8 +87,7 @@ public class PlayerAttack : MonoBehaviour {
             // deserialize XML
             Element tempElement = XMLSerializer<Element>.DeserializeXMLFile(elementXML[i]);
 
-            // create element icon sprite
-            tempElement.icon = Resources.Load<Sprite>("ElementIcons/" + tempElement.iconFilename);
+            tempElement.Init();
 
             // add to dictionary
             elements.Add(tempElement.name, tempElement);

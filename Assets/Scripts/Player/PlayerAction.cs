@@ -56,7 +56,7 @@ public class PlayerAction : MonoBehaviour {
             // check for collision
             
             // temp
-            switch (attack.attackType)
+            switch (attack.GetCurrentAttackType())
             {
                 case SKILL_TYPE.SKILL_MELEE:
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
@@ -81,7 +81,7 @@ public class PlayerAction : MonoBehaviour {
                 // attack
                 if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
                 {
-                    if (distSquared < attack.currRangeSquared)
+                    if (distSquared < attack.GetCurrentRangeSquared())
                     {
                         doAttack = true;
                         //velocity = Vector3.zero;
