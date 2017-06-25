@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class SkillsHUD : MonoBehaviour {
 
     public Image elementOneIcon;
+    public Text elementOneLabel;
     public Image elementTwoIcon;
+    public Text elementTwoLabel;
 
     public Sprite unlockSprite;
     public Sprite lockedSprite;
@@ -54,12 +56,13 @@ public class SkillsHUD : MonoBehaviour {
     }
 
     /// <summary>
-    ///  Set icons for element one & its skills
+    ///  Set label & icons for element one & its skills
     /// </summary>
     /// <param name="icon"></param>
-    public void SetElementOneIcons(Element element)
+    public void SetElementOne(Element element)
     {
         elementOneIcon.sprite = element.icon;
+        elementOneLabel.text = element.name;
 
         Skill skillQ = element.GetSkillOne();
         skillQIcon.sprite = skillQ.icon;
@@ -94,9 +97,10 @@ public class SkillsHUD : MonoBehaviour {
     ///  Set icons for element two & its skills
     /// </summary>
     /// <param name="icon"></param>
-    public void SetElementTwoIcons(Element element)
+    public void SetElementTwo(Element element)
     {
         elementTwoIcon.sprite = element.icon;
+        elementTwoLabel.text = element.name;
 
         Skill skillA = element.GetSkillOne();
         skillAIcon.sprite = skillA.icon;

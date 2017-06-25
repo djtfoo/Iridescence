@@ -24,6 +24,9 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private bool isActive;
     private Vector2 tooltipHalfCoordinates;
 
+    // reference to player data
+    private PlayerData playerData;
+
     private void Start()
     {
         // set to inactive first
@@ -31,6 +34,9 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
         isActive = false;
 
         tooltipHalfCoordinates = 0.5f * tooltipText.GetComponent<RectTransform>().sizeDelta;
+
+        // set reference to player data
+        playerData = PlayerAction.instance.GetPlayerData();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -53,10 +59,10 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
             switch (tooltipType)
             {
                 case TooltipType.TOOLTIP_HP:
-                    tooltipText.text = PlayerData.GetHP().ToString() + " / " + PlayerData.GetMaxHP();
+                    tooltipText.text = playerData.GetHP().ToString() + " / " + playerData.GetMaxHP();
                     break;
                 case TooltipType.TOOLTIP_MP:
-                    tooltipText.text = PlayerData.GetMP().ToString() + " / " + PlayerData.GetMaxMP();
+                    tooltipText.text = playerData.GetMP().ToString() + " / " + playerData.GetMaxMP();
                     break;
 
                 case TooltipType.TOOLTIP_NORMAL:

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<PlayerData>
+	<playerLevel>1</playerLevel>
+	<statPoints>0</statPoints>
+	<statATK>5</statATK>
+	<statDEF>5</statDEF>
+	<statMAG>5</statMAG>
+	<statSPD>5</statSPD>
+	<maxHP>100</maxHP>
+	<maxMP>120</maxMP>
+	<blankShardsCount>0</blankShardsCount>
+	<crystalCountArray>
+		<ObjectArrayItem varType="Fire">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Water">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Earth">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Air">
+			<variable>0</variable>
+		</ObjectArrayItem>
+	</crystalCountArray>
+</PlayerData>

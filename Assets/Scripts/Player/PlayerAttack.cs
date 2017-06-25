@@ -39,6 +39,9 @@ public class PlayerAttack : MonoBehaviour {
     private Element currElementTwo; // currently equipped 2nd element
     private CombinedElement currCombinedElement;    // current combined element
 
+    // reference to player data
+    private PlayerData playerData;
+
     // Getters
     public SKILL_TYPE GetCurrentAttackType()
     {
@@ -58,13 +61,13 @@ public class PlayerAttack : MonoBehaviour {
         {
             case "One":
                 currElementOne = elements[elementKey];
-                SkillsHUD.instance.SetElementOneIcons(currElementOne);
+                SkillsHUD.instance.SetElementOne(currElementOne);
                 // set skills icons
 
                 break;
             case "Two":
                 currElementTwo = elements[elementKey];
-                SkillsHUD.instance.SetElementTwoIcons(currElementTwo);
+                SkillsHUD.instance.SetElementTwo(currElementTwo);
                 // set skills icons
                 break;
             case "Combined":
@@ -102,10 +105,15 @@ public class PlayerAttack : MonoBehaviour {
         // TEMP SETTING OF CURR ELEMENTS
         SetElementReference("Fire", "One");
         SetElementReference("Water", "Two");
+
+        // set reference to player data
+        playerData = PlayerAction.instance.GetPlayerData();
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        return;
 
         // update element skills' cooldowns & appearances
         if (currElementOne != null) {
@@ -244,7 +252,7 @@ SetMovement:
             return false;
 
         // check enough MP or not
-        if (skill.MPCost > PlayerData.GetMP())
+        if (skill.MPCost > playerData.GetMP())
             // USE MELEE ATTACK INSTEAD
             return false;
 
@@ -263,7 +271,7 @@ SetMovement:
     public void UseSkill(Skill skill)
     {
         /// use MP
-        PlayerData.UseMP(skill.MPCost);
+        playerData.UseMP(skill.MPCost);
 
         /// set cooldown (if any)
         skill.SetStartCooldown();

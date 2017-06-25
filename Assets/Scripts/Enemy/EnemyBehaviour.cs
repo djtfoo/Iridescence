@@ -14,6 +14,7 @@ public class EnemyBehaviour {
     [XmlArrayItem("ObjectArrayItem")]
     public ObjectArrayItem[] parameters;
 
+    // non-XML variables
     public object[] methodParams;   // will be populated with data from ObjectArrayItem[]
 
     public void AddEnemy(GameObject enemy)
@@ -39,7 +40,7 @@ public class EnemyBehaviour {
 
     public void ChasePlayer(float speed, GameObject enemy)
     {
-        Debug.Log("YO");
+        //Debug.Log("YO");
     }
 
 }

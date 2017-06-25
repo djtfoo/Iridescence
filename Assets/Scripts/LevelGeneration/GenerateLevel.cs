@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+///============
+/// DEPRECATED
+///============
 public class GenerateLevel : MonoBehaviour {
 
     // level data

@@ -11,6 +11,8 @@ public class EnemyData : MonoBehaviour {
     private Transform HPBarPrefab;
     private Transform HPBar;
 
+    // Enemy stats
+
     // Enemy behaviour
     public TextAsset behaviourXML;  // XML file containing behaviour data
     private EnemyBehaviour behaviour;

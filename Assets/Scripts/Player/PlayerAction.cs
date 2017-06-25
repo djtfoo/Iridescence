@@ -13,7 +13,8 @@ public class PlayerAction : MonoBehaviour {
     //float getMouse0InputTimer = 0f;
     //const float mouse0InputTimer = 0.05f;
 
-    PlayerAttack attack;
+    private PlayerAttack playerAttack;
+    private PlayerData playerData;
 
     bool doAttack = false;
 
@@ -23,7 +24,19 @@ public class PlayerAction : MonoBehaviour {
     //GameObject raycastTarget;   // target of mouseover before clicking
     //GameObject clickTarget; // for knowing what object type the target is, e.g. can check if target enemy is within attack range
 
-        // set the "current attack" when player presses a key; else it's default attack
+    // set the "current attack" when player presses a key; else it's default attack
+
+    private void Awake()
+    {
+        instance = GameObject.Find("Player").GetComponent<PlayerAction>();
+
+        // get save data XML file
+        TextAsset savedataXML = Resources.Load<TextAsset>("SaveData/playerdata");
+
+        // deserialize XML file
+        playerData = XMLSerializer<PlayerData>.DeserializeXMLFile(savedataXML);
+        playerData.Init();
+    }
 
     // Use this for initialization
     void Start () {
@@ -31,10 +44,7 @@ public class PlayerAction : MonoBehaviour {
         RaycastInfo.raycastTarget = null;
         RaycastInfo.clickTarget = null;
 
-        instance = GameObject.Find("Player").GetComponent<PlayerAction>();
-
-        attack = this.GetComponent<PlayerAttack>();
-        PlayerData.Init();  // init player stats
+        playerAttack = this.GetComponent<PlayerAttack>();
 
         destinationMarker = (GameObject)Instantiate(destinationMarkerPrefab, destinationMarkerPrefab.transform.position, Quaternion.identity);
         destinationMarker.SetActive(false);
@@ -56,7 +66,7 @@ public class PlayerAction : MonoBehaviour {
             // check for collision
             
             // temp
-            switch (attack.GetCurrentAttackType())
+            switch (playerAttack.GetCurrentAttackType())
             {
                 case SKILL_TYPE.SKILL_MELEE:
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
@@ -64,7 +74,7 @@ public class PlayerAction : MonoBehaviour {
                     break;
 
                 case SKILL_TYPE.SKILL_FIREPROJECTILE:
-                    attack.SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
+                    playerAttack.SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
                     //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
                     break;
             }
@@ -81,21 +91,39 @@ public class PlayerAction : MonoBehaviour {
                 // attack
                 if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
                 {
-                    if (distSquared < attack.GetCurrentRangeSquared())
+                    if (distSquared < playerAttack.GetCurrentRangeSquared())
                     {
                         doAttack = true;
                         //velocity = Vector3.zero;
                         SetPathComplete();
+                        // UseSkill() here
                         //clickTarget = null;   // don't null so you can attack that target?
                         goto endOfVelocityMovement;
                     }
                 }
                 // enter dialogue
-                else if ((RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC || RaycastInfo.raycastType == RaycastTargetType.Raycast_Waypoint)
-                    && distSquared < PlayerData.converseRangeSquared)
+                else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC && distSquared < PlayerData.converseRangeSquared)
                 {
                     DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
                     //velocity = Vector3.zero;
+                    SetPathComplete();
+                    goto endOfVelocityMovement;
+                }
+                else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Waypoint && distSquared < PlayerData.converseRangeSquared)
+                {
+                    // waypoint heal
+                    RaycastInfo.clickTarget.GetComponent<Waypoint>().HealPlayer();
+
+                    // open dialogue to traverse waypoints
+
+                    SetPathComplete();
+                    goto endOfVelocityMovement;
+                }
+                else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_TransitionPortal && distSquared < 0.1f)
+                {
+                    // transit to next area
+                    InstantiateLevel.instance.LoadLevel(RaycastInfo.clickTarget.GetComponent<Portal>().connectedPrefabName);
+
                     SetPathComplete();
                     goto endOfVelocityMovement;
                 }
@@ -184,7 +212,11 @@ public class PlayerAction : MonoBehaviour {
     }
     public PlayerAttack GetAttackScript()
     {
-        return attack;
+        return playerAttack;
+    }
+    public PlayerData GetPlayerData()
+    {
+        return playerData;
     }
     //public Vector3 GetDestination()
     //{

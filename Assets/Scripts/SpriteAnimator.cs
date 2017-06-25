@@ -47,6 +47,8 @@ public class SpriteAnimator : MonoBehaviour {
     private int currDirection = (int)SPRITE_DIRECTION.DIR_DOWN;  // which direction currently facing
     private float timeElapsed = 0f;
 
+    // repeating or not
+
     // for idle ONLY
     private bool isIdleAnimation = true;
     private bool isBlinking = false;

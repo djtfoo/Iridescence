@@ -13,31 +13,31 @@ public class InstantiateLevel : MonoBehaviour {
     // init level variables for other stuff
     // e.g. player pos
 
+    public static InstantiateLevel instance;
+
     private void Awake()
     {
+        instance = GetComponent<InstantiateLevel>();  // this
+
         // READ from save file, which level/area the player is at; then load that prefab
 
         // set main camera -- for setting background render
         mainCamera = Camera.main;
 
-        GenerateTerrainFromPrefab("testPrefab");
+        GenerateTerrainFromPrefab("testPrefab");  // temp
     }
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void LoadLevel(string filename)
+    {
+        DestroyTerrain();   // destroy existing terrain first
+        GenerateTerrainFromPrefab(filename);    // generate next location's terrain
+    }
 
     /// <summary>
     /// @desc Function to generate terrain from prefab
     /// </summary>
     /// <param name="filename"> name of prefab file inside Resources/LevelPrefab </param>
-    public void GenerateTerrainFromPrefab(string filename)
+    private void GenerateTerrainFromPrefab(string filename)
     {
         if (terrain == null)
             DestroyTerrain();

@@ -188,7 +188,7 @@ public class SaveLevelData : MonoBehaviour {
         }
         else {
             //prefab = new GameObject();
-            PrefabUtility.CreatePrefab(fileDirectory + "testPrefab" + ".prefab", clonedTerrain);
+            PrefabUtility.CreatePrefab(fileDirectory + filename + ".prefab", clonedTerrain);
         }
 
         //prefab.name = 

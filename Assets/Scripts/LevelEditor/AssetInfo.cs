@@ -7,6 +7,7 @@ public enum GO_TYPE
     GO_NPC,
     GO_PROP,
     GO_WAYPOINT,
+    GO_TRANSITIONPORTAL,
     GO_NIL
 }
 
