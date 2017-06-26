@@ -2,6 +2,7 @@
 
 <PlayerData>
 	<playerLevel>1</playerLevel>
+	<playerEXP>0</playerEXP>
 	<statPoints>0</statPoints>
 	<statATK>5</statATK>
 	<statDEF>5</statDEF>
@@ -12,16 +13,16 @@
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">
-			<variable>0</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Water">
-			<variable>0</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Earth">
-			<variable>0</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Air">
-			<variable>0</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 	</crystalCountArray>
 </PlayerData>

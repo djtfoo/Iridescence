@@ -2,6 +2,7 @@
 
 <PlayerData>
 	<playerLevel>1</playerLevel>
+	<playerEXP>0</playerEXP>
 	<statPoints>0</statPoints>
 	<statATK>5</statATK>
 	<statDEF>5</statDEF>

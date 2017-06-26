@@ -102,12 +102,18 @@ public class PlayerAttack : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        // set reference to player data
+        playerData = PlayerAction.instance.GetPlayerData();
+
+        // SET ELEMENT LOCK/UNLOCK
+        foreach (string key in elements.Keys)
+        {
+            elements[key].SetUnlockSkills(playerData.GetCrystalCount(key));
+        }
+
         // TEMP SETTING OF CURR ELEMENTS
         SetElementReference("Fire", "One");
         SetElementReference("Water", "Two");
-
-        // set reference to player data
-        playerData = PlayerAction.instance.GetPlayerData();
     }
 	
 	// Update is called once per frame

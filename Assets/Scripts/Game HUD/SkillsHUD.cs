@@ -65,7 +65,7 @@ public class SkillsHUD : MonoBehaviour {
         elementOneLabel.text = element.name;
 
         Skill skillQ = element.GetSkillOne();
-        skillQIcon.sprite = skillQ.icon;
+        skillQIcon.sprite = element.GetSkillIcon(0);
         if (skillQ != null) {   // set normal overlay
             skillQOverlay.sprite = unlockSprite;
             skillQOverlay.fillAmount = 0f;
@@ -75,7 +75,7 @@ public class SkillsHUD : MonoBehaviour {
 
 
         Skill skillW = element.GetSkillTwo();
-        skillWIcon.sprite = skillW.icon;
+        skillWIcon.sprite = element.GetSkillIcon(1);
         if (skillW != null) {   // set normal overlay
             skillWOverlay.sprite = unlockSprite;
             skillWOverlay.fillAmount = 0f;
@@ -84,7 +84,7 @@ public class SkillsHUD : MonoBehaviour {
             skillWOverlay.sprite = lockedSprite;
 
         Skill skillE = element.GetSkillThree();
-        skillEIcon.sprite = skillE.icon;
+        skillEIcon.sprite = element.GetSkillIcon(2);
         if (skillE != null) {   // set normal overlay
             skillEOverlay.sprite = unlockSprite;
             skillEOverlay.fillAmount = 0f;
@@ -103,7 +103,7 @@ public class SkillsHUD : MonoBehaviour {
         elementTwoLabel.text = element.name;
 
         Skill skillA = element.GetSkillOne();
-        skillAIcon.sprite = skillA.icon;
+        skillAIcon.sprite = element.GetSkillIcon(0);
         if (skillA != null) {   // set normal overlay
             skillAOverlay.sprite = unlockSprite;
             skillAOverlay.fillAmount = 0f;
@@ -113,7 +113,7 @@ public class SkillsHUD : MonoBehaviour {
 
 
         Skill skillS = element.GetSkillTwo();
-        skillSIcon.sprite = skillS.icon;
+        skillSIcon.sprite = element.GetSkillIcon(1);
         if (skillS != null) {   // set normal overlay
             skillSOverlay.sprite = unlockSprite;
             skillSOverlay.fillAmount = 0f;
@@ -122,7 +122,7 @@ public class SkillsHUD : MonoBehaviour {
             skillSOverlay.sprite = lockedSprite;
 
         Skill skillD = element.GetSkillThree();
-        skillDIcon.sprite = skillD.icon;
+        skillDIcon.sprite = element.GetSkillIcon(2);
         if (skillD != null) {   // set normal overlay
             skillDOverlay.sprite = unlockSprite;
             skillDOverlay.fillAmount = 0f;

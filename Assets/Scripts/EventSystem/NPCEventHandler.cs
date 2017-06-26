@@ -4,6 +4,13 @@ using UnityEngine.EventSystems;
 
 public class NPCEventHandler : MonoBehaviour {
 
+    public GameObject speechBubble;
+
+    private void Start()
+    {
+        speechBubble.SetActive(false);
+    }
+
     // left click - maybe used to place props/NPC assets (1-time placement only)
     private void OnMouseDown()
     {
@@ -57,6 +64,10 @@ public class NPCEventHandler : MonoBehaviour {
 
         // set GameHUD highlight information
         GameHUD.instance.highlightInfo.SetHighlightInfo(this.name, this.tag);
+
+        // activate speech bubble animation
+        speechBubble.SetActive(true);
+        speechBubble.GetComponent<SpriteAnimator>().ResetAnimation();   // set back to frame 0
 #endif
     }
 
@@ -68,11 +79,28 @@ public class NPCEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
-        this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+        // reset highlight colour
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
 
         // remove GameHUD highlight information
         GameHUD.instance.highlightInfo.DeactivateHighlightInfo();
+
+        // remove speech bubble animation
+        speechBubble.SetActive(false);
 #endif
+    }
+
+    public void EndDialogue()
+    {
+        // reset highlight colour
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+        speechBubble.GetComponent<SpriteAnimator>().SetFreezeAnimation(false);
+
+        // remove GameHUD highlight information
+        GameHUD.instance.highlightInfo.DeactivateHighlightInfo();
+
+        // remove speech bubble animation
+        speechBubble.SetActive(false);
     }
 
 }

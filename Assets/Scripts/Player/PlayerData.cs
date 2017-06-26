@@ -16,10 +16,12 @@ public class PlayerData {
 
     // Player Stats
     [XmlElement("playerLevel")]
-    public float playerLevel;   // player's level
+    public int playerLevel;   // player's level
+    [XmlElement("playerEXP")]
+    public int playerEXP;   // player's exp for this level
 
     [XmlElement("statPoints")]
-    public float statPoints;    // points gained from levelling up -- use to increase other stats
+    public int statPoints;    // points gained from levelling up -- use to increase other stats
 
     [XmlElement("statATK")]
     public int statATK; // affects physical attack damage
@@ -31,9 +33,9 @@ public class PlayerData {
     public int statSPD; // affects attack speed
 
     [XmlElement("maxHP")]
-    public float maxHP;
+    public int maxHP;
     [XmlElement("maxMP")]
-    public float maxMP;
+    public int maxMP;
 
     // Player Items
     private Potion[] potions;
@@ -46,8 +48,10 @@ public class PlayerData {
     public ObjectArrayItem[] crystalCountArray;
 
     // non-XML serialized variables
-    private float HP;
-    private float MP;
+    private int playerEXPTotal; // total exp required for this level to level up
+
+    private int HP;
+    private int MP;
 
     private Dictionary<string, int> crystalCount;
 
@@ -60,25 +64,38 @@ public class PlayerData {
             crystalCount.Add(crystalCountArray[i].varType, int.Parse(crystalCountArray[i].variable));
         }
 
+        playerEXPTotal = StatsAlgorithmManager.CalculateEXPRequirement(playerLevel);
+
         HP = maxHP;
         MP = maxMP;
     }
 
+    // Crystals
+    public int GetCrystalCount(string elementName)
+    {
+        return crystalCount[elementName];
+    }
+
+    // EXP
+    public int GetCurrentEXP() {    // current for this level
+        return playerEXP;
+    }
+    public int GetCurrentEXPTotal() {   // current for this level
+        return playerEXPTotal;
+    }
+
     // HP
-    public float GetHP() {   // curr HP
+    public int GetHP() {   // curr HP
         return HP;
     }
-    public float GetMaxHP() {
-        return maxHP;
-    }
-    public void TakeDamage(float dmg)
+    public void TakeDamage(int dmg)
     {
         SetHP(HP - dmg);
     }
     public void RestoreHP() {
         SetHP(maxHP);
     }
-    private void SetHP(float newHP)
+    private void SetHP(int newHP)
     {
         HP = newHP;
         //if (newHP <= 0)
@@ -92,20 +109,17 @@ public class PlayerData {
     }
     
     // MP
-    public float GetMP() {   // curr MP
+    public int GetMP() {   // curr MP
         return MP;
     }
-    public float GetMaxMP() {
-        return maxMP;
-    }
-    public void UseMP(float cost)
+    public void UseMP(int cost)
     {
         SetMP(MP - cost);
     }
     public void RestoreMP() {
         SetMP(maxMP);
     }
-    private void SetMP(float newMP) {
+    private void SetMP(int newMP) {
         MP = newMP;
 
         if (newMP <= 0)
@@ -117,6 +131,5 @@ public class PlayerData {
     public bool IsAtMaxMP() {
         return MP == maxMP;
     }
-
 
 }

@@ -24,6 +24,11 @@ public class Element {
     private bool[] unlockedSkills;  // whether user has unlocked the corresponding skills or not
 
     // Skill Getters
+    public Sprite GetSkillIcon(int skillNum)
+    {
+        return skills[skillNum].icon;
+    }
+
     public Skill GetSkillOne()  // Q or A skill - melee
     {
         if (unlockedSkills[0])
@@ -50,8 +55,10 @@ public class Element {
     {
         // bool of whether skill is locked or not
         unlockedSkills = new bool[skills.Length];
+
+        // default
         for (int i = 0; i < unlockedSkills.Length; ++i)
-            unlockedSkills[i] = true;
+            unlockedSkills[i] = false;
 
         // set bool
 
@@ -62,6 +69,19 @@ public class Element {
         for (int i = 0; i < skills.Length; ++i)
         {
             skills[i].icon = Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename);
+        }
+    }
+
+    /// <summary>
+    ///  Set whether skills are locked or unlocked - reading from PlayerData
+    /// </summary>
+    public void SetUnlockSkills(int numCrystals)
+    {
+        for (int i = 0; i < numCrystals; ++i)
+        {
+            unlockedSkills[i] = true;
+            if (i >= 3)
+                break;
         }
     }
 

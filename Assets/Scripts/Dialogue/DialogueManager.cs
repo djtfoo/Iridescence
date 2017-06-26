@@ -255,8 +255,8 @@ public class DialogueManager : MonoBehaviour {
         // delete the dialogue box prefab
         Destroy(dialogueBox.gameObject);
 
-        // reset highlight colour
-        NPC.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+        // reset all highlight matters
+        NPC.GetComponent<NPCEventHandler>().EndDialogue();
     }
 
 }

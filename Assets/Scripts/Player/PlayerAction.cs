@@ -104,7 +104,7 @@ public class PlayerAction : MonoBehaviour {
                 // enter dialogue
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_NPC && distSquared < PlayerData.converseRangeSquared)
                 {
-                    DialogueManager.dManager.InitDialogue(RaycastInfo.clickTarget);
+                    SetStartDialogue(RaycastInfo.clickTarget);
                     //velocity = Vector3.zero;
                     SetPathComplete();
                     goto endOfVelocityMovement;
@@ -177,6 +177,12 @@ public class PlayerAction : MonoBehaviour {
         if (angle >= 360f)
             angle -= 360f;
         this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeDirection((int)(angle) / 45);
+    }
+
+    private void SetStartDialogue(GameObject NPC)
+    {
+        DialogueManager.dManager.InitDialogue(NPC);
+        NPC.GetComponent<NPCEventHandler>().speechBubble.GetComponent<SpriteAnimator>().SetFreezeAnimation(true);
     }
 
     public void SetMoveTo(Vector3 destination)

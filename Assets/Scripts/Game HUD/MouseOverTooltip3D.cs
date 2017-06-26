@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-// A brief description that follows the cursor when mouse is over a GameObject
+// A brief description that follows the cursor when mouse is over a GameObject; has background
 public class MouseOverTooltip3D : MonoBehaviour {
 
     public string tooltip;  // string to be output

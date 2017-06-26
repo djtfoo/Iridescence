@@ -6,7 +6,9 @@ public static class StatsAlgorithmManager {
 
 	public static int CalculateEXPRequirement(int level)
     {
-        return 0;
+        // algorithm: EXP = constant * 4 ^ x
+
+        return 6 * (int)Mathf.Pow(4, level);
     }
 
 }

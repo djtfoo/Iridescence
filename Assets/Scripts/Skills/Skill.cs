@@ -15,7 +15,7 @@ public class Skill {
     public string iconFilename; // filename of this element's icon sprite
 
     [XmlElement("MPCost")]
-    public float MPCost;  // this skill's cost to use
+    public int MPCost;  // this skill's cost to use
 
     [XmlElement("attackType")]
     public SKILL_TYPE atkType;  // this skill's attack type - melee, projectile, etc

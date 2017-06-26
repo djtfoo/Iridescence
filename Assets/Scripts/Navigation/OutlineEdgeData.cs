@@ -21,13 +21,13 @@ public class OutlineEdgeData : MonoBehaviour {
     {
         edgesBackSlash.Add(edge);
 
-        Debug.Log("pt1:" + edge.pt1.x + " " + edge.pt1.y + " | pt2:" + edge.pt2.x + " " + edge.pt2.y);
+        //Debug.Log("pt1:" + edge.pt1.x + " " + edge.pt1.y + " | pt2:" + edge.pt2.x + " " + edge.pt2.y);
     }
     public void AddForwardslash(OutlineEdge edge/*int areaSector*/)
     {
         edgesForwardSlash.Add(edge);
 
-        Debug.Log("pt1:" + edge.pt1.x + " " + edge.pt1.y + " | pt2:" + edge.pt2.x + " " + edge.pt2.y);
+        //Debug.Log("pt1:" + edge.pt1.x + " " + edge.pt1.y + " | pt2:" + edge.pt2.x + " " + edge.pt2.y);
     }
 
     // Getters

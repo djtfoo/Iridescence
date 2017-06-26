@@ -46,16 +46,17 @@ public class SpriteAnimator : MonoBehaviour {
     private int currFrame = 0;  // this frame
     private int currDirection = (int)SPRITE_DIRECTION.DIR_DOWN;  // which direction currently facing
     private float timeElapsed = 0f;
+    private bool freezeAnimation = false;
 
     // repeating or not
 
     // for idle ONLY
-    private bool isIdleAnimation = true;
+    private bool isIdleAnimation = false;
     private bool isBlinking = false;
     private int direction = 1;
 
 	// Use this for initialization
-	void Start () {
+	void Awake() {
         Random.seed = 0;
 
         animationsList = new Dictionary<string, SpriteAnimation>();
@@ -78,8 +79,11 @@ public class SpriteAnimator : MonoBehaviour {
         sr.sprite = currSprAnimation.sprites[currFrame];    // frame = 0
     }
 	
-	// Update is called once per frame
+	// Update for animation
 	void Update () {
+        if (freezeAnimation)
+            return;
+
         timeElapsed += Time.deltaTime;
 
         if (isIdleAnimation)
@@ -137,8 +141,8 @@ public class SpriteAnimator : MonoBehaviour {
     public void ChangeAnimation(string animationName)
     {
         currSprAnimation = animationsList[animationName];
-        currFrame = currSprAnimation.framesPerStrip * currDirection;
-        sr.sprite = currSprAnimation.sprites[currFrame];    // frame 0 of that strip
+        currFrame = currSprAnimation.framesPerStrip * currDirection;    // frame 0 of that strip
+        sr.sprite = currSprAnimation.sprites[currFrame];
 
         isBlinking = false;
 
@@ -150,13 +154,35 @@ public class SpriteAnimator : MonoBehaviour {
 
     public void ChangeDirection(int dir)
     {
-        currFrame = dir * currSprAnimation.framesPerStrip + currFrame % currSprAnimation.framesPerStrip;
+        if (!currSprAnimation.multiDirectional)
+            dir = 0;
+
+        currFrame = dir * currSprAnimation.framesPerStrip + currFrame % currSprAnimation.framesPerStrip;    // keep the same frame number
         currDirection = dir;
         sr.sprite = currSprAnimation.sprites[currFrame];
     }
     public void ChangeDirection(SPRITE_DIRECTION dir)
     {
         ChangeDirection((int)dir);
+    }
+
+    /// <summary>
+    ///  Function to reset animation to start of this frame
+    /// </summary>
+    public void ResetAnimation()
+    {
+        currFrame = currSprAnimation.framesPerStrip * currDirection;    // frame 0 of this strip
+        sr.sprite = currSprAnimation.sprites[currFrame];
+
+        timeElapsed = 0f;
+    }
+
+    /// <summary>
+    ///  Function to freeze or unfreeze animation
+    /// </summary>
+    public void SetFreezeAnimation(bool freeze)
+    {
+        freezeAnimation = freeze;
     }
 
 }
