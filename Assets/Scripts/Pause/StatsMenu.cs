@@ -29,7 +29,7 @@ public class StatsMenu : MonoBehaviour {
     /// <summary>
     ///  Function to set player data variables to the menu
     /// </summary>
-    public void SetStats()
+    public void InitStatsMenu()
     {
         // set stats values
         ATKValue.text = playerData.statATK.ToString();

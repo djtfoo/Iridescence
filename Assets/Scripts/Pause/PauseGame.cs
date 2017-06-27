@@ -52,7 +52,7 @@ public class PauseGame : MonoBehaviour {
         menuQuests.SetActive(false);
         menuAchievements.SetActive(false);
 
-        menuStats.GetComponent<StatsMenu>().SetStats();
+        menuStats.GetComponent<StatsMenu>().InitStatsMenu();
     }
 
     /// <summary>
@@ -64,6 +64,8 @@ public class PauseGame : MonoBehaviour {
         menuSkills.SetActive(true);
         menuQuests.SetActive(false);
         menuAchievements.SetActive(false);
+
+        menuSkills.GetComponent<SkillsMenu>().InitSkillsMenu();
     }
 
     /// <summary>

@@ -30,14 +30,6 @@ public class PlayerAttack : MonoBehaviour {
     public static float rangedRangeSquared = 1.5f;  // temp variable to represent ranged attack range
     public GameObject fireProjectile;   // temp projectile to launch
 
-    // player's elements
-    public TextAsset[] elementXML;  // information of player's elements
-    //private Element[] elements;     // player's elements, read from XML
-    private Dictionary<string, Element> elements;   // player's elements, read from XML
-    private Dictionary<string, CombinedElement> combinedElements;   // player's combined elements, read from XML
-    private Element currElementOne; // currently equipped 1st element
-    private Element currElementTwo; // currently equipped 2nd element
-    private CombinedElement currCombinedElement;    // current combined element
 
     // reference to player data
     private PlayerData playerData;
@@ -52,68 +44,10 @@ public class PlayerAttack : MonoBehaviour {
         return currRangeSquared;
     }
 
-    /// <summary>
-    ///  Set Element to slot one, slot two, or combined
-    /// </summary>
-    private void SetElementReference(string elementKey, string slot)
-    {
-        switch (slot)
-        {
-            case "One":
-                currElementOne = elements[elementKey];
-                SkillsHUD.instance.SetElementOne(currElementOne);
-                // set skills icons
-
-                break;
-            case "Two":
-                currElementTwo = elements[elementKey];
-                SkillsHUD.instance.SetElementTwo(currElementTwo);
-                // set skills icons
-                break;
-            case "Combined":
-                //currCombinedElement = elements[elementKey];
-                //SkillsHUD.instance.SetCombinedElementIcon(currCombinedElement.icon);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void Awake()
-    {
-        // init elements
-        elements = new Dictionary<string, Element>();
-        combinedElements = new Dictionary<string, CombinedElement>();
-
-        for (int i = 0; i < elementXML.Length; ++i)
-        {
-            // deserialize XML
-            Element tempElement = XMLSerializer<Element>.DeserializeXMLFile(elementXML[i]);
-
-            tempElement.Init();
-
-            // add to dictionary
-            elements.Add(tempElement.name, tempElement);
-        }
-
-        // set whether skills are unlocked or not - check with PlayerData elements collected
-
-    }
-
     // Use this for initialization
     void Start () {
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
-
-        // SET ELEMENT LOCK/UNLOCK
-        foreach (string key in elements.Keys)
-        {
-            elements[key].SetUnlockSkills(playerData.GetCrystalCount(key));
-        }
-
-        // TEMP SETTING OF CURR ELEMENTS
-        SetElementReference("Fire", "One");
-        SetElementReference("Water", "Two");
     }
 	
 	// Update is called once per frame
@@ -121,9 +55,13 @@ public class PlayerAttack : MonoBehaviour {
 
         return;
 
+        Element elementOne = playerData.GetElementOne();
+        Element elementTwo = playerData.GetElementTwo();
+        CombinedElement combinedElement = playerData.GetCombinedElement();
+
         // update element skills' cooldowns & appearances
-        if (currElementOne != null) {
-            foreach (Skill skill in currElementOne.skills)
+        if (elementOne != null) {
+            foreach (Skill skill in elementOne.skills)
             {
                 if (skill.IsOnCooldown())
                 {
@@ -131,8 +69,8 @@ public class PlayerAttack : MonoBehaviour {
                 }
             }
         }
-        if (currElementTwo != null) {
-            foreach (Skill skill in currElementTwo.skills)
+        if (elementTwo != null) {
+            foreach (Skill skill in elementTwo.skills)
             {
                 if (skill.IsOnCooldown())
                 {
@@ -140,8 +78,8 @@ public class PlayerAttack : MonoBehaviour {
                 }
             }
         }
-        if (currCombinedElement != null) {
-            foreach (Skill skill in currCombinedElement.skills)
+        if (combinedElement != null) {
+            foreach (Skill skill in combinedElement.skills)
             {
                 if (skill.IsOnCooldown())
                 {
@@ -163,53 +101,53 @@ public class PlayerAttack : MonoBehaviour {
         if (Input.anyKeyDown)
         {
             /// ELEMENT ONE
-            if (currElementOne != null) {
+            if (elementOne != null) {
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    if (CheckSkill(currElementOne.GetSkillOne()))
+                    if (CheckSkill(elementOne.GetSkillOne()))
                         goto SetMovement;
                 }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
-                    if (CheckSkill(currElementOne.GetSkillTwo()))
+                    if (CheckSkill(elementOne.GetSkillTwo()))
                         goto SetMovement;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (CheckSkill(currElementOne.GetSkillThree()))
+                    if (CheckSkill(elementOne.GetSkillThree()))
                         goto SetMovement;
                 }
             }
 
             /// ELEMENT TWO
-            if (currElementTwo != null) {
+            if (elementTwo != null) {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if (CheckSkill(currElementTwo.GetSkillOne()))
+                    if (CheckSkill(elementTwo.GetSkillOne()))
                         goto SetMovement;
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    if (CheckSkill(currElementTwo.GetSkillTwo()))
+                    if (CheckSkill(elementTwo.GetSkillTwo()))
                         goto SetMovement;
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
-                    if (CheckSkill(currElementTwo.GetSkillThree()))
+                    if (CheckSkill(elementTwo.GetSkillThree()))
                         goto SetMovement;
                 }
             }
 
             /// COMBINED ELEMENT
-            if (currCombinedElement != null) {
+            if (combinedElement != null) {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    if (CheckSkill(currCombinedElement.GetSkillOne()))
+                    if (CheckSkill(combinedElement.GetSkillOne()))
                         goto SetMovement;
                 }
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (CheckSkill(currCombinedElement.GetSkillTwo()))
+                    if (CheckSkill(combinedElement.GetSkillTwo()))
                         goto SetMovement;
                 }
             }

@@ -28,14 +28,13 @@ public class PlayerAction : MonoBehaviour {
 
     private void Awake()
     {
-        instance = GameObject.Find("Player").GetComponent<PlayerAction>();
+        instance = GetComponent<PlayerAction>();
 
         // get save data XML file
-        TextAsset savedataXML = Resources.Load<TextAsset>("SaveData/playerdata");
+        TextAsset savedataXML = Resources.Load<TextAsset>("SaveData/playerdata");   // temp
 
         // deserialize XML file
         playerData = XMLSerializer<PlayerData>.DeserializeXMLFile(savedataXML);
-        playerData.Init();
     }
 
     // Use this for initialization
@@ -44,10 +43,13 @@ public class PlayerAction : MonoBehaviour {
         RaycastInfo.raycastTarget = null;
         RaycastInfo.clickTarget = null;
 
-        playerAttack = this.GetComponent<PlayerAttack>();
+        playerAttack = GetComponent<PlayerAttack>();
 
         destinationMarker = (GameObject)Instantiate(destinationMarkerPrefab, destinationMarkerPrefab.transform.position, Quaternion.identity);
         destinationMarker.SetActive(false);
+
+        // init player data
+        playerData.Init();
     }
 
     // Update is called once per frame

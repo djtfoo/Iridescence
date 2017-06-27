@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
 
 public enum TooltipType     // denotes whether there is a need for special text
 {
@@ -37,7 +36,7 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (hasBackground)
             background = tooltipText.transform.parent;
 
-        tooltipHalfCoordinates = 0.5f * tooltipText.GetComponent<RectTransform>().sizeDelta;
+        tooltipHalfCoordinates = transform.root.localScale.x * 0.5f * tooltipText.GetComponent<RectTransform>().sizeDelta;
 
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();

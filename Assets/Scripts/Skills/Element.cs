@@ -10,6 +10,13 @@ public class Element {
     [XmlElement("iconFilename")]
     public string iconFilename; // filename of this element's icon sprite
 
+    [XmlElement("colorR")]
+    public float colorR;
+    [XmlElement("colorG")]
+    public float colorG;
+    [XmlElement("colorB")]
+    public float colorB;
+
     // each element has 3 skills
     /// skill 1: Q/A - melee
     /// skill 2: W/S - ranged
@@ -20,13 +27,13 @@ public class Element {
 
     // non-XML variables
     public Sprite icon;     // this element's icon
-
+    private Color color;    // this element's Color
     private bool[] unlockedSkills;  // whether user has unlocked the corresponding skills or not
 
     // Skill Getters
-    public Sprite GetSkillIcon(int skillNum)
+    public Sprite GetSkillIcon(int skillIdx)
     {
-        return skills[skillNum].icon;
+        return skills[skillIdx].icon;
     }
 
     public Skill GetSkillOne()  // Q or A skill - melee
@@ -53,14 +60,12 @@ public class Element {
 
     public void Init()
     {
-        // bool of whether skill is locked or not
+        // initialise bool array of whether skill is locked or not
         unlockedSkills = new bool[skills.Length];
 
         // default
         for (int i = 0; i < unlockedSkills.Length; ++i)
             unlockedSkills[i] = false;
-
-        // set bool
 
         // create element icon sprite
         icon = Resources.Load<Sprite>("ElementIcons/" + iconFilename);
@@ -70,6 +75,9 @@ public class Element {
         {
             skills[i].icon = Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename);
         }
+
+        // set color
+        color = new Color(colorR, colorG, colorB);
     }
 
     /// <summary>

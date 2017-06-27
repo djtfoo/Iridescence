@@ -3,6 +3,9 @@
 <Element>
 	<name>Air</name>
 	<iconFilename>airelement_icon</iconFilename>
+	<colorR>104</colorR>
+	<colorG>255</colorG>
+	<colorB>0</colorB>
 	<Skills>
 		<Skill name="Wind Cutter">
 			<description>Physically attack the enemy quickly. Increase attack speed when used in succession.</description>

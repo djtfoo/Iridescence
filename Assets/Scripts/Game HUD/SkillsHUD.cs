@@ -61,36 +61,51 @@ public class SkillsHUD : MonoBehaviour {
     /// <param name="icon"></param>
     public void SetElementOne(Element element)
     {
-        elementOneIcon.sprite = element.icon;
-        elementOneLabel.text = element.name;
-
-        Skill skillQ = element.GetSkillOne();
-        skillQIcon.sprite = element.GetSkillIcon(0);
-        if (skillQ != null) {   // set normal overlay
-            skillQOverlay.sprite = unlockSprite;
-            skillQOverlay.fillAmount = 0f;
+        if (element == null)
+        {  // no alpha
+            elementOneIcon.color = new Color(1f, 1f, 1f, 0f);
+            elementOneLabel.text = "";
         }
-        else  // set locked icon
-            skillQOverlay.sprite = lockedSprite;
+        else {  // have alpha
+            elementOneIcon.color = new Color(1f, 1f, 1f, 1f);
+
+            elementOneIcon.sprite = element.icon;
+            elementOneLabel.text = element.name;
+
+            Skill skillQ = element.GetSkillOne();
+            skillQIcon.sprite = element.GetSkillIcon(0);    // set skill icon
+            skillQIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[0]);  // set Skills tooltip
+            if (skillQ != null)
+            {   // set normal overlay
+                skillQOverlay.sprite = unlockSprite;
+                skillQOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillQOverlay.sprite = lockedSprite;
 
 
-        Skill skillW = element.GetSkillTwo();
-        skillWIcon.sprite = element.GetSkillIcon(1);
-        if (skillW != null) {   // set normal overlay
-            skillWOverlay.sprite = unlockSprite;
-            skillWOverlay.fillAmount = 0f;
+            Skill skillW = element.GetSkillTwo();
+            skillWIcon.sprite = element.GetSkillIcon(1);    // set skill icon
+            skillWIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[1]);  // set Skills tooltip
+            if (skillW != null)
+            {   // set normal overlay
+                skillWOverlay.sprite = unlockSprite;
+                skillWOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillWOverlay.sprite = lockedSprite;
+
+            Skill skillE = element.GetSkillThree();
+            skillEIcon.sprite = element.GetSkillIcon(2);    // set skill icon
+            skillEIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[2]);  // set Skills tooltip
+            if (skillE != null)
+            {   // set normal overlay
+                skillEOverlay.sprite = unlockSprite;
+                skillEOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillEOverlay.sprite = lockedSprite;
         }
-        else  // set locked icon
-            skillWOverlay.sprite = lockedSprite;
-
-        Skill skillE = element.GetSkillThree();
-        skillEIcon.sprite = element.GetSkillIcon(2);
-        if (skillE != null) {   // set normal overlay
-            skillEOverlay.sprite = unlockSprite;
-            skillEOverlay.fillAmount = 0f;
-        }
-        else  // set locked icon
-            skillEOverlay.sprite = lockedSprite;
     }
 
     /// <summary>
@@ -99,36 +114,51 @@ public class SkillsHUD : MonoBehaviour {
     /// <param name="icon"></param>
     public void SetElementTwo(Element element)
     {
-        elementTwoIcon.sprite = element.icon;
-        elementTwoLabel.text = element.name;
-
-        Skill skillA = element.GetSkillOne();
-        skillAIcon.sprite = element.GetSkillIcon(0);
-        if (skillA != null) {   // set normal overlay
-            skillAOverlay.sprite = unlockSprite;
-            skillAOverlay.fillAmount = 0f;
+        if (element == null)
+        {  // no alpha
+            elementTwoIcon.color = new Color(1f, 1f, 1f, 0f);
+            elementTwoLabel.text = "";
         }
-        else  // set locked icon
-            skillAOverlay.sprite = lockedSprite;
+        else {  // have alpha
+            elementTwoIcon.color = new Color(1f, 1f, 1f, 1f);
+
+            elementTwoIcon.sprite = element.icon;
+            elementTwoLabel.text = element.name;
+
+            Skill skillA = element.GetSkillOne();
+            skillAIcon.sprite = element.GetSkillIcon(0);    // set skill icon
+            skillAIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[0]);  // set Skills tooltip
+            if (skillA != null)
+            {   // set normal overlay
+                skillAOverlay.sprite = unlockSprite;
+                skillAOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillAOverlay.sprite = lockedSprite;
 
 
-        Skill skillS = element.GetSkillTwo();
-        skillSIcon.sprite = element.GetSkillIcon(1);
-        if (skillS != null) {   // set normal overlay
-            skillSOverlay.sprite = unlockSprite;
-            skillSOverlay.fillAmount = 0f;
+            Skill skillS = element.GetSkillTwo();
+            skillSIcon.sprite = element.GetSkillIcon(1);    // set skill icon
+            skillSIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[1]);  // set Skills tooltip
+            if (skillS != null)
+            {   // set normal overlay
+                skillSOverlay.sprite = unlockSprite;
+                skillSOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillSOverlay.sprite = lockedSprite;
+
+            Skill skillD = element.GetSkillThree();
+            skillDIcon.sprite = element.GetSkillIcon(2);    // set skill icon
+            skillDIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[2]);  // set Skills tooltip
+            if (skillD != null)
+            {   // set normal overlay
+                skillDOverlay.sprite = unlockSprite;
+                skillDOverlay.fillAmount = 0f;
+            }
+            else  // set locked overlay
+                skillDOverlay.sprite = lockedSprite;
         }
-        else  // set locked icon
-            skillSOverlay.sprite = lockedSprite;
-
-        Skill skillD = element.GetSkillThree();
-        skillDIcon.sprite = element.GetSkillIcon(2);
-        if (skillD != null) {   // set normal overlay
-            skillDOverlay.sprite = unlockSprite;
-            skillDOverlay.fillAmount = 0f;
-        }
-        else  // set locked icon
-            skillDOverlay.sprite = lockedSprite;
     }
 
 }

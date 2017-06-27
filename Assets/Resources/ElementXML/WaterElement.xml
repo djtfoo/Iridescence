@@ -3,6 +3,9 @@
 <Element>
 	<name>Water</name>
 	<iconFilename>waterelement_icon</iconFilename>
+	<colorR>23</colorR>
+	<colorG>119</colorG>
+	<colorB>255</colorB>
 	<Skills>
 		<Skill name="Mana Drain">
 			<description>Physically attack an enemy and take their mana force.</description>

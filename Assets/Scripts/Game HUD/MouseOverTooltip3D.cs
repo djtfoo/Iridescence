@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
 
 // A brief description that follows the cursor when mouse is over a GameObject; has background
 public class MouseOverTooltip3D : MonoBehaviour {
@@ -10,7 +8,7 @@ public class MouseOverTooltip3D : MonoBehaviour {
     public GameObject tooltipText;    // GameObject containing text to be rendered; is a "static" object
 
     private bool isActive;
-    private Vector2 tooltipHalfCoordinates;
+    private Vector2 tooltipCoordinates;
 
     private void Start()
     {
@@ -18,13 +16,13 @@ public class MouseOverTooltip3D : MonoBehaviour {
         tooltipText.SetActive(false);
         isActive = false;
 
-        tooltipHalfCoordinates = 0.5f * tooltipText.GetComponent<RectTransform>().sizeDelta;
+        tooltipCoordinates = transform.root.localScale.x * tooltipText.GetComponent<RectTransform>().sizeDelta;
     }
 
     private void OnMouseOver()
     {
         // set to active to be visible
-        tooltipText.gameObject.SetActive(true);
+        tooltipText.SetActive(true);
 
         isActive = true;
 
@@ -37,7 +35,7 @@ public class MouseOverTooltip3D : MonoBehaviour {
         if (isActive)
         {
             // follow user's cursor
-            tooltipText.transform.position = Input.mousePosition + new Vector3(tooltipHalfCoordinates.x, tooltipHalfCoordinates.y, 0f);
+            tooltipText.transform.position = Input.mousePosition + new Vector3(tooltipCoordinates.x, tooltipCoordinates.y, 0f);
         }
     }
 

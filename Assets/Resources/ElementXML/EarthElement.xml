@@ -3,6 +3,9 @@
 <Element>
 	<name>Earth</name>
 	<iconFilename>earthelement_icon</iconFilename>
+	<colorR>189</colorR>
+	<colorG>160</colorG>
+	<colorB>84</colorB>
 	<Skills>
 		<Skill name="Health Drain">
 			<description>Physically attack an enemy and take their life force.</description>

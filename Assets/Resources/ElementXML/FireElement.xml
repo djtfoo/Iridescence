@@ -3,6 +3,9 @@
 <Element>
 	<name>Fire</name>
 	<iconFilename>fireelement_icon</iconFilename>
+	<colorR>255</colorR>
+	<colorG>115</colorG>
+	<colorB>39</colorB>
 	<Skills>
 		<Skill name="Flame Slash">
 			<description>Attack an enemy with a burning slash. High damage.</description>

@@ -10,6 +10,8 @@
 	<statSPD>5</statSPD>
 	<maxHP>100</maxHP>
 	<maxMP>120</maxMP>
+	<elementOne>Air</elementOne>
+	<elementTwo></elementTwo>
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">

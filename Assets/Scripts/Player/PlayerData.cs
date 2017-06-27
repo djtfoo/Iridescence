@@ -37,6 +37,11 @@ public class PlayerData {
     [XmlElement("maxMP")]
     public int maxMP;
 
+    [XmlElement("elementOne")]
+    public string currElement1;
+    [XmlElement("elementTwo")]
+    public string currElement2;
+
     // Player Items
     private Potion[] potions;
 
@@ -55,8 +60,24 @@ public class PlayerData {
 
     private Dictionary<string, int> crystalCount;
 
+    // element information
+    public TextAsset[] elementXML;  // information of player's elements
+    //private Element[] elements;     // player's elements, read from XML
+    private Dictionary<string, Element> elements;   // player's elements, read from XML
+    private Dictionary<string, CombinedElement> combinedElements;   // player's combined elements, read from XML
+
+    // currently equipped elements
+    private Element currElementOne; // currently equipped 1st element
+    private Element currElementTwo; // currently equipped 2nd element
+    private CombinedElement currCombinedElement;    // current combined element
+
     public void Init()
     {
+        playerEXPTotal = StatsAlgorithmManager.CalculateEXPRequirement(playerLevel);
+
+        HP = maxHP;
+        MP = maxMP;
+
         // transfer temp dewserializer crystalCountArray to Dictionary
         crystalCount = new Dictionary<string, int>();
         for (int i = 0; i < crystalCountArray.Length; ++i)
@@ -64,10 +85,32 @@ public class PlayerData {
             crystalCount.Add(crystalCountArray[i].varType, int.Parse(crystalCountArray[i].variable));
         }
 
-        playerEXPTotal = StatsAlgorithmManager.CalculateEXPRequirement(playerLevel);
+        // init elements
+        elementXML = Resources.LoadAll<TextAsset>("ElementXML");
 
-        HP = maxHP;
-        MP = maxMP;
+        elements = new Dictionary<string, Element>();
+        combinedElements = new Dictionary<string, CombinedElement>();
+
+        for (int i = 0; i < elementXML.Length; ++i)
+        {
+            // deserialize XML
+            Element tempElement = XMLSerializer<Element>.DeserializeXMLFile(elementXML[i]);
+
+            tempElement.Init();
+
+            // add to dictionary
+            elements.Add(tempElement.name, tempElement);
+        }
+
+        // set whether skills are unlocked or not
+        foreach (string key in elements.Keys)
+        {
+            elements[key].SetUnlockSkills(GetCrystalCount(key));
+        }
+
+        // TEMP SETTING OF CURR ELEMENTS
+        SetElementReference(currElement1, "One");
+        SetElementReference(currElement2, "Two");
     }
 
     // Crystals
@@ -131,5 +174,54 @@ public class PlayerData {
     public bool IsAtMaxMP() {
         return MP == maxMP;
     }
+
+    // Element
+    public Element GetElementData(string key) // get element via key
+    {
+        return elements[key];
+    }
+
+    public Element GetElementOne()
+    {
+        return currElementOne;
+    }
+    public Element GetElementTwo()
+    {
+        return currElementTwo;
+    }
+    public CombinedElement GetCombinedElement()
+    {
+        return currCombinedElement;
+    }
+
+    /// <summary>
+    ///  Set Element to slot one, slot two, or combined
+    /// </summary>
+    private void SetElementReference(string elementKey, string slot)
+    {
+        switch (slot)
+        {
+            case "One":
+                if (elementKey != "")
+                    currElementOne = elements[elementKey];
+                SkillsHUD.instance.SetElementOne(currElementOne);
+                // set skills icons
+
+                break;
+            case "Two":
+                if (elementKey != "")
+                    currElementTwo = elements[elementKey];
+                SkillsHUD.instance.SetElementTwo(currElementTwo);
+                // set skills icons
+                break;
+            case "Combined":
+                //currCombinedElement = elements[elementKey];
+                //SkillsHUD.instance.SetCombinedElementIcon(currCombinedElement.icon);
+                break;
+            default:
+                break;
+        }
+    }
+
 
 }
