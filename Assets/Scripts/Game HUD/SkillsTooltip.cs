@@ -6,6 +6,8 @@ public class SkillsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public Transform tooltip;
 
+    public Transform parentCanvas;
+
     public Text skillName;
     public Text skillDescription;
     public Text skillMPCost;
@@ -25,19 +27,21 @@ public class SkillsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     // Use this for initialization
     void Start () {
+
+        if (parentCanvas == null)
+            parentCanvas = transform.root;
+
         // set to inactive first
         tooltip.gameObject.SetActive(false);
         isActive = false;
 
         Vector2 sizeDelta = tooltip.GetComponent<RectTransform>().sizeDelta;
 
-        tooltipCoordinates = transform.root.localScale.x * 0.5f * sizeDelta;
+        tooltipCoordinates = parentCanvas.localScale.x * 0.5f * sizeDelta;
 
         if (hasMaxPoint)
             maxPoint = tooltip.localPosition;
         //maxPoint = new Vector2(0.5f * sizeDelta.x, 0.25f * sizeDelta.y);
-
-        Debug.Log(maxPoint);
     }
 	
 	// Update is called once per frame

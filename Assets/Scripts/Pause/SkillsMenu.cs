@@ -7,12 +7,13 @@ public class SkillsMenu : MonoBehaviour {
     public SkillListMenu skillListMenu;
 
 	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	public void InitSelf()
+    {
+        skillListMenu.InitSelf();
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
     

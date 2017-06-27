@@ -2,8 +2,8 @@
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct ElementSkillList
-{
+public struct ElementSkillList {
+
     public string name;
 
     public SkillsTooltip tooltipSkillQ;
@@ -39,7 +39,8 @@ public class SkillListMenu : MonoBehaviour {
     private PlayerData playerData;
 
     // Use this for initialization
-    void Start () {
+    public void InitSelf() {
+        // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
     }
 	

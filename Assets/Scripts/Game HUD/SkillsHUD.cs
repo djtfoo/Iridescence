@@ -65,6 +65,21 @@ public class SkillsHUD : MonoBehaviour {
         {  // no alpha
             elementOneIcon.color = new Color(1f, 1f, 1f, 0f);
             elementOneLabel.text = "";
+
+            skillQIcon.sprite = null;
+            skillQOverlay.sprite = lockedSprite;
+            skillQOverlay.fillAmount = 1f;
+            skillQIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
+
+            skillWIcon.sprite = null;
+            skillWOverlay.sprite = lockedSprite;
+            skillWOverlay.fillAmount = 1f;
+            skillWIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
+
+            skillEIcon.sprite = null;
+            skillEOverlay.sprite = lockedSprite;
+            skillEOverlay.fillAmount = 1f;
+            skillEIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
         }
         else {  // have alpha
             elementOneIcon.color = new Color(1f, 1f, 1f, 1f);
@@ -80,8 +95,10 @@ public class SkillsHUD : MonoBehaviour {
                 skillQOverlay.sprite = unlockSprite;
                 skillQOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillQOverlay.sprite = lockedSprite;
+                skillQOverlay.fillAmount = 1f;
+            }
 
 
             Skill skillW = element.GetSkillTwo();
@@ -92,8 +109,10 @@ public class SkillsHUD : MonoBehaviour {
                 skillWOverlay.sprite = unlockSprite;
                 skillWOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillWOverlay.sprite = lockedSprite;
+                skillWOverlay.fillAmount = 1f;
+            }
 
             Skill skillE = element.GetSkillThree();
             skillEIcon.sprite = element.GetSkillIcon(2);    // set skill icon
@@ -103,8 +122,11 @@ public class SkillsHUD : MonoBehaviour {
                 skillEOverlay.sprite = unlockSprite;
                 skillEOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillEOverlay.sprite = lockedSprite;
+                skillEOverlay.fillAmount = 1f;
+            }
+
         }
     }
 
@@ -118,6 +140,21 @@ public class SkillsHUD : MonoBehaviour {
         {  // no alpha
             elementTwoIcon.color = new Color(1f, 1f, 1f, 0f);
             elementTwoLabel.text = "";
+
+            skillAIcon.sprite = null;
+            skillAOverlay.sprite = lockedSprite;
+            skillAOverlay.fillAmount = 1f;
+            skillAIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
+
+            skillSIcon.sprite = null;
+            skillSOverlay.sprite = lockedSprite;
+            skillSOverlay.fillAmount = 1f;
+            skillSIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
+
+            skillDIcon.sprite = null;
+            skillDOverlay.sprite = lockedSprite;
+            skillDOverlay.fillAmount = 1f;
+            skillDIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(null);  // remove Skills tooltip
         }
         else {  // have alpha
             elementTwoIcon.color = new Color(1f, 1f, 1f, 1f);
@@ -133,8 +170,10 @@ public class SkillsHUD : MonoBehaviour {
                 skillAOverlay.sprite = unlockSprite;
                 skillAOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillAOverlay.sprite = lockedSprite;
+                skillAOverlay.fillAmount = 1f;
+            }
 
 
             Skill skillS = element.GetSkillTwo();
@@ -145,8 +184,10 @@ public class SkillsHUD : MonoBehaviour {
                 skillSOverlay.sprite = unlockSprite;
                 skillSOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillSOverlay.sprite = lockedSprite;
+                skillSOverlay.fillAmount = 1f;
+            }
 
             Skill skillD = element.GetSkillThree();
             skillDIcon.sprite = element.GetSkillIcon(2);    // set skill icon
@@ -156,8 +197,10 @@ public class SkillsHUD : MonoBehaviour {
                 skillDOverlay.sprite = unlockSprite;
                 skillDOverlay.fillAmount = 0f;
             }
-            else  // set locked overlay
+            else {  // set locked overlay
                 skillDOverlay.sprite = lockedSprite;
+                skillDOverlay.fillAmount = 1f;
+            }
         }
     }
 

@@ -22,9 +22,10 @@ public class StatsMenu : MonoBehaviour {
     private PlayerData playerData;
 
     // Use this for initialization
-    void Start () {
+    public void InitSelf() {
+        // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
-	}
+    }
 
     /// <summary>
     ///  Function to set player data variables to the menu

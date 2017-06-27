@@ -50,7 +50,7 @@ public class PlayerData {
 
     [XmlArray("crystalCountArray")]
     [XmlArrayItem("ObjectArrayItem")]
-    public ObjectArrayItem[] crystalCountArray;
+    public ObjectArrayItem[] crystalCountArray; // number of Iris Fragments player has (max. 3)
 
     // non-XML serialized variables
     private int playerEXPTotal; // total exp required for this level to level up
@@ -58,7 +58,7 @@ public class PlayerData {
     private int HP;
     private int MP;
 
-    private Dictionary<string, int> crystalCount;
+    private Dictionary<string, int> crystalCount;   // number of Iris Fragments player has (max. 3)
 
     // element information
     public TextAsset[] elementXML;  // information of player's elements
@@ -197,19 +197,23 @@ public class PlayerData {
     /// <summary>
     ///  Set Element to slot one, slot two, or combined
     /// </summary>
-    private void SetElementReference(string elementKey, string slot)
+    public void SetElementReference(string elementKey, string slot)
     {
         switch (slot)
         {
             case "One":
-                if (elementKey != "")
+                if (elementKey == "")
+                    currElementOne = null;
+                else
                     currElementOne = elements[elementKey];
                 SkillsHUD.instance.SetElementOne(currElementOne);
                 // set skills icons
 
                 break;
             case "Two":
-                if (elementKey != "")
+                if (elementKey == "")
+                    currElementTwo = null;
+                else
                     currElementTwo = elements[elementKey];
                 SkillsHUD.instance.SetElementTwo(currElementTwo);
                 // set skills icons

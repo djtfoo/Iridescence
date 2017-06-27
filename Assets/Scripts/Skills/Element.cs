@@ -27,7 +27,7 @@ public class Element {
 
     // non-XML variables
     public Sprite icon;     // this element's icon
-    private Color color;    // this element's Color
+    public Color color;    // this element's Color
     private bool[] unlockedSkills;  // whether user has unlocked the corresponding skills or not
 
     // Skill Getters
@@ -77,7 +77,7 @@ public class Element {
         }
 
         // set color
-        color = new Color(colorR, colorG, colorB);
+        color = new Color(colorR / 255f, colorG / 255f, colorB / 255f);
     }
 
     /// <summary>
