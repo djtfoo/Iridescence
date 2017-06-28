@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class EquipGem : MonoBehaviour {
 
     public ElementsMenu elementsMenu;   // reference to ElementsMenu
+    public GemsInventory gemsInventory; // reference to GemsInventory
     public string elementName;  // name of this gem's element
 
     public Sprite crystalSprite;
-    public Image ghostGemSprite;    // sprite that follows cursor
 
     // gem slots to drag to
     public RectTransform slot1;
@@ -19,7 +19,6 @@ public class EquipGem : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        ghostGemSprite.gameObject.SetActive(false);
         isDragging = false;
 
         slotsizeDelta = slot1.sizeDelta;    // take either slot1 or slot2 sizeDelta
@@ -28,9 +27,8 @@ public class EquipGem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    if (isDragging)
-        {
-            ghostGemSprite.transform.position = Input.mousePosition;
+	    if (isDragging) {
+            gemsInventory.ghostGemSprite.transform.position = Input.mousePosition;
         }
 	}
 
@@ -40,8 +38,8 @@ public class EquipGem : MonoBehaviour {
         if (PlayerAction.instance.GetPlayerData().GetCrystalCount(elementName) == 0)
             return;
 
-        ghostGemSprite.gameObject.SetActive(true);
-        ghostGemSprite.sprite = crystalSprite;
+        gemsInventory.ghostGemSprite.gameObject.SetActive(true);
+        gemsInventory.ghostGemSprite.sprite = crystalSprite;
 
         isDragging = true;
     }
@@ -51,7 +49,7 @@ public class EquipGem : MonoBehaviour {
         if (!isDragging)    // not dragging
             return;
 
-        ghostGemSprite.gameObject.SetActive(false);
+        gemsInventory.ghostGemSprite.gameObject.SetActive(false);
         isDragging = false;
 
         // check if user dragged to any slot successfully

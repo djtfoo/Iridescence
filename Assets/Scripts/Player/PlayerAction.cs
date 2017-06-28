@@ -35,6 +35,9 @@ public class PlayerAction : MonoBehaviour {
 
         // deserialize XML file
         playerData = XMLSerializer<PlayerData>.DeserializeXMLFile(savedataXML);
+        
+        // init player data
+        playerData.Init();
     }
 
     // Use this for initialization
@@ -48,8 +51,9 @@ public class PlayerAction : MonoBehaviour {
         destinationMarker = (GameObject)Instantiate(destinationMarkerPrefab, destinationMarkerPrefab.transform.position, Quaternion.identity);
         destinationMarker.SetActive(false);
 
-        // init player data
-        playerData.Init();
+        // SETTING OF CURR ELEMENTS
+        playerData.SetElementReference(playerData.currElement1, "One");
+        playerData.SetElementReference(playerData.currElement2, "Two");
     }
 
     // Update is called once per frame

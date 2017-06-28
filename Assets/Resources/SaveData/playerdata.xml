@@ -12,6 +12,15 @@
 	<maxMP>120</maxMP>
 	<elementOne>Earth</elementOne>
 	<elementTwo>Water</elementTwo>
+	<equippedPotions>
+		<potion>HPRegen</potion>
+		<potion>FireBoost</potion>
+		<potion>WaterBoost</potion>
+		<potion>EarthBoost</potion>
+		<potion>AirBoost</potion>
+	</equippedPotions>
+	
+	
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">
@@ -27,4 +36,34 @@
 			<variable>3</variable>
 		</ObjectArrayItem>
 	</crystalCountArray>
+	
+	<potionsCountArray>
+		<ObjectArrayItem varType="HPRegen">
+			<variable>9</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="MPRegen">
+			<variable>8</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="DamageBoost">
+			<variable>7</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="DamageReduction">
+			<variable>6</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="SpeedBoost">
+			<variable>5</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="FireBoost">
+			<variable>4</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="WaterBoost">
+			<variable>3</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="EarthBoost">
+			<variable>2</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="AirBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+	</potionsCountArray>
 </PlayerData>

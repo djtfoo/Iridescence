@@ -12,6 +12,14 @@
 	<maxMP>120</maxMP>
 	<elementOne></elementOne>
 	<elementTwo></elementTwo>
+	<equippedPotions>
+		<potion></potion>
+		<potion></potion>
+		<potion></potion>
+		<potion></potion>
+		<potion></potion>
+	</equippedPotions>
+	
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">
@@ -27,4 +35,34 @@
 			<variable>0</variable>
 		</ObjectArrayItem>
 	</crystalCountArray>
+	
+	<potionsCountArray>
+		<ObjectArrayItem varType="HPRegen">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="MPRegen">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="DamageBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="DamageReduction">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="SpeedBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="FireBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="WaterBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="EarthBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="AirBoost">
+			<variable>0</variable>
+		</ObjectArrayItem>
+	</potionsCountArray>
 </PlayerData>

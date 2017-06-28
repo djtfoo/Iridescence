@@ -81,7 +81,7 @@ public class ElementsMenu : MonoBehaviour {
     }
 
     /// <summary>
-    ///  Set element information
+    ///  Set element information when menu first opens
     /// </summary>
     public void InitElements()
     {

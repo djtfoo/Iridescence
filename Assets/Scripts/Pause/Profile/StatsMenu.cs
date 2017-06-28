@@ -18,6 +18,9 @@ public class StatsMenu : MonoBehaviour {
     public Text MPValue;
     public Transform MPBar;
 
+    public PotionSlots potionSlots;
+    public PotionsInventory potionsInventory;
+
     // set reference to player data
     private PlayerData playerData;
 
@@ -32,6 +35,10 @@ public class StatsMenu : MonoBehaviour {
     /// </summary>
     public void InitStatsMenu()
     {
+        // init potions
+        potionSlots.InitPotionSlots();
+        potionsInventory.Init();
+
         // set stats values
         ATKValue.text = playerData.statATK.ToString();
         DEFValue.text = playerData.statDEF.ToString();

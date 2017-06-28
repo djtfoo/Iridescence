@@ -6,8 +6,17 @@ using System.Collections;
 /// </summary>
 public class TerrainInfo : MonoBehaviour {
 
+    // public so that it gets saved in the Prefab
     public string locationName;     // name of this location
     public string background;   // name of the type of background render
+    public Vector3 playerPos;   // player's starting position
+
+    private void Start()
+    {
+        // set player position
+        PlayerAction.instance.transform.position = playerPos;
+        PlayerAction.instance.GetComponent<DepthSort>().DoDepthSort();
+    }
 
     public void SetLocationName(string newLocationName)
     {

@@ -3,8 +3,10 @@ using System.Collections;
 
 public class SkillsMenu : MonoBehaviour {
 
+    // references to each sub-category
     public ElementsMenu elementMenu;
     public SkillListMenu skillListMenu;
+    public GemsInventory gemsInventory;
 
 	// Use this for initialization
 	public void InitSelf()
@@ -21,6 +23,7 @@ public class SkillsMenu : MonoBehaviour {
     {
         elementMenu.InitElements();
         skillListMenu.InitSkills();
+        gemsInventory.Init();
     }
 
 }

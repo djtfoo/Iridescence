@@ -6,13 +6,14 @@ public class SkillsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public Transform tooltip;
 
+    [Tooltip("Parent canvas for getting change in canvas scale")]
     public Transform parentCanvas;
 
     public Text skillName;
     public Text skillDescription;
     public Text skillMPCost;
 
-    private Skill skill;    // reference to skill this icon shows
+    private Skill skill;    // reference to the skill this tooltip shows information of
 
     private bool isActive;
     private Vector2 tooltipCoordinates;

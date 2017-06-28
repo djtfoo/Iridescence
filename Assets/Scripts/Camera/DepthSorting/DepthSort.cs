@@ -4,7 +4,12 @@ using System.Collections;
 public class DepthSort : MonoBehaviour {
 
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
+        DoDepthSort();
+    }
+
+    public void DoDepthSort()
+    {
         if (transform.hasChanged)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y,

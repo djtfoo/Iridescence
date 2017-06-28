@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Potion>
+	<name>DamageReduction</name>
+	<description>Temporarily reduces damage user takes from all attacks.</description>
+	<spriteFilename>potion_dmgreduction</spriteFilename>
+	<craftCost>40</craftCost>
+	<duration>100</duration>
+	<effectValue>10</effectValue>
+</Potion>

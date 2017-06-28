@@ -8,6 +8,9 @@ using System.Xml.Serialization;
 [XmlRoot("PlayerData")]
 public class PlayerData {
 
+    // XML files - load from Resources
+    private TextAsset[] elementXMLFiles;    // information of player's elements
+
     // shld have a "pointer" to the current skill - the one that was clicked to do the attack
 
 
@@ -42,9 +45,11 @@ public class PlayerData {
     [XmlElement("elementTwo")]
     public string currElement2;
 
-    // Player Items
-    private Potion[] potions;
+    [XmlArray("equippedPotions")]
+    [XmlArrayItem("potion")]
+    public string[] equippedPotions; // user's potion slots (5 slots total)
 
+    // Player Items
     [XmlElement("blankShardsCount")]
     public int blankShardsCount;    // number of blank shards player has
 
@@ -52,17 +57,21 @@ public class PlayerData {
     [XmlArrayItem("ObjectArrayItem")]
     public ObjectArrayItem[] crystalCountArray; // number of Iris Fragments player has (max. 3)
 
+    [XmlArray("potionsCountArray")]
+    [XmlArrayItem("ObjectArrayItem")]
+    public ObjectArrayItem[] potionsCountArray; // number of potions player has (max. 99)
+
     // non-XML serialized variables
     private int playerEXPTotal; // total exp required for this level to level up
 
     private int HP;
     private int MP;
 
+    // Player items
     private Dictionary<string, int> crystalCount;   // number of Iris Fragments player has (max. 3)
+    private Dictionary<string, int> potionsQuantity;    // quantity of each potion that player has (max. 99)
 
     // element information
-    public TextAsset[] elementXML;  // information of player's elements
-    //private Element[] elements;     // player's elements, read from XML
     private Dictionary<string, Element> elements;   // player's elements, read from XML
     private Dictionary<string, CombinedElement> combinedElements;   // player's combined elements, read from XML
 
@@ -78,23 +87,30 @@ public class PlayerData {
         HP = maxHP;
         MP = maxMP;
 
-        // transfer temp dewserializer crystalCountArray to Dictionary
+        // transfer temp deserializer crystalCountArray to Dictionary
         crystalCount = new Dictionary<string, int>();
         for (int i = 0; i < crystalCountArray.Length; ++i)
         {
             crystalCount.Add(crystalCountArray[i].varType, int.Parse(crystalCountArray[i].variable));
         }
 
+        // transfer temp deserializer potionsCountArray to Dictionary
+        potionsQuantity = new Dictionary<string, int>();
+        for (int i = 0; i < potionsCountArray.Length; ++i)
+        {
+            potionsQuantity.Add(potionsCountArray[i].varType, int.Parse(potionsCountArray[i].variable));
+        }
+
         // init elements
-        elementXML = Resources.LoadAll<TextAsset>("ElementXML");
+        elementXMLFiles = Resources.LoadAll<TextAsset>("ElementXML");
 
         elements = new Dictionary<string, Element>();
         combinedElements = new Dictionary<string, CombinedElement>();
 
-        for (int i = 0; i < elementXML.Length; ++i)
+        for (int i = 0; i < elementXMLFiles.Length; ++i)
         {
             // deserialize XML
-            Element tempElement = XMLSerializer<Element>.DeserializeXMLFile(elementXML[i]);
+            Element tempElement = XMLSerializer<Element>.DeserializeXMLFile(elementXMLFiles[i]);
 
             tempElement.Init();
 
@@ -107,10 +123,6 @@ public class PlayerData {
         {
             elements[key].SetUnlockSkills(GetCrystalCount(key));
         }
-
-        // TEMP SETTING OF CURR ELEMENTS
-        SetElementReference(currElement1, "One");
-        SetElementReference(currElement2, "Two");
     }
 
     // Crystals
@@ -173,6 +185,23 @@ public class PlayerData {
     }
     public bool IsAtMaxMP() {
         return MP == maxMP;
+    }
+
+    // Potions
+    public int GetPotionQuantity(string potionName)
+    {
+        return potionsQuantity[potionName];
+    }
+
+    /// <summary>
+    ///  Set Element to slot one, slot two, or combined
+    /// </summary>
+    public void SetPotionToSlot(string potionName, int slotIdx)
+    {
+        equippedPotions[slotIdx] = potionName;
+
+        // set to PotionsHUD
+        PotionsHUD.instance.SetPotion(potionName, slotIdx);
     }
 
     // Element

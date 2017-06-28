@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
+// Simple information of a GameObject the user has mouse over
 public class HUDHighlightInfo : MonoBehaviour {
 
     [Tooltip("GameObject's name")]
