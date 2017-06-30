@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>EarthBoost</name>
+	<name>Earth Boost</name>
 	<description>Boosts elemental proficiency in Earth temporarily. Increases damage in Earth skills and resistance to Earth.</description>
 	<spriteFilename>potion_earth</spriteFilename>
 	<craftCost>30</craftCost>

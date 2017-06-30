@@ -51,8 +51,12 @@ public class Skill {
 
         if (cooldownTimer >= cooldownTime) {
             isOnCooldown = false;
-            cooldownTimer = 0f;
+            //cooldownTimer = 0f;
         }
+    }
+    public float GetCurrCooldownTimer()
+    {
+        return cooldownTimer;
     }
 
 }

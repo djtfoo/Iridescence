@@ -22,10 +22,11 @@ public class PlayerAttack : MonoBehaviour {
 
     // attack variables
     private SKILL_TYPE attackType = SKILL_TYPE.SKILL_MELEE;    // current attack type
-    private  float currRangeSquared = 0f;     // current range value where player shld stop moving
+    private float currRangeSquared = 0f;     // current range value where player shld stop moving
+    private Skill currSkill;    // a "pointer" to the current skill - the one that started the attack
 
     // TEMP VARIABLES!!!!
-    public static float meleeRangeSquared = 0.5f;  // temp variable to represent weapon
+    public static float meleeRangeSquared = 0.1f;  // temp variable to represent weapon
     public static float meleeDmg = 10f;    // temp damage variable
     public static float rangedRangeSquared = 1.5f;  // temp variable to represent ranged attack range
     public GameObject fireProjectile;   // temp projectile to launch
@@ -53,38 +54,46 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        return;
-
         Element elementOne = playerData.GetElementOne();
         Element elementTwo = playerData.GetElementTwo();
         CombinedElement combinedElement = playerData.GetCombinedElement();
 
         // update element skills' cooldowns & appearances
         if (elementOne != null) {
+
+            int elementCount = 0;
             foreach (Skill skill in elementOne.skills)
             {
                 if (skill.IsOnCooldown())
                 {
                     skill.UpdateCooldown();
+                    SkillsHUD.instance.SetCooldown(elementCount, skill.GetCurrCooldownTimer(), skill.cooldownTime);
                 }
+                ++elementCount;
             }
         }
         if (elementTwo != null) {
+
+            int elementCount = 3;
             foreach (Skill skill in elementTwo.skills)
             {
                 if (skill.IsOnCooldown())
                 {
                     skill.UpdateCooldown();
                 }
+                ++elementCount;
             }
         }
         if (combinedElement != null) {
+
+            int elementCount = 6;
             foreach (Skill skill in combinedElement.skills)
             {
                 if (skill.IsOnCooldown())
                 {
                     skill.UpdateCooldown();
                 }
+                ++elementCount;
             }
         }
 
@@ -151,9 +160,11 @@ public class PlayerAttack : MonoBehaviour {
                         goto SetMovement;
                 }
             }
+
+            // if this part is reached, it means player did not use any skill successfully; thus don't move to it
+            return;
         }
-        else {  /// not key was pressed
-            // if this part is reached, it means player did not use any skill; thus don't move to it
+        else {  /// no key was pressed
             return;
         }
 
@@ -162,12 +173,20 @@ SetMovement:
         {
             // store the type into RaycastInfo via getting tag/name
             RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
-            
+
             // IF IS ENEMY, walk to enemy
-            Vector2 enemyPos = RaycastInfo.clickTarget.transform.parent.position;
-            //this.attackType = ATK_TYPE.ATK_FIREPROJECTILE;  // temp
-            //this.currRangeSquared = rangedRangeSquared; // temp
-            PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+            if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
+            {
+                Vector2 enemyPos = RaycastInfo.clickTarget.transform.parent.position;
+                SetSkillVariables();
+                PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+            }
+            else
+            {
+                // walk to a spot and attack there -- same as how one would attack with shift
+                /// set destination as player's own spot
+                currSkill = null;
+            }
         }
 
 
@@ -192,34 +211,73 @@ SetMovement:
 
         // check cooldown
         if (skill.IsOnCooldown())
-            // USE MELEE ATTACK INSTEAD
             return false;
 
         // check enough MP or not
         if (skill.MPCost > playerData.GetMP())
-            // USE MELEE ATTACK INSTEAD
             return false;
 
-        // else, set to use skill
-        /// set attack variables
-        attackType = skill.atkType;
-        currRangeSquared = skill.rangeValue;
+        // set the skill
+        currSkill = skill;
 
         return true;
+    }
+
+    private void SetSkillVariables()
+    {
+        // set attack variables
+        attackType = currSkill.atkType;
+        currRangeSquared = currSkill.rangeValue;
     }
 
     /// <summary>
     ///  Use skill when user reaches 
     /// </summary>
-    /// <param name="skill"> Skill to use </param>
-    public void UseSkill(Skill skill)
+    public void UseSkill()
     {
+        if (currSkill != null)
+        {
         /// use MP
-        playerData.UseMP(skill.MPCost);
+        playerData.UseMP(currSkill.MPCost); // shld be done at start of skill
 
         /// set cooldown (if any)
-        skill.SetStartCooldown();
+        currSkill.SetStartCooldown();   // shld be done at end of skill
+        }
 
+        /// skill effect
+        switch (attackType)
+        {
+            case SKILL_TYPE.SKILL_MELEE:
+                /// deal damage
+                /// use skill's object[]
+                RaycastInfo.clickTarget.SendMessage("TakeDamage", meleeDmg);    // TEMP!!
+                break;
+
+            case SKILL_TYPE.SKILL_FIREPROJECTILE:
+                /// create projectile
+                SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
+                break;
+
+            case SKILL_TYPE.SKILL_AOE:
+                /// deal damage
+                // send TakeDamage to all nearby enemies
+                break;
+
+            case SKILL_TYPE.SKILL_SELF:
+                /// add buff to self
+                break;
+        }
+
+        currSkill = null;   // remove pointer to skill - shld be done at end of skill
+    }
+
+    /// <summary>
+    ///  Function to set player using a regular non-skill melee attack
+    /// </summary>
+    public void SetRegularMeleeAttack()
+    {
+        attackType = SKILL_TYPE.SKILL_MELEE;
+        currRangeSquared = meleeRangeSquared;
     }
 
 }

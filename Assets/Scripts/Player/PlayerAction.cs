@@ -75,13 +75,12 @@ public class PlayerAction : MonoBehaviour {
             switch (playerAttack.GetCurrentAttackType())
             {
                 case SKILL_TYPE.SKILL_MELEE:
-                    //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(attack.meleeDmg);
-                    RaycastInfo.clickTarget.SendMessage("TakeDamage", PlayerAttack.meleeDmg);
+                    //RaycastInfo.clickTarget.SendMessage("TakeDamage", PlayerAttack.meleeDmg);
+                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Melee", false);
                     break;
 
                 case SKILL_TYPE.SKILL_FIREPROJECTILE:
-                    playerAttack.SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
-                    //RaycastInfo.clickTarget.GetComponent<EnemyData>().TakeDamage(PlayerData.attackDmg);
+                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Ranged", false);
                     break;
             }
             doAttack = false;
@@ -128,7 +127,7 @@ public class PlayerAction : MonoBehaviour {
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_TransitionPortal && distSquared < 0.1f)
                 {
                     // transit to next area
-                    InstantiateLevel.instance.LoadLevel(RaycastInfo.clickTarget.GetComponent<Portal>().connectedPrefabName);
+                    RaycastInfo.clickTarget.GetComponent<Portal>().GoToNextLevel();
 
                     SetPathComplete();
                     goto endOfVelocityMovement;
@@ -167,7 +166,7 @@ public class PlayerAction : MonoBehaviour {
         velocity = Vector3.zero;
         pathWaypoints.Clear();
 
-        this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Idle");
+        this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Idle", true);
 
         destinationMarker.SetActive(false);
     }
@@ -201,7 +200,7 @@ public class PlayerAction : MonoBehaviour {
 
         // change to walk animation
         if (velocity.Equals(Vector3.zero))
-            this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Walk");
+            this.transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Walk", true);
 
         SetVelocity((pathWaypoints[0] - transform.position).normalized);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>MPRegen</name>
+	<name>MP Regen</name>
 	<description>Recovers a portion of user's MP.</description>
 	<spriteFilename>potion_MP</spriteFilename>
 	<craftCost>10</craftCost>

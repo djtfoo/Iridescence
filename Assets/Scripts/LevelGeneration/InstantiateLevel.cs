@@ -39,7 +39,7 @@ public class InstantiateLevel : MonoBehaviour {
     /// <param name="filename"> name of prefab file inside Resources/LevelPrefab </param>
     private void GenerateTerrainFromPrefab(string filename)
     {
-        if (terrain == null)
+        if (terrain != null)
             DestroyTerrain();
 
         levelPrefab = Resources.Load("LevelPrefab/" + filename, typeof(Transform)) as Transform;
@@ -63,7 +63,7 @@ public class InstantiateLevel : MonoBehaviour {
     /// </summary>
     private void DestroyTerrain()
     {
-        DestroyImmediate(terrain);
+        DestroyImmediate(terrain.gameObject);
     }
 
 }

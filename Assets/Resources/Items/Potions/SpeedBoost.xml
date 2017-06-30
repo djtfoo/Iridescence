@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>SpeedBoost</name>
+	<name>Speed Boost</name>
 	<description>Increases attack speed temporarily.</description>
 	<spriteFilename>potion_spdboost</spriteFilename>
 	<craftCost>50</craftCost>

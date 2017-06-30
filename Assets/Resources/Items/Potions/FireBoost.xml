@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>FireBoost</name>
+	<name>Fire Boost</name>
 	<description>Boosts elemental proficiency in Fire temporarily. Increases damage in Fire skills and resistance to Fire.</description>
 	<spriteFilename>potion_fire</spriteFilename>
 	<craftCost>30</craftCost>

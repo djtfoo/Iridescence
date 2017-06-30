@@ -70,14 +70,19 @@ public class Element {
         // create element icon sprite
         icon = Resources.Load<Sprite>("ElementIcons/" + iconFilename);
 
+        // set color
+        color = new Color(colorR / 255f, colorG / 255f, colorB / 255f);
+
+        ///=============
+        /// SKILL STUFF
+        ///=============
         // create element skills' icons
         for (int i = 0; i < skills.Length; ++i)
         {
             skills[i].icon = Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename);
         }
-
-        // set color
-        color = new Color(colorR / 255f, colorG / 255f, colorB / 255f);
+        
+        // process generic object array for skill
     }
 
     /// <summary>

@@ -58,9 +58,25 @@ public class EquipGem : MonoBehaviour {
             Mathf.Abs(distCheckSlot1.y) < slotsizeDelta.y)
         {
             // check whether element is already equipped in a slot
-            if (elementName != PlayerAction.instance.GetPlayerData().GetElementOne().name &&
-                elementName != PlayerAction.instance.GetPlayerData().GetElementTwo().name)
-                elementsMenu.SetElementOne(elementName);
+            Element ele1 = PlayerAction.instance.GetPlayerData().GetElementOne();
+            Element ele2 = PlayerAction.instance.GetPlayerData().GetElementTwo();
+
+            if (ele1 != null)
+            {
+                if (ele1.name == elementName)   // already assigned; don't need assign again
+                    return;
+            }
+            if (ele2 != null)
+            {
+                if (ele2.name == elementName)   // already assigned; but in different slot
+                {
+                    // swap ele2 to ele1 slot; cause player intends to assign THIS to ele1
+                    elementsMenu.SwapElements();
+                    return;
+                }
+            }
+
+            elementsMenu.SetElementOne(elementName);
             return;
         }
 
@@ -69,9 +85,25 @@ public class EquipGem : MonoBehaviour {
             Mathf.Abs(distCheckSlot2.y) < slotsizeDelta.y)
         {
             // check whether element is already equipped in a slot
-            if (elementName != PlayerAction.instance.GetPlayerData().GetElementOne().name &&
-                elementName != PlayerAction.instance.GetPlayerData().GetElementTwo().name)
-                elementsMenu.SetElementTwo(elementName);
+            Element ele1 = PlayerAction.instance.GetPlayerData().GetElementOne();
+            Element ele2 = PlayerAction.instance.GetPlayerData().GetElementTwo();
+
+            if (ele1 != null)
+            {
+                if (ele1.name == elementName)   // already assigned; but in different slot
+                {
+                    // swap ele1 to ele2 slot; cause player intends to assign THIS to ele2
+                    elementsMenu.SwapElements();
+                    return;
+                }
+            }
+            if (ele2 != null)
+            {
+                if (ele2.name == elementName)   // already assigned; don't need assign again
+                    return;
+            }
+
+            elementsMenu.SetElementTwo(elementName);
             return;
         }
     }

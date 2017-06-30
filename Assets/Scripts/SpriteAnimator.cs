@@ -28,7 +28,6 @@ public struct SerialiseSpriteAnimation
 
 public struct SpriteAnimation
 {
-    public bool loop;
     public Sprite[] sprites;
     public int framesPerStrip;  // number of frames per animation strip
     public bool multiDirectional;   // whether it's 8-directional or not
@@ -47,6 +46,8 @@ public class SpriteAnimator : MonoBehaviour {
     private float timeElapsed = 0f;
     private bool freezeAnimation = false;
 
+    private bool loop;  // whether this current animation will loop or not
+
     // repeating or not
 
     // for idle ONLY
@@ -56,6 +57,8 @@ public class SpriteAnimator : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake() {
+        loop = true;
+
         Random.seed = 0;
 
         animationsList = new Dictionary<string, SpriteAnimation>();
@@ -63,7 +66,6 @@ public class SpriteAnimator : MonoBehaviour {
 
         for (int i = 0; i < initAnimationsList.Length; ++i) {
             SpriteAnimation temp;
-            temp.loop = true;
             temp.sprites = Resources.LoadAll<Sprite>("Sprites/" + initAnimationsList[i].texture.name);
             temp.framesPerStrip = initAnimationsList[i].framesPerStrip;
             temp.multiDirectional = initAnimationsList[i].multiDirectional;
@@ -131,13 +133,27 @@ public class SpriteAnimator : MonoBehaviour {
             timeElapsed -= currSprAnimation.frameTime;
             ++currFrame;
             if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection))
-                currFrame -= currSprAnimation.framesPerStrip;
+            {
+                if (loop)
+                {
+                    currFrame -= currSprAnimation.framesPerStrip;
+                }
+                else
+                {
+                    // for attacking, etc
+                    //this.gameObject.SendMessageUpwards("UseSkill");
+                    transform.parent.GetComponent<PlayerAttack>().UseSkill();
+
+                    // change animation back to idle
+                    ChangeAnimation("Idle", true);
+                }
+            }
 
             sr.sprite = currSprAnimation.sprites[currFrame];
         }
     }
 
-    public void ChangeAnimation(string animationName)
+    public void ChangeAnimation(string animationName, bool loop)
     {
         currSprAnimation = animationsList[animationName];
         currFrame = currSprAnimation.framesPerStrip * currDirection;    // frame 0 of that strip
@@ -149,6 +165,8 @@ public class SpriteAnimator : MonoBehaviour {
             isIdleAnimation = true;
         else
             isIdleAnimation = false;
+
+        this.loop = loop;
     }
 
     public void ChangeDirection(int dir)
@@ -182,6 +200,14 @@ public class SpriteAnimator : MonoBehaviour {
     public void SetFreezeAnimation(bool freeze)
     {
         freezeAnimation = freeze;
+    }
+
+    /// <summary>
+    ///  Function to freeze animation for a set period of time
+    /// </summary>
+    public void SetFreezeAnimation(bool freeze, float time)
+    {
+
     }
 
 }

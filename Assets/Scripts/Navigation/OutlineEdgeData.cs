@@ -51,31 +51,7 @@ public class OutlineEdgeData : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        timer += Time.deltaTime;
-        if (timer >= duration)
-        {
-            if (backslashComplete)
-            {
-                Debug.DrawLine(new Vector3(edgesForwardSlash[idx].pt1.x, edgesForwardSlash[idx].pt1.y, -1f),
-    new Vector3(edgesForwardSlash[idx].pt2.x, edgesForwardSlash[idx].pt2.y, -1f),
-    Color.red, 200f, true);
-            }
-            else
-            {
-                Debug.DrawLine(new Vector3(edgesBackSlash[idx].pt1.x, edgesBackSlash[idx].pt1.y, -1f),
-    new Vector3(edgesBackSlash[idx].pt2.x, edgesBackSlash[idx].pt2.y, -1f),
-    Color.red, 200f, true);
-            }
-
-            timer = 0f;
-            ++idx;
-            if (idx >= edgesBackSlash.Count)
-            {
-                idx = 0;
-                backslashComplete = true;
-            }
-        }
-
+        
     }
 
     private void ParseEdgeData(string[] lines)

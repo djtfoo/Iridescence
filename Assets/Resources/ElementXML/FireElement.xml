@@ -12,7 +12,7 @@
 			<iconFilename>flameslash_icon</iconFilename>
 			<MPCost>35</MPCost>
 			<attackType>Melee</attackType>
-			<rangeValue>0.5</rangeValue>
+			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 		</Skill>
 		

@@ -37,31 +37,31 @@
 	</crystalCountArray>
 	
 	<potionsCountArray>
-		<ObjectArrayItem varType="HPRegen">
+		<ObjectArrayItem varType="HP Regen">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="MPRegen">
+		<ObjectArrayItem varType="MP Regen">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="DamageBoost">
+		<ObjectArrayItem varType="Damage Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="DamageReduction">
+		<ObjectArrayItem varType="Damage Reduction">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="SpeedBoost">
+		<ObjectArrayItem varType="Speed Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="FireBoost">
+		<ObjectArrayItem varType="Fire Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="WaterBoost">
+		<ObjectArrayItem varType="Water Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="EarthBoost">
+		<ObjectArrayItem varType="Earth Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="AirBoost">
+		<ObjectArrayItem varType="Air Boost">
 			<variable>0</variable>
 		</ObjectArrayItem>
 	</potionsCountArray>

@@ -11,9 +11,6 @@ public class PlayerData {
     // XML files - load from Resources
     private TextAsset[] elementXMLFiles;    // information of player's elements
 
-    // shld have a "pointer" to the current skill - the one that was clicked to do the attack
-
-
     // CONST VALUE
     public const float converseRangeSquared = 0.5f;  // distance between player & NPC/Waypoint to start dialogue
 

@@ -1,0 +1,773 @@
+fileFormatVersion: 2
+guid: f92960e76c12ce24a94c7f7a0cd0f7cf
+timeCreated: 1498825192
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: human attack1_0
+    21300002: human attack1_1
+    21300004: human attack1_2
+    21300006: human attack1_3
+    21300008: human attack1_4
+    21300010: human attack1_5
+    21300012: human attack1_6
+    21300014: human attack1_7
+    21300016: human attack1_8
+    21300018: human attack1_9
+    21300020: human attack1_10
+    21300022: human attack1_11
+    21300024: human attack1_12
+    21300026: human attack1_13
+    21300028: human attack1_14
+    21300030: human attack1_15
+    21300032: human attack1_16
+    21300034: human attack1_17
+    21300036: human attack1_18
+    21300038: human attack1_19
+    21300040: human attack1_20
+    21300042: human attack1_21
+    21300044: human attack1_22
+    21300046: human attack1_23
+    21300048: human attack1_24
+    21300050: human attack1_25
+    21300052: human attack1_26
+    21300054: human attack1_27
+    21300056: human attack1_28
+    21300058: human attack1_29
+    21300060: human attack1_30
+    21300062: human attack1_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: human attack1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 28}
+        - {x: -30, y: 13}
+        - {x: -30, y: -13}
+        - {x: -13, y: -32}
+        - {x: 24, y: -32}
+        - {x: 32, y: -27}
+        - {x: 32, y: 17}
+        - {x: 7, y: 28}
+    - name: human attack1_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 22}
+        - {x: -28, y: 10}
+        - {x: -31, y: 5}
+        - {x: -31, y: -18}
+        - {x: -15, y: -32}
+        - {x: 14, y: -32}
+        - {x: 31, y: -20}
+        - {x: 31, y: 4}
+        - {x: 30, y: 11}
+        - {x: 11, y: 29}
+        - {x: -8, y: 29}
+    - name: human attack1_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 28}
+        - {x: -20, y: 28}
+        - {x: -31, y: 9}
+        - {x: -31, y: -21}
+        - {x: -17, y: -32}
+        - {x: 5, y: -32}
+        - {x: 7, y: -31}
+        - {x: 31, y: -13}
+        - {x: 31, y: 4}
+    - name: human attack1_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 29}
+        - {x: -15, y: 29}
+        - {x: -32, y: 6}
+        - {x: -32, y: -23}
+        - {x: -19, y: -32}
+        - {x: 20, y: -32}
+        - {x: 30, y: -22}
+        - {x: 30, y: 4}
+        - {x: 19, y: 28}
+    - name: human attack1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 29}
+        - {x: -15, y: 22}
+        - {x: -28, y: 12}
+        - {x: -30, y: 4}
+        - {x: -30, y: -12}
+        - {x: -17, y: -30}
+        - {x: -16, y: -32}
+        - {x: 23, y: -32}
+        - {x: 32, y: -14}
+        - {x: 32, y: 23}
+        - {x: 21, y: 29}
+    - name: human attack1_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 31}
+        - {x: -14, y: 31}
+        - {x: -31, y: 5}
+        - {x: -31, y: -18}
+        - {x: -12, y: -32}
+        - {x: 19, y: -32}
+        - {x: 31, y: -17}
+        - {x: 31, y: 8}
+        - {x: 20, y: 29}
+    - name: human attack1_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 29}
+        - {x: -8, y: 29}
+        - {x: -20, y: 24}
+        - {x: -31, y: 4}
+        - {x: -31, y: -17}
+        - {x: -20, y: -32}
+        - {x: 16, y: -32}
+        - {x: 28, y: -24}
+        - {x: 31, y: -16}
+        - {x: 31, y: 17}
+    - name: human attack1_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 31}
+        - {x: -31, y: 5}
+        - {x: -32, y: 3}
+        - {x: -32, y: -12}
+        - {x: -11, y: -32}
+        - {x: 12, y: -32}
+        - {x: 30, y: -20}
+        - {x: 30, y: 2}
+        - {x: 22, y: 31}
+    - name: human attack1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 29}
+        - {x: -27, y: 24}
+        - {x: -27, y: -32}
+        - {x: 19, y: -32}
+        - {x: 32, y: -24}
+        - {x: 32, y: 14}
+        - {x: 23, y: 29}
+    - name: human attack1_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 31}
+        - {x: -16, y: 25}
+        - {x: -28, y: 1}
+        - {x: -28, y: -22}
+        - {x: -25, y: -32}
+        - {x: 29, y: -32}
+        - {x: 32, y: -31}
+        - {x: 32, y: 10}
+        - {x: 12, y: 31}
+      - - {x: -32, y: -12}
+        - {x: -29, y: -11}
+        - {x: -29, y: -8}
+        - {x: -31, y: -6}
+        - {x: -32, y: -6}
+    - name: human attack1_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 29}
+        - {x: -28, y: -32}
+        - {x: 27, y: -32}
+        - {x: 32, y: -28}
+        - {x: 32, y: 9}
+        - {x: 11, y: 29}
+    - name: human attack1_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 10}
+        - {x: 14, y: 31}
+        - {x: -13, y: 31}
+        - {x: -21, y: 29}
+        - {x: -29, y: 5}
+        - {x: -29, y: -15}
+        - {x: -15, y: -32}
+        - {x: 4, y: -32}
+        - {x: 8, y: -17}
+        - {x: 31, y: -13}
+        - {x: 32, y: -12}
+    - name: human attack1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: -31}
+        - {x: -25, y: -32}
+        - {x: 25, y: -32}
+        - {x: 32, y: -16}
+        - {x: 32, y: 18}
+        - {x: 19, y: 26}
+        - {x: 8, y: 29}
+        - {x: -14, y: 29}
+        - {x: -26, y: 10}
+    - name: human attack1_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -27, y: 11}
+        - {x: -27, y: -21}
+        - {x: -19, y: -32}
+        - {x: 6, y: -32}
+        - {x: 32, y: -19}
+        - {x: 32, y: 9}
+        - {x: 12, y: 30}
+      - - {x: -32, y: -4}
+        - {x: -32, y: -11}
+        - {x: -30, y: -11}
+        - {x: -28, y: -9}
+        - {x: -28, y: -7}
+        - {x: -31, y: -4}
+    - name: human attack1_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 29}
+        - {x: -20, y: 27}
+        - {x: -27, y: 11}
+        - {x: -27, y: -15}
+        - {x: -9, y: -32}
+        - {x: 16, y: -32}
+        - {x: 32, y: -19}
+        - {x: 32, y: 8}
+        - {x: 13, y: 29}
+      - - {x: -32, y: -11}
+        - {x: -29, y: -10}
+        - {x: -29, y: -7}
+        - {x: -31, y: -5}
+        - {x: -32, y: -5}
+    - name: human attack1_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 30}
+        - {x: -28, y: 24}
+        - {x: -28, y: -13}
+        - {x: -24, y: -21}
+        - {x: -14, y: -32}
+        - {x: 14, y: -32}
+        - {x: 32, y: -23}
+        - {x: 32, y: 25}
+        - {x: 21, y: 30}
+      - - {x: -32, y: -11}
+        - {x: -29, y: -10}
+        - {x: -29, y: -7}
+        - {x: -31, y: -5}
+        - {x: -32, y: -5}
+    - name: human attack1_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 28}
+        - {x: -28, y: 13}
+        - {x: -28, y: -21}
+        - {x: -17, y: -32}
+        - {x: 22, y: -32}
+        - {x: 32, y: -25}
+        - {x: 32, y: 15}
+        - {x: 11, y: 28}
+    - name: human attack1_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -6}
+        - {x: -27, y: -11}
+        - {x: -11, y: -32}
+        - {x: 15, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 6}
+        - {x: 19, y: 27}
+        - {x: 12, y: 29}
+        - {x: -14, y: 29}
+        - {x: -29, y: 7}
+    - name: human attack1_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 5}
+        - {x: 17, y: 28}
+        - {x: -12, y: 28}
+        - {x: -19, y: 25}
+        - {x: -29, y: 14}
+        - {x: -29, y: -17}
+        - {x: -20, y: -32}
+        - {x: 6, y: -32}
+        - {x: 8, y: -31}
+        - {x: 32, y: -14}
+    - name: human attack1_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 29}
+        - {x: -14, y: 22}
+        - {x: -27, y: 10}
+        - {x: -30, y: 3}
+        - {x: -30, y: -14}
+        - {x: -14, y: -32}
+        - {x: 13, y: -32}
+        - {x: 32, y: -15}
+        - {x: 32, y: 4}
+        - {x: 14, y: 29}
+    - name: human attack1_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 29}
+        - {x: -19, y: 29}
+        - {x: -30, y: 14}
+        - {x: -30, y: -14}
+        - {x: -20, y: -17}
+        - {x: -15, y: -29}
+        - {x: -11, y: -32}
+        - {x: 3, y: -32}
+        - {x: 17, y: -22}
+        - {x: 32, y: -15}
+        - {x: 32, y: 17}
+    - name: human attack1_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: -14}
+        - {x: -10, y: -32}
+        - {x: 1, y: -32}
+        - {x: 31, y: -22}
+        - {x: 31, y: 13}
+        - {x: 23, y: 30}
+        - {x: -18, y: 30}
+        - {x: -21, y: 28}
+        - {x: -31, y: 4}
+    - name: human attack1_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 29}
+        - {x: -31, y: 29}
+        - {x: -31, y: -21}
+        - {x: -21, y: -30}
+        - {x: -17, y: -32}
+        - {x: 1, y: -32}
+        - {x: 21, y: -27}
+        - {x: 21, y: -17}
+        - {x: 31, y: -14}
+    - name: human attack1_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30, y: 5}
+        - {x: 26, y: 8}
+        - {x: 13, y: 30}
+        - {x: -8, y: 30}
+        - {x: -19, y: 27}
+        - {x: -31, y: 4}
+        - {x: -32, y: 1}
+        - {x: -32, y: -8}
+        - {x: -26, y: -10}
+        - {x: -13, y: -25}
+        - {x: -4, y: -32}
+        - {x: 9, y: -32}
+        - {x: 11, y: -30}
+        - {x: 11, y: -26}
+        - {x: 30, y: -12}
+    - name: human attack1_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 12}
+        - {x: 14, y: 29}
+        - {x: -8, y: 29}
+        - {x: -21, y: 26}
+        - {x: -29, y: 6}
+        - {x: -29, y: -17}
+        - {x: -19, y: -32}
+        - {x: -5, y: -32}
+        - {x: -4, y: -31}
+        - {x: -3, y: -32}
+        - {x: 32, y: -32}
+    - name: human attack1_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 6}
+        - {x: 28, y: 9}
+        - {x: 20, y: 9}
+        - {x: 12, y: 31}
+        - {x: -8, y: 31}
+        - {x: -21, y: 27}
+        - {x: -30, y: 7}
+        - {x: -30, y: -7}
+        - {x: -24, y: -9}
+        - {x: -10, y: -8}
+        - {x: -7, y: -5}
+        - {x: -8, y: -3}
+        - {x: -6, y: -3}
+        - {x: -8, y: -8}
+        - {x: -10, y: -31}
+        - {x: -7, y: -32}
+        - {x: 14, y: -32}
+        - {x: 15, y: -31}
+        - {x: 32, y: -12}
+    - name: human attack1_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: 8}
+        - {x: 13, y: 29}
+        - {x: -9, y: 29}
+        - {x: -20, y: 26}
+        - {x: -30, y: 15}
+        - {x: -30, y: -17}
+        - {x: -22, y: -32}
+        - {x: 19, y: -32}
+        - {x: 25, y: -23}
+        - {x: 20, y: -22}
+        - {x: 32, y: -15}
+    - name: human attack1_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 31}
+        - {x: -31, y: 25}
+        - {x: -31, y: -22}
+        - {x: -26, y: -32}
+        - {x: 16, y: -32}
+        - {x: 31, y: -11}
+        - {x: 31, y: 8}
+        - {x: 12, y: 31}
+    - name: human attack1_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 29}
+        - {x: -11, y: 29}
+        - {x: -28, y: 6}
+        - {x: -28, y: -27}
+        - {x: -23, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 9}
+    - name: human attack1_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 31}
+        - {x: -21, y: 28}
+        - {x: -29, y: 8}
+        - {x: -29, y: -15}
+        - {x: -6, y: -30}
+        - {x: -2, y: -32}
+        - {x: 24, y: -32}
+        - {x: 32, y: -28}
+        - {x: 32, y: 18}
+        - {x: 25, y: 31}
+    - name: human attack1_30
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 29}
+        - {x: -15, y: 22}
+        - {x: -29, y: 5}
+        - {x: -29, y: -10}
+        - {x: -18, y: -30}
+        - {x: -11, y: -32}
+        - {x: 29, y: -32}
+        - {x: 32, y: -21}
+        - {x: 32, y: 16}
+        - {x: 15, y: 29}
+    - name: human attack1_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 31}
+        - {x: -15, y: 31}
+        - {x: -30, y: 15}
+        - {x: -30, y: -14}
+        - {x: -13, y: -32}
+        - {x: 8, y: -32}
+        - {x: 28, y: -20}
+        - {x: 32, y: -14}
+        - {x: 32, y: 24}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

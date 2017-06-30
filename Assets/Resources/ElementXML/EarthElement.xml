@@ -12,7 +12,7 @@
 			<iconFilename>healthdrain_icon</iconFilename>
 			<MPCost>30</MPCost>
 			<attackType>Melee</attackType>
-			<rangeValue>0.5</rangeValue>
+			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 		</Skill>
 		
@@ -22,7 +22,7 @@
 			<MPCost>45</MPCost>
 			<attackType>Projectile</attackType>
 			<rangeValue>5.0</rangeValue>
-			<cooldownTime>0.2</cooldownTime>
+			<cooldownTime>3</cooldownTime>
 		</Skill>
 		
 		<Skill name="Earth Shield">

@@ -13,24 +13,24 @@
 	<elementOne>Earth</elementOne>
 	<elementTwo>Water</elementTwo>
 	<equippedPotions>
-		<potion>HPRegen</potion>
-		<potion>FireBoost</potion>
-		<potion>WaterBoost</potion>
-		<potion>EarthBoost</potion>
-		<potion>AirBoost</potion>
+		<potion>HP Regen</potion>
+		<potion>Fire Boost</potion>
+		<potion>Water Boost</potion>
+		<potion>Earth Boost</potion>
+		<potion>Air Boost</potion>
 	</equippedPotions>
 	
 	
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">
-			<variable>0</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Water">
-			<variable>1</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Earth">
-			<variable>2</variable>
+			<variable>3</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Air">
 			<variable>3</variable>
@@ -38,32 +38,32 @@
 	</crystalCountArray>
 	
 	<potionsCountArray>
-		<ObjectArrayItem varType="HPRegen">
-			<variable>9</variable>
-		</ObjectArrayItem>
-		<ObjectArrayItem varType="MPRegen">
-			<variable>8</variable>
-		</ObjectArrayItem>
-		<ObjectArrayItem varType="DamageBoost">
-			<variable>7</variable>
-		</ObjectArrayItem>
-		<ObjectArrayItem varType="DamageReduction">
-			<variable>6</variable>
-		</ObjectArrayItem>
-		<ObjectArrayItem varType="SpeedBoost">
+		<ObjectArrayItem varType="HP Regen">
 			<variable>5</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="FireBoost">
-			<variable>4</variable>
+		<ObjectArrayItem varType="MP Regen">
+			<variable>5</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="WaterBoost">
+		<ObjectArrayItem varType="Damage Boost">
 			<variable>3</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="EarthBoost">
+		<ObjectArrayItem varType="Damage Reduction">
+			<variable>3</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Speed Boost">
 			<variable>2</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="AirBoost">
-			<variable>0</variable>
+		<ObjectArrayItem varType="Fire Boost">
+			<variable>3</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Water Boost">
+			<variable>3</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Earth Boost">
+			<variable>3</variable>
+		</ObjectArrayItem>
+		<ObjectArrayItem varType="Air Boost">
+			<variable>3</variable>
 		</ObjectArrayItem>
 	</potionsCountArray>
 </PlayerData>

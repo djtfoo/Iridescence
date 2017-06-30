@@ -40,6 +40,25 @@ public class ElementsMenu : MonoBehaviour {
     {
         SetElementToSlot(elementName, "Two");
     }
+    public void SwapElements()
+    {
+        Element element1 = PlayerAction.instance.GetPlayerData().GetElementOne();
+        Element element2 = PlayerAction.instance.GetPlayerData().GetElementTwo();
+
+        string element1Name, element2Name;
+        if (element1 == null)
+            element1Name = "";
+        else
+            element1Name = element1.name;
+
+        if (element2 == null)
+            element2Name = "";
+        else
+            element2Name = element2.name;
+
+        SetElementToSlot(element2Name, "One");
+        SetElementToSlot(element1Name, "Two");
+    }
 
     // Remove element from slot
     public void RemoveElementOne()

@@ -15,4 +15,10 @@ public class Portal : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void GoToNextLevel()
+    {
+        InstantiateLevel.instance.LoadLevel(connectedPrefabName);
+    }
+
 }

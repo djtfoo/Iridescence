@@ -28,6 +28,10 @@ public class StatsMenu : MonoBehaviour {
     public void InitSelf() {
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
+
+        // init potions
+        potionSlots.InitPotionSlots();
+        potionsInventory.Init();
     }
 
     /// <summary>
@@ -35,10 +39,6 @@ public class StatsMenu : MonoBehaviour {
     /// </summary>
     public void InitStatsMenu()
     {
-        // init potions
-        potionSlots.InitPotionSlots();
-        potionsInventory.Init();
-
         // set stats values
         ATKValue.text = playerData.statATK.ToString();
         DEFValue.text = playerData.statDEF.ToString();
@@ -57,18 +57,18 @@ public class StatsMenu : MonoBehaviour {
     public void SetEXPBar(int currEXP, int totalEXP)
     {
         EXPValue.text = currEXP.ToString() + "/" + totalEXP.ToString();
-        EXPBar.localScale = new Vector3(currEXP / totalEXP, 1f, 1f);
+        EXPBar.localScale = new Vector3((float)currEXP / totalEXP, 1f, 1f);
     }
     public void SetHPBar(int newHP, int maxHP)
     {
         HPValue.text = newHP.ToString() + "/" + maxHP.ToString();
-        HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);
+        HPBar.localScale = new Vector3((float)newHP / maxHP, 1f, 1f);
     }
 
     public void SetMPBar(int newMP, int maxMP)
     {
         MPValue.text = newMP.ToString() + "/" + maxMP.ToString();
-        MPBar.localScale = new Vector3(newMP / maxMP, 1f, 1f);
+        MPBar.localScale = new Vector3((float)newMP / maxMP, 1f, 1f);
     }
 
 }

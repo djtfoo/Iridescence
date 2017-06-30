@@ -6,6 +6,7 @@ public struct PotionSlot    // variable content in 1 potion slot
 {
     public Image slot_sprite;
     public Text slot_quantity;
+    public PotionsTooltip slot_tooltip;
 }
 
 public class PotionSlots : MonoBehaviour {
@@ -56,19 +57,30 @@ public class PotionSlots : MonoBehaviour {
     {
         if (potionName == "")
         {
-            slots[slotIdx].slot_sprite.sprite = null;     // set empty sprite
+            // set empty sprite
+            slots[slotIdx].slot_sprite.sprite = null;
             slots[slotIdx].slot_sprite.color = new Color(1f, 1f, 1f, 0f);
 
-            slots[slotIdx].slot_quantity.text = "";   // remove quantity slot
+            // remove quantity slot
+            slots[slotIdx].slot_quantity.text = "";
+
+            // set tooltip
+            slots[slotIdx].slot_tooltip.SetPotion(null);
         }
         else
         {
+            // get potion
+            Potion potion = ItemInfoManager.instance.GetPotion(potionName);
+
             // set sprite
-            slots[slotIdx].slot_sprite.sprite = ItemInfoManager.instance.GetPotion(potionName).GetPotionSprite();
+            slots[slotIdx].slot_sprite.sprite = potion.GetPotionSprite();
             slots[slotIdx].slot_sprite.color = new Color(1f, 1f, 1f, 1f);
 
             // set quantity
             slots[slotIdx].slot_quantity.text = playerData.GetPotionQuantity(potionName).ToString();
+
+            // set tooltip
+            slots[slotIdx].slot_tooltip.SetPotion(potion);
         }
     }
 

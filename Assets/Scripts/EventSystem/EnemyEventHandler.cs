@@ -23,12 +23,12 @@ public class EnemyEventHandler : MonoBehaviour {
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
         // walk to enemy
-        Vector2 enemyPos = this.transform.parent.position;
-        //PlayerAction.instance.GetAttackScript().attackType = SKILL_TYPE.SKILL_MELEE;
-        //PlayerAction.instance.GetAttackScript().currRangeSquared = PlayerAttack.meleeRangeSquared;
+        Vector2 enemyPos = transform.parent.position;
+        PlayerAction.instance.GetAttackScript().SetRegularMeleeAttack();
         PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
+
 #endif
     }
 

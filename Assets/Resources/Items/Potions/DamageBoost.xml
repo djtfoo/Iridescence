@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>DamageBoost</name>
+	<name>Damage Boost</name>
 	<description>Temporarily increases damage user deals for all attacks.</description>
 	<spriteFilename>potion_dmgboost</spriteFilename>
 	<craftCost>40</craftCost>

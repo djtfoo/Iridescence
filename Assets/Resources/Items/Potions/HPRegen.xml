@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>HPRegen</name>
+	<name>HP Regen</name>
 	<description>Recovers a portion of user's HP.</description>
 	<spriteFilename>potion_HP</spriteFilename>
 	<craftCost>10</craftCost>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>WaterBoost</name>
+	<name>Water Boost</name>
 	<description>Boosts elemental proficiency in Water temporarily. Increases damage in Water skills and resistance to Water.</description>
 	<spriteFilename>potion_water</spriteFilename>
 	<craftCost>30</craftCost>

@@ -16,6 +16,12 @@ public class PotionsInventory : MonoBehaviour {
 
     private bool needInitInventory = true;  // load potions for viewing menu
 
+    // reference to potion tooltip - for children to access
+    public Transform tooltip;
+    public Text tooltipName;
+    public Text tooltipDescription;
+    public Text tooltipDuration;
+
     private void Start()
     {
         playerData = PlayerAction.instance.GetPlayerData();
@@ -54,6 +60,17 @@ public class PotionsInventory : MonoBehaviour {
                 //equipPotionComponent.childQuantity.text = playerData.GetPotionQuantity(key).ToString();
 
                 potionItem.localScale = new Vector3(1f, 1f, 1f);
+
+                // assign PotionTooltip
+                PotionsTooltip tooltipComponent = potionItem.GetComponent<PotionsTooltip>();
+                tooltipComponent.parentCanvas = transform.root.GetChild(0);
+                tooltipComponent.tooltip = tooltip;
+                tooltipComponent.potionName = tooltipName;
+                tooltipComponent.potionDescription = tooltipDescription;
+                tooltipComponent.potionDuration = tooltipDuration;
+
+                tooltipComponent.Init();
+                tooltipComponent.SetPotion(potion);
             }
 
             needInitInventory = false;

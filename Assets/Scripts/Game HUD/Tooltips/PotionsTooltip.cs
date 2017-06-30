@@ -33,16 +33,24 @@ public class PotionsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             parentCanvas = transform.root;
 
         // set to inactive first
-        tooltip.gameObject.SetActive(false);
+        if (tooltip)
+        {
+            tooltip.gameObject.SetActive(false);
+            Vector2 sizeDelta = tooltip.GetComponent<RectTransform>().sizeDelta;
+            tooltipCoordinates = parentCanvas.localScale.x * 0.5f * sizeDelta;
+        }
         isActive = false;
-
-        Vector2 sizeDelta = tooltip.GetComponent<RectTransform>().sizeDelta;
-
-        tooltipCoordinates = parentCanvas.localScale.x * 0.5f * sizeDelta;
 
         if (hasMaxPoint)
             maxPoint = tooltip.localPosition;
         //maxPoint = new Vector2(0.5f * sizeDelta.x, 0.25f * sizeDelta.y);
+    }
+
+    public void Init()
+    {
+        tooltip.gameObject.SetActive(false);
+        Vector2 sizeDelta = tooltip.GetComponent<RectTransform>().sizeDelta;
+        tooltipCoordinates = parentCanvas.localScale.x * 0.5f * sizeDelta;
     }
 
     // Update is called once per frame

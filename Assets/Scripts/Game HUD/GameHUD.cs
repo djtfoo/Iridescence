@@ -38,12 +38,12 @@ public class GameHUD : MonoBehaviour {
 
     public void HPChanged(int newHP, int maxHP)
     {
-        HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);
+        HPBar.localScale = new Vector3((float)newHP / maxHP, 1f, 1f);
     }
 
     public void MPChanged(int newMP, int maxMP)
     {
-        MPBar.localScale = new Vector3(newMP / maxMP, 1f, 1f);
+        MPBar.localScale = new Vector3((float)newMP / maxMP, 1f, 1f);
     }
 
 }

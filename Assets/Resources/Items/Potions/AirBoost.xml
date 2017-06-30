@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Potion>
-	<name>AirBoost</name>
+	<name>Air Boost</name>
 	<description>Boosts elemental proficiency in Air temporarily. Increases damage in Air skills and resistance to Air.</description>
 	<spriteFilename>potion_air</spriteFilename>
 	<craftCost>30</craftCost>
