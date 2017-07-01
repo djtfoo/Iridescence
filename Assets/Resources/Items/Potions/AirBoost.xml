@@ -6,5 +6,7 @@
 	<spriteFilename>potion_air</spriteFilename>
 	<craftCost>30</craftCost>
 	<duration>120</duration>
+	<cooldownTime>2</cooldownTime>
+	<effectName>ElementalAirModifier</effectName>
 	<effectValue>40</effectValue>
 </Potion>

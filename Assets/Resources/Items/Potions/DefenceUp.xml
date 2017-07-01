@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Potion>
+	<name>Defence Up</name>
+	<description>Temporarily increases user's DEF by 25%. (Reduces damage user takes from all attacks.)</description>
+	<spriteFilename>potion_defup</spriteFilename>
+	<craftCost>40</craftCost>
+	<duration>100</duration>
+	<cooldownTime>2</cooldownTime>
+	<effectName>DEFModifier</effectName>
+	<effectValue>0.</effectValue>
+</Potion>

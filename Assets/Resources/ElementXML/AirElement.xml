@@ -14,6 +14,7 @@
 			<attackType>Melee</attackType>
 			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
+			<userAnimation>Melee</userAnimation>
 		</Skill>
 		
 		<Skill name="Sonic Boom">
@@ -23,6 +24,7 @@
 			<attackType>Projectile</attackType>
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>0.3</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
 		</Skill>
 		
 		<Skill name="Speed Hymn">
@@ -32,6 +34,7 @@
 			<attackType>Self</attackType>
 			<rangeValue>0.0</rangeValue>
 			<cooldownTime>30.0</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
 		</Skill>
 	</Skills>
 </Element> 

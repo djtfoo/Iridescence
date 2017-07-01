@@ -16,6 +16,9 @@ public class EnemyEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
+        if (PlayerAction.instance.IsAttacking())    // in midst of attack animation
+            return;
+
         //=================================
         // generic left click melee attack - transfer to PlayerAttack script
         //=================================

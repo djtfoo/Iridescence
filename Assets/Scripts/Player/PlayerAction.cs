@@ -16,7 +16,15 @@ public class PlayerAction : MonoBehaviour {
     private PlayerAttack playerAttack;
     private PlayerData playerData;
 
-    bool doAttack = false;
+    // related to sequence in doing an attack
+    private bool doAttack = false;  // if true, player's animation will start
+    private bool isAttacking = false;   // if true, player is in midst of attack animation -- NO ATTACK CANCELLATION ALLOWED!
+    public bool IsAttacking() { return isAttacking; }
+    public void SetStopAttacking() { isAttacking = false; }
+
+    // Potion usage
+    private float countdownTimer = 0f;  // for using potion
+    private float bufferTime = 0.5f;    // how long the player can't use potion after using 1 potion
 
     public static PlayerAction instance;
     //RaycastHit hit;
@@ -38,6 +46,10 @@ public class PlayerAction : MonoBehaviour {
         
         // init player data
         playerData.Init();
+
+        // set potion buffer time
+        bufferTime = 0.5f;
+        countdownTimer = bufferTime;
     }
 
     // Use this for initialization
@@ -56,16 +68,72 @@ public class PlayerAction : MonoBehaviour {
         playerData.SetElementReference(playerData.currElement2, "Two");
     }
 
+    public bool UsePotion(int slotIdx)
+    {
+        string potionName = playerData.equippedPotions[slotIdx];
+
+        if (ItemInfoManager.instance.GetPotion(potionName).IsOnCooldown())
+            return false;
+
+        if (playerData.GetPotionQuantity(potionName) == 0)  // not enough potions
+            return false;
+
+        // apply potion effect
+        ItemInfoManager.instance.GetPotion(potionName).UsePotion();
+
+        // change quantity
+        playerData.ChangePotionQuantity(potionName, -1);
+
+        // set quantity text
+        for (int i = 0; i < 5; ++i)
+        {
+            if (potionName == playerData.equippedPotions[i])
+                PotionsHUD.instance.SetPotionQuantity(playerData.GetPotionQuantity(potionName), i);
+        }
+
+        // set cooldown image fill
+        PotionsHUD.instance.potionSprites[slotIdx].fillAmount = 0f;
+        countdownTimer = 0f;    // set countdown timer
+        return true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // in conversation; cannot move
+        // in conversation; cannot move or update
         if (DialogueManager.inDialogue)
         {
             //DialogueManager.dManager.RunDialogue();
             //DialogueManager.dManager.RunDialogue(RaycastInfo.clickTarget.GetComponent<NPCDialogue>().GetDialogue());
             return;
         }
+
+        //========
+        // POTION
+        //========
+        /// update potion cooldown
+        for (int i = 0; i < 5; ++i)
+        {
+            ItemInfoManager.instance.GetPotion(playerData.equippedPotions[i]).ResetUpdateThisFrame();
+        }
+
+        /// potion usage
+        bool potionUsed = false;    // a potion was used this frame - cannot use >1 potion in 1 frame
+        for (KeyCode i = KeyCode.Alpha1; i <= KeyCode.Alpha5; ++i)
+        {
+            int slotIdx = i - KeyCode.Alpha1;
+            Potion potion = ItemInfoManager.instance.GetPotion(playerData.equippedPotions[slotIdx]);
+            if (potion.IsOnCooldown())
+            {
+                potion.UpdateCooldown();
+            }
+            else if (Input.GetKeyDown(i) && !potionUsed)
+            {
+                if (UsePotion(slotIdx))
+                    potionUsed = true;
+            }
+        }
+
         if (doAttack)
         {
             // cast skill when "ready"/have buffer time/is animation
@@ -76,14 +144,15 @@ public class PlayerAction : MonoBehaviour {
             {
                 case SKILL_TYPE.SKILL_MELEE:
                     //RaycastInfo.clickTarget.SendMessage("TakeDamage", PlayerAttack.meleeDmg);
-                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Melee", false);
+                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation(playerAttack.GetCurrentUserAnimation(), false);
                     break;
 
                 case SKILL_TYPE.SKILL_FIREPROJECTILE:
-                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation("Ranged", false);
+                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation(playerAttack.GetCurrentUserAnimation(), false);
                     break;
             }
             doAttack = false;
+            isAttacking = true;
         }
 
         // Movement

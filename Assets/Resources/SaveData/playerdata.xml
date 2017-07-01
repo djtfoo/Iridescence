@@ -14,10 +14,10 @@
 	<elementTwo>Water</elementTwo>
 	<equippedPotions>
 		<potion>HP Regen</potion>
-		<potion>Fire Boost</potion>
-		<potion>Water Boost</potion>
-		<potion>Earth Boost</potion>
-		<potion>Air Boost</potion>
+		<potion>MP Regen</potion>
+		<potion>Damage Boost</potion>
+		<potion>Defence Up</potion>
+		<potion>Movement Boost</potion>
 	</equippedPotions>
 	
 	
@@ -47,23 +47,26 @@
 		<ObjectArrayItem varType="Damage Boost">
 			<variable>3</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="Damage Reduction">
+		<ObjectArrayItem varType="Defence Up">
 			<variable>3</variable>
 		</ObjectArrayItem>
-		<ObjectArrayItem varType="Speed Boost">
+		<ObjectArrayItem varType="Movement Boost">
 			<variable>2</variable>
 		</ObjectArrayItem>
+		<ObjectArrayItem varType="Attack Speed Boost">
+			<variable>0</variable>
+		</ObjectArrayItem>
 		<ObjectArrayItem varType="Fire Boost">
-			<variable>3</variable>
+			<variable>0</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Water Boost">
-			<variable>3</variable>
+			<variable>0</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Earth Boost">
-			<variable>3</variable>
+			<variable>0</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Air Boost">
-			<variable>3</variable>
+			<variable>0</variable>
 		</ObjectArrayItem>
 	</potionsCountArray>
 </PlayerData>

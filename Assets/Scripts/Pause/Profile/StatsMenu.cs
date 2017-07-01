@@ -4,10 +4,16 @@ using UnityEngine.UI;
 
 public class StatsMenu : MonoBehaviour {
 
+    // current values - will change color
     public Text ATKValue;
     public Text DEFValue;
     public Text MAGValue;
     public Text SPDValue;
+    // original values
+    public Text ATKOriginalValue;
+    public Text DEFOriginalValue;
+    public Text MAGOriginalValue;
+    public Text SPDOriginalValue;
 
     public Text levelText;
     public Text EXPValue;
@@ -21,17 +27,21 @@ public class StatsMenu : MonoBehaviour {
     public PotionSlots potionSlots;
     public PotionsInventory potionsInventory;
 
+    // SINGLETON
+    public static StatsMenu instance;
+
     // set reference to player data
     private PlayerData playerData;
+
+    private void Awake()
+    {
+        instance = GetComponent<StatsMenu>();
+    }
 
     // Use this for initialization
     public void InitSelf() {
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
-
-        // init potions
-        potionSlots.InitPotionSlots();
-        potionsInventory.Init();
     }
 
     /// <summary>
@@ -39,11 +49,81 @@ public class StatsMenu : MonoBehaviour {
     /// </summary>
     public void InitStatsMenu()
     {
-        // set stats values
-        ATKValue.text = playerData.statATK.ToString();
-        DEFValue.text = playerData.statDEF.ToString();
-        MAGValue.text = playerData.statMAG.ToString();
-        SPDValue.text = playerData.statSPD.ToString();
+        //==================
+        // Set stats values
+        //==================
+        /// ATK
+        ATKValue.text = ((int)playerData.GetModifiedATK()).ToString();
+        if (playerData.GetModifiedATK() > playerData.statATK)
+        {
+            ATKValue.color = Color.green;
+            ATKOriginalValue.text = "[" + playerData.statATK + "]";
+        }
+        else if (playerData.GetModifiedATK() < playerData.statATK)
+        {
+            ATKValue.color = Color.red;
+            ATKOriginalValue.text = "[" + playerData.statATK + "]";
+        }
+        else
+        {
+            ATKValue.color = Color.black;
+            ATKOriginalValue.text = "";
+        }
+
+        /// DEF
+        DEFValue.text = ((int)playerData.GetModifiedDEF()).ToString();
+        if (playerData.GetModifiedDEF() > playerData.statDEF)
+        {
+            DEFValue.color = Color.green;
+            DEFOriginalValue.text = "[" + playerData.statDEF + "]";
+        }
+        else if (playerData.GetModifiedDEF() < playerData.statDEF)
+        {
+            DEFValue.color = Color.red;
+            DEFOriginalValue.text = "[" + playerData.statDEF + "]";
+        }
+
+        else
+        {
+            DEFValue.color = Color.black;
+            DEFOriginalValue.text = "";
+        }
+
+        /// MAG
+        MAGValue.text = ((int)playerData.GetModifiedMAG()).ToString();
+        if (playerData.GetModifiedMAG() > playerData.statMAG)
+        {
+            MAGValue.color = Color.green;
+            MAGOriginalValue.text = "[" + playerData.statMAG + "]";
+        }
+        else if (playerData.GetModifiedMAG() < playerData.statMAG)
+        {
+            MAGValue.color = Color.red;
+            MAGOriginalValue.text = "[" + playerData.statMAG + "]";
+        }
+        else
+        {
+            MAGValue.color = Color.black;
+            MAGOriginalValue.text = "";
+        }
+
+        /// SPD
+        SPDValue.text = ((int)playerData.GetModifiedSPD()).ToString();
+        if (playerData.GetModifiedSPD() > playerData.statSPD)
+        {
+            SPDValue.color = Color.green;
+            SPDOriginalValue.text = "[" + playerData.statSPD + "]";
+        }
+        else if (playerData.GetModifiedSPD() < playerData.statSPD)
+        {
+            SPDValue.color = Color.red;
+            SPDOriginalValue.text = "[" + playerData.statSPD + "]";
+        }
+        else
+        {
+            SPDValue.color = Color.black;
+            SPDOriginalValue.text = "";
+        }
 
         // set level & EXP
         levelText.text = "Lv " + playerData.playerLevel.ToString();
@@ -52,23 +132,29 @@ public class StatsMenu : MonoBehaviour {
         // set HP bar & MP bar
         SetHPBar(playerData.GetHP(), playerData.maxHP);
         SetMPBar(playerData.GetMP(), playerData.maxMP);
+
+        //===================
+        // Init Potions Menu
+        //===================
+        potionSlots.InitPotionSlots();
+        potionsInventory.Init();
     }
 
     public void SetEXPBar(int currEXP, int totalEXP)
     {
-        EXPValue.text = currEXP.ToString() + "/" + totalEXP.ToString();
+        EXPValue.text = currEXP + "/" + totalEXP;
         EXPBar.localScale = new Vector3((float)currEXP / totalEXP, 1f, 1f);
     }
-    public void SetHPBar(int newHP, int maxHP)
+    public void SetHPBar(float newHP, float maxHP)
     {
-        HPValue.text = newHP.ToString() + "/" + maxHP.ToString();
-        HPBar.localScale = new Vector3((float)newHP / maxHP, 1f, 1f);
+        HPValue.text = (int)newHP + "/" + maxHP;
+        HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);
     }
 
-    public void SetMPBar(int newMP, int maxMP)
+    public void SetMPBar(float newMP, float maxMP)
     {
-        MPValue.text = newMP.ToString() + "/" + maxMP.ToString();
-        MPBar.localScale = new Vector3((float)newMP / maxMP, 1f, 1f);
+        MPValue.text = (int)newMP + "/" + maxMP;
+        MPBar.localScale = new Vector3(newMP / maxMP, 1f, 1f);
     }
 
 }

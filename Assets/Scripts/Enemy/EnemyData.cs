@@ -12,6 +12,7 @@ public class EnemyData : MonoBehaviour {
     private Transform HPBar;
 
     // Enemy stats
+    public float damage;    // how much damage this enemy deals
 
     // Enemy behaviour
     public TextAsset behaviourXML;  // XML file containing behaviour data
@@ -74,8 +75,9 @@ public class EnemyData : MonoBehaviour {
 
     void SetHP(float newHP)
     {
-        HP = newHP;
-        if (newHP <= 0)
+        if (newHP <= 1f)    // cause HP is in float; will round down to 0
             Destroy(this.transform.parent.gameObject);
+        else
+            HP = newHP;
     }
 }

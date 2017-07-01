@@ -15,6 +15,9 @@ public class PortalEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
+        if (PlayerAction.instance.IsAttacking())    // in midst of attack animation
+            return;
+
         // Player Movement stuff
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 

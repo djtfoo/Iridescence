@@ -2,9 +2,11 @@
 
 <Potion>
 	<name>MP Regen</name>
-	<description>Recovers a portion of user's MP.</description>
+	<description>Recovers 50% of user's MP over 5 seconds.</description>
 	<spriteFilename>potion_MP</spriteFilename>
 	<craftCost>10</craftCost>
-	<duration>0</duration>
-	<effectValue>25</effectValue>
+	<duration>5</duration>
+	<cooldownTime>1</cooldownTime>
+	<effectName>MPRegen</effectName>
+	<effectValue>0.5</effectValue>
 </Potion>

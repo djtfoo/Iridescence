@@ -5,11 +5,13 @@ public class Projectile : MonoBehaviour {
 
     public float speed;
     public float lifetime;
-    Vector3 velocity;
-
-    float duration = 0f;
+    private Vector3 velocity;
 
     public float damage;
+
+    private float duration = 0f;
+    private bool hit;   // this projectile has hit an enemy
+    private GameObject hitTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,14 @@ public class Projectile : MonoBehaviour {
         this.transform.position += velocity * Time.deltaTime;
         duration += Time.deltaTime;
 
-        if (duration >= lifetime)
+        if (hit)
+        {
+            if (duration >= 0.3f) {
+                hitTarget.SendMessage("TakeDamage", damage);
+                Destroy(this.gameObject);
+            }
+        }
+        else if (duration >= lifetime)
             Destroy(this.gameObject);
 	}
 
@@ -30,13 +39,25 @@ public class Projectile : MonoBehaviour {
         velocity = speed * dir;
     }
 
+    public void SetDamage(float dmg)
+    {
+        damage = dmg;
+    }
+
     // collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.SendMessage("TakeDamage", 10);
-            Destroy(this.gameObject);
+        if (this.gameObject.tag == "Player" && collision.gameObject.tag == "Enemy") {
+            hit = true;
+            duration = 0f;  // reset timer - countdown to destruction instead
+            hitTarget = collision.gameObject;
         }
+        //else if (this.gameObject.tag == "Enemy" && collision.gameObject.tag == "Player")
+        //{
+        //    hit = true;
+        //    duration = 0f;  // reset timer - countdown to destruction instead
+        //    hitTarget = PlayerAction.instance.gameObject;
+        //}
     }
 
 }

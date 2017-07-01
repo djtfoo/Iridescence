@@ -2,9 +2,11 @@
 
 <Potion>
 	<name>HP Regen</name>
-	<description>Recovers a portion of user's HP.</description>
+	<description>Recovers 50% of user's HP over 5 seconds.</description>
 	<spriteFilename>potion_HP</spriteFilename>
 	<craftCost>10</craftCost>
-	<duration>0</duration>
-	<effectValue>20</effectValue>
+	<duration>5</duration>
+	<cooldownTime>1</cooldownTime>
+	<effectName>HPRegen</effectName>
+	<effectValue>0.5</effectValue>
 </Potion>

@@ -13,7 +13,10 @@ public class TerrainEventHandler : MonoBehaviour {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-            if (DialogueManager.inDialogue)
+        if (DialogueManager.inDialogue)
+            return;
+
+        if (PlayerAction.instance.IsAttacking())    // in midst of attack animation
             return;
 
         // Player Movement stuff

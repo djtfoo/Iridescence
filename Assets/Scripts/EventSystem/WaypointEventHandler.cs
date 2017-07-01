@@ -25,6 +25,9 @@ public class WaypointEventHandler : MonoBehaviour
         if (DialogueManager.inDialogue)
             return;
 
+        if (PlayerAction.instance.IsAttacking())    // in midst of attack animation
+            return;
+
         // store the type into RaycastInfo via getting tag/name
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 

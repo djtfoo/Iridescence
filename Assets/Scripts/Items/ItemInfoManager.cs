@@ -8,6 +8,10 @@ public class ItemInfoManager : MonoBehaviour {
     private TextAsset[] potionsXMLFiles;
     public Dictionary<string, Potion> potionsList;   // deserialize each Potion from XML
 
+    // Misc. Items
+    //private TextAsset[] miscXMLFiles;
+    //public Dictionary<string, Potion> miscList;   // deserialize each MiscItem from XML
+
     public static ItemInfoManager instance;
 
 	// Use this for initialization
@@ -34,5 +38,5 @@ public class ItemInfoManager : MonoBehaviour {
     {
         return potionsList[key];
     }
-
+    
 }

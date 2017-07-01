@@ -26,6 +26,9 @@ public class Skill {
     [XmlElement("cooldownTime")]
     public float cooldownTime;  // how long this skill's cooldown is, if any (if no cooldown, is 0f)
 
+    [XmlElement("userAnimation")]
+    public string userAnimation; // name of animation strip the user of this Skill uses
+
     //public object[] effectVariables;    // this skill's variables for its effects
 
     // non-XML variables

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Potion>
+	<name>Movement Boost</name>
+	<description>Temporarily increases movement speed by 40%.</description>
+	<spriteFilename>potion_movementboost</spriteFilename>
+	<craftCost>50</craftCost>
+	<duration>80</duration>
+	<cooldownTime>2</cooldownTime>
+	<effectName>MovementSpeedModifier</effectName>
+	<effectValue>0.4</effectValue>
+</Potion>

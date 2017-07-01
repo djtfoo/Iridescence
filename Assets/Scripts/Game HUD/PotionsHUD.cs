@@ -5,6 +5,7 @@ public class PotionsHUD : MonoBehaviour {
 
     public static PotionsHUD instance;
     public Image[] potionSprites;
+    public Text[] potionQuantityText;
 
     // Use this for initialization
     private void Awake()
@@ -29,6 +30,9 @@ public class PotionsHUD : MonoBehaviour {
 
             // set null to Potions tooltip
             potionSprites[slotIdx].transform.parent.GetComponent<PotionsTooltip>().SetPotion(null);
+
+            // set quantity text to be empty
+            potionQuantityText[slotIdx].text = "";  // empty
         }
         else
         {
@@ -38,7 +42,26 @@ public class PotionsHUD : MonoBehaviour {
 
             // set to Potions tooltip
             potionSprites[slotIdx].transform.parent.GetComponent<PotionsTooltip>().SetPotion(potion);
+
+            // set quantity text to be empty
+            SetPotionQuantity(PlayerAction.instance.GetPlayerData().GetPotionQuantity(potionName), slotIdx);
         }
+    }
+
+    public void SetPotionQuantity(int quantity, int slotIdx)
+    {
+        potionQuantityText[slotIdx].text = quantity.ToString();
+
+        if (quantity == 0)
+            potionSprites[slotIdx].color = new Color(1f, 1f, 1f, 0.5f); // faded out; suggests potions have ran out
+        else
+            potionSprites[slotIdx].color = new Color(1f, 1f, 1f, 1f);   // fully visible
+    }
+
+    // use potion on-click
+    public void UsePotion(int slotIdx)
+    {
+        PlayerAction.instance.UsePotion(slotIdx);
     }
 
 }

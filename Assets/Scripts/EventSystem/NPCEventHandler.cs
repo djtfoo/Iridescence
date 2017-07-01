@@ -23,6 +23,9 @@ public class NPCEventHandler : MonoBehaviour {
         if (DialogueManager.inDialogue)
             return;
 
+        if (PlayerAction.instance.IsAttacking())    // in midst of attack animation
+            return;
+
         RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
         // walk to NPC

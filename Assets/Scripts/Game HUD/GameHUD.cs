@@ -36,14 +36,14 @@ public class GameHUD : MonoBehaviour {
 	
 	}
 
-    public void HPChanged(int newHP, int maxHP)
+    public void HPChanged(float newHP, float maxHP)
     {
-        HPBar.localScale = new Vector3((float)newHP / maxHP, 1f, 1f);
+        HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);
     }
 
-    public void MPChanged(int newMP, int maxMP)
+    public void MPChanged(float newMP, float maxMP)
     {
-        MPBar.localScale = new Vector3((float)newMP / maxMP, 1f, 1f);
+        MPBar.localScale = new Vector3(newMP / maxMP, 1f, 1f);
     }
 
 }

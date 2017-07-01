@@ -29,8 +29,8 @@ public class Waypoint : MonoBehaviour {
         {
             if (!PlayerAction.instance.GetPlayerData().IsAtMaxHP() || !PlayerAction.instance.GetPlayerData().IsAtMaxMP())
             {
-                PlayerAction.instance.GetPlayerData().RestoreHP();
-                PlayerAction.instance.GetPlayerData().RestoreMP();
+                PlayerAction.instance.GetPlayerData().FullRestoreHP();
+                PlayerAction.instance.GetPlayerData().FullRestoreMP();
 
                 firstTimeHealing = false;
 

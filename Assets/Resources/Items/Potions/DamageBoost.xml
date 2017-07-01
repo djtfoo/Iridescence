@@ -2,9 +2,11 @@
 
 <Potion>
 	<name>Damage Boost</name>
-	<description>Temporarily increases damage user deals for all attacks.</description>
+	<description>Temporarily increases user's ATK by 20%. (Increases damage for all attacks)</description>
 	<spriteFilename>potion_dmgboost</spriteFilename>
 	<craftCost>40</craftCost>
 	<duration>100</duration>
-	<effectValue>10</effectValue>
+	<cooldownTime>2</cooldownTime>
+	<effectName>ATKModifier</effectName>
+	<effectValue>0.2</effectValue>
 </Potion>

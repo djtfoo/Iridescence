@@ -75,10 +75,10 @@ public class MouseOverTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExi
             switch (tooltipType)
             {
                 case TooltipType.TOOLTIP_HP:
-                    tooltipText.text = playerData.GetHP().ToString() + " / " + playerData.maxHP;
+                    tooltipText.text = ((int)playerData.GetHP()) + " / " + playerData.maxHP;
                     break;
                 case TooltipType.TOOLTIP_MP:
-                    tooltipText.text = playerData.GetMP().ToString() + " / " + playerData.maxMP;
+                    tooltipText.text = ((int)playerData.GetMP()) + " / " + playerData.maxMP;
                     break;
 
                 case TooltipType.TOOLTIP_NORMAL:

@@ -22,13 +22,13 @@ public class PlayerAttack : MonoBehaviour {
 
     // attack variables
     private SKILL_TYPE attackType = SKILL_TYPE.SKILL_MELEE;    // current attack type
-    private float currRangeSquared = 0f;     // current range value where player shld stop moving
+    private float currRangeSquared = 0f;    // current range value where player shld stop moving
+    private string currUserAnimation = "";  // current skill's animation
     private Skill currSkill;    // a "pointer" to the current skill - the one that started the attack
 
     // TEMP VARIABLES!!!!
-    public static float meleeRangeSquared = 0.1f;  // temp variable to represent weapon
+    public static float meleeRangeSquared = 0.1f;  // variable to represent default melee attack
     public static float meleeDmg = 10f;    // temp damage variable
-    public static float rangedRangeSquared = 1.5f;  // temp variable to represent ranged attack range
     public GameObject fireProjectile;   // temp projectile to launch
 
 
@@ -44,6 +44,10 @@ public class PlayerAttack : MonoBehaviour {
     {
         return currRangeSquared;
     }
+    public string GetCurrentUserAnimation()
+    {
+        return currUserAnimation;
+    }
 
     // Use this for initialization
     void Start () {
@@ -53,6 +57,10 @@ public class PlayerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        // game "pauses" if in dialogue
+        if (DialogueManager.inDialogue)
+            return;
 
         Element elementOne = playerData.GetElementOne();
         Element elementTwo = playerData.GetElementTwo();
@@ -97,8 +105,8 @@ public class PlayerAttack : MonoBehaviour {
             }
         }
 
-        // CANNOT attack if in dialogue
-        if (DialogueManager.inDialogue)
+        // CANNOT attack while in midst of another attack's animation
+        if (PlayerAction.instance.IsAttacking())
             return;
 
         // check for whether skill continues - GetKey()
@@ -228,6 +236,7 @@ SetMovement:
         // set attack variables
         attackType = currSkill.atkType;
         currRangeSquared = currSkill.rangeValue;
+        currUserAnimation = currSkill.userAnimation;
     }
 
     /// <summary>
@@ -278,6 +287,7 @@ SetMovement:
     {
         attackType = SKILL_TYPE.SKILL_MELEE;
         currRangeSquared = meleeRangeSquared;
+        currUserAnimation = "Melee";
     }
 
 }

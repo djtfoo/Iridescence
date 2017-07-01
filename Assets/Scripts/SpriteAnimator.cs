@@ -143,6 +143,7 @@ public class SpriteAnimator : MonoBehaviour {
                     // for attacking, etc
                     //this.gameObject.SendMessageUpwards("UseSkill");
                     transform.parent.GetComponent<PlayerAttack>().UseSkill();
+                    PlayerAction.instance.SetStopAttacking();
 
                     // change animation back to idle
                     ChangeAnimation("Idle", true);

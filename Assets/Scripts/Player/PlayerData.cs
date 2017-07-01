@@ -16,26 +16,27 @@ public class PlayerData {
 
     // Player Stats
     [XmlElement("playerLevel")]
-    public int playerLevel;   // player's level
+    public int playerLevel; // player's level
     [XmlElement("playerEXP")]
     public int playerEXP;   // player's exp for this level
 
     [XmlElement("statPoints")]
     public int statPoints;    // points gained from levelling up -- use to increase other stats
 
+    // BASE STAT VALUES OF CHARACTER - based on level & any other permanents
     [XmlElement("statATK")]
-    public int statATK; // affects physical attack damage
+    public float statATK;   // affects physical attack damage
     [XmlElement("statDEF")]
-    public int statDEF; // affects damage reduction
+    public float statDEF;   // affects damage reduction
     [XmlElement("statMAG")]
-    public int statMAG; // affects projectile (any non-melee) damage
+    public float statMAG;   // affects projectile (any non-melee) damage
     [XmlElement("statSPD")]
-    public int statSPD; // affects attack speed
+    public float statSPD;   // affects attack speed
 
     [XmlElement("maxHP")]
-    public int maxHP;
+    public float maxHP;
     [XmlElement("maxMP")]
-    public int maxMP;
+    public float maxMP;
 
     [XmlElement("elementOne")]
     public string currElement1;
@@ -61,8 +62,15 @@ public class PlayerData {
     // non-XML serialized variables
     private int playerEXPTotal; // total exp required for this level to level up
 
-    private int HP;
-    private int MP;
+    // modified stats
+    private float modifiedATK;
+    private float modifiedDEF;
+    private float modifiedMAG;
+    private float modifiedSPD;
+
+    // current value of fluid stats
+    private float HP;
+    private float MP;
 
     // Player items
     private Dictionary<string, int> crystalCount;   // number of Iris Fragments player has (max. 3)
@@ -80,6 +88,11 @@ public class PlayerData {
     public void Init()
     {
         playerEXPTotal = StatsAlgorithmManager.CalculateEXPRequirement(playerLevel);
+
+        modifiedATK = statATK;
+        modifiedDEF = statDEF;
+        modifiedMAG = statMAG;
+        modifiedSPD = statSPD;
 
         HP = maxHP;
         MP = maxMP;
@@ -128,6 +141,17 @@ public class PlayerData {
         return crystalCount[elementName];
     }
 
+    // Stats
+    public float GetModifiedATK() { return modifiedATK; }
+    public float GetModifiedDEF() { return modifiedDEF; }
+    public float GetModifiedMAG() { return modifiedMAG; }
+    public float GetModifiedSPD() { return modifiedSPD; }
+
+    public void ChangeModifiedATK(float change) { modifiedATK += change; }
+    public void ChangeModifiedDEF(float change) { modifiedDEF += change; }
+    public void ChangeModifiedMAG(float change) { modifiedMAG += change; }
+    public void ChangeModifiedSPD(float change) { modifiedSPD += change; }
+
     // EXP
     public int GetCurrentEXP() {    // current for this level
         return playerEXP;
@@ -137,48 +161,59 @@ public class PlayerData {
     }
 
     // HP
-    public int GetHP() {   // curr HP
+    public float GetHP() {  // curr HP
         return HP;
     }
-    public void TakeDamage(int dmg)
-    {
+    public void TakeDamage(float dmg) {
         SetHP(HP - dmg);
     }
-    public void RestoreHP() {
+    public void RegainHP(float restore) {   // regain some HP
+        SetHP(HP + restore);
+    }
+    public void FullRestoreHP() {   // regain HP to max
         SetHP(maxHP);
     }
-    private void SetHP(int newHP)
+    private void SetHP(float newHP)
     {
-        HP = newHP;
-        //if (newHP <= 0)
+        if (newHP <= 1f) {  // cause HP is in float; will round down to 0
             // lose game
-
-        // edit HP bar
-        GameHUD.instance.HPChanged(HP, maxHP);
+        }
+        else if (newHP >= maxHP)
+            HP = maxHP;
+        else {
+            HP = newHP;
+            // edit HP bar
+            GameHUD.instance.HPChanged(HP, maxHP);
+        }
     }
     public bool IsAtMaxHP() {
         return HP == maxHP;
     }
     
     // MP
-    public int GetMP() {   // curr MP
+    public float GetMP() {  // curr MP
         return MP;
     }
-    public void UseMP(int cost)
-    {
+    public void UseMP(float cost) {
         SetMP(MP - cost);
     }
-    public void RestoreMP() {
+    public void RegainMP(float restore) {   // regain some MP
+        SetMP(MP + restore);
+    }
+    public void FullRestoreMP() {   // regain MP to max
         SetMP(maxMP);
     }
-    private void SetMP(int newMP) {
-        MP = newMP;
+    private void SetMP(float newMP) {
 
-        if (newMP <= 0)
-            MP = 0;
-
-        // edit MP bar
-        GameHUD.instance.MPChanged(MP, maxMP);
+        if (newMP <= 0f)
+            MP = 0f;
+        else if (newMP >= maxMP)
+            MP = maxMP;
+        else {
+            MP = newMP;
+            // edit MP bar
+            GameHUD.instance.MPChanged(MP, maxMP);
+        }
     }
     public bool IsAtMaxMP() {
         return MP == maxMP;
@@ -188,6 +223,15 @@ public class PlayerData {
     public int GetPotionQuantity(string potionName)
     {
         return potionsQuantity[potionName];
+    }
+
+    /// <summary>
+    ///  Use or gain 1 potion - reduce or add 1 from quantity
+    /// </summary>
+    /// <param name="potionName"> Name of potion used </param>
+    public void ChangePotionQuantity(string potionName, int quantityChange)
+    {
+        potionsQuantity[potionName] += quantityChange;
     }
 
     /// <summary>

@@ -74,10 +74,14 @@ public class PotionSlots : MonoBehaviour {
 
             // set sprite
             slots[slotIdx].slot_sprite.sprite = potion.GetPotionSprite();
-            slots[slotIdx].slot_sprite.color = new Color(1f, 1f, 1f, 1f);
 
             // set quantity
-            slots[slotIdx].slot_quantity.text = playerData.GetPotionQuantity(potionName).ToString();
+            int quantity = playerData.GetPotionQuantity(potionName);
+            slots[slotIdx].slot_quantity.text = quantity.ToString();
+            if (quantity == 0)
+                slots[slotIdx].slot_sprite.color = new Color(1f, 1f, 1f, 0.5f);
+            else
+                slots[slotIdx].slot_sprite.color = new Color(1f, 1f, 1f, 1f);
 
             // set tooltip
             slots[slotIdx].slot_tooltip.SetPotion(potion);
