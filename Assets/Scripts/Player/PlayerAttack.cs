@@ -11,14 +11,15 @@ public enum SKILL_TYPE
     SKILL_MELEE,
     [XmlEnum("Projectile")]
     SKILL_FIREPROJECTILE,
-    [XmlEnum("AoE")]
-    SKILL_AOE,    // AoE around player
+    //[XmlEnum("AoE")]
+    //SKILL_AOE,    // AoE around player
     [XmlEnum("Self")]
     SKILL_SELF,   // affects self or does a summon
     //SKILL_LASER
 }
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : MonoBehaviour
+{
 
     // attack variables
     private SKILL_TYPE attackType = SKILL_TYPE.SKILL_MELEE;    // current attack type
@@ -29,8 +30,6 @@ public class PlayerAttack : MonoBehaviour {
     // TEMP VARIABLES!!!!
     public static float meleeRangeSquared = 0.1f;  // variable to represent default melee attack
     public static float meleeDmg = 10f;    // temp damage variable
-    public GameObject fireProjectile;   // temp projectile to launch
-
 
     // reference to player data
     private PlayerData playerData;
@@ -50,13 +49,15 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // game "pauses" if in dialogue
         if (DialogueManager.inDialogue)
@@ -67,7 +68,8 @@ public class PlayerAttack : MonoBehaviour {
         CombinedElement combinedElement = playerData.GetCombinedElement();
 
         // update element skills' cooldowns & appearances
-        if (elementOne != null) {
+        if (elementOne != null)
+        {
 
             int elementCount = 0;
             foreach (Skill skill in elementOne.skills)
@@ -80,7 +82,8 @@ public class PlayerAttack : MonoBehaviour {
                 ++elementCount;
             }
         }
-        if (elementTwo != null) {
+        if (elementTwo != null)
+        {
 
             int elementCount = 3;
             foreach (Skill skill in elementTwo.skills)
@@ -92,7 +95,8 @@ public class PlayerAttack : MonoBehaviour {
                 ++elementCount;
             }
         }
-        if (combinedElement != null) {
+        if (combinedElement != null)
+        {
 
             int elementCount = 6;
             foreach (Skill skill in combinedElement.skills)
@@ -118,7 +122,8 @@ public class PlayerAttack : MonoBehaviour {
         if (Input.anyKeyDown)
         {
             /// ELEMENT ONE
-            if (elementOne != null) {
+            if (elementOne != null)
+            {
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     if (CheckSkill(elementOne.GetSkillOne()))
@@ -137,7 +142,8 @@ public class PlayerAttack : MonoBehaviour {
             }
 
             /// ELEMENT TWO
-            if (elementTwo != null) {
+            if (elementTwo != null)
+            {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     if (CheckSkill(elementTwo.GetSkillOne()))
@@ -156,7 +162,8 @@ public class PlayerAttack : MonoBehaviour {
             }
 
             /// COMBINED ELEMENT
-            if (combinedElement != null) {
+            if (combinedElement != null)
+            {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     if (CheckSkill(combinedElement.GetSkillOne()))
@@ -172,12 +179,13 @@ public class PlayerAttack : MonoBehaviour {
             // if this part is reached, it means player did not use any skill successfully; thus don't move to it
             return;
         }
-        else {  /// no key was pressed
+        else
+        {  /// no key was pressed
             return;
         }
 
         // goto: setting where player moves to
-SetMovement:
+        SetMovement:
         {
             // store the type into RaycastInfo via getting tag/name
             RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
@@ -197,13 +205,6 @@ SetMovement:
             }
         }
 
-
-    }
-
-    public void SpawnProjectile(Vector3 targetPos)
-    {
-        GameObject projectile = (GameObject)Instantiate(fireProjectile, this.transform.GetChild(0).position, Quaternion.identity);
-        projectile.GetComponent<Projectile>().SetVelocity((targetPos - this.transform.position).normalized);
     }
 
     /// <summary>
@@ -246,30 +247,62 @@ SetMovement:
     {
         if (currSkill != null)
         {
-        /// use MP
-        playerData.UseMP(currSkill.MPCost); // shld be done at start of skill
+            /// use MP
+            playerData.UseMP(currSkill.MPCost); // shld be done at start of skill
 
-        /// set cooldown (if any)
-        currSkill.SetStartCooldown();   // shld be done at end of skill
+            /// set cooldown (if any)
+            currSkill.SetStartCooldown();   // shld be done at end of skill
         }
 
         /// skill effect
         switch (attackType)
         {
             case SKILL_TYPE.SKILL_MELEE:
-                /// deal damage
-                /// use skill's object[]
-                RaycastInfo.clickTarget.SendMessage("TakeDamage", meleeDmg);    // TEMP!!
+                {
+                    /// deal damage
+                    float skillDmg;
+                    if (currSkill == null)  // regular physical melee
+                        skillDmg = meleeDmg;
+                    else
+                        skillDmg = float.Parse(currSkill.GetValue("Damage")) * meleeDmg;  // temp; shld be elemental stat
+
+                    /// calculate critical hit chance
+                    int rand = UnityEngine.Random.Range(0, 100);
+                    float criticalHitChance = playerData.criticalHitChance;
+
+                    /// increase critical hit chance if skill has increased chance
+                    if (currSkill != null)
+                    {
+                        if (currSkill.HasKey("CriticalChanceIncrease"))
+                            criticalHitChance += int.Parse(currSkill.GetValue("CriticalChanceIncrease"));
+                    }
+
+                    if (rand < criticalHitChance)    // critical hit success
+                        skillDmg *= playerData.criticalHitMultiplier;
+
+                    float damageDealt = AlgorithmManager.DamageCalculation(skillDmg, RaycastInfo.clickTarget.GetComponent<EnemyData>().defense);
+
+                    RaycastInfo.clickTarget.SendMessage("TakeDamage", damageDealt);
+
+                    /// attach modifier components if any
+                    if (currSkill != null)
+                    {
+                        if (currSkill.HasKey("ComponentSelf"))
+                        {
+                            AttachModifier.SetModifierEffect(PlayerAction.instance.gameObject,
+                                currSkill.GetValue("ComponentSelf"),
+                                float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
+                        }
+                    }
+
+                    /// Create melee skill animation
+                    CreateMeleeSkillAnimation();
+                }
                 break;
 
             case SKILL_TYPE.SKILL_FIREPROJECTILE:
                 /// create projectile
                 SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
-                break;
-
-            case SKILL_TYPE.SKILL_AOE:
-                /// deal damage
-                // send TakeDamage to all nearby enemies
                 break;
 
             case SKILL_TYPE.SKILL_SELF:
@@ -288,6 +321,27 @@ SetMovement:
         attackType = SKILL_TYPE.SKILL_MELEE;
         currRangeSquared = meleeRangeSquared;
         currUserAnimation = "Melee";
+    }
+
+    /// <summary>
+    ///  Create melee skill animation when attack hits
+    /// </summary>
+    private void CreateMeleeSkillAnimation()
+    {
+        if (currSkill != null)
+        {
+            GameObject skillAnimation = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
+            GameObject instantiated = Instantiate(skillAnimation);
+            instantiated.transform.position = 0.5f * (PlayerAction.instance.transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+        }
+    }
+
+    private void SpawnProjectile(Vector3 targetPos)
+    {
+        GameObject projectile = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
+        GameObject instantiated = Instantiate(projectile);
+        instantiated.transform.position = PlayerAction.instance.transform.position;   // slightly forward
+        instantiated.GetComponent<Projectile>().SetVelocity((targetPos - transform.position).normalized);
     }
 
 }

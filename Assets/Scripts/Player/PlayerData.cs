@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Xml.Serialization;
 
 // class that stores currently saved player information. for serializing & deserializing
@@ -13,6 +11,14 @@ public class PlayerData {
 
     // CONST VALUE
     public const float converseRangeSquared = 0.5f;  // distance between player & NPC/Waypoint to start dialogue
+
+    // generic save file data
+    //[XmlElement("saveName")]
+    //public string saveName; // name of this save data
+
+    // location data
+    [XmlElement("lastCheckpoint")]
+    public string lastCheckpoint;  // name of levelprefab of last visited checkpoint, for resuming game or dying - if null, go back to cave
 
     // Player Stats
     [XmlElement("playerLevel")]
@@ -37,6 +43,12 @@ public class PlayerData {
     public float maxHP;
     [XmlElement("maxMP")]
     public float maxMP;
+
+    [XmlElement("criticalHitChance")]
+    public float criticalHitChance;
+
+    [XmlElement("criticalHitMultiplier")]
+    public float criticalHitMultiplier;
 
     [XmlElement("elementOne")]
     public string currElement1;
@@ -87,7 +99,7 @@ public class PlayerData {
 
     public void Init()
     {
-        playerEXPTotal = StatsAlgorithmManager.CalculateEXPRequirement(playerLevel);
+        playerEXPTotal = AlgorithmManager.CalculateEXPRequirement(playerLevel);
 
         modifiedATK = statATK;
         modifiedDEF = statDEF;
@@ -159,6 +171,48 @@ public class PlayerData {
     public int GetCurrentEXPTotal() {   // current for this level
         return playerEXPTotal;
     }
+    public void GainEXP(int EXPgain)
+    {
+        playerEXP += EXPgain;
+        if (playerEXP >= playerEXPTotal)
+        {
+            // Level Up
+            LevelUp();
+        }
+    }
+    public void LevelUp()
+    {
+        // play level up sparkle particles animation
+        PlayerAction.instance.InstantiateLevelUpParticles();
+
+        // increase player level
+        ++playerLevel;
+
+        // increase HP & MP
+        maxHP += 10;
+        maxMP += 10;
+        // TEMP: increase stats instead of give stat points
+        statATK += 2;
+        statDEF += 2;
+        statMAG += 2;
+        statSPD += 2;
+
+        modifiedATK += 2;
+        modifiedDEF += 2;
+        modifiedMAG += 2;
+        modifiedSPD += 2;
+
+        // restore HP & MP
+        FullRestoreHP();
+        FullRestoreMP();
+
+        // recalculate stat modifiers & HP/MP Regen modifiers
+
+
+        // reset EXP values
+        playerEXP -= playerEXPTotal;
+        playerEXPTotal = AlgorithmManager.CalculateEXPRequirement(playerLevel);
+    }
 
     // HP
     public float GetHP() {  // curr HP
@@ -180,11 +234,11 @@ public class PlayerData {
         }
         else if (newHP >= maxHP)
             HP = maxHP;
-        else {
+        else
             HP = newHP;
-            // edit HP bar
-            GameHUD.instance.HPChanged(HP, maxHP);
-        }
+
+        // edit HP bar
+        GameHUD.instance.HPChanged(HP, maxHP);
     }
     public bool IsAtMaxHP() {
         return HP == maxHP;
@@ -209,11 +263,11 @@ public class PlayerData {
             MP = 0f;
         else if (newMP >= maxMP)
             MP = maxMP;
-        else {
+        else
             MP = newMP;
-            // edit MP bar
-            GameHUD.instance.MPChanged(MP, maxMP);
-        }
+
+        // edit MP bar
+        GameHUD.instance.MPChanged(MP, maxMP);
     }
     public bool IsAtMaxMP() {
         return MP == maxMP;

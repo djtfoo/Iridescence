@@ -1,0 +1,59 @@
+ {
+"firstGreeting": "Welcome to the playtest of the game, Iridescence! I'm a guide to explain the gameplay rules to you.",
+"greetings": [
+"Talk to me and I'll tell you how to play.",
+"Need some help? I'm here."
+],
+"goodbye": "Enjoy!",
+"replies": [
+{
+"selection": "Movement",
+"index": 0,
+"dependency": -1,
+"dialogue": "Click on a walkable part of the terrain to move to that destination. You can change your direction in-midst movement by clicking on another walkable spot.",
+"haveReply": false
+},
+{
+"selection": "Attack",
+"index": 1,
+"dependency": -1,
+"dialogue": "Click on an enemy to attack it with your regular attack. Press the skill key bindings (QWER/ASDF) instead while enemy is highlighted to use a skill. Using skills cost MP. MP will slowly regenerate over time.",
+"haveReply": true
+},
+{
+"selection": "Locked?",
+"index": 2,
+"dependency": 1,
+"dialogue": "For this playtest, only 2 skills per element are available. They're 1 melee and 1 projectile respectively.",
+"haveReply": false
+},
+{
+"selection": "Potions",
+"index": 3,
+"dependency": -1,
+"dialogue": "Use potions with keys 1-5 or click on bottom left of HUD. Open stats menu to swap out your potions.",
+"haveReply": false
+},
+{
+"selection": "Elements",
+"index": 4,
+"dependency": -1,
+"dialogue": "Click on the element slots (bottom right of HUD) to open the elements menu. You can change the equipped elements there.",
+"haveReply": true
+},
+{
+"selection": "Equip an Element",
+"index": 5,
+"dependency": 4,
+"dialogue": "Click on a slot to remove the element.",
+"haveReply": false
+},
+{
+"selection": "Remove an element",
+"index": 6,
+"dependency": 4,
+"dialogue": "Click on an elemental gem on the top of the slots, and drag it to the slot. You can also swap between both slots.",
+"haveReply": false
+}
+]
+}

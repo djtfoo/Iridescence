@@ -15,6 +15,11 @@
 			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Melee</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Fireball">
@@ -25,16 +30,26 @@
 			<rangeValue>4.0</rangeValue>
 			<cooldownTime>0.5</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>2</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Ring of Fire">
 			<description>Unleash a damaging ring of fire around the player.</description>
 			<iconFilename>ringoffire_icon</iconFilename>
 			<MPCost>60</MPCost>
-			<attackType>AoE</attackType>
+			<attackType>Projectile</attackType>
 			<rangeValue>0.8</rangeValue>
 			<cooldownTime>2.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 	</Skills>
 </Element>

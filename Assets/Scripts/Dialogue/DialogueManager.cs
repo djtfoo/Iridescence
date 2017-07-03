@@ -163,6 +163,11 @@ public class DialogueManager : MonoBehaviour {
     {
         // set dialogue box's message
         if (idx == -1) {
+            if (NPC.GetComponent<NPCDialogue>().IsFirstTimeGreetingPlayer())
+            {
+                lineToOutput = currNPCdialogue.firstGreeting;
+                NPC.GetComponent<NPCDialogue>().SetFirstTimeGreetingPlayer(false);
+            }
             int rand = Random.Range(0, currNPCdialogue.greetings.Length);
             lineToOutput = currNPCdialogue.greetings[rand];
         }

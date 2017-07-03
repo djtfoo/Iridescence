@@ -12,9 +12,23 @@
 			<iconFilename>healthdrain_icon</iconFilename>
 			<MPCost>30</MPCost>
 			<attackType>Melee</attackType>
-			<rangeValue>0.15</rangeValue>
+			<rangeValue>0.2</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.2</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="ComponentSelf">
+					<variable>HPRegen</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>1</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
+					<variable>0.05</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Rock Spear">
@@ -25,6 +39,11 @@
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Earth Shield">
@@ -35,6 +54,11 @@
 			<rangeValue>0.0</rangeValue>
 			<cooldownTime>20.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 	</Skills>
 </Element> 

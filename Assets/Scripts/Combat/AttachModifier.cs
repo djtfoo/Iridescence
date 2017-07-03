@@ -63,10 +63,74 @@ public static class AttachModifier {
 
             case "ATKModifier":
                 {
+                    // by right, there should only be one.
                     ATKModifier[] modifiersToCheck = entityToAttach.GetComponents<ATKModifier>();
                     if (duration > 0f)  // a non-infinite modifier
                     {
                         foreach (ATKModifier modifier in modifiersToCheck)
+                        {
+                            if (!modifier.infiniteDuration) // not infinite - there should be only 1 non-infinite
+                            {
+                                modifier.SetDuration(duration);
+                                modifier.SetEffectValue(effectValue);
+                                return;
+                            }
+                        }
+                    }
+                    // if reaches here, all existing are infinite, else this is an infinite - so attach this to entity
+                    AttachToEntity(entityToAttach, modifierType, duration, effectValue);
+                }
+                break;
+
+            case "DEFModifier":
+                {
+                    // by right, there should only be one.
+                    DEFModifier[] modifiersToCheck = entityToAttach.GetComponents<DEFModifier>();
+                    if (duration > 0f)  // a non-infinite modifier
+                    {
+                        foreach (DEFModifier modifier in modifiersToCheck)
+                        {
+                            if (!modifier.infiniteDuration) // not infinite - there should be only 1 non-infinite
+                            {
+                                modifier.SetDuration(duration);
+                                modifier.SetEffectValue(effectValue);
+                                return;
+                            }
+                        }
+                    }
+                    // if reaches here, all existing are infinite, else this is an infinite - so attach this to entity
+                    AttachToEntity(entityToAttach, modifierType, duration, effectValue);
+                }
+                break;
+
+            case "SPDModifier":
+                {
+                    // by right, there should only be one.
+                    SPDModifier[] modifiersToCheck = entityToAttach.GetComponents<SPDModifier>();
+                    if (duration > 0f)  // a non-infinite modifier
+                    {
+                        foreach (SPDModifier modifier in modifiersToCheck)
+                        {
+                            if (!modifier.infiniteDuration) // not infinite - there should be only 1 non-infinite
+                            {
+                                modifier.SetDuration(duration);
+                                modifier.SetEffectValue(effectValue);
+                                return;
+                            }
+                        }
+                    }
+                    // if reaches here, all existing are infinite, else this is an infinite - so attach this to entity
+                    AttachToEntity(entityToAttach, modifierType, duration, effectValue);
+                }
+                break;
+
+            case "MovementSpeedModifier":
+                {
+                    // by right, there should only be one.
+                    MovementSpeedModifier[] modifiersToCheck = entityToAttach.GetComponents<MovementSpeedModifier>();
+                    if (duration > 0f)  // a non-infinite modifier
+                    {
+                        foreach (MovementSpeedModifier modifier in modifiersToCheck)
                         {
                             if (!modifier.infiniteDuration) // not infinite - there should be only 1 non-infinite
                             {
@@ -104,9 +168,33 @@ public static class AttachModifier {
                 }
                 break;
 
+            case "MovementSpeedModifier":
+                {
+                    MovementSpeedModifier component = entityToAttach.AddComponent<MovementSpeedModifier>();
+                    component.SetDuration(duration);
+                    component.SetEffectValue(effectValue);
+                }
+                break;
+
             case "ATKModifier":
                 {
                     ATKModifier component = entityToAttach.AddComponent<ATKModifier>();
+                    component.SetDuration(duration);
+                    component.SetEffectValue(effectValue);
+                }
+                break;
+
+            case "DEFModifier":
+                {
+                    DEFModifier component = entityToAttach.AddComponent<DEFModifier>();
+                    component.SetDuration(duration);
+                    component.SetEffectValue(effectValue);
+                }
+                break;
+
+            case "SPDModifier":
+                {
+                    SPDModifier component = entityToAttach.AddComponent<SPDModifier>();
                     component.SetDuration(duration);
                     component.SetEffectValue(effectValue);
                 }

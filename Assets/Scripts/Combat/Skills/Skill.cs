@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Xml.Serialization;
 
@@ -29,10 +29,19 @@ public class Skill {
     [XmlElement("userAnimation")]
     public string userAnimation; // name of animation strip the user of this Skill uses
 
-    //public object[] effectVariables;    // this skill's variables for its effects
+    [XmlArray("effectVariables")]
+    [XmlArrayItem("ObjectArrayItem")]
+    public ObjectArrayItem[] effectVariables;    // this skill's variables
 
     // non-XML variables
-    public Sprite icon;     // this skill's icon
+    private Sprite icon;     // this skill's icon
+    public Sprite GetSkillIcon() { return icon; }
+    public void SetSkillIcon(Sprite icon) { this.icon = icon; }
+
+    private Dictionary<string, string> skillVariables;
+    public void InitDictionary(Dictionary<string, string> dictionary) { skillVariables = dictionary; }
+    public bool HasKey(string key) { return skillVariables.ContainsKey(key); }
+    public string GetValue(string key) { return skillVariables[key]; }
 
     private bool isOnCooldown = false;  // whether this skill is currently on cooldown or not
     private float cooldownTimer = 0f;   // countdown for this skill's timer

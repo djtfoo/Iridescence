@@ -36,6 +36,12 @@ public class GameHUD : MonoBehaviour {
 	
 	}
 
+    public void ResetHUD()
+    {
+        highlightInfo.DeactivateHighlightInfo();
+        tooltip3D.SetActive(false);
+    }
+
     public void HPChanged(float newHP, float maxHP)
     {
         HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);

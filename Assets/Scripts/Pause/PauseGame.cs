@@ -34,7 +34,8 @@ public class PauseGame : MonoBehaviour {
     {
         isPaused = pause;
 
-        if (objects.Length == 0)
+        // always find everytime set to pause; don't find when unpause (cause they're inactive; they cannot be found)
+        if (isPaused)  // to be set to pause
             objects = FindObjectsOfType(typeof(PauseObject)) as PauseObject[];
 
         foreach (PauseObject setPause in objects)

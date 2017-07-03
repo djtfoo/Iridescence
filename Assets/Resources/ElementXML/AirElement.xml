@@ -8,13 +8,18 @@
 	<colorB>0</colorB>
 	<Skills>
 		<Skill name="Wind Cutter">
-			<description>Physically attack the enemy quickly. Increase attack speed when used in succession.</description>
+			<description>Physically attack the enemy quickly with a slice of air.</description>
 			<iconFilename>windcutter_icon</iconFilename>
 			<MPCost>20</MPCost>
 			<attackType>Melee</attackType>
 			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Melee</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Sonic Boom">
@@ -25,6 +30,11 @@
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>0.3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Speed Hymn">
@@ -35,6 +45,11 @@
 			<rangeValue>0.0</rangeValue>
 			<cooldownTime>30.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 	</Skills>
 </Element> 

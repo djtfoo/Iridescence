@@ -27,7 +27,16 @@ public class NPCDialogue : MonoBehaviour {
     public TextAsset dialogueFile;
     Dialogue thisNPCDialogue;
 
-    bool firstTimeGreetingPlayer;   // whether it's first time player talking to this NPC
+    private bool firstTimeGreetingPlayer = false;   // whether it's first time player talking to this NPC
+
+    public bool IsFirstTimeGreetingPlayer()
+    {
+        return firstTimeGreetingPlayer;
+    }
+    public void SetFirstTimeGreetingPlayer(bool isFirst)
+    {
+        firstTimeGreetingPlayer = isFirst;
+    }
 
 	// Use this for initialization
 	void Start () {

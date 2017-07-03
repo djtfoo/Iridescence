@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour {
 
         if (hit)
         {
-            if (duration >= 0.3f) {
+            if (duration >= 0.1f) {
                 hitTarget.SendMessage("TakeDamage", damage);
                 Destroy(this.gameObject);
             }
@@ -37,6 +37,15 @@ public class Projectile : MonoBehaviour {
     public void SetVelocity(Vector3 dir)
     {
         velocity = speed * dir;
+
+        // get direction
+        float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(velocity, Vector2.down) / velocity.magnitude);  // Vector3.down is Vector3(0, -1, 0)
+        if (velocity.x > 0f)
+            angle = 360f - angle;
+        angle += 22.5f;
+        if (angle >= 360f)
+            angle -= 360f;
+        GetComponent<SpriteAnimator>().ChangeDirection((int)(angle) / 45);
     }
 
     public void SetDamage(float dmg)

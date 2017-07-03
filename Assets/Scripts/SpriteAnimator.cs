@@ -37,6 +37,7 @@ public struct SpriteAnimation
 public class SpriteAnimator : MonoBehaviour {
 
     public SerialiseSpriteAnimation[] initAnimationsList; // FOR INITIALISING ONLY
+    public bool playOnce; // whether this animation should be destroyed upon end of animation
 
     private Dictionary<string, SpriteAnimation> animationsList; // list of sprite animations
     private SpriteAnimation currSprAnimation;   // current sprite animation
@@ -58,6 +59,8 @@ public class SpriteAnimator : MonoBehaviour {
 	// Use this for initialization
 	void Awake() {
         loop = true;
+        currFrame = 0;
+        currDirection = (int)SPRITE_DIRECTION.DIR_DOWN;
 
         Random.seed = 0;
 
@@ -134,19 +137,27 @@ public class SpriteAnimator : MonoBehaviour {
             ++currFrame;
             if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection))
             {
-                if (loop)
+                if (playOnce)
                 {
-                    currFrame -= currSprAnimation.framesPerStrip;
+                    Destroy(this.gameObject);
+                    return;
                 }
                 else
                 {
-                    // for attacking, etc
-                    //this.gameObject.SendMessageUpwards("UseSkill");
-                    transform.parent.GetComponent<PlayerAttack>().UseSkill();
-                    PlayerAction.instance.SetStopAttacking();
+                    if (loop)
+                    {
+                        currFrame -= currSprAnimation.framesPerStrip;
+                    }
+                    else
+                    {
+                        // for attacking, etc
+                        //this.gameObject.SendMessageUpwards("UseSkill");
+                        transform.parent.GetComponent<PlayerAttack>().UseSkill();
+                        PlayerAction.instance.SetStopAttacking();
 
-                    // change animation back to idle
-                    ChangeAnimation("Idle", true);
+                        // change animation back to idle
+                        ChangeAnimation("Idle", true);
+                    }
                 }
             }
 
@@ -170,6 +181,11 @@ public class SpriteAnimator : MonoBehaviour {
         this.loop = loop;
     }
 
+    // Direction
+    public int GetCurrDirection()
+    {
+        return currDirection;
+    }
     public void ChangeDirection(int dir)
     {
         if (!currSprAnimation.multiDirectional)

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class MovementSpeedModifier : MonoBehaviour {
 
@@ -11,6 +11,10 @@ public class MovementSpeedModifier : MonoBehaviour {
     public float speedPercentage;   // percentage of how much change in speed (0% == 0f; 100% == 1f; 105% = 1.05f)
 
     private Vector3 previousPos;    // this entity's previous position
+
+    // ModifierHUD
+    private Image modifierSprite;   // to add to HUD
+    private Image modifierSpriteOverlay;    // countdown overlay fill
 
     ///  Whether this is a +ve value buff or not
     public bool IsPositive()
@@ -45,13 +49,21 @@ public class MovementSpeedModifier : MonoBehaviour {
     public void RemoveThis()
     {
         Destroy(this);
+        Destroy(modifierSprite.gameObject);
+        ModifiersHUD.instance.RemoveModifierFromHUD();
     }
 
     // Use this for initialization
     void Start()
     {
         previousPos = transform.position;
-        // add to buff list on top left of screen
+
+        // add to modifierHUD on top left of screen
+        modifierSprite = (Image)Instantiate(ModifiersHUD.instance.modifierSpritePrefab, Vector3.zero, Quaternion.identity);
+        modifierSprite.sprite = Resources.Load<Sprite>("Sprites/ModifierIcons/Movement_Up");
+        modifierSpriteOverlay = modifierSprite.transform.GetChild(0).GetComponent<Image>();
+        modifierSpriteOverlay.fillAmount = 0f;
+        ModifiersHUD.instance.AddModifierToHUD(modifierSprite.transform);
     }
 
     // Update is called once per frame
@@ -61,16 +73,21 @@ public class MovementSpeedModifier : MonoBehaviour {
             // update timer
             timer += Time.deltaTime;
 
-            // update countdown overlay for buff icon
-             
+            // update countdown overlay for modifier icon
+            modifierSpriteOverlay.fillAmount = timer / duration;
+
             if (timer >= duration)
                 RemoveThis();
         }
 
         if (previousPos != transform.position)  // entity has moved
         {
-            Vector3 distMoved = transform.position - previousPos;
-            transform.position = previousPos + speedPercentage * distMoved;
+            if (PlayerAction.instance.IsMovingThisFrame())
+            {
+                Vector3 distMoved = transform.position - previousPos;
+                transform.position = previousPos + speedPercentage * distMoved;
+                PlayerAction.instance.SetEndMovingThisFrame();
+            }
             previousPos = transform.position;
         }
     }

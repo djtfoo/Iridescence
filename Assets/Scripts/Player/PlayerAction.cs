@@ -22,6 +22,10 @@ public class PlayerAction : MonoBehaviour {
     public bool IsAttacking() { return isAttacking; }
     public void SetStopAttacking() { isAttacking = false; }
 
+    private bool movedThisFrame = false;
+    public bool IsMovingThisFrame() { return movedThisFrame; }
+    public void SetEndMovingThisFrame() { movedThisFrame = false; }
+
     // Potion usage
     private float countdownTimer = 0f;  // for using potion
     private float bufferTime = 0.5f;    // how long the player can't use potion after using 1 potion
@@ -114,7 +118,8 @@ public class PlayerAction : MonoBehaviour {
         /// update potion cooldown
         for (int i = 0; i < 5; ++i)
         {
-            ItemInfoManager.instance.GetPotion(playerData.equippedPotions[i]).ResetUpdateThisFrame();
+            if (playerData.equippedPotions[i] != "")
+                ItemInfoManager.instance.GetPotion(playerData.equippedPotions[i]).ResetUpdateThisFrame();
         }
 
         /// potion usage
@@ -122,15 +127,19 @@ public class PlayerAction : MonoBehaviour {
         for (KeyCode i = KeyCode.Alpha1; i <= KeyCode.Alpha5; ++i)
         {
             int slotIdx = i - KeyCode.Alpha1;
-            Potion potion = ItemInfoManager.instance.GetPotion(playerData.equippedPotions[slotIdx]);
-            if (potion.IsOnCooldown())
+            string potName = playerData.equippedPotions[slotIdx];
+            if (potName != "")
             {
-                potion.UpdateCooldown();
-            }
-            else if (Input.GetKeyDown(i) && !potionUsed)
-            {
-                if (UsePotion(slotIdx))
-                    potionUsed = true;
+                Potion potion = ItemInfoManager.instance.GetPotion(potName);
+                if (potion.IsOnCooldown())
+                {
+                    potion.UpdateCooldown();
+                }
+                else if (Input.GetKeyDown(i) && !potionUsed)
+                {
+                    if (UsePotion(slotIdx))
+                        potionUsed = true;
+                }
             }
         }
 
@@ -185,8 +194,8 @@ public class PlayerAction : MonoBehaviour {
                 }
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Waypoint && distSquared < PlayerData.converseRangeSquared)
                 {
-                    // waypoint heal
-                    RaycastInfo.clickTarget.GetComponent<Waypoint>().HealPlayer();
+                    // set checkpoint & heal
+                    RaycastInfo.clickTarget.GetComponent<Waypoint>().InteractWithWaypoint();
 
                     // open dialogue to traverse waypoints
 
@@ -196,6 +205,7 @@ public class PlayerAction : MonoBehaviour {
                 else if (RaycastInfo.raycastType == RaycastTargetType.Raycast_TransitionPortal && distSquared < 0.1f)
                 {
                     // transit to next area
+                    movedThisFrame = false; // so movement boost won't fuck this up
                     RaycastInfo.clickTarget.GetComponent<Portal>().GoToNextLevel();
 
                     SetPathComplete();
@@ -206,7 +216,7 @@ public class PlayerAction : MonoBehaviour {
             // check for reach waypoint destination
             Vector3 dirCheck = pathWaypoints[0] - this.transform.position;
             // check by knowing whether "overshot" the path
-            float cosAngle = dirCheck.x * velocity.x + dirCheck.z * velocity.z;
+            float cosAngle = dirCheck.x * velocity.x + dirCheck.y * velocity.y;
             if (cosAngle < 0f) {
                 ReachedWaypoint();
             }
@@ -215,6 +225,7 @@ public class PlayerAction : MonoBehaviour {
             if (pathWaypoints.Count != 0)
             {
                 this.transform.position += velocity * Time.deltaTime;
+                movedThisFrame = true;
             }
         }
 
@@ -273,7 +284,7 @@ public class PlayerAction : MonoBehaviour {
 
         SetVelocity((pathWaypoints[0] - transform.position).normalized);
 
-        if (RaycastInfo.clickTarget == null)
+        if (RaycastInfo.clickTarget == null || RaycastInfo.raycastType == RaycastTargetType.Raycast_TransitionPortal)
         {
             destinationMarker.SetActive(true);
             destinationMarker.transform.position = new Vector3(destination.x, destination.y, 1f);
@@ -317,5 +328,12 @@ public class PlayerAction : MonoBehaviour {
     //{
     //    destination = newDest;
     //}
+
+    public void InstantiateLevelUpParticles()
+    {
+        GameObject levelupParticles = Resources.Load<GameObject>("ParticleAnimations/Level Up");
+        GameObject instantiated = Instantiate(levelupParticles);
+        instantiated.transform.position = transform.position;
+    }
 
 }   // end of class

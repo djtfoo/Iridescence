@@ -29,6 +29,9 @@ public class SaveLevelData : MonoBehaviour {
         terrainInfo.SetBackground(backgroundRender.text);
 
         clonedTerrain = new GameObject();
+        TerrainInfo terrainInfoClone = terrain.AddComponent<TerrainInfo>();
+        terrainInfoClone.SetLocationName(locationName.text);
+        terrainInfoClone.SetBackground(backgroundRender.text);
 
         DeleteGridZero();   // delete grids that were not filled up
         GenerateEdgeData(); // generate edge data for pathfinding
@@ -170,11 +173,13 @@ public class SaveLevelData : MonoBehaviour {
             outlineTxt += edgeForwardslash[i].ConvertToString(false);
         }
 
-        TxtHandler.WriteToTxt(outlineTxt, "Assets/Resources/OutlineData/testOutline.txt");
+        string filename = fileName.text;
+
+        TxtHandler.WriteToTxt(outlineTxt, "Assets/Resources/OutlineData/" + filename + ".txt");
 
         // add to OutlineEdgeData component
         OutlineEdgeData edgeData = clonedTerrain.AddComponent<OutlineEdgeData>() as OutlineEdgeData;
-        edgeData.outlineFile = Resources.Load("OutlineData/testOutline") as TextAsset;
+        edgeData.outlineFile = Resources.Load("OutlineData/" + filename) as TextAsset;
     }
 
     private void SavePrefab()

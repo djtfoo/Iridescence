@@ -33,9 +33,16 @@ public class Element {
     // Skill Getters
     public Sprite GetSkillIcon(int skillIdx)
     {
-        return skills[skillIdx].icon;
+        return skills[skillIdx].GetSkillIcon();
     }
 
+    public Skill GetSkillByIdx(int idx)
+    {
+        if (unlockedSkills[idx])
+            return skills[idx];
+        else
+            return null;
+    }
     public Skill GetSkillOne()  // Q or A skill - melee
     {
         if (unlockedSkills[0])
@@ -58,7 +65,7 @@ public class Element {
             return null;
     }
 
-    public void Init()
+    public void Init()  // XML already deserialized
     {
         // initialise bool array of whether skill is locked or not
         unlockedSkills = new bool[skills.Length];
@@ -76,10 +83,13 @@ public class Element {
         ///=============
         /// SKILL STUFF
         ///=============
-        // create element skills' icons
         for (int i = 0; i < skills.Length; ++i)
         {
-            skills[i].icon = Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename);
+            // create element skills' icons
+            skills[i].SetSkillIcon(Resources.Load<Sprite>("Skill Icons/" + skills[i].iconFilename));
+
+            // skills effectVariables
+            skills[i].InitDictionary(XMLSerializer<Element>.ObjectArrayItemToDictionary(skills[i].effectVariables));
         }
         
         // process generic object array for skill

@@ -12,19 +12,38 @@
 			<iconFilename>manadrain_icon</iconFilename>
 			<MPCost>15</MPCost>
 			<attackType>Melee</attackType>
-			<rangeValue>0.15</rangeValue>
+			<rangeValue>0.2</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.2</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="ComponentSelf">
+					<variable>MPRegen</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>1</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
+					<variable>0.05</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Water Gun">
-			<description>Shoot a stream of water that damages enemies it hits.</description>
+			<description>Shoot a ball of water that damages enemies it hits.</description>
 			<iconFilename>watergun_icon</iconFilename>
 			<MPCost>50</MPCost>
 			<attackType>Projectile</attackType>
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 		
 		<Skill name="Mana Tower">
@@ -35,6 +54,11 @@
 			<rangeValue>0.0</rangeValue>
 			<cooldownTime>20.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
 		</Skill>
 	</Skills>
 </Element> 

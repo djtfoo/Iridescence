@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <PlayerData>
+	<lastCheckpoint></lastCheckpoint>
 	<playerLevel>1</playerLevel>
 	<playerEXP>0</playerEXP>
 	<statPoints>0</statPoints>
@@ -10,7 +11,9 @@
 	<statSPD>5</statSPD>
 	<maxHP>100</maxHP>
 	<maxMP>120</maxMP>
-	<elementOne>Earth</elementOne>
+	<criticalHitChance>3</criticalHitChance>
+	<criticalHitMultiplier>1.5</criticalHitMultiplier>
+	<elementOne>Fire</elementOne>
 	<elementTwo>Water</elementTwo>
 	<equippedPotions>
 		<potion>HP Regen</potion>
@@ -19,21 +22,20 @@
 		<potion>Defence Up</potion>
 		<potion>Movement Boost</potion>
 	</equippedPotions>
-	
-	
+
 	<blankShardsCount>0</blankShardsCount>
 	<crystalCountArray>
 		<ObjectArrayItem varType="Fire">
-			<variable>3</variable>
+			<variable>2</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Water">
-			<variable>3</variable>
+			<variable>2</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Earth">
-			<variable>3</variable>
+			<variable>2</variable>
 		</ObjectArrayItem>
 		<ObjectArrayItem varType="Air">
-			<variable>3</variable>
+			<variable>2</variable>
 		</ObjectArrayItem>
 	</crystalCountArray>
 	

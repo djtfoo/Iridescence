@@ -4,15 +4,19 @@ using System;
 
 public class EnemyData : MonoBehaviour {
 
-    // HP
-    [SerializeField]
-    private float maxHP;
-    private float HP;
+    // HP graphical UI
     private Transform HPBarPrefab;
     private Transform HPBar;
 
     // Enemy stats
+    [SerializeField]
+    private float maxHP;
+    private float HP;
+
     public float damage;    // how much damage this enemy deals
+    public float defense;   // how much this enemy can reduce damage
+
+    public int EXP;   // how much EXP this enemy grants
 
     // Enemy behaviour
     public TextAsset behaviourXML;  // XML file containing behaviour data
@@ -76,8 +80,21 @@ public class EnemyData : MonoBehaviour {
     void SetHP(float newHP)
     {
         if (newHP <= 1f)    // cause HP is in float; will round down to 0
-            Destroy(this.transform.parent.gameObject);
+            SetToDestroy();
         else
             HP = newHP;
     }
+
+    /// <summary>
+    ///  This enemy is set for destruction
+    /// </summary>
+    private void SetToDestroy()
+    {
+        // grant EXP
+        PlayerAction.instance.GetPlayerData().GainEXP(EXP);
+
+        // set to destroy
+        Destroy(transform.parent.gameObject);
+    }
+
 }

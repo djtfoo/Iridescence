@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <PlayerData>
+	<lastCheckpoint></lastCheckpoint>
 	<playerLevel>1</playerLevel>
 	<playerEXP>0</playerEXP>
 	<statPoints>0</statPoints>
@@ -10,6 +11,8 @@
 	<statSPD>5</statSPD>
 	<maxHP>100</maxHP>
 	<maxMP>120</maxMP>
+	<criticalHitChance>3</criticalHitChance>
+	<criticalHitMultiplier>1.5</criticalHitMultiplier>
 	<elementOne></elementOne>
 	<elementTwo></elementTwo>
 	<equippedPotions>

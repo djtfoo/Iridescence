@@ -109,7 +109,7 @@ public class SkillsHUD : MonoBehaviour {
     /// </summary>
     private void SetSkillSlot(Element element, string key)
     {
-        Skill skill = element.GetSkillOne();
+        Skill skill = element.GetSkillByIdx(KeyInputNum[key]);
         HUDSkills[key].skillIcon.sprite = element.GetSkillIcon(KeyInputNum[key]);    // set skill icon
         HUDSkills[key].skillIcon.transform.parent.GetComponent<SkillsTooltip>().SetSkill(element.skills[KeyInputNum[key]]);  // set Skills tooltip
         if (skill != null)

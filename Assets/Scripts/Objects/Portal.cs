@@ -18,7 +18,7 @@ public class Portal : MonoBehaviour {
 
     public void GoToNextLevel()
     {
-        InstantiateLevel.instance.LoadLevel(connectedPrefabName);
+        LevelGenerator.instance.LoadLevel(connectedPrefabName, true);
     }
 
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class ATKModifier : MonoBehaviour {
 
@@ -11,6 +11,10 @@ public class ATKModifier : MonoBehaviour {
     public float changePercentage;  // percentage of how much this will change base ATK stat (0% == 0f; 50% == 0.5f; 100% == 1f)
 
     private float modifierValue;    // how much this component is changing the entity's ATK/damage stat
+
+    // ModifierHUD
+    private Image modifierSprite;   // to add to HUD
+    private Image modifierSpriteOverlay;    // countdown overlay fill
 
     ///  Whether this is a +ve value buff or not
     public bool IsPositive()
@@ -46,6 +50,8 @@ public class ATKModifier : MonoBehaviour {
     public void RemoveThis()
     {
         Destroy(this);
+        Destroy(modifierSprite.gameObject);
+        ModifiersHUD.instance.RemoveModifierFromHUD();
     }
     public void OnDestroy()
     {
@@ -55,6 +61,13 @@ public class ATKModifier : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SetModifier();
+
+        // add to modifierHUD on top left of screen
+        modifierSprite = (Image)Instantiate(ModifiersHUD.instance.modifierSpritePrefab, Vector3.zero, Quaternion.identity);
+        modifierSprite.sprite = Resources.Load<Sprite>("Sprites/ModifierIcons/ATK_Up");
+        modifierSpriteOverlay = modifierSprite.transform.GetChild(0).GetComponent<Image>();
+        modifierSpriteOverlay.fillAmount = 0f;
+        ModifiersHUD.instance.AddModifierToHUD(modifierSprite.transform);
     }
 	
 	// Update is called once per frame
@@ -63,7 +76,8 @@ public class ATKModifier : MonoBehaviour {
             // update timer
             timer += Time.deltaTime;
 
-            // update countdown overlay for buff icon
+            // update countdown overlay for modifier icon
+            modifierSpriteOverlay.fillAmount = timer / duration;
 
             if (timer >= duration)
                 RemoveThis();

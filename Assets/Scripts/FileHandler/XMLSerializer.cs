@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.Generic;
 
 /// <summary>
 ///  A struct for serialising an object[] in a class
@@ -30,8 +31,51 @@ public static class XMLSerializer<T> where T : class {
             switch (OAIarr[i].varType)
             {
                 case "float":
-                    float variable = float.Parse(OAIarr[i].variable);
-                    arr[i] = variable;
+                    {
+                        float variable = float.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
+
+                // for Skills
+                case "Damage":  // float
+                    {
+                        float variable = float.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
+
+                case "CriticalChanceIncrease":
+                    {
+                        float variable = float.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
+
+                case "ComponentSelf":
+                    arr[i] = OAIarr[i].variable;
+                    break;
+
+                case "ComponentEnemy":
+                    arr[i] = OAIarr[i].variable;
+                    break;
+
+                case "Duration":    // float
+                    {
+                        float variable = float.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
+
+                case "EffectValue": // float
+                    {
+                        float variable = float.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
+
+                case "SpawnName":
+                    arr[i] = OAIarr[i].variable;
                     break;
 
                 default:
@@ -40,6 +84,18 @@ public static class XMLSerializer<T> where T : class {
         }
 
         return arr;
+    }
+
+
+    public static Dictionary<string, string> ObjectArrayItemToDictionary(ObjectArrayItem[] OAIarr)
+    {
+        Dictionary<string, string> dict = new Dictionary<string, string>();
+        for (int i = 0; i < OAIarr.Length; ++i)
+        {
+            dict.Add(OAIarr[i].varType, OAIarr[i].variable);
+        }
+
+        return dict;
     }
 
 }

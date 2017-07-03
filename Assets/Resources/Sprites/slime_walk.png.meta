@@ -1,0 +1,1219 @@
+fileFormatVersion: 2
+guid: 1551c0a3f616987408fe78fba2c80e7b
+timeCreated: 1499052249
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: slime_walk_0
+    21300002: slime_walk_1
+    21300004: slime_walk_2
+    21300006: slime_walk_3
+    21300008: slime_walk_4
+    21300010: slime_walk_5
+    21300012: slime_walk_6
+    21300014: slime_walk_7
+    21300016: slime_walk_8
+    21300018: slime_walk_9
+    21300020: slime_walk_10
+    21300022: slime_walk_11
+    21300024: slime_walk_12
+    21300026: slime_walk_13
+    21300028: slime_walk_14
+    21300030: slime_walk_15
+    21300032: slime_walk_16
+    21300034: slime_walk_17
+    21300036: slime_walk_18
+    21300038: slime_walk_19
+    21300040: slime_walk_20
+    21300042: slime_walk_21
+    21300044: slime_walk_22
+    21300046: slime_walk_23
+    21300048: slime_walk_24
+    21300050: slime_walk_25
+    21300052: slime_walk_26
+    21300054: slime_walk_27
+    21300056: slime_walk_28
+    21300058: slime_walk_29
+    21300060: slime_walk_30
+    21300062: slime_walk_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: slime_walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -20}
+        - {x: -23, y: -29}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -12}
+        - {x: 18, y: -4}
+    - name: slime_walk_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 3}
+        - {x: -13, y: -4}
+        - {x: -23, y: -23}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 24, y: -30}
+        - {x: 24, y: -9}
+        - {x: 10, y: 3}
+      - - {x: -20, y: -5}
+        - {x: -21, y: -8}
+        - {x: -21, y: -12}
+        - {x: -18, y: -13}
+        - {x: -16, y: -13}
+        - {x: -13, y: -10}
+        - {x: -13, y: -8}
+        - {x: -16, y: -5}
+      - - {x: -7, y: -3}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -7, y: 2}
+        - {x: -9, y: 0}
+    - name: slime_walk_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 0}
+        - {x: -11, y: 0}
+        - {x: -23, y: -19}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -10}
+        - {x: 22, y: -2}
+      - - {x: -15, y: 2}
+        - {x: -16, y: -1}
+        - {x: -16, y: -3}
+        - {x: -13, y: -6}
+        - {x: -10, y: -6}
+        - {x: -8, y: -3}
+        - {x: -8, y: 1}
+        - {x: -10, y: 2}
+      - - {x: -1, y: 10}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+        - {x: -3, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 5}
+        - {x: 5, y: 9}
+        - {x: 2, y: 10}
+    - name: slime_walk_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -2}
+        - {x: -23, y: -10}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -29}
+        - {x: 23, y: -14}
+        - {x: 18, y: -2}
+      - - {x: 13, y: -3}
+        - {x: 16, y: -6}
+        - {x: 20, y: -6}
+        - {x: 23, y: -5}
+        - {x: 23, y: 1}
+        - {x: 22, y: 2}
+        - {x: 12, y: 2}
+        - {x: 11, y: 0}
+      - - {x: -1, y: -2}
+        - {x: 2, y: -1}
+        - {x: 2, y: 2}
+        - {x: -1, y: 3}
+        - {x: -3, y: 1}
+      - - {x: -19, y: 8}
+        - {x: -22, y: 5}
+        - {x: -22, y: 3}
+        - {x: -19, y: 0}
+        - {x: -17, y: 0}
+        - {x: -14, y: 3}
+        - {x: -14, y: 5}
+        - {x: -17, y: 8}
+      - - {x: -6, y: 4}
+        - {x: -3, y: 5}
+        - {x: -3, y: 8}
+        - {x: -6, y: 9}
+        - {x: -8, y: 7}
+      - - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: 11}
+        - {x: 5, y: 8}
+        - {x: 7, y: 8}
+        - {x: 10, y: 11}
+        - {x: 10, y: 13}
+        - {x: 7, y: 16}
+    - name: slime_walk_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -22}
+        - {x: -23, y: -31}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 23, y: -26}
+        - {x: 23, y: -22}
+        - {x: 21, y: -19}
+    - name: slime_walk_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 3}
+        - {x: -19, y: 3}
+        - {x: -24, y: -9}
+        - {x: -24, y: -32}
+        - {x: 22, y: -32}
+        - {x: 23, y: -31}
+        - {x: 23, y: -12}
+        - {x: 16, y: 2}
+      - - {x: 15, y: -5}
+        - {x: 13, y: -8}
+        - {x: 13, y: -12}
+        - {x: 15, y: -13}
+        - {x: 20, y: -13}
+        - {x: 21, y: -11}
+        - {x: 21, y: -6}
+        - {x: 18, y: -5}
+      - - {x: 6, y: -3}
+        - {x: 9, y: -2}
+        - {x: 9, y: 1}
+        - {x: 6, y: 2}
+        - {x: 4, y: 0}
+    - name: slime_walk_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -21, y: -2}
+        - {x: -23, y: -9}
+        - {x: -23, y: -32}
+        - {x: 23, y: -32}
+        - {x: 23, y: -20}
+        - {x: 8, y: 0}
+      - - {x: 9, y: 2}
+        - {x: 8, y: 0}
+        - {x: 8, y: -5}
+        - {x: 10, y: -6}
+        - {x: 15, y: -6}
+        - {x: 16, y: -4}
+        - {x: 16, y: 1}
+        - {x: 13, y: 2}
+      - - {x: -3, y: 10}
+        - {x: -5, y: 7}
+        - {x: -5, y: 3}
+        - {x: -1, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 2}
+        - {x: 5, y: 4}
+        - {x: 0, y: 10}
+    - name: slime_walk_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: -2}
+        - {x: -16, y: -8}
+        - {x: -23, y: -23}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -28}
+        - {x: 23, y: -19}
+        - {x: 6, y: -2}
+      - - {x: -22, y: 2}
+        - {x: -23, y: 0}
+        - {x: -23, y: -5}
+        - {x: -21, y: -6}
+        - {x: -15, y: -6}
+        - {x: -11, y: -3}
+        - {x: -11, y: 1}
+        - {x: -14, y: 2}
+      - - {x: 0, y: -2}
+        - {x: 3, y: -1}
+        - {x: 3, y: 2}
+        - {x: 0, y: 3}
+        - {x: -2, y: 1}
+      - - {x: 17, y: 8}
+        - {x: 14, y: 5}
+        - {x: 14, y: 3}
+        - {x: 17, y: 0}
+        - {x: 19, y: 0}
+        - {x: 22, y: 3}
+        - {x: 22, y: 5}
+        - {x: 19, y: 8}
+      - - {x: 5, y: 4}
+        - {x: 8, y: 5}
+        - {x: 8, y: 8}
+        - {x: 5, y: 9}
+        - {x: 3, y: 7}
+      - - {x: -9, y: 8}
+        - {x: -4, y: 8}
+        - {x: -2, y: 9}
+        - {x: -2, y: 14}
+        - {x: -3, y: 16}
+        - {x: -8, y: 16}
+        - {x: -10, y: 15}
+        - {x: -10, y: 11}
+    - name: slime_walk_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -22}
+        - {x: -23, y: -31}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 23, y: -26}
+        - {x: 23, y: -22}
+        - {x: 21, y: -19}
+    - name: slime_walk_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 3}
+        - {x: -19, y: 3}
+        - {x: -24, y: -9}
+        - {x: -24, y: -32}
+        - {x: 22, y: -32}
+        - {x: 23, y: -31}
+        - {x: 23, y: -12}
+        - {x: 16, y: 2}
+      - - {x: 15, y: -5}
+        - {x: 13, y: -8}
+        - {x: 13, y: -12}
+        - {x: 15, y: -13}
+        - {x: 20, y: -13}
+        - {x: 21, y: -11}
+        - {x: 21, y: -6}
+        - {x: 18, y: -5}
+      - - {x: 6, y: -3}
+        - {x: 9, y: -2}
+        - {x: 9, y: 1}
+        - {x: 6, y: 2}
+        - {x: 4, y: 0}
+    - name: slime_walk_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -21, y: -2}
+        - {x: -23, y: -9}
+        - {x: -23, y: -32}
+        - {x: 23, y: -32}
+        - {x: 23, y: -20}
+        - {x: 8, y: 0}
+      - - {x: 9, y: 2}
+        - {x: 8, y: 0}
+        - {x: 8, y: -5}
+        - {x: 10, y: -6}
+        - {x: 15, y: -6}
+        - {x: 16, y: -4}
+        - {x: 16, y: 1}
+        - {x: 13, y: 2}
+      - - {x: -3, y: 10}
+        - {x: -5, y: 7}
+        - {x: -5, y: 3}
+        - {x: -1, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 2}
+        - {x: 5, y: 4}
+        - {x: 0, y: 10}
+    - name: slime_walk_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: -2}
+        - {x: -16, y: -8}
+        - {x: -23, y: -23}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -28}
+        - {x: 23, y: -19}
+        - {x: 6, y: -2}
+      - - {x: -22, y: 2}
+        - {x: -23, y: 0}
+        - {x: -23, y: -5}
+        - {x: -21, y: -6}
+        - {x: -15, y: -6}
+        - {x: -11, y: -3}
+        - {x: -11, y: 1}
+        - {x: -14, y: 2}
+      - - {x: 0, y: -2}
+        - {x: 3, y: -1}
+        - {x: 3, y: 2}
+        - {x: 0, y: 3}
+        - {x: -2, y: 1}
+      - - {x: 17, y: 8}
+        - {x: 14, y: 5}
+        - {x: 14, y: 3}
+        - {x: 17, y: 0}
+        - {x: 19, y: 0}
+        - {x: 22, y: 3}
+        - {x: 22, y: 5}
+        - {x: 19, y: 8}
+      - - {x: 5, y: 4}
+        - {x: 8, y: 5}
+        - {x: 8, y: 8}
+        - {x: 5, y: 9}
+        - {x: 3, y: 7}
+      - - {x: -9, y: 8}
+        - {x: -4, y: 8}
+        - {x: -2, y: 9}
+        - {x: -2, y: 14}
+        - {x: -3, y: 16}
+        - {x: -8, y: 16}
+        - {x: -10, y: 15}
+        - {x: -10, y: 11}
+    - name: slime_walk_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -22}
+        - {x: -23, y: -31}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 23, y: -26}
+        - {x: 23, y: -22}
+        - {x: 21, y: -19}
+    - name: slime_walk_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 3}
+        - {x: -19, y: 3}
+        - {x: -24, y: -9}
+        - {x: -24, y: -32}
+        - {x: 22, y: -32}
+        - {x: 23, y: -31}
+        - {x: 23, y: -12}
+        - {x: 16, y: 2}
+      - - {x: 15, y: -5}
+        - {x: 13, y: -8}
+        - {x: 13, y: -12}
+        - {x: 15, y: -13}
+        - {x: 20, y: -13}
+        - {x: 21, y: -11}
+        - {x: 21, y: -6}
+        - {x: 18, y: -5}
+      - - {x: 6, y: -3}
+        - {x: 9, y: -2}
+        - {x: 9, y: 1}
+        - {x: 6, y: 2}
+        - {x: 4, y: 0}
+    - name: slime_walk_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -21, y: -2}
+        - {x: -23, y: -9}
+        - {x: -23, y: -32}
+        - {x: 23, y: -32}
+        - {x: 23, y: -20}
+        - {x: 8, y: 0}
+      - - {x: 9, y: 2}
+        - {x: 8, y: 0}
+        - {x: 8, y: -5}
+        - {x: 10, y: -6}
+        - {x: 15, y: -6}
+        - {x: 16, y: -4}
+        - {x: 16, y: 1}
+        - {x: 13, y: 2}
+      - - {x: -3, y: 10}
+        - {x: -5, y: 7}
+        - {x: -5, y: 3}
+        - {x: -1, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 2}
+        - {x: 5, y: 4}
+        - {x: 0, y: 10}
+    - name: slime_walk_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: -2}
+        - {x: -16, y: -8}
+        - {x: -23, y: -23}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -28}
+        - {x: 23, y: -19}
+        - {x: 6, y: -2}
+      - - {x: -22, y: 2}
+        - {x: -23, y: 0}
+        - {x: -23, y: -5}
+        - {x: -21, y: -6}
+        - {x: -15, y: -6}
+        - {x: -11, y: -3}
+        - {x: -11, y: 1}
+        - {x: -14, y: 2}
+      - - {x: 0, y: -2}
+        - {x: 3, y: -1}
+        - {x: 3, y: 2}
+        - {x: 0, y: 3}
+        - {x: -2, y: 1}
+      - - {x: 17, y: 8}
+        - {x: 14, y: 5}
+        - {x: 14, y: 3}
+        - {x: 17, y: 0}
+        - {x: 19, y: 0}
+        - {x: 22, y: 3}
+        - {x: 22, y: 5}
+        - {x: 19, y: 8}
+      - - {x: 5, y: 4}
+        - {x: 8, y: 5}
+        - {x: 8, y: 8}
+        - {x: 5, y: 9}
+        - {x: 3, y: 7}
+      - - {x: -9, y: 8}
+        - {x: -4, y: 8}
+        - {x: -2, y: 9}
+        - {x: -2, y: 14}
+        - {x: -3, y: 16}
+        - {x: -8, y: 16}
+        - {x: -10, y: 15}
+        - {x: -10, y: 11}
+    - name: slime_walk_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -20}
+        - {x: -23, y: -29}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -12}
+        - {x: 18, y: -4}
+    - name: slime_walk_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 3}
+        - {x: -13, y: -4}
+        - {x: -23, y: -23}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 24, y: -30}
+        - {x: 24, y: -9}
+        - {x: 10, y: 3}
+      - - {x: -20, y: -5}
+        - {x: -21, y: -8}
+        - {x: -21, y: -12}
+        - {x: -18, y: -13}
+        - {x: -16, y: -13}
+        - {x: -13, y: -10}
+        - {x: -13, y: -8}
+        - {x: -16, y: -5}
+      - - {x: -7, y: -3}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -7, y: 2}
+        - {x: -9, y: 0}
+    - name: slime_walk_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 0}
+        - {x: -11, y: 0}
+        - {x: -23, y: -19}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -10}
+        - {x: 22, y: -2}
+      - - {x: -15, y: 2}
+        - {x: -16, y: -1}
+        - {x: -16, y: -3}
+        - {x: -13, y: -6}
+        - {x: -10, y: -6}
+        - {x: -8, y: -3}
+        - {x: -8, y: 1}
+        - {x: -10, y: 2}
+      - - {x: -1, y: 10}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+        - {x: -3, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 5}
+        - {x: 5, y: 9}
+        - {x: 2, y: 10}
+    - name: slime_walk_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -2}
+        - {x: -23, y: -10}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -29}
+        - {x: 23, y: -14}
+        - {x: 18, y: -2}
+      - - {x: 13, y: -3}
+        - {x: 16, y: -6}
+        - {x: 20, y: -6}
+        - {x: 23, y: -5}
+        - {x: 23, y: 1}
+        - {x: 22, y: 2}
+        - {x: 12, y: 2}
+        - {x: 11, y: 0}
+      - - {x: -1, y: -2}
+        - {x: 2, y: -1}
+        - {x: 2, y: 2}
+        - {x: -1, y: 3}
+        - {x: -3, y: 1}
+      - - {x: -19, y: 8}
+        - {x: -22, y: 5}
+        - {x: -22, y: 3}
+        - {x: -19, y: 0}
+        - {x: -17, y: 0}
+        - {x: -14, y: 3}
+        - {x: -14, y: 5}
+        - {x: -17, y: 8}
+      - - {x: -6, y: 4}
+        - {x: -3, y: 5}
+        - {x: -3, y: 8}
+        - {x: -6, y: 9}
+        - {x: -8, y: 7}
+      - - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: 11}
+        - {x: 5, y: 8}
+        - {x: 7, y: 8}
+        - {x: 10, y: 11}
+        - {x: 10, y: 13}
+        - {x: 7, y: 16}
+    - name: slime_walk_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -20}
+        - {x: -23, y: -29}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -12}
+        - {x: 18, y: -4}
+    - name: slime_walk_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 3}
+        - {x: -13, y: -4}
+        - {x: -23, y: -23}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 24, y: -30}
+        - {x: 24, y: -9}
+        - {x: 10, y: 3}
+      - - {x: -20, y: -5}
+        - {x: -21, y: -8}
+        - {x: -21, y: -12}
+        - {x: -18, y: -13}
+        - {x: -16, y: -13}
+        - {x: -13, y: -10}
+        - {x: -13, y: -8}
+        - {x: -16, y: -5}
+      - - {x: -7, y: -3}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -7, y: 2}
+        - {x: -9, y: 0}
+    - name: slime_walk_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 0}
+        - {x: -11, y: 0}
+        - {x: -23, y: -19}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -10}
+        - {x: 22, y: -2}
+      - - {x: -15, y: 2}
+        - {x: -16, y: -1}
+        - {x: -16, y: -3}
+        - {x: -13, y: -6}
+        - {x: -10, y: -6}
+        - {x: -8, y: -3}
+        - {x: -8, y: 1}
+        - {x: -10, y: 2}
+      - - {x: -1, y: 10}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+        - {x: -3, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 5}
+        - {x: 5, y: 9}
+        - {x: 2, y: 10}
+    - name: slime_walk_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -2}
+        - {x: -23, y: -10}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -29}
+        - {x: 23, y: -14}
+        - {x: 18, y: -2}
+      - - {x: 13, y: -3}
+        - {x: 16, y: -6}
+        - {x: 20, y: -6}
+        - {x: 23, y: -5}
+        - {x: 23, y: 1}
+        - {x: 22, y: 2}
+        - {x: 12, y: 2}
+        - {x: 11, y: 0}
+      - - {x: -1, y: -2}
+        - {x: 2, y: -1}
+        - {x: 2, y: 2}
+        - {x: -1, y: 3}
+        - {x: -3, y: 1}
+      - - {x: -19, y: 8}
+        - {x: -22, y: 5}
+        - {x: -22, y: 3}
+        - {x: -19, y: 0}
+        - {x: -17, y: 0}
+        - {x: -14, y: 3}
+        - {x: -14, y: 5}
+        - {x: -17, y: 8}
+      - - {x: -6, y: 4}
+        - {x: -3, y: 5}
+        - {x: -3, y: 8}
+        - {x: -6, y: 9}
+        - {x: -8, y: 7}
+      - - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: 11}
+        - {x: 5, y: 8}
+        - {x: 7, y: 8}
+        - {x: 10, y: 11}
+        - {x: 10, y: 13}
+        - {x: 7, y: 16}
+    - name: slime_walk_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -20}
+        - {x: -23, y: -29}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -12}
+        - {x: 18, y: -4}
+    - name: slime_walk_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 3}
+        - {x: -13, y: -4}
+        - {x: -23, y: -23}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 24, y: -30}
+        - {x: 24, y: -9}
+        - {x: 10, y: 3}
+      - - {x: -20, y: -5}
+        - {x: -21, y: -8}
+        - {x: -21, y: -12}
+        - {x: -18, y: -13}
+        - {x: -16, y: -13}
+        - {x: -13, y: -10}
+        - {x: -13, y: -8}
+        - {x: -16, y: -5}
+      - - {x: -7, y: -3}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -7, y: 2}
+        - {x: -9, y: 0}
+    - name: slime_walk_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 0}
+        - {x: -11, y: 0}
+        - {x: -23, y: -19}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -10}
+        - {x: 22, y: -2}
+      - - {x: -15, y: 2}
+        - {x: -16, y: -1}
+        - {x: -16, y: -3}
+        - {x: -13, y: -6}
+        - {x: -10, y: -6}
+        - {x: -8, y: -3}
+        - {x: -8, y: 1}
+        - {x: -10, y: 2}
+      - - {x: -1, y: 10}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+        - {x: -3, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 5}
+        - {x: 5, y: 9}
+        - {x: 2, y: 10}
+    - name: slime_walk_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -2}
+        - {x: -23, y: -10}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -29}
+        - {x: 23, y: -14}
+        - {x: 18, y: -2}
+      - - {x: 13, y: -3}
+        - {x: 16, y: -6}
+        - {x: 20, y: -6}
+        - {x: 23, y: -5}
+        - {x: 23, y: 1}
+        - {x: 22, y: 2}
+        - {x: 12, y: 2}
+        - {x: 11, y: 0}
+      - - {x: -1, y: -2}
+        - {x: 2, y: -1}
+        - {x: 2, y: 2}
+        - {x: -1, y: 3}
+        - {x: -3, y: 1}
+      - - {x: -19, y: 8}
+        - {x: -22, y: 5}
+        - {x: -22, y: 3}
+        - {x: -19, y: 0}
+        - {x: -17, y: 0}
+        - {x: -14, y: 3}
+        - {x: -14, y: 5}
+        - {x: -17, y: 8}
+      - - {x: -6, y: 4}
+        - {x: -3, y: 5}
+        - {x: -3, y: 8}
+        - {x: -6, y: 9}
+        - {x: -8, y: 7}
+      - - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: 11}
+        - {x: 5, y: 8}
+        - {x: 7, y: 8}
+        - {x: 10, y: 11}
+        - {x: 10, y: 13}
+        - {x: 7, y: 16}
+    - name: slime_walk_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -2}
+        - {x: -11, y: -2}
+        - {x: -23, y: -20}
+        - {x: -23, y: -29}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -12}
+        - {x: 18, y: -4}
+    - name: slime_walk_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 3}
+        - {x: -13, y: -4}
+        - {x: -23, y: -23}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 19, y: -32}
+        - {x: 24, y: -30}
+        - {x: 24, y: -9}
+        - {x: 10, y: 3}
+      - - {x: -20, y: -5}
+        - {x: -21, y: -8}
+        - {x: -21, y: -12}
+        - {x: -18, y: -13}
+        - {x: -16, y: -13}
+        - {x: -13, y: -10}
+        - {x: -13, y: -8}
+        - {x: -16, y: -5}
+      - - {x: -7, y: -3}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -7, y: 2}
+        - {x: -9, y: 0}
+    - name: slime_walk_30
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 0}
+        - {x: -11, y: 0}
+        - {x: -23, y: -19}
+        - {x: -23, y: -29}
+        - {x: -18, y: -32}
+        - {x: 20, y: -32}
+        - {x: 23, y: -30}
+        - {x: 23, y: -10}
+        - {x: 22, y: -2}
+      - - {x: -15, y: 2}
+        - {x: -16, y: -1}
+        - {x: -16, y: -3}
+        - {x: -13, y: -6}
+        - {x: -10, y: -6}
+        - {x: -8, y: -3}
+        - {x: -8, y: 1}
+        - {x: -10, y: 2}
+      - - {x: -1, y: 10}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+        - {x: -3, y: 1}
+        - {x: 3, y: 1}
+        - {x: 5, y: 5}
+        - {x: 5, y: 9}
+        - {x: 2, y: 10}
+    - name: slime_walk_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -2}
+        - {x: -23, y: -10}
+        - {x: -23, y: -27}
+        - {x: -20, y: -32}
+        - {x: 21, y: -32}
+        - {x: 23, y: -29}
+        - {x: 23, y: -14}
+        - {x: 18, y: -2}
+      - - {x: 13, y: -3}
+        - {x: 16, y: -6}
+        - {x: 20, y: -6}
+        - {x: 23, y: -5}
+        - {x: 23, y: 1}
+        - {x: 22, y: 2}
+        - {x: 12, y: 2}
+        - {x: 11, y: 0}
+      - - {x: -1, y: -2}
+        - {x: 2, y: -1}
+        - {x: 2, y: 2}
+        - {x: -1, y: 3}
+        - {x: -3, y: 1}
+      - - {x: -19, y: 8}
+        - {x: -22, y: 5}
+        - {x: -22, y: 3}
+        - {x: -19, y: 0}
+        - {x: -17, y: 0}
+        - {x: -14, y: 3}
+        - {x: -14, y: 5}
+        - {x: -17, y: 8}
+      - - {x: -6, y: 4}
+        - {x: -3, y: 5}
+        - {x: -3, y: 8}
+        - {x: -6, y: 9}
+        - {x: -8, y: 7}
+      - - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: 11}
+        - {x: 5, y: 8}
+        - {x: 7, y: 8}
+        - {x: 10, y: 11}
+        - {x: 10, y: 13}
+        - {x: 7, y: 16}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
