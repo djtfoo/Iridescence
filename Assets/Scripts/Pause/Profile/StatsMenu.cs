@@ -1,160 +1,73 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class StatsMenu : MonoBehaviour {
 
-    // current values - will change color
-    public Text ATKValue;
-    public Text DEFValue;
-    public Text MAGValue;
-    public Text SPDValue;
-    // original values
-    public Text ATKOriginalValue;
-    public Text DEFOriginalValue;
-    public Text MAGOriginalValue;
-    public Text SPDOriginalValue;
+    // reference to different stat menus
+    public MainStatsMenu mainStatsMenu;
+    public ElementStatsMenu elementStatsMenu;
 
-    public Text levelText;
-    public Text EXPValue;
-    public Transform EXPBar;
-
-    public Text HPValue;
-    public Transform HPBar;
-    public Text MPValue;
-    public Transform MPBar;
-
-    public PotionSlots potionSlots;
-    public PotionsInventory potionsInventory;
+    // buttons for each stat menu
+    public Button buttonOne;
+    public Button buttonTwo;
 
     // SINGLETON
     public static StatsMenu instance;
 
-    // set reference to player data
-    private PlayerData playerData;
-
+    // Use this for initialization
     private void Awake()
     {
         instance = GetComponent<StatsMenu>();
     }
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
-    // Use this for initialization
-    public void InitSelf() {
-        // set reference to player data
-        playerData = PlayerAction.instance.GetPlayerData();
-    }
-
-    /// <summary>
-    ///  Function to set player data variables to the menu
-    /// </summary>
     public void InitStatsMenu()
     {
-        //==================
-        // Set stats values
-        //==================
-        /// ATK
-        ATKValue.text = ((int)playerData.GetModifiedATK()).ToString();
-        if (playerData.GetModifiedATK() > playerData.statATK)
-        {
-            ATKValue.color = Color.green;
-            ATKOriginalValue.text = "[" + playerData.statATK + "]";
-        }
-        else if (playerData.GetModifiedATK() < playerData.statATK)
-        {
-            ATKValue.color = Color.red;
-            ATKOriginalValue.text = "[" + playerData.statATK + "]";
-        }
-        else
-        {
-            ATKValue.color = Color.black;
-            ATKOriginalValue.text = "";
-        }
-
-        /// DEF
-        DEFValue.text = ((int)playerData.GetModifiedDEF()).ToString();
-        if (playerData.GetModifiedDEF() > playerData.statDEF)
-        {
-            DEFValue.color = Color.green;
-            DEFOriginalValue.text = "[" + playerData.statDEF + "]";
-        }
-        else if (playerData.GetModifiedDEF() < playerData.statDEF)
-        {
-            DEFValue.color = Color.red;
-            DEFOriginalValue.text = "[" + playerData.statDEF + "]";
-        }
-
-        else
-        {
-            DEFValue.color = Color.black;
-            DEFOriginalValue.text = "";
-        }
-
-        /// MAG
-        MAGValue.text = ((int)playerData.GetModifiedMAG()).ToString();
-        if (playerData.GetModifiedMAG() > playerData.statMAG)
-        {
-            MAGValue.color = Color.green;
-            MAGOriginalValue.text = "[" + playerData.statMAG + "]";
-        }
-        else if (playerData.GetModifiedMAG() < playerData.statMAG)
-        {
-            MAGValue.color = Color.red;
-            MAGOriginalValue.text = "[" + playerData.statMAG + "]";
-        }
-        else
-        {
-            MAGValue.color = Color.black;
-            MAGOriginalValue.text = "";
-        }
-
-        /// SPD
-        SPDValue.text = ((int)playerData.GetModifiedSPD()).ToString();
-        if (playerData.GetModifiedSPD() > playerData.statSPD)
-        {
-            SPDValue.color = Color.green;
-            SPDOriginalValue.text = "[" + playerData.statSPD + "]";
-        }
-        else if (playerData.GetModifiedSPD() < playerData.statSPD)
-        {
-            SPDValue.color = Color.red;
-            SPDOriginalValue.text = "[" + playerData.statSPD + "]";
-        }
-        else
-        {
-            SPDValue.color = Color.black;
-            SPDOriginalValue.text = "";
-        }
-
-        // set level & EXP
-        levelText.text = "Lv " + playerData.playerLevel.ToString();
-        SetEXPBar(playerData.GetCurrentEXP(), playerData.GetCurrentEXPTotal());
-
-        // set HP bar & MP bar
-        SetHPBar(playerData.GetHP(), playerData.maxHP);
-        SetMPBar(playerData.GetMP(), playerData.maxMP);
-
-        //===================
-        // Init Potions Menu
-        //===================
-        potionSlots.InitPotionSlots();
-        potionsInventory.Init();
+        SetMainStatsActive();
     }
 
-    public void SetEXPBar(int currEXP, int totalEXP)
+    // on click
+    public void SetMainStatsActive()
     {
-        EXPValue.text = currEXP + "/" + totalEXP;
-        EXPBar.localScale = new Vector3((float)currEXP / totalEXP, 1f, 1f);
+        mainStatsMenu.gameObject.SetActive(true);
+        elementStatsMenu.gameObject.SetActive(false);
+
+        mainStatsMenu.InitSelf();
+
+        // set colors of buttons
+        /// One
+        ColorBlock cb = buttonOne.colors;
+        cb.normalColor = Color.white;
+        buttonOne.colors = cb;
+
+        /// Two
+        ColorBlock cb2 = buttonTwo.colors;
+        cb.normalColor = new Color(0.85f, 0.85f, 0.85f);
+        buttonTwo.colors = cb;
+
     }
-    public void SetHPBar(float newHP, float maxHP)
+    public void SetElementalStatsActive()
     {
-        HPValue.text = (int)newHP + "/" + maxHP;
-        HPBar.localScale = new Vector3(newHP / maxHP, 1f, 1f);
+        mainStatsMenu.gameObject.SetActive(false);
+        elementStatsMenu.gameObject.SetActive(true);
+
+        elementStatsMenu.InitSelf();
+
+        // set colors of buttons
+        /// One
+        ColorBlock cb = buttonOne.colors;
+        cb.normalColor = new Color(0.85f, 0.85f, 0.85f);
+        buttonOne.colors = cb;
+
+        /// Two
+        ColorBlock cb2 = buttonTwo.colors;
+        cb.normalColor = Color.white;
+        buttonTwo.colors = cb;
     }
 
-    public void SetMPBar(float newMP, float maxMP)
-    {
-        MPValue.text = (int)newMP + "/" + maxMP;
-        MPBar.localScale = new Vector3(newMP / maxMP, 1f, 1f);
-    }
 
 }

@@ -75,10 +75,14 @@ public class PlayerData {
     private int playerEXPTotal; // total exp required for this level to level up
 
     // modified stats
+    ///  primary stats
     private float modifiedATK;
     private float modifiedDEF;
     private float modifiedMAG;
     private float modifiedSPD;
+    ///  secondary stats
+    private float modifiedCritChance;
+    private float modifiedCritMultiplier;
 
     // current value of fluid stats
     private float HP;
@@ -105,6 +109,9 @@ public class PlayerData {
         modifiedDEF = statDEF;
         modifiedMAG = statMAG;
         modifiedSPD = statSPD;
+
+        modifiedCritChance = criticalHitChance;
+        modifiedCritMultiplier = criticalHitMultiplier;
 
         HP = maxHP;
         MP = maxMP;
@@ -159,10 +166,15 @@ public class PlayerData {
     public float GetModifiedMAG() { return modifiedMAG; }
     public float GetModifiedSPD() { return modifiedSPD; }
 
+    public float GetModifiedCritChance() { return modifiedCritChance; }
+    public float GetModifiedCritMultiplier() { return modifiedCritMultiplier; }
+
     public void ChangeModifiedATK(float change) { modifiedATK += change; }
     public void ChangeModifiedDEF(float change) { modifiedDEF += change; }
     public void ChangeModifiedMAG(float change) { modifiedMAG += change; }
     public void ChangeModifiedSPD(float change) { modifiedSPD += change; }
+    public void ChangeModifiedCritChance(float change) { modifiedCritChance += change; }
+    public void ChangeModifiedCritMultiplier(float change) { modifiedCritMultiplier += change; }
 
     // EXP
     public int GetCurrentEXP() {    // current for this level

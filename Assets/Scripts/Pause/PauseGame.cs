@@ -20,7 +20,7 @@ public class PauseGame : MonoBehaviour {
 
         //pauseCanvas = transform.GetChild(0).gameObject;
 
-        menuStats.GetComponent<StatsMenu>().InitSelf();
+        menuStats.GetComponent<StatsMenu>().InitStatsMenu();
         menuSkills.GetComponent<SkillsMenu>().InitSelf();
 
         pauseCanvas.SetActive(false);

@@ -13,7 +13,7 @@
 	<maxMP>120</maxMP>
 	<criticalHitChance>3</criticalHitChance>
 	<criticalHitMultiplier>1.5</criticalHitMultiplier>
-	<elementOne>Fire</elementOne>
+	<elementOne>Air</elementOne>
 	<elementTwo>Water</elementTwo>
 	<equippedPotions>
 		<potion>HP Regen</potion>

@@ -31,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
     public static float meleeRangeSquared = 0.1f;  // variable to represent default melee attack
     public static float meleeDmg = 10f;    // temp damage variable
 
+    public Transform dmgTextPrefab;
+
     // reference to player data
     private PlayerData playerData;
 
@@ -297,6 +299,8 @@ public class PlayerAttack : MonoBehaviour
 
                     /// Create melee skill animation
                     CreateMeleeSkillAnimation();
+
+                    CreateDmgText((int)damageDealt);
                 }
                 break;
 
@@ -311,6 +315,14 @@ public class PlayerAttack : MonoBehaviour
         }
 
         currSkill = null;   // remove pointer to skill - shld be done at end of skill
+    }
+
+    private void CreateDmgText(int dmg)
+    {
+        Transform dmgText = (Transform)Instantiate(dmgTextPrefab, Vector3.zero, Quaternion.identity);
+        dmgText.localScale = new Vector3(1f, 1f, 1f);
+        dmgText.localPosition = 0.5f * (PlayerAction.instance.transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+        dmgText.GetComponent<DamageText>().SetDamageText(dmg);
     }
 
     /// <summary>
