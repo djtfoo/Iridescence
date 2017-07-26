@@ -107,6 +107,8 @@ public class TerrainEventHandler : MonoBehaviour {
             default:
                 break;
         }
+#else
+
 #endif
     }
 

@@ -26,6 +26,14 @@ public class PlayerAttack : MonoBehaviour
     private float currRangeSquared = 0f;    // current range value where player shld stop moving
     private string currUserAnimation = "";  // current skill's animation
     private Skill currSkill;    // a "pointer" to the current skill - the one that started the attack
+    public void SetCurrSkillNull() { currSkill = null; }    // set currSkill to be null - when player left-clicks
+
+    public bool castRangedSkill = false;    // able to cast even if not mouse over an enemy
+    private Vector3 projectileDir;  // set direction projectile should move in
+
+    private float gotoTimer;    // poll less often
+
+    private KeyCode currKey;    // current key pressed
 
     // TEMP VARIABLES!!!!
     public static float meleeRangeSquared = 0.1f;  // variable to represent default melee attack
@@ -55,11 +63,16 @@ public class PlayerAttack : MonoBehaviour
     {
         // set reference to player data
         playerData = PlayerAction.instance.GetPlayerData();
+
+        gotoTimer = 0f;
+        currKey = KeyCode.None;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // update timer
+        gotoTimer += Time.deltaTime;
 
         // game "pauses" if in dialogue
         if (DialogueManager.inDialogue)
@@ -72,7 +85,6 @@ public class PlayerAttack : MonoBehaviour
         // update element skills' cooldowns & appearances
         if (elementOne != null)
         {
-
             int elementCount = 0;
             foreach (Skill skill in elementOne.skills)
             {
@@ -86,39 +98,57 @@ public class PlayerAttack : MonoBehaviour
         }
         if (elementTwo != null)
         {
-
             int elementCount = 3;
             foreach (Skill skill in elementTwo.skills)
             {
                 if (skill.IsOnCooldown())
                 {
                     skill.UpdateCooldown();
+                    SkillsHUD.instance.SetCooldown(elementCount, skill.GetCurrCooldownTimer(), skill.cooldownTime);
                 }
                 ++elementCount;
             }
         }
         if (combinedElement != null)
         {
-
             int elementCount = 6;
             foreach (Skill skill in combinedElement.skills)
             {
                 if (skill.IsOnCooldown())
                 {
                     skill.UpdateCooldown();
+                    //SkillsHUD.instance.SetCooldown(elementCount, skill.GetCurrCooldownTimer(), skill.cooldownTime);
                 }
                 ++elementCount;
             }
         }
 
-        // CANNOT attack while in midst of another attack's animation
-        if (PlayerAction.instance.IsAttacking())
-            return;
-
         // check for whether skill continues - GetKey()
 
         // check for whether skill stops - GetKeyUp()
         /// only for some skills!
+
+        if (currKey != KeyCode.None)
+        {
+            if (Input.GetKey(currKey))
+            {   /// held down, continue attacking
+                if (/*!PlayerAction.instance.isMovingToAttack &&*/ !PlayerAction.instance.IsAttacking())
+                {  // end of attack
+                    if (CheckSkill(currSkill))
+                        goto SetMovement;
+                }
+                return;
+            }
+            else if (Input.GetKeyUp(currKey))
+            {   /// player let go of key
+                currKey = KeyCode.None;
+                return;
+            }
+        }
+
+        // CANNOT start a new attack while in midst of another attack's animation
+        if (PlayerAction.instance.IsAttacking())
+            return;
 
         // check for start of skill - GetKeyDown()
         if (Input.anyKeyDown)
@@ -129,17 +159,26 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     if (CheckSkill(elementOne.GetSkillOne()))
+                    {
+                        currKey = KeyCode.Q;
                         goto SetMovement;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     if (CheckSkill(elementOne.GetSkillTwo()))
+                    {
+                        currKey = KeyCode.W;
                         goto SetMovement;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (CheckSkill(elementOne.GetSkillThree()))
+                    {
+                        currKey = KeyCode.E;
                         goto SetMovement;
+                    }
                 }
             }
 
@@ -149,17 +188,26 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     if (CheckSkill(elementTwo.GetSkillOne()))
+                    {
+                        currKey = KeyCode.A;
                         goto SetMovement;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
                     if (CheckSkill(elementTwo.GetSkillTwo()))
+                    {
+                        currKey = KeyCode.S;
                         goto SetMovement;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     if (CheckSkill(elementTwo.GetSkillThree()))
+                    {
+                        currKey = KeyCode.D;
                         goto SetMovement;
+                    }
                 }
             }
 
@@ -169,12 +217,18 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     if (CheckSkill(combinedElement.GetSkillOne()))
+                    {
+                        currKey = KeyCode.R;
                         goto SetMovement;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     if (CheckSkill(combinedElement.GetSkillTwo()))
+                    {
+                        currKey = KeyCode.F;
                         goto SetMovement;
+                    }
                 }
             }
 
@@ -197,13 +251,49 @@ public class PlayerAttack : MonoBehaviour
             {
                 Vector2 enemyPos = RaycastInfo.clickTarget.transform.parent.position;
                 SetSkillVariables();
-                PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+                PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, transform.position.z));
+                projectileDir = (PlayerAction.instance.GetDestination() - transform.position).normalized;
+
+                PlayerAction.instance.SetMovingToAttack(true);
+
+                if (currSkill.atkType == SKILL_TYPE.SKILL_FIREPROJECTILE)
+                {
+                    castRangedSkill = true; // stop shifting position
+                }
+                else
+                {
+                    castRangedSkill = false;
+                }
+
+                gotoTimer = 0f;
             }
-            else
+            else if (gotoTimer >= 0.5f)
             {
+                //currSkill = null;
+
                 // walk to a spot and attack there -- same as how one would attack with shift
-                /// set destination as player's own spot
-                currSkill = null;
+
+                PlayerAction.instance.SetMovingToAttack(true);
+
+                if (!castRangedSkill)   // either not casting ranged, or first frame of attempting to cast a ranged
+                {
+                    if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Terrain)
+                    {
+                        PlayerAction.instance.SetMoveTo(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
+                        gotoTimer = 0f;
+                    }
+                }
+
+                if (currSkill.atkType == SKILL_TYPE.SKILL_FIREPROJECTILE)
+                {
+                    castRangedSkill = true; // stop shifting position & set to be able to cast once movement ends
+                    projectileDir = (PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized;
+                    SetSkillVariables();
+                }
+                else
+                {
+                    castRangedSkill = false;
+                }
             }
         }
 
@@ -221,12 +311,14 @@ public class PlayerAttack : MonoBehaviour
             return false;
 
         // check cooldown
-        if (skill.IsOnCooldown())
+        if (skill.IsOnCooldown()) {
             return false;
+        }
 
         // check enough MP or not
-        if (skill.MPCost > playerData.GetMP())
+        if (skill.MPCost > playerData.GetMP()) {
             return false;
+        }
 
         // set the skill
         currSkill = skill;
@@ -306,7 +398,8 @@ public class PlayerAttack : MonoBehaviour
 
             case SKILL_TYPE.SKILL_FIREPROJECTILE:
                 /// create projectile
-                SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
+                //SpawnProjectile(RaycastInfo.clickTarget.transform.parent.position);
+                SpawnProjectile(projectileDir);
                 break;
 
             case SKILL_TYPE.SKILL_SELF:
@@ -314,14 +407,15 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
 
-        currSkill = null;   // remove pointer to skill - shld be done at end of skill
+        castRangedSkill = false;
+        //currSkill = null;   // remove pointer to skill - shld be done at end of skill
     }
 
     private void CreateDmgText(int dmg)
     {
         Transform dmgText = (Transform)Instantiate(dmgTextPrefab, Vector3.zero, Quaternion.identity);
         dmgText.localScale = new Vector3(1f, 1f, 1f);
-        dmgText.localPosition = 0.5f * (PlayerAction.instance.transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+        dmgText.localPosition = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
         dmgText.GetComponent<DamageText>().SetDamageText(dmg);
     }
 
@@ -344,16 +438,24 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject skillAnimation = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
             GameObject instantiated = Instantiate(skillAnimation);
-            instantiated.transform.position = 0.5f * (PlayerAction.instance.transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+            instantiated.transform.position = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
         }
     }
 
-    private void SpawnProjectile(Vector3 targetPos)
+    //private void SpawnProjectile(Vector3 targetPos)
+    //{
+    //    GameObject projectile = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
+    //    GameObject instantiated = Instantiate(projectile);
+    //    instantiated.transform.position = PlayerAction.instance.transform.position;   // slightly forward
+    //    instantiated.GetComponent<Projectile>().SetVelocity((targetPos - transform.position).normalized);
+    //}
+
+    private void SpawnProjectile(Vector3 dir)
     {
         GameObject projectile = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
         GameObject instantiated = Instantiate(projectile);
-        instantiated.transform.position = PlayerAction.instance.transform.position;   // slightly forward
-        instantiated.GetComponent<Projectile>().SetVelocity((targetPos - transform.position).normalized);
+        instantiated.transform.position = transform.position;   // slightly forward
+        instantiated.GetComponent<Projectile>().SetVelocity(dir);
     }
 
 }

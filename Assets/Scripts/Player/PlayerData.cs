@@ -8,6 +8,7 @@ public class PlayerData {
 
     // XML files - load from Resources
     private TextAsset[] elementXMLFiles;    // information of player's elements
+    private TextAsset[] combinedElementXMLFiles;    // information of player's combined elements
 
     // CONST VALUE
     public const float converseRangeSquared = 0.5f;  // distance between player & NPC/Waypoint to start dialogue
@@ -132,9 +133,7 @@ public class PlayerData {
 
         // init elements
         elementXMLFiles = Resources.LoadAll<TextAsset>("ElementXML");
-
         elements = new Dictionary<string, Element>();
-        combinedElements = new Dictionary<string, CombinedElement>();
 
         for (int i = 0; i < elementXMLFiles.Length; ++i)
         {
@@ -146,12 +145,35 @@ public class PlayerData {
             // add to dictionary
             elements.Add(tempElement.name, tempElement);
         }
-
         // set whether skills are unlocked or not
         foreach (string key in elements.Keys)
         {
             elements[key].SetUnlockSkills(GetCrystalCount(key));
         }
+
+        // init combined elements
+        combinedElementXMLFiles = Resources.LoadAll<TextAsset>("CombinedElementsXML");
+        combinedElements = new Dictionary<string, CombinedElement>();
+
+        for (int i = 0; i < combinedElementXMLFiles.Length; ++i)
+        {
+            // deserialize XML
+            CombinedElement tempElement = XMLSerializer<CombinedElement>.DeserializeXMLFile(combinedElementXMLFiles[i]);
+
+            tempElement.Init();
+
+            // add to dictionary
+            combinedElements.Add(tempElement.name, tempElement);
+        }
+        // set whether skills are unlocked or not
+        foreach (string key in combinedElements.Keys)
+        {
+            // get the lower count out of the 2 elements that make up the combined element
+            CombinedElement combinedEle = combinedElements[key];
+            combinedEle.SetUnlockSkills(Mathf.Min(GetCrystalCount(combinedEle.requiredEle1), GetCrystalCount(combinedEle.requiredEle2)) - 1);
+            //elements[key].SetUnlockSkills(GetCrystalCount(key));
+        }
+
     }
 
     // Crystals
@@ -341,25 +363,47 @@ public class PlayerData {
                 if (elementKey == "")
                     currElementOne = null;
                 else
+                {
                     currElementOne = elements[elementKey];
-                SkillsHUD.instance.SetElementOne(currElementOne);
-                // set skills icons
+                    currElement1 = elementKey;
+                }
 
+                // set skills icons
+                SkillsHUD.instance.SetElementOne(currElementOne);
                 break;
             case "Two":
                 if (elementKey == "")
                     currElementTwo = null;
                 else
+                {
                     currElementTwo = elements[elementKey];
-                SkillsHUD.instance.SetElementTwo(currElementTwo);
+                    currElement2 = elementKey;
+                }
+
                 // set skills icons
+                SkillsHUD.instance.SetElementTwo(currElementTwo);
                 break;
             case "Combined":
-                //currCombinedElement = elements[elementKey];
-                //SkillsHUD.instance.SetCombinedElementIcon(currCombinedElement.icon);
+                currCombinedElement = combinedElements[elementKey];
+                SkillsHUD.instance.SetCombinedElement(currCombinedElement);
                 break;
             default:
                 break;
+        }
+
+        if (slot == "One" || slot == "Two")
+        {
+            // check element 1 + element 2
+            foreach (string key in combinedElements.Keys)
+            {
+                CombinedElement combinedEle = combinedElements[key];
+                if ((combinedEle.requiredEle1 == currElement1 && combinedEle.requiredEle2 == currElement2) ||
+                    (combinedEle.requiredEle1 == currElement2 && combinedEle.requiredEle2 == currElement1))
+                {
+                    SetElementReference(key, "Combined");
+                    break;
+                }
+            }
         }
     }
 

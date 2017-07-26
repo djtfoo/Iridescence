@@ -30,7 +30,19 @@ public class ElementsMenu : MonoBehaviour {
     // Combined Element
     public Image combinedElementIcon;
     public Text combinedElementLabel;
-    
+
+    public SkillsTooltip tooltipSkillR;
+    public Image skillRIcon;
+    public Image skillROverlay;    // for lock/unlock, & cooldown if any
+
+    public SkillsTooltip tooltipSkillF;
+    public Image skillFIcon;
+    public Image skillFOverlay;    // for lock/unlock, & cooldown if any
+
+    // unlock/lock sprites
+    public Sprite unlockSprite;
+    public Sprite lockedSprite;
+
     // Set Element to slot
     public void SetElementOne(string elementName)
     {
@@ -173,10 +185,46 @@ public class ElementsMenu : MonoBehaviour {
         if (element1 == null || element2 == null)
         {
             combinedElementLabel.text = "";
+            combinedElementIcon.color = new Color(1f, 1f, 1f, 0f);
         }
         else
         {
+            CombinedElement combinedEle = PlayerAction.instance.GetPlayerData().GetCombinedElement();
+            combinedElementLabel.text = combinedEle.name;
 
+            combinedElementIcon.color = new Color(1f, 1f, 1f, 1f);
+
+            combinedElementIcon.sprite = combinedEle.icon;
+
+            // set skills' icons
+            Skill skillR = combinedEle.GetSkillOne();
+            skillRIcon.sprite = combinedEle.GetSkillIcon(0);    // set skill icon
+  
+            tooltipSkillR.SetSkill(combinedEle.skills[0]);  // set Skills tooltip
+            if (skillR != null)
+            {   // set normal overlay
+                skillROverlay.sprite = unlockSprite;
+                skillROverlay.fillAmount = 0f;
+            }
+            else {  // set locked overlay
+                skillROverlay.sprite = lockedSprite;
+                skillROverlay.fillAmount = 1f;
+            }
+
+
+            Skill skillF = combinedEle.GetSkillTwo();
+            skillFIcon.sprite = combinedEle.GetSkillIcon(1);    // set skill icon
+
+            tooltipSkillF.SetSkill(combinedEle.skills[1]);  // set Skills tooltip
+            if (skillF != null)
+            {   // set normal overlay
+                skillFOverlay.sprite = unlockSprite;
+                skillFOverlay.fillAmount = 0f;
+            }
+            else {  // set locked overlay
+                skillFOverlay.sprite = lockedSprite;
+                skillFOverlay.fillAmount = 1f;
+            }
         }
     }
 

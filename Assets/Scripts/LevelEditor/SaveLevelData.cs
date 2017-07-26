@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -189,11 +191,15 @@ public class SaveLevelData : MonoBehaviour {
         string filename = fileName.text;
         prefab = Resources.Load<GameObject>(fileDirectory);
         if (prefab) {
+#if UNITY_EDITOR
             PrefabUtility.ReplacePrefab(clonedTerrain, prefab, ReplacePrefabOptions.ConnectToPrefab);
+#endif
         }
         else {
+#if UNITY_EDITOR
             //prefab = new GameObject();
             PrefabUtility.CreatePrefab(fileDirectory + filename + ".prefab", clonedTerrain);
+#endif
         }
 
         //prefab.name = 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<CombinedElement>
+	<name>Magma</name>
+	<iconFilename>magmaelement_icon</iconFilename>
+	<colorR>255</colorR>
+	<colorG>255</colorG>
+	<colorB>255</colorB>
+	<requiredElement1>Fire</requiredElement1>
+	<requiredElement2>Earth</requiredElement2>
+	<Skills>
+		<Skill name="Lava Pillar">
+			<description>This is Self cause it summons. Summons a lava pillar at target area.</description>
+			<iconFilename>lavapillar_icon</iconFilename>
+			<MPCost>20</MPCost>
+			<attackType>Self</attackType>
+			<rangeValue>3.0</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
+		</Skill>
+		
+		<Skill name="Molten Rock">
+			<description>Molten Rock.</description>
+			<iconFilename>moltenrock_icon</iconFilename>
+			<MPCost>45</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>5.0</rangeValue>
+			<cooldownTime>0.3</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
+		</Skill>
+	</Skills>		
+</CombinedElement>

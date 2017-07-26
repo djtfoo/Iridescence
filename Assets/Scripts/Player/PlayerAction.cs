@@ -8,7 +8,7 @@ public class PlayerAction : MonoBehaviour {
     GameObject destinationMarker;
 
     Vector3 velocity;
-    //Vector3 destination;
+    Vector3 destination;
     List<Vector3> pathWaypoints = new List<Vector3>();  // storing the waypoints of a path
     //float getMouse0InputTimer = 0f;
     //const float mouse0InputTimer = 0.05f;
@@ -17,11 +17,16 @@ public class PlayerAction : MonoBehaviour {
     private PlayerData playerData;
 
     // related to sequence in doing an attack
+    private bool isMovingToAttack = false;   // if true, player is currently moving before casting an attack
+    public bool IsMovingToAttack() { return isMovingToAttack; }
+    public void SetMovingToAttack(bool isMoving) { isMovingToAttack = isMoving; }
+
     private bool doAttack = false;  // if true, player's animation will start
     private bool isAttacking = false;   // if true, player is in midst of attack animation -- NO ATTACK CANCELLATION ALLOWED!
     public bool IsAttacking() { return isAttacking; }
     public void SetStopAttacking() { isAttacking = false; }
 
+    // for Transition Portal
     private bool movedThisFrame = false;
     public bool IsMovingThisFrame() { return movedThisFrame; }
     public void SetEndMovingThisFrame() { movedThisFrame = false; }
@@ -167,15 +172,17 @@ public class PlayerAction : MonoBehaviour {
         // Movement
         if (!velocity.Equals(Vector3.zero))
         {
+            float distSquared = (pathWaypoints[0] - this.transform.position).sqrMagnitude;
+
             // STORING OF CLICK TARGET - MEANING NPC/ENEMY, WHICH IS THE "END-GOAL" OF THE MOVEMENT
             if (RaycastInfo.clickTarget)    // != null
             {
-                float distSquared = (pathWaypoints[0] - this.transform.position).sqrMagnitude;
                 // attack
                 if (RaycastInfo.raycastType == RaycastTargetType.Raycast_Enemy)
                 {
                     if (distSquared < playerAttack.GetCurrentRangeSquared())
                     {
+                        isMovingToAttack = false;   // end of movement
                         doAttack = true;
                         //velocity = Vector3.zero;
                         SetPathComplete();
@@ -208,6 +215,16 @@ public class PlayerAction : MonoBehaviour {
                     movedThisFrame = false; // so movement boost won't fuck this up
                     RaycastInfo.clickTarget.GetComponent<Portal>().GoToNextLevel();
 
+                    SetPathComplete();
+                    goto endOfVelocityMovement;
+                }
+            }
+            else if (playerAttack.castRangedSkill)
+            {   // mouse over terrain, but casting ranged spell
+                if (distSquared < 0.1f)
+                {
+                    isMovingToAttack = false;   // end of movement
+                    doAttack = true;
                     SetPathComplete();
                     goto endOfVelocityMovement;
                 }
@@ -276,7 +293,7 @@ public class PlayerAction : MonoBehaviour {
         pathWaypoints.Clear();
         // calculate path
         this.GetComponent<NewPathfinder>().CalculatePath(destination, ref pathWaypoints);
-        //SetDestination(destination);
+        SetDestination(destination);
 
         // change to walk animation
         if (velocity.Equals(Vector3.zero))
@@ -284,10 +301,15 @@ public class PlayerAction : MonoBehaviour {
 
         SetVelocity((pathWaypoints[0] - transform.position).normalized);
 
+        // if terrain or portal
         if (RaycastInfo.clickTarget == null || RaycastInfo.raycastType == RaycastTargetType.Raycast_TransitionPortal)
         {
             destinationMarker.SetActive(true);
             destinationMarker.transform.position = new Vector3(destination.x, destination.y, 1f);
+        }
+        else
+        {
+            destinationMarker.SetActive(false);
         }
 
         //SetDestination(destination);
@@ -309,10 +331,10 @@ public class PlayerAction : MonoBehaviour {
     {
         return playerData;
     }
-    //public Vector3 GetDestination()
-    //{
-    //    return destination;
-    //}
+    public Vector3 GetDestination()
+    {
+        return destination;
+    }
 
     // Setters
     public void SetVelocity(Vector3 newVel)
@@ -324,10 +346,10 @@ public class PlayerAction : MonoBehaviour {
     {
         SetVelocity(Vector3.zero);
     }
-    //public void SetDestination(Vector3 newDest)
-    //{
-    //    destination = newDest;
-    //}
+    public void SetDestination(Vector3 newDest)
+    {
+        destination = newDest;
+    }
 
     public void InstantiateLevelUpParticles()
     {

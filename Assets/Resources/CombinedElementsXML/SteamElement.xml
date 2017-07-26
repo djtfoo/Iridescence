@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<CombinedElement>
+	<name>Steam</name>
+	<iconFilename>steamelement_icon</iconFilename>
+	<colorR>255</colorR>
+	<colorG>255</colorG>
+	<colorB>255</colorB>
+	<requiredElement1>Fire</requiredElement1>
+	<requiredElement2>Water</requiredElement2>
+	<Skills>
+		<Skill name="Steam Bubble">
+			<description>Shoot a bubble of hot air.</description>
+			<iconFilename>steambubble_icon</iconFilename>
+			<MPCost>20</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>3.0</rangeValue>
+			<cooldownTime>0.0</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
+		</Skill>
+		
+		<Skill name="Vapour Jet">
+			<description>Shoot a stream of steam.</description>
+			<iconFilename>vapourjet_icon</iconFilename>
+			<MPCost>45</MPCost>
+			<attackType>Projectile</attackType>
+			<rangeValue>0.5</rangeValue>
+			<cooldownTime>0.3</cooldownTime>
+			<userAnimation>Ranged</userAnimation>
+			<effectVariables>
+				<ObjectArrayItem varType="Damage">
+					<variable>1.5</variable>
+				</ObjectArrayItem>
+			</effectVariables>
+		</Skill>
+	</Skills>		
+</CombinedElement>

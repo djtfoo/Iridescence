@@ -28,13 +28,6 @@ public class SkillListMenu : MonoBehaviour {
     // elements
     public ElementSkillList[] elementsSkillList;
     
-    // combined element
-    public Image skillRIcon;
-    public Image skillROverlay;    // for lock/unlock, & cooldown if any
-
-    public Image skillFIcon;
-    public Image skillFOverlay;    // for lock/unlock, & cooldown if any
-
     // reference to PlayerData
     private PlayerData playerData;
 

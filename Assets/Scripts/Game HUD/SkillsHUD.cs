@@ -178,4 +178,18 @@ public class SkillsHUD : MonoBehaviour {
         }
     }
 
+    public void SetCombinedElement(CombinedElement element)
+    {
+        if (element == null)
+        {
+            SetSkillNull("R");
+            SetSkillNull("F");
+        }
+        else
+        {
+            SetSkillSlot(element, "R");
+            SetSkillSlot(element, "F");
+        }
+    }
+
 }

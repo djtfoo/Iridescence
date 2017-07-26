@@ -117,4 +117,10 @@ public class CombinedElement : Element {
     /// skill 1: R
     /// skill 2: F
 
+    [XmlElement("requiredElement1")]
+    public string requiredEle1; // 1st required Element
+
+    [XmlElement("requiredElement2")]
+    public string requiredEle2; // 2nd required Element
+
 }

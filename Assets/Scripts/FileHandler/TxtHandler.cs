@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public static class TxtHandler {
 
@@ -12,8 +14,10 @@ public static class TxtHandler {
         writer.Close();
 
         //Re-import the file to update the reference in the editor
+#if UNITY_EDITOR
         AssetDatabase.ImportAsset(filepath);
         TextAsset asset = Resources.Load("test") as TextAsset;
+#endif
     }
 
     public static string[] GetTxtLines(TextAsset txtfile)

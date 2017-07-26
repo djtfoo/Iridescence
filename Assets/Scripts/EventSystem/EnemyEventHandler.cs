@@ -29,9 +29,10 @@ public class EnemyEventHandler : MonoBehaviour {
         Vector2 enemyPos = transform.parent.position;
         PlayerAction.instance.GetAttackScript().SetRegularMeleeAttack();
         PlayerAction.instance.SetMoveTo(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
+
+        PlayerAction.instance.GetAttackScript().SetCurrSkillNull();
         //PlayerAction.instance.SetDestination(new Vector3(enemyPos.x, enemyPos.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
-
 #endif
     }
 
