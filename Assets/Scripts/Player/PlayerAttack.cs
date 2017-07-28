@@ -134,6 +134,9 @@ public class PlayerAttack : MonoBehaviour
             {   /// held down, continue attacking
                 if (/*!PlayerAction.instance.isMovingToAttack &&*/ !PlayerAction.instance.IsAttacking())
                 {  // end of attack
+                    if (currSkill.atkType == SKILL_TYPE.SKILL_SELF)
+                        return;
+
                     if (CheckSkill(currSkill))
                         goto SetMovement;
                 }
@@ -243,6 +246,15 @@ public class PlayerAttack : MonoBehaviour
         // goto: setting where player moves to
         SetMovement:
         {
+            if (currSkill.atkType == SKILL_TYPE.SKILL_SELF)
+            {
+                PlayerAction.instance.SetUseSelfBuff();
+                SetSkillVariables();
+                PlayerAction.instance.SetMovingToAttack(true);
+
+                return;
+            }
+
             // store the type into RaycastInfo via getting tag/name
             RaycastInfo.clickTarget = RaycastInfo.GetRaycastTarget2D();
 
@@ -404,6 +416,12 @@ public class PlayerAttack : MonoBehaviour
 
             case SKILL_TYPE.SKILL_SELF:
                 /// add buff to self
+                if (currSkill.HasKey("ComponentSelf"))
+                {
+                    AttachModifier.SetModifierEffect(PlayerAction.instance.gameObject,
+                        currSkill.GetValue("ComponentSelf"),
+                        float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
+                }
                 break;
         }
 

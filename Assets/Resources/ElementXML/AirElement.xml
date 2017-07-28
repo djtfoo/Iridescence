@@ -46,7 +46,13 @@
 			<cooldownTime>30.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
 			<effectVariables>
-				<ObjectArrayItem varType="Damage">
+				<ObjectArrayItem varType="ComponentSelf">
+					<variable>SpeedHymnModifier</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>60</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
 					<variable>1.5</variable>
 				</ObjectArrayItem>
 			</effectVariables>

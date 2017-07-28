@@ -199,6 +199,14 @@ public static class AttachModifier {
                     component.SetEffectValue(effectValue);
                 }
                 break;
+
+            case "SpeedHymnModifier":
+                {
+                    SpeedHymnModifier component = entityToAttach.AddComponent<SpeedHymnModifier>();
+                    component.SetDuration(duration);
+                    component.SetEffectValue(effectValue);
+                }
+                break;
         }
     }
 

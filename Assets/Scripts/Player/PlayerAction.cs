@@ -164,6 +164,10 @@ public class PlayerAction : MonoBehaviour {
                 case SKILL_TYPE.SKILL_FIREPROJECTILE:
                     transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation(playerAttack.GetCurrentUserAnimation(), false);
                     break;
+
+                case SKILL_TYPE.SKILL_SELF:
+                    transform.GetChild(0).GetComponent<SpriteAnimator>().ChangeAnimation(playerAttack.GetCurrentUserAnimation(), false);
+                    break;
             }
             doAttack = false;
             isAttacking = true;
@@ -270,6 +274,9 @@ public class PlayerAction : MonoBehaviour {
 
     private void CalculateDirection()
     {
+        if (velocity.Equals(Vector3.zero))
+            return;
+
         // get direction
         Vector2 playerVel = new Vector2(velocity.x, velocity.y);
         float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(playerVel, Vector2.down) / velocity.magnitude);  // Vector3.down is Vector3(0, -1, 0)
@@ -287,8 +294,21 @@ public class PlayerAction : MonoBehaviour {
         NPC.GetComponent<NPCEventHandler>().speechBubble.GetComponent<SpriteAnimator>().SetFreezeAnimation(true);
     }
 
+    public void SetUseSelfBuff()
+    {
+        SetDestination(transform.position);
+        SetVelocityZero();
+        destinationMarker.SetActive(false);
+        doAttack = true;
+    }
+
     public void SetMoveTo(Vector3 destination)
     {
+        //if (destination == transform.position) {
+        //    SetDestination(destination);
+        //    return;
+        //}
+
         // empty path
         pathWaypoints.Clear();
         // calculate path
