@@ -78,11 +78,17 @@ public class SkillsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 break;
 
             case COST_TYPE.COST_COMBINED1:
-                skillMPCost.text = "50% ele1 + 50% ele2";
+                {
+                    CombinedElement element = PlayerAction.instance.GetPlayerData().GetCombinedElementData(skill.GetElementType());
+                    skillMPCost.text = "50% " + element.requiredEle1 + " 50% " + element.requiredEle2;
+                }
                 break;
 
             case COST_TYPE.COST_COMBINED2:
-                skillMPCost.text = "100% ele1 + 100% ele2";
+                {
+                    CombinedElement element = PlayerAction.instance.GetPlayerData().GetCombinedElementData(skill.GetElementType());
+                    skillMPCost.text = "100% " + element.requiredEle1 + " 100% " + element.requiredEle2;
+                }
                 break;
         }
     }

@@ -97,8 +97,8 @@ public class PlayerData {
     private Dictionary<string, int> potionsQuantity;    // quantity of each potion that player has (max. 99)
 
     // element information
-    private Dictionary<string, Element> elements;   // player's elements, read from XML
-    private Dictionary<string, CombinedElement> combinedElements;   // player's combined elements, read from XML
+    private Dictionary<string, Element> elementsList;   // player's elements, read from XML
+    private Dictionary<string, CombinedElement> combinedElementsList;   // player's combined elements, read from XML
 
     // currently equipped elements
     private Element currElementOne; // currently equipped 1st element
@@ -140,7 +140,7 @@ public class PlayerData {
 
         // init elements
         elementXMLFiles = Resources.LoadAll<TextAsset>("ElementXML");
-        elements = new Dictionary<string, Element>();
+        elementsList = new Dictionary<string, Element>();
 
         for (int i = 0; i < elementXMLFiles.Length; ++i)
         {
@@ -150,17 +150,17 @@ public class PlayerData {
             tempElement.Init();
 
             // add to dictionary
-            elements.Add(tempElement.name, tempElement);
+            elementsList.Add(tempElement.name, tempElement);
         }
         // set whether skills are unlocked or not
-        foreach (string key in elements.Keys)
+        foreach (string key in elementsList.Keys)
         {
-            elements[key].SetUnlockSkills(GetCrystalCount(key));
+            elementsList[key].SetUnlockSkills(GetCrystalCount(key));
         }
 
         // init combined elements
         combinedElementXMLFiles = Resources.LoadAll<TextAsset>("CombinedElementsXML");
-        combinedElements = new Dictionary<string, CombinedElement>();
+        combinedElementsList = new Dictionary<string, CombinedElement>();
 
         for (int i = 0; i < combinedElementXMLFiles.Length; ++i)
         {
@@ -170,13 +170,13 @@ public class PlayerData {
             tempElement.Init();
 
             // add to dictionary
-            combinedElements.Add(tempElement.name, tempElement);
+            combinedElementsList.Add(tempElement.name, tempElement);
         }
         // set whether skills are unlocked or not
-        foreach (string key in combinedElements.Keys)
+        foreach (string key in combinedElementsList.Keys)
         {
             // get the lower count out of the 2 elements that make up the combined element
-            CombinedElement combinedEle = combinedElements[key];
+            CombinedElement combinedEle = combinedElementsList[key];
             combinedEle.SetUnlockSkills(Mathf.Min(GetCrystalCount(combinedEle.requiredEle1), GetCrystalCount(combinedEle.requiredEle2)) - 1);
             //elements[key].SetUnlockSkills(GetCrystalCount(key));
         }
@@ -342,7 +342,11 @@ public class PlayerData {
     // Element
     public Element GetElementData(string key) // get element via key
     {
-        return elements[key];
+        return elementsList[key];
+    }
+    public CombinedElement GetCombinedElementData(string key)   // get element via key
+    {
+        return combinedElementsList[key];
     }
 
     public Element GetElementOne()
@@ -370,7 +374,7 @@ public class PlayerData {
                     currElementOne = null;
                 else
                 {
-                    currElementOne = elements[elementKey];
+                    currElementOne = elementsList[elementKey];
                     currElement1 = elementKey;
                 }
 
@@ -383,7 +387,7 @@ public class PlayerData {
                     currElementTwo = null;
                 else
                 {
-                    currElementTwo = elements[elementKey];
+                    currElementTwo = elementsList[elementKey];
                     currElement2 = elementKey;
                 }
 
@@ -392,7 +396,7 @@ public class PlayerData {
                 break;
 
             case "Combined":
-                currCombinedElement = combinedElements[elementKey];
+                currCombinedElement = combinedElementsList[elementKey];
                 SkillsHUD.instance.SetCombinedElement(currCombinedElement);
                 break;
 
@@ -403,9 +407,9 @@ public class PlayerData {
         if (slot == "One" || slot == "Two")
         {
             // check element 1 + element 2
-            foreach (string key in combinedElements.Keys)
+            foreach (string key in combinedElementsList.Keys)
             {
-                CombinedElement combinedEle = combinedElements[key];
+                CombinedElement combinedEle = combinedElementsList[key];
                 if ((combinedEle.requiredEle1 == currElement1 && combinedEle.requiredEle2 == currElement2) ||
                     (combinedEle.requiredEle1 == currElement2 && combinedEle.requiredEle2 == currElement1))
                 {

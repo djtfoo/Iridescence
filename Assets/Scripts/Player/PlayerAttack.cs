@@ -433,13 +433,16 @@ public class PlayerAttack : MonoBehaviour
                     /// Create melee skill animation
                     CreateMeleeSkillAnimation();
 
-                    CreateDmgText((int)damageDealt);
+                    CreateDmgText((int)damageDealt, 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position));  // position is mid-point between enemy and player
 
                     /// increase elemental charge bar
-                    if (playerData.currElement1 == currSkill.GetElementType())
-                        playerData.IncreaseElementalChargeBar1(10);
-                    else if (playerData.currElement2 == currSkill.GetElementType())
-                        playerData.IncreaseElementalChargeBar2(10);
+                    if (currSkill != null)
+                    {
+                        if (playerData.currElement1 == currSkill.GetElementType())
+                            playerData.IncreaseElementalChargeBar1(10);
+                        else if (playerData.currElement2 == currSkill.GetElementType())
+                            playerData.IncreaseElementalChargeBar2(10);
+                    }
                 }
                 break;
 
@@ -466,11 +469,11 @@ public class PlayerAttack : MonoBehaviour
         //currSkill = null;   // remove pointer to skill - shld be done at end of skill
     }
 
-    private void CreateDmgText(int dmg)
+    public void CreateDmgText(int dmg, Vector3 position)
     {
         Transform dmgText = (Transform)Instantiate(dmgTextPrefab, Vector3.zero, Quaternion.identity);
         dmgText.localScale = new Vector3(1f, 1f, 1f);
-        dmgText.localPosition = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+        dmgText.localPosition = position;
         dmgText.GetComponent<DamageText>().SetDamageText(dmg);
     }
 

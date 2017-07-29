@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour {
                 hitTarget.SendMessage("TakeDamage", damage);
 
                 // Create Damage Text
+                PlayerAction.instance.GetAttackScript().CreateDmgText((int)damage, hitTarget.transform.position);
 
                 // add to Elemental Charge Bar
                 if (PlayerAction.instance.GetPlayerData().currElement1 == element)
