@@ -422,6 +422,8 @@ public class PlayerAttack : MonoBehaviour
                         currSkill.GetValue("ComponentSelf"),
                         float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
                 }
+
+                CreateSelfSkillAnimation();
                 break;
         }
 
@@ -457,6 +459,20 @@ public class PlayerAttack : MonoBehaviour
             GameObject skillAnimation = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
             GameObject instantiated = Instantiate(skillAnimation);
             instantiated.transform.position = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+        }
+    }
+
+    /// <summary>
+    ///  Create self skill animation when being cast
+    /// </summary>
+    private void CreateSelfSkillAnimation()
+    {
+        if (currSkill != null)
+        {
+            GameObject skillAnimation = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
+            GameObject instantiated = Instantiate(skillAnimation);
+            instantiated.transform.position = transform.position;
+            instantiated.GetComponent<ParticleAnimationMovement>().SetParent(this.transform);
         }
     }
 

@@ -53,7 +53,7 @@
 					<variable>60</variable>
 				</ObjectArrayItem>
 				<ObjectArrayItem varType="EffectValue">
-					<variable>1.5</variable>
+					<variable>0.5</variable>
 				</ObjectArrayItem>
 			</effectVariables>
 		</Skill>

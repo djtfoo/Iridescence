@@ -225,7 +225,7 @@ public class PlayerAction : MonoBehaviour {
             }
             else if (playerAttack.castRangedSkill)
             {   // mouse over terrain, but casting ranged spell
-                if (distSquared < 0.1f)
+                if (distSquared < playerAttack.GetCurrentRangeSquared())
                 {
                     isMovingToAttack = false;   // end of movement
                     doAttack = true;

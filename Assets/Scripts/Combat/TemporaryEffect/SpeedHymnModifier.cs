@@ -86,7 +86,7 @@ public class SpeedHymnModifier : MonoBehaviour {
             if (PlayerAction.instance.IsMovingThisFrame())
             {
                 Vector3 distMoved = transform.position - previousPos;
-                transform.position = previousPos + speedPercentage * distMoved;
+                transform.position += speedPercentage * distMoved;
                 PlayerAction.instance.SetEndMovingThisFrame();
             }
             previousPos = transform.position;
