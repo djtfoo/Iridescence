@@ -89,6 +89,9 @@ public class PlayerData {
     private float HP;
     private float MP;
 
+    private int elementalCharge1;   // out of 100%
+    private int elementalCharge2;   // out of 100%
+
     // Player items
     private Dictionary<string, int> crystalCount;   // number of Iris Fragments player has (max. 3)
     private Dictionary<string, int> potionsQuantity;    // quantity of each potion that player has (max. 99)
@@ -116,6 +119,10 @@ public class PlayerData {
 
         HP = maxHP;
         MP = maxMP;
+
+        // Set Elemental Charge Bar Values
+        elementalCharge1 = 0;
+        elementalCharge2 = 0;
 
         // transfer temp deserializer crystalCountArray to Dictionary
         crystalCount = new Dictionary<string, int>();
@@ -173,7 +180,6 @@ public class PlayerData {
             combinedEle.SetUnlockSkills(Mathf.Min(GetCrystalCount(combinedEle.requiredEle1), GetCrystalCount(combinedEle.requiredEle2)) - 1);
             //elements[key].SetUnlockSkills(GetCrystalCount(key));
         }
-
     }
 
     // Crystals
@@ -368,9 +374,10 @@ public class PlayerData {
                     currElement1 = elementKey;
                 }
 
-                // set skills icons
-                SkillsHUD.instance.SetElementOne(currElementOne);
+                SkillsHUD.instance.SetElementOne(currElementOne);   // set skills icons
+                GameHUD.instance.elementBar.Element1Changed(currElementOne);    // set Elemental Charge Bar
                 break;
+
             case "Two":
                 if (elementKey == "")
                     currElementTwo = null;
@@ -380,13 +387,15 @@ public class PlayerData {
                     currElement2 = elementKey;
                 }
 
-                // set skills icons
-                SkillsHUD.instance.SetElementTwo(currElementTwo);
+                SkillsHUD.instance.SetElementTwo(currElementTwo);   // set skills icons
+                GameHUD.instance.elementBar.Element2Changed(currElementTwo);    // set Elemental Charge Bar
                 break;
+
             case "Combined":
                 currCombinedElement = combinedElements[elementKey];
                 SkillsHUD.instance.SetCombinedElement(currCombinedElement);
                 break;
+
             default:
                 break;
         }
@@ -405,6 +414,71 @@ public class PlayerData {
                 }
             }
         }
+    }
+
+    // Elemental Charge Bar
+    ///  Reset
+    public void ResetElementalChargeBar1()
+    {
+        SetElementalChargeBar1(0);
+    }
+    public void ResetElementalChargeBar2()
+    {
+        SetElementalChargeBar2(0);
+    }
+
+    /// Increase
+    public void IncreaseElementalChargeBar1(int increase)
+    {
+        SetElementalChargeBar1(elementalCharge1 + increase);
+    }
+    public void IncreaseElementalChargeBar2(int increase)
+    {
+        SetElementalChargeBar2(elementalCharge2 + increase);
+    }
+
+    /// Check Able Use Skill
+    public bool CheckUseCombinedSkill1()
+    {
+        return (elementalCharge1 >= 50 && elementalCharge2 >= 50);
+    }
+    public bool CheckUseCombinedSkill2()
+    {
+        return (elementalCharge1 == 100 && elementalCharge2 == 100);
+    }
+
+    /// Use Skill
+    public void UseCombinedSkill1()
+    {
+        SetElementalChargeBar1(elementalCharge1 - 50);
+        SetElementalChargeBar2(elementalCharge2 - 50);
+    }
+    public void UseCombinedSkill2()
+    {
+        SetElementalChargeBar1(0);
+        SetElementalChargeBar2(0);
+    }
+
+    /// Swap
+    public void SwapElementalChargeValues()
+    {
+        int charge1 = elementalCharge1;
+        int charge2 = elementalCharge2;
+
+        SetElementalChargeBar1(charge2);
+        SetElementalChargeBar2(charge1);
+    }
+
+    /// Private Setter
+    private void SetElementalChargeBar1(int newValue)
+    {
+        elementalCharge1 = Mathf.Min(newValue, 100);
+        GameHUD.instance.elementBar.ElementCharge1Changed(elementalCharge1);
+    }
+    private void SetElementalChargeBar2(int newValue)
+    {
+        elementalCharge2 = Mathf.Min(newValue, 100);
+        GameHUD.instance.elementBar.ElementCharge2Changed(elementalCharge2);
     }
 
 

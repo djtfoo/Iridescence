@@ -15,6 +15,7 @@
 			<rangeValue>0.2</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.2</variable>
@@ -39,6 +40,7 @@
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>
@@ -54,6 +56,7 @@
 			<rangeValue>0.0</rangeValue>
 			<cooldownTime>20.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>

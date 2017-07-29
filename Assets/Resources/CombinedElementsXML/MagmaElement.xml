@@ -17,6 +17,7 @@
 			<rangeValue>3.0</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>Combined1</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>
@@ -32,6 +33,7 @@
 			<rangeValue>5.0</rangeValue>
 			<cooldownTime>0.3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>Combined2</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>

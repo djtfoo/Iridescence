@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System;
 using System.Xml.Serialization;
 
+
+[Serializable]
+public enum COST_TYPE
+{
+    [XmlEnum("MP")]
+    COST_MP,    // regular skill; uses MP
+    [XmlEnum("Combined1")]
+    COST_COMBINED1, // 50% ele1 + 50% ele2 of charge bar
+    [XmlEnum("Combined2")]
+    COST_COMBINED2  // 100% ele1 + 100% ele2 of charge bar
+}
+
 public class Skill {
 
     [XmlAttribute("name")]
@@ -29,6 +41,9 @@ public class Skill {
     [XmlElement("userAnimation")]
     public string userAnimation; // name of animation strip the user of this Skill uses
 
+    [XmlElement("costType")]
+    public COST_TYPE costType;  // this skill's type of cost
+
     [XmlArray("effectVariables")]
     [XmlArrayItem("ObjectArrayItem")]
     public ObjectArrayItem[] effectVariables;    // this skill's variables
@@ -43,8 +58,19 @@ public class Skill {
     public bool HasKey(string key) { return skillVariables.ContainsKey(key); }
     public string GetValue(string key) { return skillVariables[key]; }
 
+    private string elementType; // this skill's element type -- used for setting Elemental Charge Bar after skill is used
+
     private bool isOnCooldown = false;  // whether this skill is currently on cooldown or not
     private float cooldownTimer = 0f;   // countdown for this skill's timer
+
+    public string GetElementType()
+    {
+        return elementType;
+    }
+    public void SetElementType(string element)
+    {
+        elementType = element;
+    }
 
     public bool IsOnCooldown()
     {

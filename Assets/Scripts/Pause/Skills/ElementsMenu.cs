@@ -54,8 +54,12 @@ public class ElementsMenu : MonoBehaviour {
     }
     public void SwapElements()
     {
-        Element element1 = PlayerAction.instance.GetPlayerData().GetElementOne();
-        Element element2 = PlayerAction.instance.GetPlayerData().GetElementTwo();
+        PlayerData playerData = PlayerAction.instance.GetPlayerData();
+
+        Element element1 = playerData.GetElementOne();
+        Element element2 = playerData.GetElementTwo();
+
+        playerData.SwapElementalChargeValues();
 
         string element1Name, element2Name;
         if (element1 == null)

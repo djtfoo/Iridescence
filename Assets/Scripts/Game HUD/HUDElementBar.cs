@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class HUDElementBar : MonoBehaviour {
     
@@ -16,14 +16,24 @@ public class HUDElementBar : MonoBehaviour {
 	
 	}
 
-    public void Element1Changed(float newVal, float maxVal)
+    public void Element1Changed(Element element)
     {
-        element1.localScale = new Vector3(-newVal / maxVal, 1f, 1f);
+        element1.GetComponent<Image>().color = element.color;
     }
 
-    public void Element2Changed(float newVal, float maxVal)
+    public void Element2Changed(Element element)
     {
-        element2.localScale = new Vector3(newVal / maxVal, 1f, 1f);
+        element2.GetComponent<Image>().color = element.color;
+    }
+
+    public void ElementCharge1Changed(int newVal)
+    {
+        element1.localScale = new Vector3(-newVal / 100f, 1f, 1f);
+    }
+
+    public void ElementCharge2Changed(int newVal)
+    {
+        element2.localScale = new Vector3(newVal / 100f, 1f, 1f);
     }
 
 }

@@ -15,6 +15,7 @@
 			<rangeValue>0.1</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Melee</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>
@@ -30,6 +31,7 @@
 			<rangeValue>4.0</rangeValue>
 			<cooldownTime>0.5</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>2</variable>
@@ -45,6 +47,7 @@
 			<rangeValue>0.8</rangeValue>
 			<cooldownTime>2.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
+			<costType>MP</costType>
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>

@@ -76,6 +76,7 @@ public class EquipGem : MonoBehaviour {
                 }
             }
 
+            PlayerAction.instance.GetPlayerData().ResetElementalChargeBar1();
             elementsMenu.SetElementOne(elementName);
             return;
         }
@@ -103,6 +104,7 @@ public class EquipGem : MonoBehaviour {
                     return;
             }
 
+            PlayerAction.instance.GetPlayerData().ResetElementalChargeBar2();
             elementsMenu.SetElementTwo(elementName);
             return;
         }

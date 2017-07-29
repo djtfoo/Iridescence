@@ -70,7 +70,21 @@ public class SkillsTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // set the text to be the tooltip for this object
         skillName.text = skill.name;
         skillDescription.text = skill.description;
-        skillMPCost.text = skill.MPCost.ToString() + " MP";
+
+        switch (skill.costType)
+        {
+            case COST_TYPE.COST_MP:
+                skillMPCost.text = skill.MPCost.ToString() + " MP";
+                break;
+
+            case COST_TYPE.COST_COMBINED1:
+                skillMPCost.text = "50% ele1 + 50% ele2";
+                break;
+
+            case COST_TYPE.COST_COMBINED2:
+                skillMPCost.text = "100% ele1 + 100% ele2";
+                break;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

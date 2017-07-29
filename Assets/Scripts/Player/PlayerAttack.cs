@@ -327,9 +327,25 @@ public class PlayerAttack : MonoBehaviour
             return false;
         }
 
-        // check enough MP or not
-        if (skill.MPCost > playerData.GetMP()) {
-            return false;
+        // check cost
+        switch (skill.costType)
+        {
+            case COST_TYPE.COST_MP:
+                // check enough MP or not
+                if (skill.MPCost > playerData.GetMP()) {
+                    return false;
+                }
+                break;
+
+            case COST_TYPE.COST_COMBINED1:
+                if (!playerData.CheckUseCombinedSkill1())   // check against Elemental Charge Bar
+                    return false;
+                break;
+
+            case COST_TYPE.COST_COMBINED2:
+                if (!playerData.CheckUseCombinedSkill2())   // check against Elemental Charge Bar
+                    return false;
+                break;
         }
 
         // set the skill
@@ -354,7 +370,20 @@ public class PlayerAttack : MonoBehaviour
         if (currSkill != null)
         {
             /// use MP
-            playerData.UseMP(currSkill.MPCost); // shld be done at start of skill
+            switch (currSkill.costType)
+            {
+                case COST_TYPE.COST_MP:
+                    playerData.UseMP(currSkill.MPCost); // shld be done at start of skill
+                    break;
+
+                case COST_TYPE.COST_COMBINED1:
+                    playerData.UseCombinedSkill1();
+                    break;
+
+                case COST_TYPE.COST_COMBINED2:
+                    playerData.UseCombinedSkill2();
+                    break;
+            }
 
             /// set cooldown (if any)
             currSkill.SetStartCooldown();   // shld be done at end of skill
@@ -405,6 +434,12 @@ public class PlayerAttack : MonoBehaviour
                     CreateMeleeSkillAnimation();
 
                     CreateDmgText((int)damageDealt);
+
+                    /// increase elemental charge bar
+                    if (playerData.currElement1 == currSkill.GetElementType())
+                        playerData.IncreaseElementalChargeBar1(10);
+                    else if (playerData.currElement2 == currSkill.GetElementType())
+                        playerData.IncreaseElementalChargeBar2(10);
                 }
                 break;
 
@@ -486,7 +521,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void SpawnProjectile(Vector3 dir)
     {
-        GameObject projectile = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
+        GameObject projectile = Resources.Load<GameObject>("ParticleAnimations/Projectiles/" + currSkill.name);
         GameObject instantiated = Instantiate(projectile);
         instantiated.transform.position = transform.position;   // slightly forward
         instantiated.GetComponent<Projectile>().SetVelocity(dir);

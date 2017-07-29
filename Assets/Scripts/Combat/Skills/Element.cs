@@ -90,6 +90,9 @@ public class Element {
 
             // skills effectVariables
             skills[i].InitDictionary(XMLSerializer<Element>.ObjectArrayItemToDictionary(skills[i].effectVariables));
+
+            // set skill's element
+            skills[i].SetElementType(name);
         }
         
         // process generic object array for skill

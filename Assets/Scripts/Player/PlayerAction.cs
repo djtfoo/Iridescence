@@ -75,6 +75,10 @@ public class PlayerAction : MonoBehaviour {
         // SETTING OF CURR ELEMENTS
         playerData.SetElementReference(playerData.currElement1, "One");
         playerData.SetElementReference(playerData.currElement2, "Two");
+
+        // SET ELEMENTAL BARS
+        playerData.ResetElementalChargeBar1();
+        playerData.ResetElementalChargeBar2();
     }
 
     public bool UsePotion(int slotIdx)

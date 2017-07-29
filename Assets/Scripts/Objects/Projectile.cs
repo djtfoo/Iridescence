@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour {
 
     public float damage;
 
+    public string element;  // element type of this projectile
+
     private float duration = 0f;
     private bool hit;   // this projectile has hit an enemy
     private GameObject hitTarget;
@@ -27,6 +29,15 @@ public class Projectile : MonoBehaviour {
         {
             if (duration >= 0.1f) {
                 hitTarget.SendMessage("TakeDamage", damage);
+
+                // Create Damage Text
+
+                // add to Elemental Charge Bar
+                if (PlayerAction.instance.GetPlayerData().currElement1 == element)
+                    PlayerAction.instance.GetPlayerData().IncreaseElementalChargeBar1(10);
+                else if (PlayerAction.instance.GetPlayerData().currElement2 == element)
+                    PlayerAction.instance.GetPlayerData().IncreaseElementalChargeBar2(10);
+
                 Destroy(this.gameObject);
             }
         }
