@@ -9,6 +9,7 @@ public class DepthSortManager : MonoBehaviour {
     public float maxZ = -10f;   // furthest away
 
     private static float zUnitPerY;    // how much change in z-axis per 1 unit of y-axis
+    public static float GetZUnitPerY() { return zUnitPerY; }
 
     public static DepthSortManager instance;
 
