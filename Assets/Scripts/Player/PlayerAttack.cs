@@ -394,10 +394,12 @@ public class PlayerAttack : MonoBehaviour
         {
             case SKILL_TYPE.SKILL_MELEE:
                 {
-                    /// deal damage
+                    // DAMAGE
                     float skillDmg;
                     if (currSkill == null)  // regular physical melee
                         skillDmg = meleeDmg;
+                    else if (!currSkill.HasKey("Damage"))
+                        goto endOfDamage;
                     else
                         skillDmg = float.Parse(currSkill.GetValue("Damage")) * meleeDmg;  // temp; shld be elemental stat
 
@@ -419,29 +421,40 @@ public class PlayerAttack : MonoBehaviour
 
                     RaycastInfo.clickTarget.SendMessage("TakeDamage", damageDealt);
 
-                    /// attach modifier components if any
+                    //CreateDmgText((int)damageDealt, 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position));  // position is mid-point between enemy and player
+                    CreateDmgText((int)damageDealt, RaycastInfo.clickTarget.transform.position);    // on top of enemy
+
+            endOfDamage:
+                    // attach Modifier components if any
                     if (currSkill != null)
                     {
+                        // Self
                         if (currSkill.HasKey("ComponentSelf"))
                         {
                             AttachModifier.SetModifierEffect(PlayerAction.instance.gameObject,
                                 currSkill.GetValue("ComponentSelf"),
                                 float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
                         }
+
+                        // Enemy
+                        if (currSkill.HasKey("ComponentEnemy"))
+                        {
+                            AttachModifier.SetModifierEffect(RaycastInfo.clickTarget,
+                                currSkill.GetValue("ComponentEnemy"),
+                                float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
+                        }
                     }
 
-                    /// Create melee skill animation
+                    // Create melee skill animation
                     CreateMeleeSkillAnimation();
 
-                    CreateDmgText((int)damageDealt, 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position));  // position is mid-point between enemy and player
-
-                    /// increase elemental charge bar
+                    // Increase elemental charge bar
                     if (currSkill != null)
                     {
                         if (playerData.currElement1 == currSkill.GetElementType())
-                            playerData.IncreaseElementalChargeBar1(10);
+                            playerData.IncreaseElementalChargeBar1(100);
                         else if (playerData.currElement2 == currSkill.GetElementType())
-                            playerData.IncreaseElementalChargeBar2(10);
+                            playerData.IncreaseElementalChargeBar2(100);
                     }
                 }
                 break;
@@ -496,7 +509,10 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject skillAnimation = Resources.Load<GameObject>("ParticleAnimations/" + currSkill.name);
             GameObject instantiated = Instantiate(skillAnimation);
-            instantiated.transform.position = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+            //instantiated.transform.position = 0.5f * (transform.position + RaycastInfo.clickTarget.transform.position);   // mid-point
+
+            instantiated.transform.position = new Vector3(RaycastInfo.clickTarget.transform.position.x, RaycastInfo.clickTarget.transform.position.y - 0.2f,
+                RaycastInfo.clickTarget.transform.position.z);  // slightly lower than enemy's position
         }
     }
 

@@ -30,7 +30,7 @@
 			<iconFilename>ignition_icon</iconFilename>
 			<MPCost>45</MPCost>
 			<attackType>Melee</attackType>
-			<rangeValue>0.5</rangeValue>
+			<rangeValue>1.0</rangeValue>
 			<cooldownTime>0.3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
 			<costType>Combined2</costType>

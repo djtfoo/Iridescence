@@ -8,5 +8,5 @@
 	<duration>80</duration>
 	<cooldownTime>2</cooldownTime>
 	<effectName>MovementSpeedModifier</effectName>
-	<effectValue>0.4</effectValue>
+	<effectValue>1.4</effectValue>
 </Potion>

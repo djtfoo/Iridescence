@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: ff00a6d76b9c0cb49ac60c3bd9c83bee
+timeCreated: 1501448172
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: icespear_0
+    21300002: icespear_1
+    21300004: icespear_2
+    21300006: icespear_3
+    21300008: icespear_4
+    21300010: icespear_5
+    21300012: icespear_6
+    21300014: icespear_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: icespear_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 12}
+        - {x: -59, y: -5}
+        - {x: -59, y: -23}
+        - {x: -49, y: -51}
+        - {x: -29, y: -59}
+        - {x: 38, y: -59}
+        - {x: 64, y: -36}
+        - {x: 64, y: 1}
+        - {x: 59, y: 12}
+    - name: icespear_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62, y: 30}
+        - {x: -62, y: -37}
+        - {x: -45, y: -60}
+        - {x: 46, y: -60}
+        - {x: 52, y: -57}
+        - {x: 52, y: 1}
+        - {x: -15, y: 30}
+    - name: icespear_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 60}
+        - {x: -58, y: 55}
+        - {x: -58, y: -39}
+        - {x: -31, y: -64}
+        - {x: 13, y: -64}
+        - {x: 14, y: -63}
+        - {x: 14, y: 60}
+    - name: icespear_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34, y: 60}
+        - {x: -32, y: 60}
+        - {x: -55, y: 52}
+        - {x: -59, y: 16}
+        - {x: -59, y: -24}
+        - {x: -54, y: -27}
+        - {x: -46, y: -28}
+        - {x: -30, y: -37}
+        - {x: -26, y: -37}
+        - {x: 52, y: 10}
+        - {x: 52, y: 37}
+        - {x: 44, y: 50}
+    - name: icespear_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 60}
+        - {x: -64, y: 38}
+        - {x: -64, y: -1}
+        - {x: -59, y: -11}
+        - {x: 59, y: -11}
+        - {x: 59, y: 43}
+        - {x: 29, y: 60}
+    - name: icespear_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37, y: 64}
+        - {x: -37, y: 26}
+        - {x: 19, y: -45}
+        - {x: 21, y: -46}
+        - {x: 60, y: -46}
+        - {x: 60, y: 64}
+    - name: icespear_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 64}
+        - {x: -11, y: 64}
+        - {x: -11, y: -62}
+        - {x: 27, y: -62}
+        - {x: 57, y: -44}
+        - {x: 60, y: -26}
+        - {x: 60, y: 35}
+    - name: icespear_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 37}
+        - {x: -46, y: -11}
+        - {x: -46, y: -60}
+        - {x: 64, y: -60}
+        - {x: 64, y: 37}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -38,6 +38,7 @@ public class SpriteAnimator : MonoBehaviour {
 
     public SerialiseSpriteAnimation[] initAnimationsList; // FOR INITIALISING ONLY
     public bool playOnce; // whether this animation should be destroyed upon end of animation
+    private int animationCount = 0; // which animation it's currently at; used only for playOnce
 
     private Dictionary<string, SpriteAnimation> animationsList; // list of sprite animations
     private SpriteAnimation currSprAnimation;   // current sprite animation
@@ -137,12 +138,21 @@ public class SpriteAnimator : MonoBehaviour {
             ++currFrame;
             if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection))
             {
-                if (playOnce)
+                if (playOnce)   // for skill sprites / temporary animations (e.g. particles)
                 {
-                    Destroy(this.gameObject);
-                    return;
+                    ++animationCount;
+                    if (animationCount >= initAnimationsList.Length)    // end of animation
+                    {
+                        Destroy(this.gameObject);
+                        return;
+                    }
+                    else
+                    {
+                        ChangeAnimation(initAnimationsList[animationCount].name, false);
+                        return;
+                    }
                 }
-                else
+                else    // for player / entities
                 {
                     if (loop)
                     {

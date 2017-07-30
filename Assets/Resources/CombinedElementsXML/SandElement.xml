@@ -10,17 +10,23 @@
 	<requiredElement2>Air</requiredElement2>
 	<Skills>
 		<Skill name="Sand Prison">
-			<description>Target enemy gets binded. No damage.</description>
+			<description>Target enemy gets binded. No damage is inflicted.</description>
 			<iconFilename>sandprison_icon</iconFilename>
 			<MPCost>20</MPCost>
-			<attackType>Self</attackType>
-			<rangeValue>3.0</rangeValue>
+			<attackType>Melee</attackType>
+			<rangeValue>5.0</rangeValue>
 			<cooldownTime>0.0</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
 			<costType>Combined1</costType>
 			<effectVariables>
-				<ObjectArrayItem varType="Damage">
-					<variable>1.5</variable>
+				<ObjectArrayItem varType="ComponentEnemy">
+					<variable>MovementSpeedModifier</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>3</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
+					<variable>0</variable>
 				</ObjectArrayItem>
 			</effectVariables>
 		</Skill>
@@ -30,7 +36,7 @@
 			<iconFilename>sandstorm_icon</iconFilename>
 			<MPCost>45</MPCost>
 			<attackType>Projectile</attackType>
-			<rangeValue>0.5</rangeValue>
+			<rangeValue>7.0</rangeValue>
 			<cooldownTime>0.3</cooldownTime>
 			<userAnimation>Ranged</userAnimation>
 			<costType>Combined2</costType>

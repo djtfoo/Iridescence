@@ -10,7 +10,7 @@
 	<requiredElement2>Water</requiredElement2>
 	<Skills>
 		<Skill name="Healing Touch">
-			<description>Actually this should be Self.</description>
+			<description>Restore 50% HP over 3 seconds.</description>
 			<iconFilename>healingtouch_icon</iconFilename>
 			<MPCost>20</MPCost>
 			<attackType>Self</attackType>
@@ -19,8 +19,14 @@
 			<userAnimation>Ranged</userAnimation>
 			<costType>Combined1</costType>
 			<effectVariables>
-				<ObjectArrayItem varType="Damage">
-					<variable>1.5</variable>
+				<ObjectArrayItem varType="ComponentSelf">
+					<variable>HPRegen</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>3</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
+					<variable>0.5</variable>
 				</ObjectArrayItem>
 			</effectVariables>
 		</Skill>

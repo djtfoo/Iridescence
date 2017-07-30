@@ -42,7 +42,7 @@ public class MovementSpeedModifier : MonoBehaviour {
     // From potion; called by SendMessage()
     public void SetEffectValue(float effectValue)
     {
-        speedPercentage = 1f + effectValue;
+        speedPercentage = effectValue;
     }
 
     // To be called when timer is up or this modifier is forcefully removed

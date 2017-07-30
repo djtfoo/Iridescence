@@ -10,7 +10,7 @@
 	<requiredElement2>Air</requiredElement2>
 	<Skills>
 		<Skill name="Ice Spear">
-			<description>Shoot a sharp icy projectile.</description>
+			<description>Shoot a sharp icy projectile. Inflict freeze if it hits.</description>
 			<iconFilename>icespear_icon</iconFilename>
 			<MPCost>20</MPCost>
 			<attackType>Projectile</attackType>
@@ -21,6 +21,15 @@
 			<effectVariables>
 				<ObjectArrayItem varType="Damage">
 					<variable>1.5</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="ComponentEnemy">
+					<variable>MovementSpeedModifier</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="Duration">
+					<variable>3</variable>
+				</ObjectArrayItem>
+				<ObjectArrayItem varType="EffectValue">
+					<variable>0</variable>
 				</ObjectArrayItem>
 			</effectVariables>
 		</Skill>

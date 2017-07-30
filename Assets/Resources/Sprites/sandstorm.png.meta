@@ -1,0 +1,390 @@
+fileFormatVersion: 2
+guid: 38d0b8df457afe740bdc2bdf89a33253
+timeCreated: 1501433273
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sandstorm_0
+    21300002: sandstorm_1
+    21300004: sandstorm_2
+    21300006: sandstorm_3
+    21300008: sandstorm_4
+    21300010: sandstorm_5
+    21300012: sandstorm_6
+    21300014: sandstorm_7
+    21300016: sandstorm_8
+    21300018: sandstorm_9
+    21300020: sandstorm_10
+    21300022: sandstorm_11
+    21300024: sandstorm_12
+    21300026: sandstorm_13
+    21300028: sandstorm_14
+    21300030: sandstorm_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sandstorm_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 48}
+        - {x: -14, y: 42}
+        - {x: -14, y: -48}
+        - {x: 17, y: -48}
+        - {x: 17, y: 48}
+    - name: sandstorm_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 48}
+        - {x: -5, y: 48}
+        - {x: -13, y: 33}
+        - {x: -16, y: -7}
+        - {x: -16, y: -42}
+        - {x: -9, y: -48}
+        - {x: 9, y: -48}
+        - {x: 16, y: -40}
+        - {x: 16, y: 22}
+        - {x: 9, y: 47}
+    - name: sandstorm_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 38}
+        - {x: -26, y: 8}
+        - {x: -38, y: -10}
+        - {x: -38, y: -37}
+        - {x: -37, y: -39}
+        - {x: -15, y: -39}
+        - {x: 6, y: -31}
+        - {x: 38, y: 24}
+        - {x: 38, y: 38}
+    - name: sandstorm_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: -3}
+        - {x: 27, y: 8}
+        - {x: 37, y: 24}
+        - {x: 37, y: 37}
+        - {x: 22, y: 37}
+        - {x: -39, y: -6}
+        - {x: -39, y: -36}
+        - {x: -37, y: -40}
+        - {x: -18, y: -40}
+        - {x: 1, y: -24}
+        - {x: 9, y: -16}
+        - {x: 17, y: -6}
+    - name: sandstorm_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 17}
+        - {x: -48, y: 12}
+        - {x: -48, y: -12}
+        - {x: -38, y: -14}
+        - {x: 31, y: -14}
+        - {x: 48, y: -8}
+        - {x: 48, y: 9}
+        - {x: -10, y: 17}
+    - name: sandstorm_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: 16}
+        - {x: -48, y: 16}
+        - {x: -48, y: -16}
+        - {x: 33, y: -16}
+        - {x: 47, y: -9}
+        - {x: 48, y: -8}
+    - name: sandstorm_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 39}
+        - {x: -39, y: 20}
+        - {x: -32, y: 0}
+        - {x: 27, y: -39}
+        - {x: 35, y: -39}
+        - {x: 37, y: -36}
+        - {x: 37, y: -12}
+        - {x: 30, y: 11}
+        - {x: -18, y: 39}
+    - name: sandstorm_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 41}
+        - {x: -37, y: 41}
+        - {x: -39, y: 36}
+        - {x: -39, y: 15}
+        - {x: -8, y: -22}
+        - {x: 26, y: -38}
+        - {x: 31, y: -38}
+        - {x: 36, y: -35}
+        - {x: 36, y: -29}
+        - {x: 34, y: -23}
+        - {x: -1, y: 26}
+    - name: sandstorm_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 48}
+        - {x: -17, y: 37}
+        - {x: -17, y: -7}
+        - {x: -10, y: -48}
+        - {x: 13, y: -48}
+        - {x: 14, y: -39}
+        - {x: 14, y: 44}
+        - {x: 10, y: 48}
+    - name: sandstorm_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -37}
+        - {x: -8, y: -48}
+        - {x: 16, y: -48}
+        - {x: 16, y: 48}
+        - {x: -9, y: 48}
+        - {x: -16, y: 40}
+    - name: sandstorm_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: 28}
+        - {x: 43, y: 31}
+        - {x: 24, y: 31}
+        - {x: 10, y: 28}
+        - {x: -34, y: -6}
+        - {x: -45, y: -20}
+        - {x: -45, y: -27}
+        - {x: -44, y: -28}
+        - {x: -27, y: -28}
+        - {x: 1, y: -19}
+        - {x: 21, y: -9}
+        - {x: 45, y: 11}
+    - name: sandstorm_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -39, y: 1}
+        - {x: -43, y: -12}
+        - {x: -43, y: -27}
+        - {x: 16, y: -27}
+        - {x: 45, y: 2}
+        - {x: 45, y: 32}
+    - name: sandstorm_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 17}
+        - {x: -7, y: 17}
+        - {x: -48, y: 10}
+        - {x: -48, y: -13}
+        - {x: -39, y: -14}
+        - {x: 44, y: -14}
+        - {x: 48, y: -10}
+        - {x: 48, y: 12}
+    - name: sandstorm_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 16}
+        - {x: -47, y: 9}
+        - {x: -48, y: 7}
+        - {x: -48, y: -5}
+        - {x: -33, y: -13}
+        - {x: 7, y: -16}
+        - {x: 42, y: -16}
+        - {x: 48, y: -9}
+        - {x: 48, y: 10}
+        - {x: 43, y: 16}
+    - name: sandstorm_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -43, y: 29}
+        - {x: -44, y: 28}
+        - {x: -44, y: 18}
+        - {x: -16, y: -11}
+        - {x: 27, y: -32}
+        - {x: 37, y: -32}
+        - {x: 45, y: -28}
+        - {x: 45, y: -16}
+        - {x: 43, y: -11}
+        - {x: 29, y: 6}
+        - {x: -29, y: 29}
+    - name: sandstorm_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 29}
+        - {x: -40, y: 29}
+        - {x: -43, y: 26}
+        - {x: -43, y: 13}
+        - {x: 5, y: -31}
+        - {x: 13, y: -33}
+        - {x: 46, y: -33}
+        - {x: 46, y: -7}
+        - {x: 20, y: 28}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
