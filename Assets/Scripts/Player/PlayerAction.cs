@@ -146,8 +146,10 @@ public class PlayerAction : MonoBehaviour {
                 }
                 else if (Input.GetKeyDown(i) && !potionUsed)
                 {
-                    if (UsePotion(slotIdx))
+                    if (UsePotion(slotIdx)) {
                         potionUsed = true;
+                        AudioManager.instance.PlaySFX("Drinking");
+                    }
                 }
             }
         }
