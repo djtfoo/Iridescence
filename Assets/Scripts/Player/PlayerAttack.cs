@@ -445,6 +445,9 @@ public class PlayerAttack : MonoBehaviour
                         }
                     }
 
+                    // Play Skill SFX
+                    AudioManager.instance.PlaySFX(currSkill.name);
+
                     // Create melee skill animation
                     CreateMeleeSkillAnimation();
 
@@ -452,9 +455,9 @@ public class PlayerAttack : MonoBehaviour
                     if (currSkill != null)
                     {
                         if (playerData.currElement1 == currSkill.GetElementType())
-                            playerData.IncreaseElementalChargeBar1(100);
+                            playerData.IncreaseElementalChargeBar1(10);
                         else if (playerData.currElement2 == currSkill.GetElementType())
-                            playerData.IncreaseElementalChargeBar2(100);
+                            playerData.IncreaseElementalChargeBar2(10);
                     }
                 }
                 break;
@@ -473,6 +476,9 @@ public class PlayerAttack : MonoBehaviour
                         currSkill.GetValue("ComponentSelf"),
                         float.Parse(currSkill.GetValue("Duration")), float.Parse(currSkill.GetValue("EffectValue")));
                 }
+
+                // Play Skill SFX
+                AudioManager.instance.PlaySFX(currSkill.name);
 
                 CreateSelfSkillAnimation();
                 break;

@@ -22,6 +22,8 @@ public class PlayerData {
     public string lastCheckpoint;  // name of levelprefab of last visited checkpoint, for resuming game or dying - if null, go back to cave
 
     // Player Stats
+    [XmlElement("playerName")]
+    public string playerName;   // player's name
     [XmlElement("playerLevel")]
     public int playerLevel; // player's level
     [XmlElement("playerEXP")]

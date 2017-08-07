@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PlayerAction : MonoBehaviour {
 
+    public PauseGame pauseManager;
+
     public GameObject destinationMarkerPrefab;
     GameObject destinationMarker;
 
@@ -48,7 +50,7 @@ public class PlayerAction : MonoBehaviour {
         instance = GetComponent<PlayerAction>();
 
         // get save data XML file
-        TextAsset savedataXML = Resources.Load<TextAsset>("SaveData/playerdata");   // temp
+        TextAsset savedataXML = Resources.Load<TextAsset>("SaveData/playerdata1");   // temp
 
         // deserialize XML file
         playerData = XMLSerializer<PlayerData>.DeserializeXMLFile(savedataXML);
@@ -152,6 +154,20 @@ public class PlayerAction : MonoBehaviour {
                     }
                 }
             }
+        }
+
+        //===========
+        // OPEN MENU
+        //===========
+        if (Input.GetKeyDown(KeyCode.C))    // stats menu
+        {
+            pauseManager.SetPause(true);
+            pauseManager.SetStatsMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))   // elements menu
+        {
+            pauseManager.SetPause(true);
+            pauseManager.SetSkillsMenu();
         }
 
         if (doAttack)
