@@ -34,7 +34,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 256
   textureSettings:
     filterMode: -1
@@ -68,7 +68,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -4, y: 11}
+        - {x: -8, y: 4}
+        - {x: -8, y: -8}
+        - {x: -5, y: -11}
+        - {x: 4, y: -11}
+        - {x: 7, y: -10}
+        - {x: 7, y: 7}
+        - {x: 2, y: 11}
     - name: fireball_1
       rect:
         serializedVersion: 2
@@ -79,7 +87,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -8, y: 9}
+        - {x: -10, y: 3}
+        - {x: -10, y: -10}
+        - {x: 0, y: -10}
+        - {x: 9, y: -5}
+        - {x: 9, y: 9}
     - name: fireball_2
       rect:
         serializedVersion: 2
@@ -90,7 +104,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 7, y: 6}
+        - {x: 1, y: 8}
+        - {x: -5, y: 8}
+        - {x: -11, y: 3}
+        - {x: -11, y: -6}
+        - {x: -7, y: -8}
+        - {x: 8, y: -8}
+        - {x: 10, y: -5}
+        - {x: 12, y: -1}
+        - {x: 12, y: 3}
     - name: fireball_3
       rect:
         serializedVersion: 2
@@ -101,7 +125,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -7, y: 10}
+        - {x: -10, y: 6}
+        - {x: -10, y: -3}
+        - {x: -2, y: -10}
+        - {x: 8, y: -10}
+        - {x: 9, y: -9}
+        - {x: 9, y: 2}
+        - {x: 5, y: 10}
     - name: fireball_4
       rect:
         serializedVersion: 2
@@ -112,7 +144,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 6, y: 11}
+        - {x: -3, y: 11}
+        - {x: -7, y: 9}
+        - {x: -7, y: -6}
+        - {x: -6, y: -8}
+        - {x: -1, y: -12}
+        - {x: 2, y: -12}
+        - {x: 7, y: -8}
+        - {x: 8, y: -4}
+        - {x: 8, y: 8}
     - name: fireball_5
       rect:
         serializedVersion: 2
@@ -123,7 +165,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 6, y: 9}
+        - {x: -3, y: 9}
+        - {x: -9, y: 2}
+        - {x: -9, y: -10}
+        - {x: 6, y: -10}
+        - {x: 10, y: -4}
+        - {x: 10, y: 8}
     - name: fireball_6
       rect:
         serializedVersion: 2
@@ -134,7 +183,16 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -4, y: 7}
+        - {x: -11, y: 1}
+        - {x: -11, y: -2}
+        - {x: -9, y: -4}
+        - {x: -2, y: -9}
+        - {x: 9, y: -9}
+        - {x: 12, y: -2}
+        - {x: 12, y: 2}
+        - {x: 6, y: 7}
     - name: fireball_7
       rect:
         serializedVersion: 2
@@ -145,7 +203,16 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 4, y: 9}
+        - {x: -7, y: 9}
+        - {x: -9, y: 8}
+        - {x: -9, y: -6}
+        - {x: -1, y: -11}
+        - {x: 8, y: -11}
+        - {x: 9, y: -9}
+        - {x: 10, y: -2}
+        - {x: 10, y: 2}
     outline: []
   spritePackingTag: 
   userData: 

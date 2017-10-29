@@ -30,6 +30,12 @@ public static class XMLSerializer<T> where T : class {
         {
             switch (OAIarr[i].varType)
             {
+                case "int":
+                    {
+                        float variable = int.Parse(OAIarr[i].variable);
+                        arr[i] = variable;
+                    }
+                    break;
                 case "float":
                     {
                         float variable = float.Parse(OAIarr[i].variable);

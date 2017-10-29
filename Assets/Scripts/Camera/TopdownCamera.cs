@@ -25,7 +25,9 @@ public class TopdownCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        UpdateViewDist();
+        if (!PauseGame.IsPaused())
+            UpdateViewDist();
+
         if (viewSize != newViewSize) {
             viewSize += (newViewSize - viewSize) * 5f * Time.deltaTime;
             if (Mathf.Abs(newViewSize - viewSize) < 0.001f)

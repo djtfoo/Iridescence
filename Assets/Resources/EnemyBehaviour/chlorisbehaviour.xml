@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<EnemyBehaviour>
+	<methodName>ChlorisBehaviour</methodName>
+	<parameters>
+		<ObjectArrayItem varType="float">
+			<variable>10.0</variable>
+		</ObjectArrayItem>
+	</parameters>
+</EnemyBehaviour>

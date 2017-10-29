@@ -33,14 +33,31 @@ public class GenerateGrids : MonoBehaviour {
             {
                 //float posX = (gridWidth * y) + (gridWidth * x);
                 //float posY = (-gridHeight * y) + (gridHeight * x);
-
+            
                 Transform newTile = (Transform)Instantiate(gridPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                 newTile.SetParent(this.transform);
-                newTile.position = new Vector3(posX, posY, 1f);
-
+                newTile.position = new Vector3(posX, posY, 2f + 0.0001f * x + (rows - y) * 0.0001f);
+            
                 SpriteRenderer sr = newTile.GetComponent<SpriteRenderer>();
                 sr.color = new Color(0.8f, 0.8f, 0.8f);
             }
+
+
+        // opp direction - right to left
+            //posX = gridWidth * (rows - y);
+            //posY = -gridHeight * (rows - y);
+            //for (int x = columns; x >= 0; --x, posX -= gridWidth, posY -= gridHeight)
+            //{
+            //    //float posX = (gridWidth * y) + (gridWidth * x);
+            //    //float posY = (-gridHeight * y) + (gridHeight * x);
+            //
+            //    Transform newTile = (Transform)Instantiate(gridPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            //    newTile.SetParent(this.transform);
+            //    newTile.position = new Vector3(posX, posY, 1f);
+            //
+            //    SpriteRenderer sr = newTile.GetComponent<SpriteRenderer>();
+            //    sr.color = new Color(0.8f, 0.8f, 0.8f);
+            //}
         }
     }
 

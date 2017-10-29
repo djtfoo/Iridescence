@@ -1,0 +1,38 @@
+ {
+"firstGreeting": "Welcome to Village Galinios! I hope you find this place comfortable.",
+"greetings": [
+"Good day!",
+"Get some rest, dear."
+],
+"goodbye": "Take care!",
+"replies": [
+{
+"selection": "How's everything?",
+"index": 0,
+"dependency": -1,
+"dialogue": "Everything's fine, dear. Don't worry.",
+"haveReply": false
+},
+{
+"selection": "Quest",
+"index": 1,
+"dependency": -1,
+"dialogue": "Oh, good timing, I was just looking to get some help collecting some herbs.",
+"haveReply": true
+},
+{
+"selection": "Yes",
+"index": 2,
+"dependency": 1,
+"dialogue": "Thank you, dear! You can find some in Chloris Forest. Just a small amount will do.",
+"haveReply": false
+},
+{
+"selection": "No",
+"index": 3,
+"dependency": 1,
+"dialogue": "Oh, it's fine, dear, I understand you're busy.",
+"haveReply": false
+}
+]
+}

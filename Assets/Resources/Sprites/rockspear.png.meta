@@ -34,7 +34,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 512
   textureSettings:
     filterMode: -1
@@ -69,13 +69,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -6, y: 12}
-        - {x: -6, y: -1}
-        - {x: -4, y: -11}
-        - {x: -1, y: -12}
-        - {x: 3, y: -12}
-        - {x: 6, y: -8}
-        - {x: 6, y: 12}
+      - - {x: -3, y: 22}
+        - {x: -9, y: 20}
+        - {x: -9, y: 7}
+        - {x: -4, y: -20}
+        - {x: -2, y: -21}
+        - {x: 3, y: -21}
+        - {x: 9, y: 14}
+        - {x: 9, y: 19}
+        - {x: 6, y: 22}
     - name: rockspear_1
       rect:
         serializedVersion: 2
@@ -87,13 +89,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 10}
-        - {x: -8, y: -2}
-        - {x: -8, y: -8}
-        - {x: -2, y: -8}
-        - {x: 11, y: 0}
-        - {x: 11, y: 5}
-        - {x: 9, y: 10}
+      - - {x: 17, y: 18}
+        - {x: 4, y: 18}
+        - {x: -13, y: 4}
+        - {x: -13, y: -14}
+        - {x: -6, y: -14}
+        - {x: 19, y: 4}
+        - {x: 19, y: 13}
     - name: rockspear_2
       rect:
         serializedVersion: 2
@@ -105,16 +107,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 6}
-        - {x: -11, y: 4}
-        - {x: -12, y: 3}
-        - {x: -12, y: -1}
-        - {x: -11, y: -4}
-        - {x: 7, y: -6}
-        - {x: 10, y: -6}
-        - {x: 12, y: -5}
-        - {x: 12, y: 3}
-        - {x: 11, y: 6}
+      - - {x: 8, y: 9}
+        - {x: -15, y: 4}
+        - {x: -19, y: 3}
+        - {x: -21, y: 2}
+        - {x: -21, y: -1}
+        - {x: -20, y: -4}
+        - {x: 5, y: -9}
+        - {x: 21, y: -9}
+        - {x: 22, y: -5}
+        - {x: 22, y: 6}
+        - {x: 20, y: 9}
     - name: rockspear_3
       rect:
         serializedVersion: 2
@@ -126,13 +129,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -8, y: 10}
-        - {x: -8, y: 4}
-        - {x: 0, y: -8}
-        - {x: 8, y: -8}
-        - {x: 11, y: -6}
-        - {x: 11, y: 1}
-        - {x: 6, y: 10}
+      - - {x: -13, y: 18}
+        - {x: -13, y: 12}
+        - {x: -12, y: 9}
+        - {x: 5, y: -14}
+        - {x: 17, y: -14}
+        - {x: 19, y: -7}
+        - {x: 19, y: 3}
+        - {x: -5, y: 18}
     - name: rockspear_4
       rect:
         serializedVersion: 2
@@ -144,16 +148,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -4, y: 11}
-        - {x: -6, y: -4}
-        - {x: -6, y: -11}
-        - {x: -5, y: -12}
-        - {x: 2, y: -12}
-        - {x: 6, y: -11}
-        - {x: 6, y: -3}
-        - {x: 3, y: 10}
-        - {x: 1, y: 12}
-        - {x: -1, y: 12}
+      - - {x: -9, y: -17}
+        - {x: -6, y: -21}
+        - {x: 3, y: -21}
+        - {x: 9, y: -19}
+        - {x: 9, y: -6}
+        - {x: 4, y: 21}
+        - {x: 2, y: 22}
+        - {x: -2, y: 22}
+        - {x: -3, y: 20}
     - name: rockspear_5
       rect:
         serializedVersion: 2
@@ -165,13 +168,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 0, y: 10}
-        - {x: -11, y: 3}
-        - {x: -11, y: -3}
-        - {x: -9, y: -8}
-        - {x: 1, y: -8}
-        - {x: 8, y: 4}
-        - {x: 8, y: 10}
+      - - {x: 5, y: 18}
+        - {x: -19, y: 1}
+        - {x: -19, y: -12}
+        - {x: -13, y: -14}
+        - {x: -3, y: -14}
+        - {x: 13, y: 12}
+        - {x: 13, y: 16}
+        - {x: 12, y: 18}
     - name: rockspear_6
       rect:
         serializedVersion: 2
@@ -183,16 +187,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -3, y: 6}
-        - {x: -11, y: 6}
-        - {x: -12, y: 2}
-        - {x: -12, y: -4}
-        - {x: -10, y: -6}
-        - {x: -6, y: -6}
-        - {x: 11, y: -4}
-        - {x: 12, y: -1}
-        - {x: 12, y: 1}
-        - {x: 10, y: 3}
+      - - {x: -17, y: 9}
+        - {x: -21, y: 6}
+        - {x: -21, y: -3}
+        - {x: -19, y: -9}
+        - {x: -6, y: -9}
+        - {x: 21, y: -4}
+        - {x: 22, y: -1}
+        - {x: 22, y: 2}
+        - {x: 20, y: 3}
     - name: rockspear_7
       rect:
         serializedVersion: 2
@@ -204,15 +207,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 10}
-        - {x: -8, y: 10}
-        - {x: -11, y: 9}
-        - {x: -11, y: 1}
-        - {x: 0, y: -8}
-        - {x: 7, y: -8}
-        - {x: 8, y: -7}
-        - {x: 8, y: -4}
-        - {x: 2, y: 7}
+      - - {x: -14, y: 18}
+        - {x: -19, y: 12}
+        - {x: -19, y: 4}
+        - {x: 2, y: -12}
+        - {x: 8, y: -14}
+        - {x: 13, y: -14}
+        - {x: 13, y: -6}
+        - {x: -5, y: 18}
     outline: []
   spritePackingTag: 
   userData: 

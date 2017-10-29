@@ -46,6 +46,11 @@ public class PauseGame : MonoBehaviour {
         pauseCanvas.SetActive(pause);
     }
 
+    public static bool IsPaused()
+    {
+        return isPaused;
+    }
+
     /// <summary>
     ///  Function called by button click to set showing of stats menu
     /// </summary>

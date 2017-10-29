@@ -22,6 +22,8 @@ public class EnemyData : MonoBehaviour {
     public TextAsset behaviourXML;  // XML file containing behaviour data
     private EnemyBehaviour behaviour;
 
+    public GameObject toSpawn;  // if got any enemy to spawn
+
     Vector3 velocity;
 
 	// Use this for initialization

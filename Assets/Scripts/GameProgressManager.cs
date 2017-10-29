@@ -14,9 +14,13 @@ public class GameProgressManager : MonoBehaviour {
 
     public static GameProgressManager instance;
 
+    public System.Random rand;
+
     private void Awake()
     {
         instance = GetComponent<GameProgressManager>();
+
+        rand = new System.Random();
     }
 
     private void Update()

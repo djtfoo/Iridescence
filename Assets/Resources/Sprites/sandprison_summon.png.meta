@@ -30,7 +30,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 512
   textureSettings:
     filterMode: -1
@@ -65,14 +65,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: -21}
-        - {x: -35, y: -27}
-        - {x: -35, y: -40}
-        - {x: -29, y: -46}
-        - {x: 31, y: -46}
-        - {x: 33, y: -45}
-        - {x: 33, y: -27}
-        - {x: 30, y: -21}
+      - - {x: -13, y: -16}
+        - {x: -16, y: -17}
+        - {x: -35, y: -29}
+        - {x: -35, y: -35}
+        - {x: -27, y: -41}
+        - {x: 32, y: -41}
+        - {x: 33, y: -39}
+        - {x: 33, y: -26}
+        - {x: 13, y: -16}
     - name: sandprison_summon_1
       rect:
         serializedVersion: 2
@@ -84,16 +85,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 30, y: -26}
-        - {x: 12, y: -9}
-        - {x: -15, y: -9}
-        - {x: -23, y: -14}
-        - {x: -34, y: -34}
-        - {x: -34, y: -41}
-        - {x: -22, y: -46}
-        - {x: 13, y: -46}
-        - {x: 29, y: -44}
-        - {x: 30, y: -42}
+      - - {x: -11, y: -4}
+        - {x: -21, y: -10}
+        - {x: -34, y: -25}
+        - {x: -34, y: -39}
+        - {x: -28, y: -41}
+        - {x: 25, y: -41}
+        - {x: 30, y: -38}
+        - {x: 30, y: -17}
+        - {x: 13, y: -4}
     - name: sandprison_summon_2
       rect:
         serializedVersion: 2
@@ -105,14 +105,12 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -17, y: -8}
-        - {x: -26, y: -19}
-        - {x: -26, y: -44}
-        - {x: -14, y: -47}
-        - {x: 25, y: -47}
-        - {x: 30, y: -43}
-        - {x: 30, y: -9}
-        - {x: 26, y: -8}
+      - - {x: -20, y: -3}
+        - {x: -26, y: -10}
+        - {x: -26, y: -42}
+        - {x: 30, y: -42}
+        - {x: 30, y: -7}
+        - {x: 20, y: -3}
     - name: sandprison_summon_3
       rect:
         serializedVersion: 2
@@ -124,14 +122,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -14, y: 5}
-        - {x: -27, y: -24}
-        - {x: -27, y: -39}
-        - {x: -21, y: -47}
-        - {x: 26, y: -47}
-        - {x: 30, y: -45}
-        - {x: 30, y: -16}
-        - {x: 18, y: 5}
+      - - {x: -14, y: 10}
+        - {x: -27, y: 0}
+        - {x: -27, y: -37}
+        - {x: -17, y: -42}
+        - {x: 27, y: -42}
+        - {x: 30, y: -34}
+        - {x: 30, y: -12}
+        - {x: 10, y: 10}
     outline: []
   spritePackingTag: 
   userData: 

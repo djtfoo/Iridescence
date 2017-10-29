@@ -58,7 +58,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 512
   textureSettings:
     filterMode: -1
@@ -155,17 +155,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 15, y: 24}
-        - {x: 12, y: 30}
-        - {x: -11, y: 30}
-        - {x: -20, y: 27}
-        - {x: -21, y: 21}
-        - {x: -21, y: -22}
-        - {x: -18, y: -32}
-        - {x: 14, y: -32}
-        - {x: 20, y: -18}
-        - {x: 20, y: -5}
-        - {x: 18, y: 8}
+      - - {x: -12, y: 29}
+        - {x: -20, y: 12}
+        - {x: -21, y: 3}
+        - {x: -21, y: -21}
+        - {x: -16, y: -32}
+        - {x: 20, y: -32}
+        - {x: 20, y: 29}
     - name: human idle_4
       rect:
         serializedVersion: 2
@@ -232,13 +228,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -15, y: 30}
-        - {x: -18, y: 21}
-        - {x: -18, y: -32}
-        - {x: 9, y: -32}
-        - {x: 18, y: -17}
-        - {x: 18, y: 28}
-        - {x: 14, y: 30}
+      - - {x: -16, y: 29}
+        - {x: -18, y: 22}
+        - {x: -18, y: -31}
+        - {x: -13, y: -32}
+        - {x: 10, y: -32}
+        - {x: 18, y: -20}
+        - {x: 18, y: 27}
+        - {x: 13, y: 29}
     - name: human idle_8
       rect:
         serializedVersion: 2
@@ -304,13 +301,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -9, y: 30}
+      - - {x: -14, y: 29}
         - {x: -16, y: 28}
         - {x: -16, y: -32}
         - {x: 10, y: -32}
-        - {x: 14, y: -13}
-        - {x: 14, y: 24}
-        - {x: 11, y: 30}
+        - {x: 14, y: -14}
+        - {x: 14, y: 25}
+        - {x: 13, y: 29}
     - name: human idle_12
       rect:
         serializedVersion: 2
@@ -375,13 +372,11 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 30}
-        - {x: -18, y: 19}
+      - - {x: -18, y: 29}
         - {x: -18, y: -32}
-        - {x: 12, y: -32}
-        - {x: 18, y: -28}
-        - {x: 18, y: 25}
-        - {x: 13, y: 30}
+        - {x: 11, y: -32}
+        - {x: 18, y: -25}
+        - {x: 18, y: 29}
     - name: human idle_16
       rect:
         serializedVersion: 2
@@ -526,15 +521,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -9, y: 30}
-        - {x: -17, y: 21}
-        - {x: -18, y: 19}
-        - {x: -18, y: -25}
-        - {x: -16, y: -32}
-        - {x: 14, y: -32}
-        - {x: 18, y: -25}
-        - {x: 18, y: 15}
-        - {x: 13, y: 30}
+      - - {x: 8, y: 29}
+        - {x: -9, y: 29}
+        - {x: -17, y: 20}
+        - {x: -17, y: 7}
+        - {x: -18, y: 3}
+        - {x: -18, y: -20}
+        - {x: -11, y: -32}
+        - {x: 10, y: -32}
+        - {x: 12, y: -29}
+        - {x: 18, y: -27}
+        - {x: 18, y: 26}
     - name: human idle_24
       rect:
         serializedVersion: 2
@@ -601,13 +598,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -14, y: 30}
-        - {x: -15, y: 27}
-        - {x: -15, y: -8}
-        - {x: -8, y: -32}
+      - - {x: -14, y: 29}
+        - {x: -15, y: 28}
+        - {x: -15, y: 4}
+        - {x: -10, y: -31}
+        - {x: -9, y: -32}
         - {x: 15, y: -32}
         - {x: 15, y: 27}
-        - {x: 7, y: 30}
+        - {x: 8, y: 29}
     - name: human idle_28
       rect:
         serializedVersion: 2
@@ -678,16 +676,12 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 14, y: 30}
-        - {x: -13, y: 30}
-        - {x: -18, y: 28}
-        - {x: -18, y: -25}
-        - {x: -12, y: -30}
+      - - {x: -14, y: 29}
+        - {x: -18, y: 27}
+        - {x: -18, y: -24}
         - {x: -8, y: -32}
-        - {x: 14, y: -32}
-        - {x: 17, y: -30}
-        - {x: 18, y: -25}
-        - {x: 18, y: 8}
+        - {x: 18, y: -32}
+        - {x: 18, y: 29}
     outline: []
   spritePackingTag: 
   userData: 

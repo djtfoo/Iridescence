@@ -50,6 +50,8 @@ public class SpriteAnimator : MonoBehaviour {
 
     private bool loop;  // whether this current animation will loop or not
 
+    public bool animationComplete = false;
+
     // repeating or not
 
     // for idle ONLY
@@ -91,46 +93,46 @@ public class SpriteAnimator : MonoBehaviour {
 
         timeElapsed += Time.deltaTime;
 
-        if (isIdleAnimation)
-        {
-            if (timeElapsed >= currSprAnimation.frameTime)
-            {
-                timeElapsed -= currSprAnimation.frameTime;
-                if (isBlinking)
-                {
-                    currFrame += direction;
-                    if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection) - 1)
-                    {
-                        direction = -1;
-                    }
-                    else if (currFrame <= currSprAnimation.framesPerStrip * currDirection)
-                    {
-                        direction = 1;
-                        isBlinking = false;
-                    }
-                }
-                else
-                {
-                    ++currFrame;
-                    if (currFrame >= currSprAnimation.framesPerStrip * currDirection + 2)
-                    {
-                        int rand = (int)Random.Range(0f, 2f);
-                        if (rand == 0)
-                        {   // normal idle
-                            currFrame -= 2;
-                        }
-                        else
-                        {   // blink loop
-                            isBlinking = true;
-                        }
-                    }
-                }
-
-                sr.sprite = currSprAnimation.sprites[currFrame];
-            }
-
-            return;
-        }   // end of idle animation
+        //if (isIdleAnimation)
+        //{
+        //    if (timeElapsed >= currSprAnimation.frameTime)
+        //    {
+        //        timeElapsed -= currSprAnimation.frameTime;
+        //        if (isBlinking)
+        //        {
+        //            currFrame += direction;
+        //            if (currFrame >= currSprAnimation.framesPerStrip * (1 + currDirection) - 1)
+        //            {
+        //                direction = -1;
+        //            }
+        //            else if (currFrame <= currSprAnimation.framesPerStrip * currDirection)
+        //            {
+        //                direction = 1;
+        //                isBlinking = false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ++currFrame;
+        //            if (currFrame >= currSprAnimation.framesPerStrip * currDirection + 2)
+        //            {
+        //                int rand = (int)Random.Range(0f, 2f);
+        //                if (rand == 0)
+        //                {   // normal idle
+        //                    currFrame -= 2;
+        //                }
+        //                else
+        //                {   // blink loop
+        //                    isBlinking = true;
+        //                }
+        //            }
+        //        }
+        //
+        //        sr.sprite = currSprAnimation.sprites[currFrame];
+        //    }
+        //
+        //    return;
+        //}   // end of idle animation
 
         if (timeElapsed >= currSprAnimation.frameTime)
         {
@@ -162,11 +164,15 @@ public class SpriteAnimator : MonoBehaviour {
                     {
                         // for attacking, etc
                         //this.gameObject.SendMessageUpwards("UseSkill");
-                        transform.parent.GetComponent<PlayerAttack>().UseSkill();
-                        PlayerAction.instance.SetStopAttacking();
+                        PlayerAttack player = transform.parent.GetComponent<PlayerAttack>();
+                        if (player != null) {
+                            player.UseSkill();
+                            PlayerAction.instance.SetStopAttacking();
+                        }
 
                         // change animation back to idle
                         ChangeAnimation("Idle", true);
+                        animationComplete = true;   // only for non-player (i.e. monsters)
                     }
                 }
             }
@@ -183,10 +189,10 @@ public class SpriteAnimator : MonoBehaviour {
 
         isBlinking = false;
 
-        if (animationName == "Idle")
-            isIdleAnimation = true;
-        else
-            isIdleAnimation = false;
+        //if (animationName == "Idle")
+        //    isIdleAnimation = true;
+        //else
+        //    isIdleAnimation = false;
 
         this.loop = loop;
     }

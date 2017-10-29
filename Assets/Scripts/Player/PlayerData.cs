@@ -229,6 +229,7 @@ public class PlayerData {
 
         // increase player level
         ++playerLevel;
+        GameHUD.instance.playerLevel.text = "LEVEL " + playerLevel;
 
         // increase HP & MP
         maxHP += 10;

@@ -9,7 +9,7 @@ public class PortalArrowEventHandler : MonoBehaviour {
 #if LEVELEDITOR
 
 #else
-        if (EventSystem.current.IsPointerOverGameObject())
+        /*if (EventSystem.current.IsPointerOverGameObject())
             return;
 
         if (DialogueManager.inDialogue)
@@ -25,6 +25,7 @@ public class PortalArrowEventHandler : MonoBehaviour {
         PlayerAction.instance.SetMoveTo(new Vector3(transform.parent.position.x, transform.parent.position.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetDestination(new Vector3(RaycastInfo.hit2D.point.x, RaycastInfo.hit2D.point.y, PlayerAction.instance.transform.position.z));
         //PlayerAction.instance.SetVelocity((PlayerAction.instance.GetDestination() - PlayerAction.instance.transform.position).normalized);
+        */
 #endif
     }
 

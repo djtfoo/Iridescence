@@ -1,0 +1,972 @@
+fileFormatVersion: 2
+guid: 40e65deb8b63b1d49a623df15945e8f1
+timeCreated: 1503994382
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mc_spritesheet_atk_range_0
+    21300002: mc_spritesheet_atk_range_1
+    21300004: mc_spritesheet_atk_range_2
+    21300006: mc_spritesheet_atk_range_3
+    21300008: mc_spritesheet_atk_range_4
+    21300010: mc_spritesheet_atk_range_5
+    21300012: mc_spritesheet_atk_range_6
+    21300014: mc_spritesheet_atk_range_7
+    21300016: mc_spritesheet_atk_range_8
+    21300018: mc_spritesheet_atk_range_9
+    21300020: mc_spritesheet_atk_range_10
+    21300022: mc_spritesheet_atk_range_11
+    21300024: mc_spritesheet_atk_range_12
+    21300026: mc_spritesheet_atk_range_13
+    21300028: mc_spritesheet_atk_range_14
+    21300030: mc_spritesheet_atk_range_15
+    21300032: mc_spritesheet_atk_range_16
+    21300034: mc_spritesheet_atk_range_17
+    21300036: mc_spritesheet_atk_range_18
+    21300038: mc_spritesheet_atk_range_19
+    21300040: mc_spritesheet_atk_range_20
+    21300042: mc_spritesheet_atk_range_21
+    21300044: mc_spritesheet_atk_range_22
+    21300046: mc_spritesheet_atk_range_23
+    21300048: mc_spritesheet_atk_range_24
+    21300050: mc_spritesheet_atk_range_25
+    21300052: mc_spritesheet_atk_range_26
+    21300054: mc_spritesheet_atk_range_27
+    21300056: mc_spritesheet_atk_range_28
+    21300058: mc_spritesheet_atk_range_29
+    21300060: mc_spritesheet_atk_range_30
+    21300062: mc_spritesheet_atk_range_31
+    21300064: mc_spritesheet_atk_range_32
+    21300066: mc_spritesheet_atk_range_33
+    21300068: mc_spritesheet_atk_range_34
+    21300070: mc_spritesheet_atk_range_35
+    21300072: mc_spritesheet_atk_range_36
+    21300074: mc_spritesheet_atk_range_37
+    21300076: mc_spritesheet_atk_range_38
+    21300078: mc_spritesheet_atk_range_39
+    21300080: mc_spritesheet_atk_range_40
+    21300082: mc_spritesheet_atk_range_41
+    21300084: mc_spritesheet_atk_range_42
+    21300086: mc_spritesheet_atk_range_43
+    21300088: mc_spritesheet_atk_range_44
+    21300090: mc_spritesheet_atk_range_45
+    21300092: mc_spritesheet_atk_range_46
+    21300094: mc_spritesheet_atk_range_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mc_spritesheet_atk_range_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -13, y: 32}
+        - {x: -17, y: 27}
+        - {x: -18, y: 11}
+        - {x: -18, y: -29}
+        - {x: -17, y: -32}
+        - {x: 13, y: -32}
+        - {x: 17, y: -10}
+        - {x: 17, y: 26}
+    - name: mc_spritesheet_atk_range_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: -32}
+        - {x: 15, y: -32}
+        - {x: 17, y: -28}
+        - {x: 17, y: 32}
+        - {x: -13, y: 32}
+        - {x: -18, y: 28}
+    - name: mc_spritesheet_atk_range_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: -7}
+        - {x: -17, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: -24}
+        - {x: 17, y: 32}
+        - {x: -14, y: 32}
+        - {x: -18, y: 29}
+    - name: mc_spritesheet_atk_range_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -18, y: 31}
+        - {x: -18, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: -16}
+        - {x: 17, y: 26}
+        - {x: 16, y: 32}
+    - name: mc_spritesheet_atk_range_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -18, y: 31}
+        - {x: -18, y: -8}
+        - {x: -16, y: -32}
+        - {x: 13, y: -32}
+        - {x: 17, y: -14}
+        - {x: 17, y: 26}
+        - {x: 15, y: 32}
+    - name: mc_spritesheet_atk_range_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -18, y: 31}
+        - {x: -18, y: -32}
+        - {x: 13, y: -32}
+        - {x: 17, y: -30}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: -23}
+        - {x: -16, y: -31}
+        - {x: -13, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: -7}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: 9}
+        - {x: -13, y: -30}
+        - {x: -9, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: -13}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -17}
+        - {x: -6, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: 2}
+        - {x: 17, y: 29}
+    - name: mc_spritesheet_atk_range_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -17}
+        - {x: -6, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: 2}
+        - {x: 17, y: 29}
+    - name: mc_spritesheet_atk_range_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -18, y: 28}
+        - {x: -18, y: 2}
+        - {x: -6, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: 2}
+        - {x: 17, y: 29}
+        - {x: 13, y: 32}
+    - name: mc_spritesheet_atk_range_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -18, y: 28}
+        - {x: -18, y: 2}
+        - {x: -6, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: 2}
+        - {x: 17, y: 29}
+        - {x: 13, y: 32}
+    - name: mc_spritesheet_atk_range_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -20, y: 29}
+        - {x: -20, y: -1}
+        - {x: -16, y: -31}
+        - {x: -16, y: -32}
+        - {x: 7, y: -32}
+        - {x: 14, y: -28}
+        - {x: 14, y: 28}
+        - {x: 10, y: 32}
+    - name: mc_spritesheet_atk_range_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 32}
+        - {x: -19, y: 32}
+        - {x: -20, y: 28}
+        - {x: -20, y: -6}
+        - {x: -13, y: -32}
+        - {x: 6, y: -32}
+        - {x: 9, y: -30}
+        - {x: 14, y: 7}
+        - {x: 14, y: 28}
+    - name: mc_spritesheet_atk_range_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 32}
+        - {x: -20, y: -8}
+        - {x: -11, y: -32}
+        - {x: 6, y: -32}
+        - {x: 9, y: -30}
+        - {x: 14, y: 7}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_range_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 32}
+        - {x: -20, y: -19}
+        - {x: -11, y: -32}
+        - {x: 6, y: -32}
+        - {x: 9, y: -30}
+        - {x: 14, y: -9}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_range_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 32}
+        - {x: -20, y: -19}
+        - {x: -11, y: -32}
+        - {x: 6, y: -32}
+        - {x: 9, y: -30}
+        - {x: 14, y: -9}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_range_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 32}
+        - {x: -20, y: -8}
+        - {x: -11, y: -32}
+        - {x: 6, y: -32}
+        - {x: 9, y: -30}
+        - {x: 14, y: 7}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_range_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -21}
+        - {x: -13, y: -32}
+        - {x: 9, y: -32}
+        - {x: 15, y: -30}
+        - {x: 17, y: -19}
+        - {x: 17, y: 31}
+    - name: mc_spritesheet_atk_range_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -22, y: 12}
+        - {x: -22, y: -9}
+        - {x: -13, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 32}
+        - {x: -21, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 32}
+        - {x: -22, y: -24}
+        - {x: -21, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 32}
+        - {x: -21, y: -26}
+        - {x: -20, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -18, y: 27}
+        - {x: -22, y: 8}
+        - {x: -22, y: -3}
+        - {x: -10, y: -32}
+        - {x: 16, y: -32}
+        - {x: 17, y: -30}
+        - {x: 17, y: 29}
+        - {x: 16, y: 32}
+    - name: mc_spritesheet_atk_range_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -32}
+        - {x: 13, y: -32}
+        - {x: 13, y: -31}
+        - {x: 17, y: -14}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_range_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: -27}
+        - {x: -15, y: -32}
+        - {x: 4, y: -32}
+        - {x: 13, y: -29}
+        - {x: 17, y: -12}
+        - {x: 17, y: 24}
+        - {x: 15, y: 32}
+    - name: mc_spritesheet_atk_range_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -16, y: 32}
+        - {x: -18, y: 25}
+        - {x: -18, y: -9}
+        - {x: -15, y: -24}
+        - {x: -12, y: -32}
+        - {x: 4, y: -32}
+        - {x: 12, y: -28}
+        - {x: 17, y: -9}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_range_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -18, y: 28}
+        - {x: -18, y: -14}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 17, y: -15}
+        - {x: 17, y: 28}
+        - {x: 15, y: 32}
+    - name: mc_spritesheet_atk_range_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -18, y: 26}
+        - {x: -18, y: -10}
+        - {x: -13, y: -32}
+        - {x: 10, y: -32}
+        - {x: 17, y: -15}
+        - {x: 17, y: 28}
+        - {x: 15, y: 32}
+    - name: mc_spritesheet_atk_range_29
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: -26}
+        - {x: -14, y: -32}
+        - {x: 10, y: -32}
+        - {x: 17, y: -15}
+        - {x: 17, y: 28}
+        - {x: 15, y: 32}
+    - name: mc_spritesheet_atk_range_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -32}
+        - {x: 13, y: -32}
+        - {x: 18, y: -15}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -17, y: 30}
+        - {x: -17, y: -32}
+        - {x: 12, y: -32}
+        - {x: 22, y: -16}
+        - {x: 22, y: 32}
+    - name: mc_spritesheet_atk_range_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: 32}
+        - {x: -17, y: 32}
+        - {x: -17, y: -32}
+        - {x: 9, y: -32}
+        - {x: 11, y: -29}
+        - {x: 11, y: -26}
+        - {x: 21, y: -4}
+    - name: mc_spritesheet_atk_range_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -32}
+        - {x: 12, y: -32}
+        - {x: 22, y: -10}
+        - {x: 22, y: 22}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -32}
+        - {x: 10, y: -32}
+        - {x: 21, y: -13}
+        - {x: 21, y: 25}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -17, y: 31}
+        - {x: -17, y: -32}
+        - {x: 11, y: -32}
+        - {x: 22, y: -16}
+        - {x: 22, y: 31}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_range_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -11, y: 32}
+        - {x: -15, y: 28}
+        - {x: -15, y: -29}
+        - {x: -9, y: -32}
+        - {x: 16, y: -32}
+        - {x: 19, y: 1}
+        - {x: 19, y: 28}
+    - name: mc_spritesheet_atk_range_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 32}
+        - {x: -15, y: 28}
+        - {x: -15, y: -12}
+        - {x: -9, y: -32}
+        - {x: 10, y: -32}
+        - {x: 19, y: -20}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 32}
+        - {x: -15, y: 29}
+        - {x: -15, y: -6}
+        - {x: -9, y: -32}
+        - {x: 10, y: -32}
+        - {x: 15, y: -28}
+        - {x: 19, y: -5}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_39
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -15, y: -13}
+        - {x: -12, y: -32}
+        - {x: 10, y: -32}
+        - {x: 19, y: -5}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_40
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -15, y: -13}
+        - {x: -12, y: -32}
+        - {x: 10, y: -32}
+        - {x: 19, y: -5}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_41
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 32}
+        - {x: -15, y: 29}
+        - {x: -15, y: -6}
+        - {x: -9, y: -32}
+        - {x: 10, y: -32}
+        - {x: 15, y: -28}
+        - {x: 19, y: -5}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_range_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -2}
+        - {x: -9, y: -32}
+        - {x: 18, y: -32}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_43
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -4}
+        - {x: -9, y: -32}
+        - {x: 7, y: -32}
+        - {x: 18, y: -18}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: 3}
+        - {x: -11, y: -32}
+        - {x: 12, y: -32}
+        - {x: 18, y: -7}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: 3}
+        - {x: -11, y: -32}
+        - {x: 12, y: -32}
+        - {x: 18, y: -7}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_range_46
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 32}
+        - {x: -17, y: 32}
+        - {x: -17, y: 5}
+        - {x: -9, y: -30}
+        - {x: -7, y: -32}
+        - {x: 6, y: -32}
+        - {x: 15, y: -6}
+        - {x: 18, y: 3}
+        - {x: 18, y: 27}
+    - name: mc_spritesheet_atk_range_47
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 32}
+        - {x: -17, y: 32}
+        - {x: -17, y: 5}
+        - {x: -9, y: -30}
+        - {x: -7, y: -32}
+        - {x: 6, y: -32}
+        - {x: 15, y: -6}
+        - {x: 18, y: 3}
+        - {x: 18, y: 27}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

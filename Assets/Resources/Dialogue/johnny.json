@@ -1,0 +1,31 @@
+ {
+"firstGreeting": "Hi! Are you a traveller? That's so cool!",
+"greetings": [
+"Hello!",
+"Hi!"
+],
+"goodbye": "Bye-bye!",
+"replies": [
+{
+"selection": "How's everything?",
+"index": 0,
+"dependency": -1,
+"dialogue": "I'm having lots of fun!",
+"haveReply": false
+},
+{
+"selection": "Quest",
+"index": 1,
+"dependency": -1,
+"dialogue": "Play with me!",
+"haveReply": true
+},
+{
+"selection": "OK!",
+"index": 2,
+"dependency": 1,
+"dialogue": "...You're no fun!",
+"haveReply": false
+}
+]
+}

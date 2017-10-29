@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 // singleton information of HUD
 public class GameHUD : MonoBehaviour {
@@ -9,6 +9,9 @@ public class GameHUD : MonoBehaviour {
 
     [Tooltip("Player's MP bar")]
     public Transform MPBar;
+
+    [Tooltip("Text for Player's Level")]
+    public Text playerLevel;
 
     [Tooltip("HUD that shows information of highlighted GameObject")]
     public HUDHighlightInfo highlightInfo;

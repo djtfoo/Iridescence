@@ -81,6 +81,9 @@ public class PlayerAction : MonoBehaviour {
         // SET ELEMENTAL BARS
         playerData.ResetElementalChargeBar1();
         playerData.ResetElementalChargeBar2();
+
+        // SET PLAYER LEVEL
+        GameHUD.instance.playerLevel.text = "LEVEL " + playerData.playerLevel;
     }
 
     public bool UsePotion(int slotIdx)
@@ -168,6 +171,11 @@ public class PlayerAction : MonoBehaviour {
         {
             pauseManager.SetPause(true);
             pauseManager.SetSkillsMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.V))   // quests menu
+        {
+            pauseManager.SetPause(true);
+            pauseManager.SetQuestsMenu();
         }
 
         if (doAttack)

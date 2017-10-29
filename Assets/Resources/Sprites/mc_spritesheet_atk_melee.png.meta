@@ -1,0 +1,1064 @@
+fileFormatVersion: 2
+guid: 7fca8bac33335c24c9a7d495c3e6f273
+timeCreated: 1503994374
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mc_spritesheet_atk_melee_0
+    21300002: mc_spritesheet_atk_melee_1
+    21300004: mc_spritesheet_atk_melee_2
+    21300006: mc_spritesheet_atk_melee_3
+    21300008: mc_spritesheet_atk_melee_4
+    21300010: mc_spritesheet_atk_melee_5
+    21300012: mc_spritesheet_atk_melee_6
+    21300014: mc_spritesheet_atk_melee_7
+    21300016: mc_spritesheet_atk_melee_8
+    21300018: mc_spritesheet_atk_melee_9
+    21300020: mc_spritesheet_atk_melee_10
+    21300022: mc_spritesheet_atk_melee_11
+    21300024: mc_spritesheet_atk_melee_12
+    21300026: mc_spritesheet_atk_melee_13
+    21300028: mc_spritesheet_atk_melee_14
+    21300030: mc_spritesheet_atk_melee_15
+    21300032: mc_spritesheet_atk_melee_16
+    21300034: mc_spritesheet_atk_melee_17
+    21300036: mc_spritesheet_atk_melee_18
+    21300038: mc_spritesheet_atk_melee_19
+    21300040: mc_spritesheet_atk_melee_20
+    21300042: mc_spritesheet_atk_melee_21
+    21300044: mc_spritesheet_atk_melee_22
+    21300046: mc_spritesheet_atk_melee_23
+    21300048: mc_spritesheet_atk_melee_24
+    21300050: mc_spritesheet_atk_melee_25
+    21300052: mc_spritesheet_atk_melee_26
+    21300054: mc_spritesheet_atk_melee_27
+    21300056: mc_spritesheet_atk_melee_28
+    21300058: mc_spritesheet_atk_melee_29
+    21300060: mc_spritesheet_atk_melee_30
+    21300062: mc_spritesheet_atk_melee_31
+    21300064: mc_spritesheet_atk_melee_32
+    21300066: mc_spritesheet_atk_melee_33
+    21300068: mc_spritesheet_atk_melee_34
+    21300070: mc_spritesheet_atk_melee_35
+    21300072: mc_spritesheet_atk_melee_36
+    21300074: mc_spritesheet_atk_melee_37
+    21300076: mc_spritesheet_atk_melee_38
+    21300078: mc_spritesheet_atk_melee_39
+    21300080: mc_spritesheet_atk_melee_40
+    21300082: mc_spritesheet_atk_melee_41
+    21300084: mc_spritesheet_atk_melee_42
+    21300086: mc_spritesheet_atk_melee_43
+    21300088: mc_spritesheet_atk_melee_44
+    21300090: mc_spritesheet_atk_melee_45
+    21300092: mc_spritesheet_atk_melee_46
+    21300094: mc_spritesheet_atk_melee_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mc_spritesheet_atk_melee_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -13, y: 32}
+        - {x: -17, y: 27}
+        - {x: -18, y: 11}
+        - {x: -18, y: -29}
+        - {x: -17, y: -32}
+        - {x: 13, y: -32}
+        - {x: 17, y: -10}
+        - {x: 17, y: 26}
+    - name: mc_spritesheet_atk_melee_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 32}
+        - {x: -22, y: 32}
+        - {x: -25, y: 17}
+        - {x: -25, y: -16}
+        - {x: -19, y: -17}
+        - {x: -16, y: -17}
+        - {x: -14, y: -15}
+        - {x: -17, y: -7}
+        - {x: -13, y: -17}
+        - {x: -13, y: -32}
+        - {x: 13, y: -32}
+        - {x: 21, y: -17}
+        - {x: 21, y: 17}
+    - name: mc_spritesheet_atk_melee_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 32}
+        - {x: -23, y: 32}
+        - {x: -25, y: 20}
+        - {x: -25, y: -5}
+        - {x: -20, y: -15}
+        - {x: -16, y: -12}
+        - {x: -16, y: -9}
+        - {x: -15, y: -12}
+        - {x: -13, y: -32}
+        - {x: 13, y: -32}
+        - {x: 21, y: -13}
+        - {x: 21, y: 18}
+    - name: mc_spritesheet_atk_melee_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 24}
+        - {x: -22, y: -19}
+        - {x: -16, y: -32}
+        - {x: 19, y: -32}
+        - {x: 21, y: -25}
+        - {x: 21, y: 23}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_melee_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 24}
+        - {x: -17, y: 18}
+        - {x: -21, y: 5}
+        - {x: -22, y: 0}
+        - {x: -22, y: -21}
+        - {x: -13, y: -32}
+        - {x: 17, y: -32}
+        - {x: 21, y: -24}
+        - {x: 21, y: 9}
+        - {x: 14, y: 24}
+    - name: mc_spritesheet_atk_melee_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 24}
+        - {x: -22, y: 13}
+        - {x: -22, y: -13}
+        - {x: -21, y: -17}
+        - {x: -9, y: -32}
+        - {x: 16, y: -32}
+        - {x: 17, y: -30}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_melee_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: -23}
+        - {x: -16, y: -31}
+        - {x: -13, y: -32}
+        - {x: 12, y: -32}
+        - {x: 17, y: -7}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_melee_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: -6}
+        - {x: 14, y: -12}
+        - {x: 12, y: -16}
+        - {x: 15, y: -19}
+        - {x: 19, y: -18}
+        - {x: 19, y: 21}
+        - {x: 16, y: 32}
+        - {x: -17, y: 32}
+        - {x: -22, y: 19}
+        - {x: -22, y: -10}
+        - {x: -16, y: -30}
+        - {x: -11, y: -32}
+        - {x: 8, y: -32}
+        - {x: 10, y: -30}
+        - {x: 11, y: -14}
+        - {x: 14, y: -12}
+    - name: mc_spritesheet_atk_melee_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 32}
+        - {x: -22, y: -32}
+        - {x: 17, y: -32}
+        - {x: 19, y: -19}
+        - {x: 19, y: 32}
+    - name: mc_spritesheet_atk_melee_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 24}
+        - {x: -20, y: -32}
+        - {x: 8, y: -32}
+        - {x: 17, y: -24}
+        - {x: 17, y: 23}
+        - {x: 10, y: 24}
+    - name: mc_spritesheet_atk_melee_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 24}
+        - {x: -19, y: 23}
+        - {x: -19, y: -10}
+        - {x: -16, y: -32}
+        - {x: 8, y: -32}
+        - {x: 17, y: -24}
+        - {x: 17, y: 23}
+        - {x: 10, y: 24}
+    - name: mc_spritesheet_atk_melee_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 24}
+        - {x: -18, y: 21}
+        - {x: -18, y: -16}
+        - {x: -12, y: -32}
+        - {x: 11, y: -32}
+        - {x: 17, y: -18}
+        - {x: 17, y: 18}
+        - {x: 12, y: 24}
+    - name: mc_spritesheet_atk_melee_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -20, y: 29}
+        - {x: -20, y: -1}
+        - {x: -16, y: -31}
+        - {x: -16, y: -32}
+        - {x: 7, y: -32}
+        - {x: 14, y: -28}
+        - {x: 14, y: 28}
+        - {x: 10, y: 32}
+    - name: mc_spritesheet_atk_melee_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 32}
+        - {x: -22, y: -26}
+        - {x: -18, y: -32}
+        - {x: 10, y: -32}
+        - {x: 14, y: -14}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_melee_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 32}
+        - {x: -22, y: 24}
+        - {x: -22, y: -14}
+        - {x: -17, y: -32}
+        - {x: 12, y: -32}
+        - {x: 14, y: -21}
+        - {x: 14, y: 32}
+    - name: mc_spritesheet_atk_melee_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9, y: 23}
+        - {x: -21, y: 23}
+        - {x: -21, y: -17}
+        - {x: -13, y: -32}
+        - {x: 20, y: -32}
+        - {x: 20, y: -15}
+        - {x: 14, y: 19}
+    - name: mc_spritesheet_atk_melee_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 23}
+        - {x: -20, y: -17}
+        - {x: -17, y: -32}
+        - {x: 20, y: -32}
+        - {x: 20, y: 20}
+        - {x: 11, y: 23}
+    - name: mc_spritesheet_atk_melee_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 23}
+        - {x: -20, y: 23}
+        - {x: -20, y: -12}
+        - {x: -17, y: -32}
+        - {x: 20, y: -32}
+        - {x: 20, y: -2}
+        - {x: 18, y: 21}
+    - name: mc_spritesheet_atk_melee_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -21}
+        - {x: -13, y: -32}
+        - {x: 9, y: -32}
+        - {x: 15, y: -30}
+        - {x: 17, y: -19}
+        - {x: 17, y: 31}
+    - name: mc_spritesheet_atk_melee_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -18, y: 27}
+        - {x: -18, y: 14}
+        - {x: -14, y: -30}
+        - {x: -12, y: -32}
+        - {x: 11, y: -32}
+        - {x: 17, y: -13}
+        - {x: 17, y: 29}
+        - {x: 16, y: 32}
+    - name: mc_spritesheet_atk_melee_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 32}
+        - {x: -18, y: -12}
+        - {x: -16, y: -26}
+        - {x: -12, y: -32}
+        - {x: 11, y: -32}
+        - {x: 17, y: -16}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_melee_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 24}
+        - {x: -20, y: 15}
+        - {x: -20, y: -18}
+        - {x: -18, y: -28}
+        - {x: -11, y: -32}
+        - {x: -4, y: -32}
+        - {x: -1, y: -29}
+        - {x: -1, y: -27}
+        - {x: -1, y: -29}
+        - {x: 3, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 21}
+        - {x: 14, y: 24}
+    - name: mc_spritesheet_atk_melee_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 24}
+        - {x: -20, y: 21}
+        - {x: -20, y: -23}
+        - {x: -16, y: -32}
+        - {x: -4, y: -32}
+        - {x: -1, y: -29}
+        - {x: -1, y: -27}
+        - {x: -1, y: -29}
+        - {x: 1, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 18}
+        - {x: 13, y: 24}
+    - name: mc_spritesheet_atk_melee_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 24}
+        - {x: -18, y: 19}
+        - {x: -18, y: -1}
+        - {x: -17, y: -28}
+        - {x: -11, y: -32}
+        - {x: -4, y: -32}
+        - {x: -1, y: -29}
+        - {x: -1, y: -27}
+        - {x: -1, y: -29}
+        - {x: 1, y: -32}
+        - {x: 17, y: -32}
+        - {x: 17, y: 18}
+        - {x: 13, y: 24}
+    - name: mc_spritesheet_atk_melee_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -18, y: 32}
+        - {x: -18, y: -32}
+        - {x: 13, y: -32}
+        - {x: 13, y: -31}
+        - {x: 17, y: -14}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_melee_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: -12}
+        - {x: 14, y: -10}
+        - {x: 15, y: -11}
+        - {x: 13, y: -15}
+        - {x: 15, y: -17}
+        - {x: 18, y: -18}
+        - {x: 24, y: -13}
+        - {x: 24, y: 18}
+        - {x: 22, y: 32}
+        - {x: -15, y: 32}
+        - {x: -22, y: 27}
+        - {x: -22, y: -18}
+        - {x: -20, y: -32}
+        - {x: 11, y: -32}
+        - {x: 12, y: -30}
+        - {x: 12, y: -25}
+        - {x: 11, y: -17}
+    - name: mc_spritesheet_atk_melee_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 32}
+        - {x: -22, y: 24}
+        - {x: -22, y: -9}
+        - {x: -15, y: -11}
+        - {x: -12, y: -10}
+        - {x: -12, y: -6}
+        - {x: -12, y: -22}
+        - {x: -13, y: -25}
+        - {x: -13, y: -30}
+        - {x: -12, y: -32}
+        - {x: 15, y: -32}
+        - {x: 24, y: -19}
+        - {x: 24, y: 18}
+        - {x: 23, y: 32}
+    - name: mc_spritesheet_atk_melee_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 24}
+        - {x: -13, y: 24}
+        - {x: -22, y: 14}
+        - {x: -22, y: -21}
+        - {x: -21, y: -25}
+        - {x: -9, y: -32}
+        - {x: 12, y: -32}
+        - {x: 21, y: -18}
+        - {x: 21, y: 14}
+        - {x: 20, y: 21}
+    - name: mc_spritesheet_atk_melee_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 24}
+        - {x: -22, y: 10}
+        - {x: -22, y: -19}
+        - {x: -13, y: -32}
+        - {x: 18, y: -32}
+        - {x: 21, y: -27}
+        - {x: 21, y: 11}
+        - {x: 17, y: 24}
+    - name: mc_spritesheet_atk_melee_29
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 24}
+        - {x: -13, y: 24}
+        - {x: -18, y: 19}
+        - {x: -18, y: -25}
+        - {x: -9, y: -32}
+        - {x: 16, y: -32}
+        - {x: 21, y: -17}
+        - {x: 21, y: 11}
+        - {x: 16, y: 18}
+    - name: mc_spritesheet_atk_melee_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -32}
+        - {x: 13, y: -32}
+        - {x: 18, y: -15}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_melee_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 14}
+        - {x: 18, y: 29}
+        - {x: 14, y: 32}
+        - {x: -14, y: 32}
+        - {x: -17, y: 29}
+        - {x: -17, y: 5}
+        - {x: -13, y: -29}
+        - {x: -10, y: -32}
+        - {x: 10, y: -32}
+        - {x: 12, y: -29}
+        - {x: 13, y: -25}
+        - {x: 15, y: -10}
+    - name: mc_spritesheet_atk_melee_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -17, y: 30}
+        - {x: -17, y: -7}
+        - {x: -13, y: -32}
+        - {x: 13, y: -32}
+        - {x: 18, y: -16}
+        - {x: 18, y: 31}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_melee_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 24}
+        - {x: -17, y: -32}
+        - {x: 17, y: -32}
+        - {x: 20, y: -29}
+        - {x: 20, y: 24}
+    - name: mc_spritesheet_atk_melee_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 0}
+        - {x: 17, y: -3}
+        - {x: 20, y: -3}
+        - {x: 20, y: 23}
+        - {x: 16, y: 24}
+        - {x: -16, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: -32}
+        - {x: 15, y: -32}
+        - {x: 18, y: -28}
+        - {x: 19, y: -4}
+        - {x: 15, y: -3}
+    - name: mc_spritesheet_atk_melee_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 24}
+        - {x: -17, y: 21}
+        - {x: -17, y: -32}
+        - {x: 15, y: -32}
+        - {x: 18, y: -29}
+        - {x: 18, y: 20}
+        - {x: 13, y: 24}
+    - name: mc_spritesheet_atk_melee_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 32}
+        - {x: -11, y: 32}
+        - {x: -15, y: 28}
+        - {x: -15, y: -29}
+        - {x: -9, y: -32}
+        - {x: 16, y: -32}
+        - {x: 19, y: 1}
+        - {x: 19, y: 28}
+    - name: mc_spritesheet_atk_melee_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -15, y: -16}
+        - {x: -12, y: -32}
+        - {x: 12, y: -32}
+        - {x: 14, y: -31}
+        - {x: 21, y: -16}
+        - {x: 21, y: 26}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_melee_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 32}
+        - {x: -15, y: -16}
+        - {x: -12, y: -32}
+        - {x: 14, y: -32}
+        - {x: 21, y: -8}
+        - {x: 21, y: 32}
+    - name: mc_spritesheet_atk_melee_39
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 23}
+        - {x: -21, y: 17}
+        - {x: -21, y: -32}
+        - {x: 11, y: -32}
+        - {x: 20, y: -10}
+        - {x: 20, y: 14}
+        - {x: 17, y: 23}
+    - name: mc_spritesheet_atk_melee_40
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 23}
+        - {x: -11, y: 23}
+        - {x: -20, y: 17}
+        - {x: -21, y: -1}
+        - {x: -21, y: -32}
+        - {x: 12, y: -32}
+        - {x: 18, y: -8}
+        - {x: 19, y: 0}
+        - {x: 19, y: 17}
+    - name: mc_spritesheet_atk_melee_41
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 23}
+        - {x: -10, y: 23}
+        - {x: -20, y: 17}
+        - {x: -21, y: -1}
+        - {x: -21, y: -32}
+        - {x: 13, y: -32}
+        - {x: 16, y: -17}
+        - {x: 19, y: 2}
+        - {x: 19, y: 18}
+    - name: mc_spritesheet_atk_melee_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 32}
+        - {x: -17, y: -2}
+        - {x: -9, y: -32}
+        - {x: 18, y: -32}
+        - {x: 18, y: 32}
+    - name: mc_spritesheet_atk_melee_43
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 32}
+        - {x: -19, y: -15}
+        - {x: -15, y: -18}
+        - {x: -13, y: -18}
+        - {x: -12, y: -15}
+        - {x: -14, y: -12}
+        - {x: -14, y: -3}
+        - {x: -14, y: -12}
+        - {x: -12, y: -14}
+        - {x: -11, y: -31}
+        - {x: -9, y: -32}
+        - {x: 15, y: -32}
+        - {x: 22, y: -7}
+        - {x: 22, y: 16}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_melee_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 32}
+        - {x: -19, y: -9}
+        - {x: -17, y: -10}
+        - {x: -14, y: -9}
+        - {x: -14, y: -3}
+        - {x: -14, y: -6}
+        - {x: -11, y: -31}
+        - {x: -9, y: -32}
+        - {x: 13, y: -32}
+        - {x: 22, y: -6}
+        - {x: 22, y: 12}
+        - {x: 17, y: 32}
+    - name: mc_spritesheet_atk_melee_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 24}
+        - {x: -17, y: 17}
+        - {x: -17, y: -21}
+        - {x: -8, y: -32}
+        - {x: 14, y: -32}
+        - {x: 20, y: -27}
+        - {x: 20, y: 24}
+    - name: mc_spritesheet_atk_melee_46
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 24}
+        - {x: -17, y: 17}
+        - {x: -17, y: -21}
+        - {x: -8, y: -32}
+        - {x: 13, y: -32}
+        - {x: 19, y: -22}
+        - {x: 19, y: 16}
+        - {x: 16, y: 24}
+    - name: mc_spritesheet_atk_melee_47
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 24}
+        - {x: -17, y: 17}
+        - {x: -17, y: -5}
+        - {x: -15, y: -16}
+        - {x: -12, y: -27}
+        - {x: -5, y: -32}
+        - {x: 12, y: -32}
+        - {x: 18, y: -18}
+        - {x: 18, y: 20}
+        - {x: 12, y: 24}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

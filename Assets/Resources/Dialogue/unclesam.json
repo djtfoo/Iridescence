@@ -1,0 +1,24 @@
+ {
+"firstGreeting": "You're not a familiar face. Welcome! Please, stop by for a while.",
+"greetings": [
+"Glad to see you well.",
+"The crops are growing well today."
+],
+"goodbye": "Take care!",
+"replies": [
+{
+"selection": "How's everything?",
+"index": 0,
+"dependency": -1,
+"dialogue": "Aside from the monsters giving us problems, we're getting by.",
+"haveReply": false
+},
+{
+"selection": "Quest",
+"index": 1,
+"dependency": -1,
+"dialogue": "We'll manage by ourselves, thank you.",
+"haveReply": false
+}
+]
+}

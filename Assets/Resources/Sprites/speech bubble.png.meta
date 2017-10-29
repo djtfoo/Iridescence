@@ -29,7 +29,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 128
   textureSettings:
     filterMode: -1
@@ -64,15 +64,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 12}
-        - {x: -16, y: 6}
-        - {x: -16, y: -6}
-        - {x: -9, y: -16}
-        - {x: -2, y: -16}
-        - {x: 11, y: -12}
-        - {x: 16, y: -9}
-        - {x: 16, y: 8}
-        - {x: 14, y: 12}
+      - - {x: 10, y: 12}
+        - {x: -13, y: 12}
+        - {x: -16, y: 7}
+        - {x: -16, y: -12}
+        - {x: -10, y: -16}
+        - {x: 11, y: -16}
+        - {x: 13, y: -15}
+        - {x: 16, y: -8}
+        - {x: 16, y: 10}
     - name: speech bubble_1
       rect:
         serializedVersion: 2
@@ -84,15 +84,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 12}
-        - {x: -16, y: 6}
-        - {x: -16, y: -6}
-        - {x: -9, y: -16}
-        - {x: -2, y: -16}
-        - {x: 11, y: -12}
-        - {x: 16, y: -9}
-        - {x: 16, y: 8}
-        - {x: 14, y: 12}
+      - - {x: 10, y: 12}
+        - {x: -13, y: 12}
+        - {x: -16, y: 7}
+        - {x: -16, y: -12}
+        - {x: -10, y: -16}
+        - {x: 11, y: -16}
+        - {x: 13, y: -15}
+        - {x: 16, y: -8}
+        - {x: 16, y: 10}
     - name: speech bubble_2
       rect:
         serializedVersion: 2
@@ -104,15 +104,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 12}
-        - {x: -16, y: 6}
-        - {x: -16, y: -6}
-        - {x: -9, y: -16}
-        - {x: -2, y: -16}
-        - {x: 11, y: -12}
-        - {x: 16, y: -9}
-        - {x: 16, y: 8}
-        - {x: 14, y: 12}
+      - - {x: 10, y: 12}
+        - {x: -13, y: 12}
+        - {x: -16, y: 7}
+        - {x: -16, y: -12}
+        - {x: -10, y: -16}
+        - {x: 11, y: -16}
+        - {x: 13, y: -15}
+        - {x: 16, y: -8}
+        - {x: 16, y: 10}
     outline: []
   spritePackingTag: 
   userData: 

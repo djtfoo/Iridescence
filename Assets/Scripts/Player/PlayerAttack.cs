@@ -446,7 +446,9 @@ public class PlayerAttack : MonoBehaviour
                     }
 
                     // Play Skill SFX
-                    AudioManager.instance.PlaySFX(currSkill.name);
+                    if (currSkill != null) {
+                        AudioManager.instance.PlaySFX(currSkill.name);
+                    }
 
                     // Create melee skill animation
                     CreateMeleeSkillAnimation();

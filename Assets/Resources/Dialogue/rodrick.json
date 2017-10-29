@@ -1,0 +1,23 @@
+ {
+"firstGreeting": "Take care in the mountains.",
+"greetings": [
+"Hello."
+],
+"goodbye": "Stay safe.",
+"replies": [
+{
+"selection": "How's everything?",
+"index": 0,
+"dependency": -1,
+"dialogue": "The mountains are dangerous. Please proceed with caution.",
+"haveReply": false
+},
+{
+"selection": "Quest",
+"index": 1,
+"dependency": -1,
+"dialogue": "It will be good if you could get rid of the monsters for us.",
+"haveReply": false
+}
+]
+}
