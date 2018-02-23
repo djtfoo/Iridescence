@@ -1,0 +1,21 @@
+Removal of several unfinished content :
+- Quest System
+- Third Skill(s) of each Ability
+- Removal of various potions : Too complex mix-match decision making; stick to the basic 5 
+
+UI Changes:
+- EXP bar shown below the player
+- potions display amount and key-binded to be highlighted differently
+- potions bar to be shifted to the right side
+- Skills to be shifted to either bottom-center or together with character profile at the bottom-left
+- HP/MP to have absolute value stated instead of when you mouse over it
+- Skills and Profile to be separated into different tabs
+- Buffs/Debuffs in main GUI shows timer(if have timer) and change location to above the player pic
+- Upgrade UI Borders with better graphics
+- Rework Speaking Dialogue box and text size
+
+Additions :
+- Burst meter : when full, player can press a set key to get off burst-mode which enhances all his abilities; burst-mode last for a set duration
+
+Questions :
+- Player UI face for?
